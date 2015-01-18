@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MapViewController.h
 //  Ping2
 //
 //  Created by Andy Bayer on 12/10/14.
@@ -14,6 +14,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 @end
 

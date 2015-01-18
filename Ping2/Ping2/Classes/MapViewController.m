@@ -1,6 +1,6 @@
 
 //
-//  ViewController.m
+//  MapViewController.m
 //  Ping2
 //
 //  Created by Andy Bayer on 12/10/14.
@@ -46,6 +46,7 @@
 {
     [super viewDidLoad];
     
+    self.mapView.bounds = self.view.frame;
     self.mapView.delegate = self;
     // create out annotations array (in this example only 3)
     self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:2];

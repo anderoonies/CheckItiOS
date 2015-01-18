@@ -6,16 +6,32 @@
 //  Copyright (c) 2015 Andy Bayer. All rights reserved.
 //
 
-#import "TimelineTableViewController.h"
+#import "InviteFriendTableViewController.h"
 
-@interface TimelineTableViewController ()
+@interface InviteFriendTableViewController ()
 
 @end
 
-@implementation TimelineTableViewController
+@implementation InviteFriendTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.allowsMultipleSelection = YES;
+    
+    UIBarButtonItem *sendButton = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonSystemItemPlay target:self action:@selector(sendInvite)];
+    [self.sendButton addTarget:self
+               action:@selector(sendInvite)
+     forControlEvents:UIControlEventTouchUpInside];
+    [self.sendButton setTitle:@"Show View" forState:UIControlStateNormal];
+    self.sendButton.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    if (!self.friendList) {
+        self.friendList = [[NSMutableArray alloc] initWithObjects:@"Jimmy R", @"Chase U", @"Joshua R", @"Lena V", @"Russell H", nil];
+    }
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -23,11 +39,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-}
-
-- (void)addEvent
-{
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,24 +51,49 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.friendList count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
     
     // Configure the cell...
     
+    cell.textLabel.text = self.friendList[[indexPath row]];
+    
     return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    if (![self.view.subviews containsObject:self.sendButton]) {
+        [self.view addSubview:self.sendButton];
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    
+    if ([[tableView indexPathsForSelectedRows] count] < 1) {
+        [self.sendButton removeFromSuperview];
+    }
+}
+
+- (void)sendInvite {
+    
+}
+
 
 /*
 // Override to support conditional editing of the table view.

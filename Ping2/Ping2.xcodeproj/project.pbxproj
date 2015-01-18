@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		861FAA421A5E16CC003BEB5C /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA411A5E16CC003BEB5C /* TimelineTableViewController.m */; };
+		861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */; };
 		861FAA471A5E277F003BEB5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864368761A39204F00A7F930 /* Main.storyboard */; };
 		861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA491A5E286A003BEB5C /* CreateEventViewController.m */; };
 		864368801A39204F00A7F930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 864368721A39204F00A7F930 /* AppDelegate.m */; };
@@ -32,8 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		861FAA401A5E16CC003BEB5C /* TimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
-		861FAA411A5E16CC003BEB5C /* TimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
+		861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendTableViewController.h; sourceTree = "<group>"; };
+		861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendTableViewController.m; sourceTree = "<group>"; };
 		861FAA481A5E286A003BEB5C /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
 		861FAA491A5E286A003BEB5C /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
 		864368711A39204F00A7F930 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,8 +97,8 @@
 				8643687C1A39204F00A7F930 /* MapViewController.m */,
 				864368881A3920C100A7F930 /* FriendAnnotationView.h */,
 				864368891A3920C100A7F930 /* FriendAnnotationView.m */,
-				861FAA401A5E16CC003BEB5C /* TimelineTableViewController.h */,
-				861FAA411A5E16CC003BEB5C /* TimelineTableViewController.m */,
+				861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */,
+				861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				864368841A39204F00A7F930 /* MapViewController.m in Sources */,
-				861FAA421A5E16CC003BEB5C /* TimelineTableViewController.m in Sources */,
+				861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */,
 				864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */,
 				861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */,
 				8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */,

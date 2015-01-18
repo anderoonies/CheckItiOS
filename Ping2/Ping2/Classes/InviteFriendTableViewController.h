@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TimelineTableViewController : UITableViewController
+@interface InviteFriendTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *addEvent;
+@property (strong, nonatomic)NSMutableArray *friendList;
+@property (strong, nonatomic)UIToolbar *sendBar;
 
 @end
