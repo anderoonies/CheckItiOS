@@ -11,6 +11,7 @@
 @interface InviteFriendTableViewController : UITableViewController
 
 @property (strong, nonatomic)NSMutableArray *friendList;
-@property (strong, nonatomic)UIToolbar *sendBar;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sendButton;
 
 @end

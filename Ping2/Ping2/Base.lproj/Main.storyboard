@@ -36,9 +36,18 @@
                             <outlet property="delegate" destination="Pj9-Zk-Ees" id="4HI-Z9-q2V"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem width="268" style="plain" systemItem="fixedSpace" id="hgs-2V-J1h"/>
+                        <barButtonItem systemItem="play" id="cyA-zN-Jc3"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Select Friends" id="Fo5-bN-1XF">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Kcy-sY-kfP"/>
                     </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="sendButton" destination="cyA-zN-Jc3" id="FRD-59-xw3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHT-9X-Se9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -19,12 +19,8 @@
     
     self.tableView.allowsMultipleSelection = YES;
     
-    UIBarButtonItem *sendButton = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonSystemItemPlay target:self action:@selector(sendInvite)];
-    [self.sendButton addTarget:self
-               action:@selector(sendInvite)
-     forControlEvents:UIControlEventTouchUpInside];
-    [self.sendButton setTitle:@"Show View" forState:UIControlStateNormal];
-    self.sendButton.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+    self.sendButton.target = self;
+    self.sendButton.action = @selector(sendInvite);
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     if (!self.friendList) {
@@ -39,6 +35,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,8 +75,8 @@
 {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     
-    if (![self.view.subviews containsObject:self.sendButton]) {
-        [self.view addSubview:self.sendButton];
+    if ([self.navigationController.toolbar isHidden] == YES) {
+        [self.navigationController setToolbarHidden:NO];
     }
     
 }
@@ -86,14 +86,15 @@
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     
     if ([[tableView indexPathsForSelectedRows] count] < 1) {
-        [self.sendButton removeFromSuperview];
+        [self.navigationController setToolbarHidden:YES];
     }
 }
 
 - (void)sendInvite {
-    
+    for (NSIndexPath *index in [self.tableView indexPathsForSelectedRows]) {
+        NSLog(@"%@", [self.tableView cellForRowAtIndexPath:index].textLabel.text);
+    }
 }
-
 
 /*
 // Override to support conditional editing of the table view.
