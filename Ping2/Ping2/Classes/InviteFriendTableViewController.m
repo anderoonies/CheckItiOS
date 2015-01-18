@@ -37,7 +37,7 @@
 
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setToolbarHidden:YES];
 }
 
@@ -94,6 +94,8 @@
     for (NSIndexPath *index in [self.tableView indexPathsForSelectedRows]) {
         NSLog(@"%@", [self.tableView cellForRowAtIndexPath:index].textLabel.text);
     }
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 /*

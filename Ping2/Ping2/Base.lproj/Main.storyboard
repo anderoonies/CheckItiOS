@@ -89,7 +89,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5o-tV-PcF">
                                 <rect key="frame" x="149" y="488" width="22" height="22"/>
                                 <connections>
-                                    <segue destination="Pj9-Zk-Ees" kind="push" id="XZh-AO-HoO"/>
+                                    <segue destination="Pj9-Zk-Ees" kind="push" identifier="InviteSegue" id="XZh-AO-HoO"/>
                                 </connections>
                             </button>
                         </subviews>
