@@ -57,7 +57,7 @@
     
     FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
     friend2.name = @"Andro";
-    friend2.coordinate = CLLocationCoordinate2DMake(39, -123);
+    friend2.coordinate = CLLocationCoordinate2DMake(37.91, -122.49);
     friend2.imageName = @"my_face2";
     
     [self.mapAnnotations addObject:friend1];
