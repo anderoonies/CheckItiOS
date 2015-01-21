@@ -11,6 +11,7 @@
 #import "FriendAnnotation.h"
 #import "DetailViewController.h"
 #import "FriendAnnotationView.h"
+#import <Parse/Parse.h>
 
 @interface MapViewController () <MKMapViewDelegate>
 
@@ -60,6 +61,11 @@
     friend2.name = @"Andro";
     friend2.coordinate = CLLocationCoordinate2DMake(39, -123);
     friend2.imageName = @"my_face2";
+    
+    // test Parse
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
     
     [self.mapAnnotations addObject:friend1];
     [self.mapAnnotations addObject:friend2];
