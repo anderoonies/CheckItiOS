@@ -1,6 +1,6 @@
 
 //
-//  ViewController.m
+//  MapViewController.m
 //  Ping2
 //
 //  Created by Andy Bayer on 12/10/14.
@@ -11,6 +11,7 @@
 #import "FriendAnnotation.h"
 #import "DetailViewController.h"
 #import "FriendAnnotationView.h"
+#import <Parse/Parse.h>
 
 @interface MapViewController () <MKMapViewDelegate>
 
@@ -46,6 +47,7 @@
 {
     [super viewDidLoad];
     
+    self.mapView.bounds = self.view.frame;
     self.mapView.delegate = self;
     // create out annotations array (in this example only 3)
     self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:2];
@@ -59,6 +61,11 @@
     friend2.name = @"Andro";
     friend2.coordinate = CLLocationCoordinate2DMake(37.91, -122.49);
     friend2.imageName = @"my_face2";
+    
+    // test Parse
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
     
     [self.mapAnnotations addObject:friend1];
     [self.mapAnnotations addObject:friend2];
