@@ -21,7 +21,7 @@
 // optional
 - (NSString *)subtitle
 {
-    return @"hi;)";
+    return @"subtitle";
 }
 
 
@@ -36,6 +36,7 @@
 
 + (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation
 {
+    //
     MKAnnotationView *returnedAnnotationView =
     [mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([FriendAnnotation class])];
     if (returnedAnnotationView == nil)
@@ -44,9 +45,10 @@
         [[MKAnnotationView alloc] initWithAnnotation:annotation
                                      reuseIdentifier:NSStringFromClass([FriendAnnotation class])];
         
+        // specify that the annotation can create the callout on tap
         returnedAnnotationView.canShowCallout = YES;
         
-        // offset the flag annotation so that the flag pole rests on the map coordinate
+        // offset the annotation so that the bottom of the image rests on the correct coordinate
         returnedAnnotationView.centerOffset = CGPointMake( returnedAnnotationView.centerOffset.x + returnedAnnotationView.image.size.width/2, returnedAnnotationView.centerOffset.y - returnedAnnotationView.image.size.height/2 );
     }
     else

@@ -59,15 +59,16 @@ static CGFloat kRoundBoxLeft = 10.0;
     self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     if (self != nil)
     {
+        
+        // create an annotation for a friend object
         FriendAnnotation *friendAnnotation = (FriendAnnotation *)self.annotation;
         
         // offset the annotation so it won't obscure the actual lat/long location
         self.centerOffset = CGPointMake(50.0, 50.0);
         
-        // iOS equivalent
-        //
         self.backgroundColor = [UIColor clearColor];
         
+        // set the annotation label to the friend's title property
         UILabel *annotationLabel = [self makeFriendLabel:friendAnnotation.title];
         [self addSubview:annotationLabel];
 

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // allows user to check multiple friends
     self.tableView.allowsMultipleSelection = YES;
     
     self.sendButton.target = self;
@@ -24,7 +25,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     if (!self.friendList) {
-        self.friendList = [[NSMutableArray alloc] initWithObjects:@"Jimmy R", @"Chase U", @"Joshua R", @"Lena V", @"Russell H", nil];
+        self.friendList = [[NSMutableArray alloc] initWithObjects:@"Jimmy R", @"Chase U", @"Joshua R", @"Lena V", @"Russell H", @"Ed", nil];
     }
     
     
@@ -64,8 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    // configure a cell of identifier friendCell with the corresponding name from the friend array
     cell.textLabel.text = self.friendList[[indexPath row]];
     
     return cell;
@@ -73,8 +73,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // add the checkmark to the cell
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     
+    // if the toolbar for sending the invite is not visibile, set it to visible
     if ([self.navigationController.toolbar isHidden] == YES) {
         [self.navigationController setToolbarHidden:NO];
     }
@@ -83,8 +85,10 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // remove the checkmark from the cell
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     
+    // if no more cells are checked, remove the toolbar
     if ([[tableView indexPathsForSelectedRows] count] < 1) {
         [self.navigationController setToolbarHidden:YES];
     }

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+// annotation that appears on the map of a friend object
+
 @interface FriendAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) NSString *name;

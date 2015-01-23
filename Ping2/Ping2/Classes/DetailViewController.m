@@ -20,6 +20,7 @@
     
     self.nameLabel.text = self.name;
     
+    // reveal the navbar so we can return to the map view
     [self.navigationController setNavigationBarHidden:NO];
 
 }

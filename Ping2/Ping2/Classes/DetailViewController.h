@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Andy Bayer. All rights reserved.
 //
 
+// View controller for Detail revealed when touching callout for Friend Annotation
+
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController

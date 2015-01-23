@@ -39,6 +39,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // hide navigation bar
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
 }
@@ -47,9 +48,14 @@
 {
     [super viewDidLoad];
     
+    
+    // resizing
+    mapView.frame = self.view.bounds;
+    mapView.autoresizingMask = self.view.autoresizingMask;
     self.mapView.bounds = self.view.frame;
     self.mapView.delegate = self;
-    // create out annotations array (in this example only 3)
+    
+    // create out annotations array (in this example only 2 for testing)
     self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:2];
     
     FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
@@ -73,7 +79,7 @@
     // remove any annotations that exist
     [self.mapView removeAnnotations:self.mapView.annotations];
     
-    // add all 3 annotations
+    // add both annotations
     [self.mapView addAnnotations:self.mapAnnotations];
     
     [self gotoDefaultLocation];
@@ -83,14 +89,20 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    // here we illustrate how to detect which annotation type was clicked on for its callout
+    // here we detect which annotation type was clicked on for its callout
     id <MKAnnotation> annotation = [view annotation];
     if ([annotation isKindOfClass:[FriendAnnotation class]])
     {
+        // create a friend annotation object from the clicked annotation to get the friend's name, etc.
         FriendAnnotation *friend = view.annotation;
 
+        // dequeue a detail view controller to be used as the detail for that friend
         DetailViewController *detailVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailViewController"];
+        
+        // set the detail view controller's name property to the friend's name
         detailVC.name = friend.name;
+        
+        // push to the detail view controller
         [self.navigationController pushViewController:detailVC animated:YES];
     }
 }

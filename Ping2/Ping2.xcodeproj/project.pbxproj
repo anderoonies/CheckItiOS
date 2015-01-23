@@ -32,6 +32,7 @@
 		8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 864368891A3920C100A7F930 /* FriendAnnotationView.m */; };
 		8643688B1A3929B600A7F930 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864368741A39204F00A7F930 /* LaunchScreen.xib */; };
 		8643688F1A392D6C00A7F930 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643688E1A392D6C00A7F930 /* DetailViewController.m */; };
+		8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8653DA891A71AD9B00A3B765 /* LoginViewController.m */; };
 		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,8 @@
 		864368891A3920C100A7F930 /* FriendAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendAnnotationView.m; sourceTree = "<group>"; };
 		8643688D1A392D6C00A7F930 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Ping2/Classes/DetailViewController.h; sourceTree = SOURCE_ROOT; };
 		8643688E1A392D6C00A7F930 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Ping2/Classes/DetailViewController.m; sourceTree = SOURCE_ROOT; };
+		8653DA881A71AD9B00A3B765 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8653DA891A71AD9B00A3B765 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		86CFEBCF1A391E2A00D5D071 /* Ping2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ping2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBED1A391E2A00D5D071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				864368891A3920C100A7F930 /* FriendAnnotationView.m */,
 				861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */,
 				861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */,
+				8653DA881A71AD9B00A3B765 /* LoginViewController.h */,
+				8653DA891A71AD9B00A3B765 /* LoginViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */,
 				861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */,
 				8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */,
+				8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */,
 				864368871A39204F00A7F930 /* main.m in Sources */,
 				864368801A39204F00A7F930 /* AppDelegate.m in Sources */,
 				8643688F1A392D6C00A7F930 /* DetailViewController.m in Sources */,
