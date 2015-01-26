@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray *mapAnnotations;
 @property (nonatomic, strong) UIPopoverController *bridgePopoverController;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -48,13 +49,27 @@
 {
     [super viewDidLoad];
     
-    
-    // resizing
-    mapView.frame = self.view.bounds;
-    mapView.autoresizingMask = self.view.autoresizingMask;
-    self.mapView.bounds = self.view.frame;
     self.mapView.delegate = self;
     
+    // resizing
+    self.mapView.frame = self.view.bounds;
+    self.mapView.autoresizingMask = self.view.autoresizingMask;
+    
+    [self.settingsButton addTarget:self action:@selector(pushSettings:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // initialize locationmanager
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    } else {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    // start getting user's location
+    [self.locationManager startUpdatingLocation];
+
     // create out annotations array (in this example only 2 for testing)
     self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:2];
     
@@ -69,9 +84,9 @@
     friend2.imageName = @"my_face2";
     
     // test Parse
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
+//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//    testObject[@"foo"] = @"bar";
+//    [testObject saveInBackground];
     
     [self.mapAnnotations addObject:friend1];
     [self.mapAnnotations addObject:friend2];
@@ -129,7 +144,19 @@
     return returnedAnnotationView;
 }
 
+#pragma mark -
+#pragma mark Buttons
 
+- (IBAction)pushSettings:(id)sender {
+    [self performSegueWithIdentifier:@"LoginSegue" sender:sender];
+}
+
+#pragma mark - 
+#pragma mark Segues
+
+- (IBAction)returnToMap:(UIStoryboardSegue *)segue {
+    NSLog(@"And now we are back.");
+}
 
 
 

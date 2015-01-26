@@ -33,6 +33,8 @@
 		8643688B1A3929B600A7F930 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864368741A39204F00A7F930 /* LaunchScreen.xib */; };
 		8643688F1A392D6C00A7F930 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643688E1A392D6C00A7F930 /* DetailViewController.m */; };
 		8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8653DA891A71AD9B00A3B765 /* LoginViewController.m */; };
+		86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86822CD51A76BEC2005E09B2 /* NewUserViewController.m */; };
+		86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CE8FCE1A756D190088DA8F /* SettingsSegue.m */; };
 		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,10 @@
 		8643688E1A392D6C00A7F930 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Ping2/Classes/DetailViewController.m; sourceTree = SOURCE_ROOT; };
 		8653DA881A71AD9B00A3B765 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8653DA891A71AD9B00A3B765 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		86822CD41A76BEC2005E09B2 /* NewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserViewController.h; sourceTree = "<group>"; };
+		86822CD51A76BEC2005E09B2 /* NewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserViewController.m; sourceTree = "<group>"; };
+		86CE8FCD1A756D190088DA8F /* SettingsSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegue.h; sourceTree = "<group>"; };
+		86CE8FCE1A756D190088DA8F /* SettingsSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSegue.m; sourceTree = "<group>"; };
 		86CFEBCF1A391E2A00D5D071 /* Ping2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ping2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBED1A391E2A00D5D071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,6 +174,10 @@
 				861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */,
 				8653DA881A71AD9B00A3B765 /* LoginViewController.h */,
 				8653DA891A71AD9B00A3B765 /* LoginViewController.m */,
+				86822CD41A76BEC2005E09B2 /* NewUserViewController.h */,
+				86822CD51A76BEC2005E09B2 /* NewUserViewController.m */,
+				86CE8FCD1A756D190088DA8F /* SettingsSegue.h */,
+				86CE8FCE1A756D190088DA8F /* SettingsSegue.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -324,8 +334,10 @@
 			files = (
 				864368841A39204F00A7F930 /* MapViewController.m in Sources */,
 				861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */,
+				86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */,
 				864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */,
 				861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */,
+				86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */,
 				8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */,
 				8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */,
 				864368871A39204F00A7F930 /* main.m in Sources */,

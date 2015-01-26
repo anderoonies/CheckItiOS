@@ -15,7 +15,9 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+//@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 @end
 

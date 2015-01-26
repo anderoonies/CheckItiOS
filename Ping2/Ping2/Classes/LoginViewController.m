@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import <Parse/Parse.h>
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -33,6 +34,11 @@
 
 #pragma mark - 
 #pragma mark Logins
+
+- (IBAction)loginPressed:(id)sender {
+    [self dismissKeyboard];
+    [self processFieldEntries];
+}
 
 - (void)processFieldEntries {
     // Get the username text, store it in the app delegate for now
@@ -72,9 +78,44 @@
     }
     
     if (textError) {
-        // Uh oh, show the user what's wrong
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
         return;
     }
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+        // Tear down the activity view in all cases.
+        
+        if (user) {
+            NSLog(@"success");
+        } else {
+            // Didn't get a user.
+            NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);
+            
+            NSString *alertTitle = nil;
+            
+            if (error) {
+                // check if the error matches Parse error for invalid credentials
+                if ([[error userInfo][@"code"] integerValue] == 101) {
+                  alertTitle = @"Invalid login credentials";
+                }
+            } else {
+                // the username or password is probably wrong.
+                alertTitle = @"Couldn’t log in:\nThe username or password were wrong.";
+            }
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                                message: nil
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+            [alertView show];
+            
+            // Bring the keyboard back up, because they'll probably need to change something.
+            [self.usernameField becomeFirstResponder];
+        }
+    }];
+
 }
 
 /*
