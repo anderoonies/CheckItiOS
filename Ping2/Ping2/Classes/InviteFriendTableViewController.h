@@ -13,5 +13,6 @@
 @property (strong, nonatomic)NSMutableArray *friendList;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addFriendButton;
 
 @end

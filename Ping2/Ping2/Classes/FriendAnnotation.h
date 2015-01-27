@@ -20,6 +20,6 @@
 
 + (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation;
 
-- (id)initWithName:(NSString *)newName Location:(CLLocationCoordinate2D)location;
+//- (id)initWithName:(NSString *)newName Location:(CLLocationCoordinate2D)location;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "InviteFriendTableViewController.h"
+#import <Parse/Parse.h>
 
 @interface InviteFriendTableViewController ()
 
@@ -59,6 +60,37 @@
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.friendList count];
+}
+
+#pragma mark -
+#pragma mark Friends
+
+// define a constant to be used as a tag for the UI Alert View
+#define ADD_FRIEND 1
+
+- (IBAction)addFriend:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter username"
+                                                    message:nil
+                                                    delegate:self
+                                                    cancelButtonTitle:@"Continue"
+                                                    otherButtonTitles:nil];
+    
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.tag = ADD_FRIEND;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeDefault;
+    alertTextField.placeholder = @"Friend's username";
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSString *enteredText = [[alertView textFieldAtIndex:0] text];
+    if (alertView.tag == ADD_FRIEND) {
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:enteredText];
+        PFUser *user = (PFUser *)[query getFirstObject];
+        NSLog(@"Found %@", user.username);
+    }
 }
 
 

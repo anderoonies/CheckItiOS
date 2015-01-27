@@ -49,7 +49,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSQ-Ac-7Vy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ljK-1J-Eou" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2226" y="697"/>
+            <point key="canvasLocation" x="-2694" y="697"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vCx-ME-eku">
@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUG-5X-D7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1653" y="0.0"/>
+            <point key="canvasLocation" x="-2121" y="0.0"/>
         </scene>
         <!--New User View Controller-->
         <scene sceneID="6gZ-o2-710">
@@ -140,7 +140,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMv-gR-Ti7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ha3-xn-ArU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1744" y="697"/>
+            <point key="canvasLocation" x="-2212" y="697"/>
         </scene>
         <!--Select Friends-->
         <scene sceneID="vlA-oM-ugh">
@@ -175,21 +175,27 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem width="268" style="plain" systemItem="fixedSpace" id="hgs-2V-J1h"/>
+                        <barButtonItem width="278" style="plain" systemItem="fixedSpace" id="hgs-2V-J1h"/>
                         <barButtonItem systemItem="play" id="cyA-zN-Jc3"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Select Friends" id="Fo5-bN-1XF">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Kcy-sY-kfP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
+                            <connections>
+                                <action selector="addFriend:" destination="Pj9-Zk-Ees" id="VcO-nR-86S"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addFriendButton" destination="DmE-2V-xkr" id="iVN-oB-fxO"/>
                         <outlet property="sendButton" destination="cyA-zN-Jc3" id="FRD-59-xw3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHT-9X-Se9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1231" y="-81"/>
+            <point key="canvasLocation" x="-1557" y="0.0"/>
         </scene>
         <!--Item-->
         <scene sceneID="79L-U0-mew">
@@ -227,7 +233,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5o-tV-PcF">
                                 <rect key="frame" x="149" y="488" width="22" height="22"/>
                                 <connections>
-                                    <segue destination="Pj9-Zk-Ees" kind="push" identifier="InviteSegue" id="XZh-AO-HoO"/>
+                                    <action selector="pushAddLocation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fFE-Tv-JSe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkc-gh-Hql">
@@ -236,7 +242,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xDY-Vw-REq" kind="custom" identifier="LoginSegue" customClass="SettingsSegue" id="yQw-AS-uNQ"/>
+                                    <action selector="pushSettings:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xs0-3R-f9t"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -254,7 +260,9 @@
                     <connections>
                         <outlet property="mapView" destination="eFA-87-EvT" id="p9p-dJ-tIf"/>
                         <outlet property="settingsButton" destination="pkc-gh-Hql" id="Ub9-zI-tAh"/>
-                        <segue destination="1bU-kw-DKs" kind="push" identifier="showDetails" id="b4P-ba-yHc"/>
+                        <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
+                        <segue destination="xDY-Vw-REq" kind="custom" identifier="LoginSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
+                        <segue destination="Pj9-Zk-Ees" kind="push" identifier="AddLocationSegue" id="OSH-BF-GhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -55,8 +55,6 @@
     self.mapView.frame = self.view.bounds;
     self.mapView.autoresizingMask = self.view.autoresizingMask;
     
-    [self.settingsButton addTarget:self action:@selector(pushSettings:) forControlEvents:UIControlEventTouchUpInside];
-    
     // initialize locationmanager
     self.locationManager = [[CLLocationManager alloc] init];
     
@@ -149,13 +147,23 @@
 
 - (IBAction)pushSettings:(id)sender {
     [self performSegueWithIdentifier:@"LoginSegue" sender:sender];
+//    PFUser *currentUser = [PFUser currentUser];
+//    if (currentUser) {
+//        [self performSegueWithIdentifier:@"SettingsSegue" sender:sender];
+//    } else {
+//        [self performSegueWithIdentifier:@"LoginSegue" sender:sender];
+//    }
+}
+
+- (IBAction)pushAddLocation:(id)sender {
+    [self performSegueWithIdentifier:@"AddLocationSegue" sender:self];
 }
 
 #pragma mark - 
 #pragma mark Segues
 
 - (IBAction)returnToMap:(UIStoryboardSegue *)segue {
-    NSLog(@"And now we are back.");
+
 }
 
 
