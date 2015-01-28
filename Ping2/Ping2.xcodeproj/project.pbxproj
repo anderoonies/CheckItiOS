@@ -39,6 +39,12 @@
 		8689F05F1A793FA20067AD13 /* ma_topBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689F05A1A793FA20067AD13 /* ma_topBackground.png */; };
 		8689F0621A7940C90067AD13 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8689F0601A7940C90067AD13 /* Bolts.framework */; };
 		8689F0631A7940C90067AD13 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8689F0611A7940C90067AD13 /* Parse.framework */; };
+		8689F0731A7942370067AD13 /* MADayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F06A1A7942370067AD13 /* MADayView.m */; };
+		8689F0741A7942370067AD13 /* MAEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F06C1A7942370067AD13 /* MAEvent.m */; };
+		8689F0751A7942370067AD13 /* MAGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F06E1A7942370067AD13 /* MAGridView.m */; };
+		8689F0761A7942370067AD13 /* MAWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0701A7942370067AD13 /* MAWeekView.m */; };
+		8689F0771A7942370067AD13 /* TapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0721A7942370067AD13 /* TapDetectingView.m */; };
+		8689F07A1A7984080067AD13 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0791A7984080067AD13 /* DayViewController.m */; };
 		86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CE8FCE1A756D190088DA8F /* SettingsSegue.m */; };
 		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
 /* End PBXBuildFile section */
@@ -96,6 +102,18 @@
 		8689F05A1A793FA20067AD13 /* ma_topBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ma_topBackground.png; sourceTree = "<group>"; };
 		8689F0601A7940C90067AD13 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../Bolts.framework; sourceTree = "<group>"; };
 		8689F0611A7940C90067AD13 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../Parse.framework; sourceTree = "<group>"; };
+		8689F0691A7942370067AD13 /* MADayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MADayView.h; sourceTree = "<group>"; };
+		8689F06A1A7942370067AD13 /* MADayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MADayView.m; sourceTree = "<group>"; };
+		8689F06B1A7942370067AD13 /* MAEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAEvent.h; sourceTree = "<group>"; };
+		8689F06C1A7942370067AD13 /* MAEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAEvent.m; sourceTree = "<group>"; };
+		8689F06D1A7942370067AD13 /* MAGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAGridView.h; sourceTree = "<group>"; };
+		8689F06E1A7942370067AD13 /* MAGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAGridView.m; sourceTree = "<group>"; };
+		8689F06F1A7942370067AD13 /* MAWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAWeekView.h; sourceTree = "<group>"; };
+		8689F0701A7942370067AD13 /* MAWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAWeekView.m; sourceTree = "<group>"; };
+		8689F0711A7942370067AD13 /* TapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingView.h; sourceTree = "<group>"; };
+		8689F0721A7942370067AD13 /* TapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingView.m; sourceTree = "<group>"; };
+		8689F0781A7984080067AD13 /* DayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
+		8689F0791A7984080067AD13 /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		86CE8FCD1A756D190088DA8F /* SettingsSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegue.h; sourceTree = "<group>"; };
 		86CE8FCE1A756D190088DA8F /* SettingsSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSegue.m; sourceTree = "<group>"; };
 		86CFEBCF1A391E2A00D5D071 /* Ping2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +188,7 @@
 		864368781A39204F00A7F930 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8689F0681A7942370067AD13 /* Views for calendar-ui */,
 				861FAA481A5E286A003BEB5C /* CreateEventViewController.h */,
 				861FAA491A5E286A003BEB5C /* CreateEventViewController.m */,
 				8643688D1A392D6C00A7F930 /* DetailViewController.h */,
@@ -188,6 +207,8 @@
 				86822CD51A76BEC2005E09B2 /* NewUserViewController.m */,
 				86CE8FCD1A756D190088DA8F /* SettingsSegue.h */,
 				86CE8FCE1A756D190088DA8F /* SettingsSegue.m */,
+				8689F0781A7984080067AD13 /* DayViewController.h */,
+				8689F0791A7984080067AD13 /* DayViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -202,6 +223,24 @@
 				8689F05A1A793FA20067AD13 /* ma_topBackground.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		8689F0681A7942370067AD13 /* Views for calendar-ui */ = {
+			isa = PBXGroup;
+			children = (
+				8689F0691A7942370067AD13 /* MADayView.h */,
+				8689F06A1A7942370067AD13 /* MADayView.m */,
+				8689F06B1A7942370067AD13 /* MAEvent.h */,
+				8689F06C1A7942370067AD13 /* MAEvent.m */,
+				8689F06D1A7942370067AD13 /* MAGridView.h */,
+				8689F06E1A7942370067AD13 /* MAGridView.m */,
+				8689F06F1A7942370067AD13 /* MAWeekView.h */,
+				8689F0701A7942370067AD13 /* MAWeekView.m */,
+				8689F0711A7942370067AD13 /* TapDetectingView.h */,
+				8689F0721A7942370067AD13 /* TapDetectingView.m */,
+			);
+			name = "Views for calendar-ui";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		86CFEBC61A391E2A00D5D071 = {
@@ -363,10 +402,16 @@
 				864368841A39204F00A7F930 /* MapViewController.m in Sources */,
 				861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */,
 				86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */,
+				8689F07A1A7984080067AD13 /* DayViewController.m in Sources */,
 				864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */,
+				8689F0771A7942370067AD13 /* TapDetectingView.m in Sources */,
+				8689F0751A7942370067AD13 /* MAGridView.m in Sources */,
 				861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */,
+				8689F0741A7942370067AD13 /* MAEvent.m in Sources */,
+				8689F0731A7942370067AD13 /* MADayView.m in Sources */,
 				86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */,
 				8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */,
+				8689F0761A7942370067AD13 /* MAWeekView.m in Sources */,
 				8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */,
 				864368871A39204F00A7F930 /* main.m in Sources */,
 				864368801A39204F00A7F930 /* AppDelegate.m in Sources */,

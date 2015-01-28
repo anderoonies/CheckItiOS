@@ -215,54 +215,36 @@
             </objects>
             <point key="canvasLocation" x="-2285" y="-806"/>
         </scene>
-        <!--MapViewController-->
+        <!--DayViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="MapViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="vXZ-lx-hvc" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController title="DayViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="vXZ-lx-hvc" customClass="DayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="MADayView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFA-87-EvT">
-                                <rect key="frame" x="0.0" y="-97" width="320" height="665"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5o-tV-PcF">
-                                <rect key="frame" x="149" y="488" width="22" height="22"/>
-                                <connections>
-                                    <action selector="pushAddLocation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fFE-Tv-JSe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkc-gh-Hql">
-                                <rect key="frame" x="16" y="484" width="61" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pushSettings:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xs0-3R-f9t"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="v5o-tV-PcF" firstAttribute="bottom" secondItem="pkc-gh-Hql" secondAttribute="bottom" constant="-4" id="86p-jK-FKv"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="v5o-tV-PcF" secondAttribute="bottom" constant="15" id="HFQ-7d-F4G"/>
-                            <constraint firstAttribute="centerX" secondItem="eFA-87-EvT" secondAttribute="centerX" id="S1q-6P-utu"/>
-                            <constraint firstAttribute="centerX" secondItem="v5o-tV-PcF" secondAttribute="centerX" id="s2a-4w-PuJ"/>
-                            <constraint firstAttribute="centerY" secondItem="eFA-87-EvT" secondAttribute="centerY" id="tD0-sc-1n7"/>
-                        </constraints>
+                        <connections>
+                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="AFX-1J-fRp"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="RkB-ZL-q31"/>
+                    <navigationItem key="navigationItem" id="RkB-ZL-q31">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Gjb-us-vFX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="YAv-ku-MDb">
+                                <rect key="frame" x="233" y="7" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="eFA-87-EvT" id="p9p-dJ-tIf"/>
-                        <outlet property="settingsButton" destination="pkc-gh-Hql" id="Ub9-zI-tAh"/>
+                        <outlet property="dayView" destination="kh9-bI-dsS" id="dMF-0m-1eS"/>
                         <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
                         <segue destination="xDY-Vw-REq" kind="custom" identifier="LoginSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
-                        <segue destination="Pj9-Zk-Ees" kind="push" identifier="AddLocationSegue" id="OSH-BF-GhM"/>
+                        <segue destination="Pj9-Zk-Ees" kind="push" identifier="AddEventSegue" id="OSH-BF-GhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
