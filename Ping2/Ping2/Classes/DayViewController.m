@@ -8,6 +8,8 @@
 
 #import "DayViewController.h"
 #import "MAEvent.h"
+#import "DetailViewController.h"
+#import <Parse/Parse.h>
 
 #define DATE_COMPONENTS (NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth |  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekdayOrdinal | NSCalendarUnitWeekdayOrdinal)
 #define CURRENT_CALENDAR [NSCalendar currentCalendar]
@@ -44,9 +46,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/* Implementation for the MADayViewDelegate protocol */
-
 - (void)dayView:(MADayView *)dayView eventTapped:(MAEvent *)event {
+    [self performSegueWithIdentifier:@"ShowDetailsSegue" sender:self];
     NSDateComponents *components = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:event.start];
     NSString *eventInfo = [NSString stringWithFormat:@"Hour %i. Userinfo: %@", [components hour], [event.userInfo objectForKey:@"test"]];
     
@@ -104,7 +105,41 @@
     return arr;
 }
 
+- (NSDate *)getToday {
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    NSDate *date = [NSDate date];
+    NSDateComponents *comps = [cal components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
+                                     fromDate:date];
+    NSDate *today = [cal dateFromComponents:comps];
+    
+    return today;
+}
+
 - (NSArray *)getEvents {
+    NSMutableArray *events = [[NSMutableArray alloc] init];
+    NSDate *today = [NSDate date];
+    PFUser *user = [PFUser currentUser];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"event"];
+    [query whereKey:@"start" greaterThan:today];
+    [query whereKey:@"canSee" equalTo:user];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            [events addObjectsFromArray:objects];
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
     NSArray *arr = [NSArray arrayWithObjects: self.event, self.event, self.event,
                     self.event, self.event, self.event, self.event,  self.event, self.event, nil];
 
@@ -116,7 +151,7 @@
 
 -(void)slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
 {
-    [self performSegueWithIdentifier:@"SwipeRightSegue" sender:self];
+    [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
 }
 
 -(void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
@@ -124,6 +159,17 @@
     [self performSegueWithIdentifier:@"AddEventSegue" sender:self];
 
     
+}
+
+- (IBAction)settingsPressed:(id)sender {
+    [self performSegueWithIdentifier:@"SettingsSegue" sender:sender];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"ShowDetailsSegue"]){
+        DetailViewController *detailVC = (DetailViewController *)segue.destinationViewController;
+        detailVC.title = self.title;
+    }
 }
 
 /*

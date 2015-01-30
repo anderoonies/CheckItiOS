@@ -202,7 +202,7 @@ static const unsigned int ALL_DAY_VIEW_EMPTY_SPACE       = 3;
 										   CGRectGetWidth(self.bounds),
 										   ALL_DAY_VIEW_EMPTY_SPACE);
     
-    NSDictionary *attributes = @{NSFontAttributeName: self.boldFont};
+    NSDictionary *attributes = @{NSFontAttributeName: self.regularFont};
     
     // note that gridView's frame relies on the allDayGridView's frame——if allDayGridView is removed, initialize frame as above
 	self.gridView.frame = CGRectMake(CGRectGetMinX(self.allDayGridView.bounds),
@@ -284,7 +284,7 @@ static const unsigned int ALL_DAY_VIEW_EMPTY_SPACE       = 3;
 	if (!_gridView){
 		_gridView = [[MADayGridView alloc] init];
 		_gridView.backgroundColor = [UIColor whiteColor];
-		_gridView.textFont = self.boldFont;
+		_gridView.textFont = self.regularFont;
 		_gridView.textColor = [UIColor blackColor];
 		_gridView.dayView = self;
 	}

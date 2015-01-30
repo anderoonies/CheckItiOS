@@ -83,7 +83,7 @@ NSInteger MAEvent_sortByStartTime(id ev1, id ev2, void *keyForSorting) {
 
 - (unsigned int)minutesSinceMidnight {
 	unsigned int fromMidnight = 0;
-	
+    
 	NSDateComponents *displayComponents = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:_displayDate];
 	NSDateComponents *startComponents = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:_start];
 	
@@ -122,6 +122,7 @@ NSInteger MAEvent_sortByStartTime(id ev1, id ev2, void *keyForSorting) {
 		// No need to check the minimum duration here because minutesSinceMidnight adjusts the start time.
 		duration = DAY_IN_MINUTES - [self minutesSinceMidnight];
 	}
+    
 	return duration;
 }
 
