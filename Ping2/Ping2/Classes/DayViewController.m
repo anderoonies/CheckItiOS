@@ -84,6 +84,15 @@
     return event;
 }
 
+- (NSArray *)dayView:(MADayView *)dayView eventsForDate:(NSDate *)startDate {
+    NSDate *date = startDate;
+    
+    NSArray *arr = [NSArray arrayWithObjects: self.event, self.event, self.event,
+                    self.event, self.event, self.event, self.event,  self.event, self.event, nil];
+
+    return arr;
+}
+
 /*
 #pragma mark - Navigation
 

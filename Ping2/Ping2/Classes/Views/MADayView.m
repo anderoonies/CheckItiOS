@@ -68,6 +68,8 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 
 @end
 
+
+// interface for grid of events which span the entire day
 @interface MA_AllDayGridView : UIView {
 	__unsafe_unretained MADayView *_dayView;
 	unsigned int _eventCount;
@@ -87,6 +89,8 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 
 @end
 
+
+// interface for standard events
 @interface MADayGridView : UIView {
 	UIColor *_textColor;
 	UIFont *_textFont;
@@ -166,16 +170,20 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 //	[self addSubview:self.rightArrow];
 //	[self addSubview:self.dateLabel];
 	
+    // add the scrollView to the DayView
 	[self addSubview:self.scrollView];
 	
+    // add grid views to the scrollView
 	[self.scrollView addSubview:self.allDayGridView];
 	[self.scrollView addSubview:self.gridView];
 	
+    // add swipe controls to the gridViews, currently unnecessary
 	[self.gridView addGestureRecognizer:self.swipeLeftRecognizer];
 	[self.gridView addGestureRecognizer:self.swipeRightRecognizer];
 }
 
 - (void)layoutSubviews {
+    // called when a subview is added
 	self.topBackground.frame = CGRectMake(CGRectGetMinX(self.bounds),
 										  CGRectGetMinY(self.bounds),
 										  CGRectGetWidth(self.bounds), TOP_BACKGROUND_HEIGHT + 10);
@@ -193,14 +201,19 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 	self.allDayGridView.frame = CGRectMake(0, 0, // Top left corner of the scroll view
 										   CGRectGetWidth(self.bounds),
 										   ALL_DAY_VIEW_EMPTY_SPACE);
+    
     NSDictionary *attributes = @{NSFontAttributeName: self.boldFont};
+    
+    // note that gridView's frame relies on the allDayGridView's frame——if allDayGridView is removed, initialize frame as above
 	self.gridView.frame = CGRectMake(CGRectGetMinX(self.allDayGridView.bounds),
 									 CGRectGetMaxY(self.allDayGridView.bounds),
 									 CGRectGetWidth(self.bounds),
 									 [@"FOO" sizeWithAttributes:attributes].height * SPACE_BETWEEN_HOUR_LABELS * HOURS_IN_DAY);
 	
+    // set the scrollView's frame to fill the superView (full screen)
     self.scrollView.frame = self.superview.frame;
     
+    // set contentSize (the canvas which can be scrolled to) as the width of the scrollView and height of the contained grids
 	self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.bounds),
 											 CGRectGetHeight(self.allDayGridView.bounds) + CGRectGetHeight(self.gridView.bounds));
 	
@@ -349,6 +362,7 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 }
 
 - (void)reloadData {
+    // remove all events from the superview
 	for (id view in self.allDayGridView.subviews) {
 		if ([NSStringFromClass([view class])isEqualToString:@"MADayEventView"]) {
 			[view removeFromSuperview];
@@ -363,11 +377,11 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 	
 	[self.allDayGridView resetCachedData];
 	
-    
-    // this is where we pull events from a backend, remove the data source
-    
+    // re-fetch events from the data source and reapply to the view
 	NSArray *events = [self.dataSource dayView:self eventsForDate:self.day];
 	
+
+    
 	for (id e in events) {
 		MAEvent *event = e;
 		event.displayDate = self.day;
@@ -436,6 +450,7 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 }
 
 - (NSString *)titleText {
+    // this text goes in the top bar which is currently not being added to the view
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle:NSDateFormatterShortStyle];
 	NSDateComponents *components = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:_day];
@@ -448,10 +463,12 @@ static const unsigned int TOP_BACKGROUND_HEIGHT          = 35;
 
 @end
 
-static const CGFloat kAlpha        = 0.8;
-static const CGFloat kCornerRadius = 10.0;
-static const CGFloat kCorner       = 5.0;
+static const CGFloat kAlpha        = 0.7; // the transparency of the event — 0.0 to 1.0
+static const CGFloat kCornerRadius = 0.0; // set to zero for rectangular events
+static const CGFloat kCorner       = 5.0; // internal padding within each event
 
+static const CGFloat kVMargin      = 2.0; // padding between events and horizontal time lines
+static const CGFloat kHMargin      = 1.0; // padding between collided events
 @implementation MADayEventView
 
 @synthesize textColor=_textColor;
@@ -476,17 +493,21 @@ static const CGFloat kCorner       = 5.0;
 }
 
 - (void)setupCustomInitialisation {
+    // initialization for each view box
 	twoFingerTapIsPossible = NO;
 	multipleTouches = NO;
 	delegate = self;
 	
-	self.alpha = kAlpha;
+	self.alpha = kAlpha; // set the transparency
 	CALayer *layer = [self layer];
 	layer.masksToBounds = YES;
-	[layer setCornerRadius:kCornerRadius];
+	[layer setCornerRadius:kCornerRadius]; // set corner radius
 }
 
 - (void)layoutSubviews {
+    // called when addSubview is called
+    
+    // create the rectangle containing text, padded by kCorner
 	_textRect = CGRectMake((int) (CGRectGetMinX(self.bounds) + kCorner),
 						   (int) (CGRectGetMinY(self.bounds) + kCorner),
 						   (int) (CGRectGetWidth(self.bounds) - 2*kCorner),
@@ -495,6 +516,7 @@ static const CGFloat kCorner       = 5.0;
     NSDictionary *attributes = @{NSFontAttributeName: self.textFont};
 	CGSize sizeNeeded = [self.title sizeWithAttributes:attributes];
 	
+    // if there's additional room in the event view, center the textRect
 	if (_textRect.size.height > sizeNeeded.height) {
 		_textRect.origin.y = (int) ((_textRect.size.height - sizeNeeded.height) / 2 + kCorner);
 	}
@@ -617,6 +639,7 @@ static NSString const * const HOURS_24[] = {
 }
 
 - (void)addEvent:(MAEvent *)event {
+    // create a new MADAyEventView with the same values as the event
 	MADayEventView *eventView = [[MADayEventView alloc] initWithFrame:CGRectZero];
 	eventView.dayView = self.dayView;
 	eventView.event = event;
@@ -625,6 +648,7 @@ static NSString const * const HOURS_24[] = {
 	eventView.textFont = self.dayView.boldFont;
 	eventView.textColor = event.textColor;
 	
+    // add the eventView to the grid
 	[self addSubview:eventView];
 	
 	[self setNeedsLayout];
@@ -643,13 +667,16 @@ static NSString const * const HOURS_24[] = {
 
 - (void)layoutSubviews {
 	CGFloat maxTextWidth = 0, totalTextHeight = 0;
-	CGSize hourSize[25];
+	CGSize hourSize[25]; // array to contain sizes of hour blocks
 	
+    // initialize HOURS depending on how time should be formatted
 	const NSString *const *HOURS = ([self timeIs24HourFormat] ? HOURS_24 : HOURS_AM_PM);
 	register unsigned int i;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: self.textFont};
 	
+    // iterate through hours, accounting for the height of the text label ("12 AM", etc)
 	for (i=0; i < HOURS_IN_DAY; i++) {
-        NSDictionary *attributes = @{NSFontAttributeName: self.textFont};
 		hourSize[i] = [HOURS[i] sizeWithAttributes:attributes];
 		totalTextHeight += hourSize[i].height;
 		
@@ -659,27 +686,38 @@ static NSString const * const HOURS_24[] = {
 	}
 	
 	CGFloat y;
+    
+    // divide the free space left in the view evenly between each hour block
 	const CGFloat spaceBetweenHours = (self.bounds.size.height - totalTextHeight) / (HOURS_IN_DAY - 1);
 	CGFloat rowY = 0;
 	
 	for (i=0; i < HOURS_IN_DAY; i++) {
-		_textRect[i] = CGRectMake(CGRectGetMinX(self.bounds),
+		// create a CGRect for each hour block's text
+        _textRect[i] = CGRectMake(CGRectGetMinX(self.bounds),
 								  rowY,
 								  maxTextWidth,
 								  hourSize[i].height);
 		
+        
+        // y is the vertical coordinate directly in the center of the text label
 		y = rowY + ((CGRectGetMaxY(_textRect[i]) - CGRectGetMinY(_textRect[i])) / 2.f);
-		_lineY[i] = y;
+		// set the lineY coordinate for this rect to the midpoint of the text label
+        _lineY[i] = y;
+        // set the dashedLineY coordinate for this rect as midway between this and the next hour
 		_dashedLineY[i] = CGRectGetMaxY(_textRect[i]) + (spaceBetweenHours / 2.f);
 		
+        // increment the row to the next hour block
 		rowY += hourSize[i].height + spaceBetweenHours;
 	}
 	
 	_lineX = maxTextWidth + (maxTextWidth * 0.3);
 	
+    // count the number of events being added to the grid
 	NSArray *subviews = self.subviews;
 	int max = [subviews count];
 	MADayEventView *curEv = nil, *prevEv = nil, *nextEv = nil, *firstEvent = nil;
+    
+    // divide the height of the hour block into individual minutes
 	const CGFloat spacePerMinute = (_lineY[1] - _lineY[0]) / 60.f;
 	
 	// set initial view positions
@@ -691,13 +729,17 @@ static NSString const * const HOURS_24[] = {
 		prevEv = curEv;
 		curEv = [subviews objectAtIndex:i];
 		
+        // the y coordinate of the view rect is the base _lineY[0] plus (space per minute * minutes since midnight)
 		curEv.frame = CGRectMake((int) _lineX,
-								 (int) (spacePerMinute * [curEv.event minutesSinceMidnight] + _lineY[0]),
+								 (int) (spacePerMinute * [curEv.event minutesSinceMidnight] + _lineY[0] + kVMargin),
 								 (int) (self.bounds.size.width - _lineX),
-								 (int) (spacePerMinute * [curEv.event durationInMinutes]));
+								 (int) ((spacePerMinute * [curEv.event durationInMinutes])) - kVMargin);
 		
+        
+        // queue the event for display
 		[curEv setNeedsDisplay];
 		
+        // determine the first event by y coord
 		if (!firstEvent || curEv.frame.origin.y < firstEvent.frame.origin.y) {
 			firstEvent = curEv;
 		}
@@ -706,7 +748,7 @@ static NSString const * const HOURS_24[] = {
 	
 	curEv = nil;
 	BOOL shrinkCurEv = NO;
-	// check for overlaps and compensate
+	// check for overlaps and compensate (n^2, improve?)
 	for (i=0; i < max; i++) {
 		if (![NSStringFromClass([[subviews objectAtIndex:i] class])isEqualToString:@"MADayEventView"]) {
 			continue;
@@ -726,11 +768,12 @@ static NSString const * const HOURS_24[] = {
 			
 			if (CGRectIntersectsRect(curEv.frame, nextEv.frame))
 			{
+                // if x coordinates are equal
 				if (curEv.frame.origin.x == nextEv.frame.origin.x) {
 					shrinkCurEv = YES;
 				}
 				
-				
+				// shrink the next event's frame by 1/2
 				nextEv.frame = CGRectMake((int) (nextEv.frame.origin.x + ((curEv.frame.origin.x == _lineX || curEv.frame.origin.x == nextEv.frame.origin.x) ? (nextEv.frame.size.width / 2.f) : 0)),
 										  (int) (nextEv.frame.origin.y),
 										  (int) (nextEv.frame.size.width / 2.f),
@@ -743,9 +786,10 @@ static NSString const * const HOURS_24[] = {
 		
 		if (shrinkCurEv) {
 			shrinkCurEv = NO;
+            // shrink the current event's frame by 1/2
 			curEv.frame = CGRectMake((int) (curEv.frame.origin.x),
 									 (int) (curEv.frame.origin.y),
-									 (int) (curEv.frame.size.width / 2.f),
+									 (int) (curEv.frame.size.width / 2.f - kHMargin),
 									 (int) (curEv.frame.size.height));
 
 			[curEv setNeedsDisplay];
@@ -775,20 +819,28 @@ static NSString const * const HOURS_24[] = {
 }
 
 - (void)drawRect:(CGRect)rect {
-	const NSString *const *HOURS = ([self timeIs24HourFormat] ? HOURS_24 : HOURS_AM_PM);
+	const NSString *const *HOURS = ([self timeIs24HourFormat] ? HOURS_24 : HOURS_AM_PM); // array of "12 AM, 1 AM," etc.
 	register unsigned int i;
 	
-	const CGContextRef c = UIGraphicsGetCurrentContext();
+	const CGContextRef c = UIGraphicsGetCurrentContext(); // current canvas for CG
 
-	CGContextSetStrokeColorWithColor(c, [[UIColor lightGrayColor] CGColor]);
+	CGContextSetStrokeColorWithColor(c, [[UIColor lightGrayColor] CGColor]); // set line values
 	CGContextSetLineWidth(c, 0.5);
 	CGContextBeginPath(c);
-	
+    
+    
+    // create paragraph style for attribute dict
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.alignment = NSTextAlignmentRight;
+    
+    // initialize attribute dict
+    NSDictionary *attributes = @{ NSFontAttributeName: self.textFont,
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+    
 	for (i=0; i < HOURS_IN_DAY; i++) {
-		[HOURS[i] drawInRect: _textRect[i]
-					withFont:self.textFont
-			   lineBreakMode:UILineBreakModeTailTruncation
-				   alignment:UITextAlignmentRight];
+        // draw a rectangle for each hour block
+        [HOURS[i] drawInRect: _textRect[i] withAttributes:attributes];
 		
 		CGContextMoveToPoint(c, _lineX, _lineY[i]);
 		CGContextAddLineToPoint(c, self.bounds.size.width, _lineY[i]);

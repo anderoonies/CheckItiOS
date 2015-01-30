@@ -228,7 +228,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
-                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="AFX-1J-fRp"/>
+                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="Zwy-17-Roo"/>
+                            <outlet property="delegate" destination="vXZ-lx-hvc" id="aIQ-cu-Kd6"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="RkB-ZL-q31">
