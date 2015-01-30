@@ -188,27 +188,14 @@
 		864368781A39204F00A7F930 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				86E5BE471A7C02A8003E2F48 /* Controllers */,
 				8689F0681A7942370067AD13 /* Views for calendar-ui */,
-				861FAA481A5E286A003BEB5C /* CreateEventViewController.h */,
-				861FAA491A5E286A003BEB5C /* CreateEventViewController.m */,
-				8643688D1A392D6C00A7F930 /* DetailViewController.h */,
-				8643688E1A392D6C00A7F930 /* DetailViewController.m */,
 				864368791A39204F00A7F930 /* FriendAnnotation.h */,
 				8643687A1A39204F00A7F930 /* FriendAnnotation.m */,
-				8643687B1A39204F00A7F930 /* MapViewController.h */,
-				8643687C1A39204F00A7F930 /* MapViewController.m */,
 				864368881A3920C100A7F930 /* FriendAnnotationView.h */,
 				864368891A3920C100A7F930 /* FriendAnnotationView.m */,
-				861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */,
-				861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */,
-				8653DA881A71AD9B00A3B765 /* LoginViewController.h */,
-				8653DA891A71AD9B00A3B765 /* LoginViewController.m */,
-				86822CD41A76BEC2005E09B2 /* NewUserViewController.h */,
-				86822CD51A76BEC2005E09B2 /* NewUserViewController.m */,
 				86CE8FCD1A756D190088DA8F /* SettingsSegue.h */,
 				86CE8FCE1A756D190088DA8F /* SettingsSegue.m */,
-				8689F0781A7984080067AD13 /* DayViewController.h */,
-				8689F0791A7984080067AD13 /* DayViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -292,6 +279,27 @@
 				86CFEBED1A391E2A00D5D071 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		86E5BE471A7C02A8003E2F48 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				861FAA481A5E286A003BEB5C /* CreateEventViewController.h */,
+				861FAA491A5E286A003BEB5C /* CreateEventViewController.m */,
+				8643688D1A392D6C00A7F930 /* DetailViewController.h */,
+				8643688E1A392D6C00A7F930 /* DetailViewController.m */,
+				8643687B1A39204F00A7F930 /* MapViewController.h */,
+				8643687C1A39204F00A7F930 /* MapViewController.m */,
+				861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */,
+				861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */,
+				8653DA881A71AD9B00A3B765 /* LoginViewController.h */,
+				8653DA891A71AD9B00A3B765 /* LoginViewController.m */,
+				86822CD41A76BEC2005E09B2 /* NewUserViewController.h */,
+				86822CD51A76BEC2005E09B2 /* NewUserViewController.m */,
+				8689F0781A7984080067AD13 /* DayViewController.h */,
+				8689F0791A7984080067AD13 /* DayViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

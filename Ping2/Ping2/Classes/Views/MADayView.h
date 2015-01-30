@@ -71,6 +71,7 @@
 @protocol MADayViewDataSource <NSObject>
 
 - (NSArray *)dayView:(MADayView *)dayView eventsForDate:(NSDate *)date;
+- (NSArray *)getEvents;
 
 @end
 

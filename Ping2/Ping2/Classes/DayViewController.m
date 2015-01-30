@@ -14,6 +14,10 @@
 
 @interface DayViewController ()
 
+-(void)slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer;
+
+-(void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer;
+
 @end
 
 @implementation DayViewController
@@ -25,6 +29,13 @@
     self.dayView.autoScrollToFirstEvent = YES;
     
     
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideToRightWithGestureRecognizer:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
     // Do any additional setup after loading the view.
 }
 
@@ -56,7 +67,7 @@
     int rr = arc4random() % 3;
     
     MAEvent *event = [[MAEvent alloc] init];
-    event.backgroundColor = ((flag = !flag) ? [UIColor purpleColor] : [UIColor brownColor]);
+    event.backgroundColor = [UIColor blueColor];
     event.textColor = [UIColor whiteColor];
     event.allDay = NO;
     event.userInfo = dict;
@@ -91,6 +102,28 @@
                     self.event, self.event, self.event, self.event,  self.event, self.event, nil];
 
     return arr;
+}
+
+- (NSArray *)getEvents {
+    NSArray *arr = [NSArray arrayWithObjects: self.event, self.event, self.event,
+                    self.event, self.event, self.event, self.event,  self.event, self.event, nil];
+
+    return arr;
+}
+
+#pragma mark -
+#pragma mark Navigation
+
+-(void)slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    [self performSegueWithIdentifier:@"SwipeRightSegue" sender:self];
+}
+
+-(void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    [self performSegueWithIdentifier:@"AddEventSegue" sender:self];
+
+    
 }
 
 /*
