@@ -121,29 +121,36 @@
     NSDate *today = [NSDate date];
     PFUser *user = [PFUser currentUser];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"event"];
-    [query whereKey:@"start" greaterThan:today];
-    [query whereKey:@"canSee" equalTo:user];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-            [events addObjectsFromArray:objects];
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
+    if (!user) {
+        [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
+        ;
+    } else {
+        PFQuery *query = [PFQuery queryWithClassName:@"event"];
+        [query whereKey:@"start" greaterThan:today];
+        [query whereKey:@"canSee" equalTo:user];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved %d scores.", objects.count);
+                // Do something with the found objects
+                [events addObjectsFromArray:objects];
+                for (PFObject *object in objects) {
+                    NSLog(@"%@", object.objectId);
+                }
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+        }];
+    }
     
-    NSArray *arr = [NSArray arrayWithObjects: self.event, self.event, self.event,
-                    self.event, self.event, self.event, self.event,  self.event, self.event, nil];
-
-    return arr;
+    return events;
+    
+//    events = [NSMutableArray arrayWithObjects: self.event, self.event, self.event,
+//                    self.event, self.event, self.event, self.event,  self.event, self.event, nil];
+//
+//    return events;
 }
 
 #pragma mark -
@@ -170,6 +177,10 @@
         DetailViewController *detailVC = (DetailViewController *)segue.destinationViewController;
         detailVC.title = self.title;
     }
+}
+
+- (IBAction)returnToMap:(UIStoryboardSegue *)segue {
+    self.navigationController.navigationBar.hidden=NO;
 }
 
 /*

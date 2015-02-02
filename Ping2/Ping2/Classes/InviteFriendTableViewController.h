@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ParseUI/ParseUI.h>
 
 @interface InviteFriendTableViewController : UITableViewController
-
-@property (strong, nonatomic)NSMutableArray *friendList;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addFriendButton;

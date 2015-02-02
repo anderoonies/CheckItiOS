@@ -11,6 +11,8 @@
 
 @interface InviteFriendTableViewController ()
 
+@property (strong, nonatomic)NSMutableArray *friendList;
+
 @end
 
 @implementation InviteFriendTableViewController
@@ -25,11 +27,9 @@
     self.sendButton.action = @selector(sendInvite);
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    if (!self.friendList) {
-        self.friendList = [[NSMutableArray alloc] initWithObjects:@"Jimmy R", @"Chase U", @"Joshua R", @"Lena V", @"Russell H", @"Ed", nil];
-    }
     
-    
+    [self getFriends];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -59,6 +59,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+    NSLog(@"%d", [_friendList count]);
     return [self.friendList count];
 }
 
@@ -88,18 +89,53 @@
     if (alertView.tag == ADD_FRIEND) {
         PFQuery *query = [PFUser query];
         [query whereKey:@"username" equalTo:enteredText];
-        PFUser *user = (PFUser *)[query getFirstObject];
-        NSLog(@"Found %@", user.username);
+        PFUser *friend = (PFUser *)[query getFirstObject];
+        NSLog(@"Found %@", friend.username);
+        
+        PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
+        [relation addObject:friend];
+        [[PFUser currentUser] saveInBackground];
+        
+        NSLog(@"%@", [PFUser currentUser].username);
     }
 }
 
 
+- (void) getFriends {
+    NSMutableArray *friendList = [[NSMutableArray alloc] init];
+    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
+    PFQuery *query = [relation query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *friends, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d friends.", friends.count);
+            [friendList addObjectsFromArray:friendList];
+            // Do something with the found objects
+            for (PFObject *friend in friends) {
+                [self addFriendToList:friend];
+            }
+            [self.tableView reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+- (void) addFriendToList:(PFObject *)friend {
+//    NSLog(@"%@", friend[@"username"]);
+    [self.friendList addObject:friend[@"username"]];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
     
-    // configure a cell of identifier friendCell with the corresponding name from the friend array
-    cell.textLabel.text = self.friendList[[indexPath row]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"friendCell"];
+        cell.selectionStyle = UITableViewCellAccessoryCheckmark;
+    }
     
+    cell.textLabel.text = _friendList[[indexPath row]];
     return cell;
 }
 

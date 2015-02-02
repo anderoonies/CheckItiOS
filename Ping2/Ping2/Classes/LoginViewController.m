@@ -88,6 +88,7 @@
         
         if (user) {
             NSLog(@"success");
+            [self performSegueWithIdentifier:@"returnToMap" sender:self];
         } else {
             // Didn't get a user.
             NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);
