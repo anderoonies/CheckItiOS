@@ -28,9 +28,6 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    [self getFriends];
-
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,19 +45,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark -
+#pragma mark PFQuery methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
+- (id)initWithCoder:(NSCoder *)aCoder
+{
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        // The className to query on
+        self.parseClassName = @"friend";
+        
+        // The key of the PFObject to display in the label of the default cell style
+        self.textKey = @"username";
+        
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = NO;
+        
+    }
+    return self;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    NSLog(@"%d", [_friendList count]);
-    return [self.friendList count];
+- (PFQuery *)queryForTable
+{
+    PFRelation *relation = [[PFUser currentUser] objectForKey:self.parseClassName];
+    PFQuery *query = [relation query];
+    
+    return query;
 }
 
 #pragma mark -
@@ -100,50 +113,15 @@
     }
 }
 
-
-- (void) getFriends {
-    NSMutableArray *friendList = [[NSMutableArray alloc] init];
-    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
-    PFQuery *query = [relation query];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *friends, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d friends.", friends.count);
-            [friendList addObjectsFromArray:friendList];
-            // Do something with the found objects
-            for (PFObject *friend in friends) {
-                [self addFriendToList:friend];
-            }
-            [self.tableView reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-}
-
-- (void) addFriendToList:(PFObject *)friend {
-//    NSLog(@"%@", friend[@"username"]);
-    [self.friendList addObject:friend[@"username"]];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"friendCell"];
-        cell.selectionStyle = UITableViewCellAccessoryCheckmark;
-    }
-    
-    cell.textLabel.text = _friendList[[indexPath row]];
-    return cell;
-}
+#pragma mark -
+#pragma mark Selections
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     // add the checkmark to the cell
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-    
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     // if the toolbar for sending the invite is not visibile, set it to visible
     if ([self.navigationController.toolbar isHidden] == YES) {
         [self.navigationController setToolbarHidden:NO];

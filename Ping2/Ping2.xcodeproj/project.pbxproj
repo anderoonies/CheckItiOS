@@ -34,6 +34,7 @@
 		8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8653DA891A71AD9B00A3B765 /* LoginViewController.m */; };
 		86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86822CD51A76BEC2005E09B2 /* NewUserViewController.m */; };
 		8686EFEB1A7EE37300B143B3 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8686EFEA1A7EE37300B143B3 /* ParseUI.framework */; };
+		8686EFF41A7FC32D00B143B3 /* NewEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8686EFF31A7FC32D00B143B3 /* NewEventTableViewController.m */; };
 		8689F05B1A793FA20067AD13 /* ma_leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689F0561A793FA20067AD13 /* ma_leftArrow.png */; };
 		8689F05C1A793FA20067AD13 /* ma_leftArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689F0571A793FA20067AD13 /* ma_leftArrow@2x.png */; };
 		8689F05D1A793FA20067AD13 /* ma_rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689F0581A793FA20067AD13 /* ma_rightArrow.png */; };
@@ -100,6 +101,8 @@
 		86822CD41A76BEC2005E09B2 /* NewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserViewController.h; sourceTree = "<group>"; };
 		86822CD51A76BEC2005E09B2 /* NewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserViewController.m; sourceTree = "<group>"; };
 		8686EFEA1A7EE37300B143B3 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (1)/ParseUI.framework"; sourceTree = "<group>"; };
+		8686EFF21A7FC32D00B143B3 /* NewEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewEventTableViewController.h; path = Ping2/Classes/NewEventTableViewController.h; sourceTree = SOURCE_ROOT; };
+		8686EFF31A7FC32D00B143B3 /* NewEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewEventTableViewController.m; path = Ping2/Classes/NewEventTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8689F0561A793FA20067AD13 /* ma_leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ma_leftArrow.png; sourceTree = "<group>"; };
 		8689F0571A793FA20067AD13 /* ma_leftArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ma_leftArrow@2x.png"; sourceTree = "<group>"; };
 		8689F0581A793FA20067AD13 /* ma_rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ma_rightArrow.png; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 		86E5BE471A7C02A8003E2F48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8686EFF21A7FC32D00B143B3 /* NewEventTableViewController.h */,
+				8686EFF31A7FC32D00B143B3 /* NewEventTableViewController.m */,
 				861FAA481A5E286A003BEB5C /* CreateEventViewController.h */,
 				861FAA491A5E286A003BEB5C /* CreateEventViewController.m */,
 				8643688D1A392D6C00A7F930 /* DetailViewController.h */,
@@ -418,6 +423,7 @@
 			files = (
 				864368841A39204F00A7F930 /* MapViewController.m in Sources */,
 				861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */,
+				8686EFF41A7FC32D00B143B3 /* NewEventTableViewController.m in Sources */,
 				86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */,
 				865251BC1A7C3CE100523F5D /* SettingsViewController.m in Sources */,
 				8689F07A1A7984080067AD13 /* DayViewController.m in Sources */,
