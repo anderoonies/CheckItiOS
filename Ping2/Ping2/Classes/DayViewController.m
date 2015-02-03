@@ -145,12 +145,12 @@
         }];
     }
     
-    return events;
-    
-//    events = [NSMutableArray arrayWithObjects: self.event, self.event, self.event,
-//                    self.event, self.event, self.event, self.event,  self.event, self.event, nil];
-//
 //    return events;
+    
+    events = [NSMutableArray arrayWithObjects: self.event, self.event, self.event,
+                    self.event, self.event, self.event, self.event,  self.event, self.event, nil];
+
+    return events;
 }
 
 #pragma mark -
