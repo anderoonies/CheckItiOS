@@ -10,6 +10,8 @@
 
 @interface SettingsViewController ()
 
+@property (nonatomic,strong) UISwipeGestureRecognizer *swipeLeftGestureRecognizer;
+
 @end
 
 @implementation SettingsViewController
@@ -18,12 +20,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
     self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark -
+#pragma mark Navigation
+
+-(void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    [self performSegueWithIdentifier:@"returnToMap" sender:self];
 }
 
 /*

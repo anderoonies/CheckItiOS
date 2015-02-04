@@ -85,8 +85,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ULt-AA-ZAB"/>
+                    <connections>
+                        <segue destination="N7G-Up-326" kind="unwind" identifier="returnToMap" unwindAction="returnToMap:" id="hjR-B3-IQO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUG-5X-D7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="N7G-Up-326" userLabel="Exit" sceneMemberID="exit"/>
                 <containerView opaque="NO" contentMode="scaleToFill" id="kgV-Su-9Oz">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

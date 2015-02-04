@@ -217,8 +217,8 @@
 #pragma mark -
 #pragma mark Buttons
 
-- (IBAction)pushSettings:(id)sender {
-    [self performSegueWithIdentifier:@"LoginSegue" sender:sender];
+- (IBAction)settingsPressed:(id)sender {
+    [self performSegueWithIdentifier:@"SettingsSegue" sender:sender];
 //    PFUser *currentUser = [PFUser currentUser];
 //    if (currentUser) {
 //        [self performSegueWithIdentifier:@"SettingsSegue" sender:sender];
@@ -235,7 +235,7 @@
 #pragma mark Segues
 
 - (IBAction)returnToMap:(UIStoryboardSegue *)segue {
-
+    self.navigationController.navigationBar.hidden=NO;
 }
 
 
