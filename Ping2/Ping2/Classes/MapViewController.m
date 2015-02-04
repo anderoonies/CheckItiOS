@@ -9,6 +9,7 @@
 
 #import "MapViewController.h"
 #import "FriendAnnotation.h"
+#import "UserAnnotation.h"
 #import "DetailViewController.h"
 #import "FriendAnnotationView.h"
 #import <Parse/Parse.h>
@@ -19,7 +20,7 @@
 @property (nonatomic, strong) UIPopoverController *bridgePopoverController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic,strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
-
+@property (nonatomic, strong) UserAnnotation *userAnnotation;
 
 @end
 
@@ -156,24 +157,52 @@
     return returnedAnnotationView;
 }
 
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)annotationViews
+{
+    for (MKAnnotationView *annView in annotationViews)
+    {
+        CGRect endFrame = annView.frame;
+        annView.frame = CGRectOffset(endFrame, 0, -500);
+        [UIView animateWithDuration:0.5
+                         animations:^{ annView.frame = endFrame; }];
+    }
+}
+
 - (UIImage *)makeAnnotationImage:(FriendAnnotation *)annotation
 {
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(40, 40), NO, 0.0f);
+    float scale=[[UIScreen mainScreen] scale];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(30, 30), NO, scale);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGRect rect = CGRectMake(0, 0, 30, 30);
-    CGContextSetFillColorWithColor(ctx, [UIColor grayColor].CGColor);
-    CGContextSetAlpha(ctx, 0.9f);
-    CGContextFillEllipseInRect(ctx, rect);
     
-    UIImage *grayCircle = UIGraphicsGetImageFromCurrentImageContext();
+    CGRect whiteCircle = CGRectMake(0, 0, 30, 30);
+    CGContextSetFillColorWithColor(ctx, [[UIColor whiteColor] CGColor]);
+    CGContextSetAlpha(ctx, 1.0f);
+    CGContextFillEllipseInRect(ctx, whiteCircle);
+    
+    CGRect greenCircle = CGRectMake(CGRectGetMinX(whiteCircle) + 2.5f, // compensate for difference in size
+                                    CGRectGetMinY(whiteCircle) + 2.5f,
+                                    25,
+                                    25);
+    
+    CGContextSetFillColorWithColor(ctx, [[UIColor greenColor] CGColor]);
+    CGContextSetAlpha(ctx, .7f);
+    CGContextFillEllipseInRect(ctx, greenCircle);
+    
+//    putting initials in annotation—maybe implement later
+//    UILabel *initials = [[UILabel alloc] initWithFrame:greenCircle];
+//    initials.text = annotation.title;
+//    initials.textColor = [UIColor grayColor];
+//    initials.adjustsFontSizeToFitWidth = YES;
+//    initials.minimumScaleFactor = 0;
+//    initials.textAlignment = NSTextAlignmentCenter;
+//    
+//    [initials drawTextInRect:greenCircle];
+    
+    UIImage *resultingCircle = UIGraphicsGetImageFromCurrentImageContext();
     
     CGContextRelease(ctx);
-    
-    UILabel *initialLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,20,30)];
-    initialLabel.text = @"some text";
-    initialLabel.tintColor = [UIColor blackColor];
 
-    return grayCircle;
+    return resultingCircle;
 }
 
 -(UIImage *)addText:(UIImage *)img text:(NSString *)text1{
@@ -209,7 +238,16 @@
             
             CLLocationCoordinate2D coordinate;
             coordinate = [mapView convertPoint:touchLocation toCoordinateFromView:mapView];// how to convert this to a String or something else?
-            NSLog(@"LongPress coordinate: latitude = %f, longitude  = %f", coordinate.latitude, coordinate.longitude);
+            
+            UserAnnotation *newUserAnnotation = [[UserAnnotation alloc] init];
+            newUserAnnotation.name = @"Me";
+            newUserAnnotation.coordinate = coordinate;
+            
+            [mapView removeAnnotation:_userAnnotation];
+            
+            _userAnnotation = newUserAnnotation;
+            [mapView addAnnotation:newUserAnnotation];
+            [self.view addSubview:<#(UIView *)#>]
         }
     }
 }
