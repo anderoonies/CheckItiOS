@@ -247,7 +247,6 @@
             
             _userAnnotation = newUserAnnotation;
             [mapView addAnnotation:newUserAnnotation];
-            [self.view addSubview:<#(UIView *)#>]
         }
     }
 }
