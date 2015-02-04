@@ -9,6 +9,7 @@
 #import "FriendAnnotation.h"
 #import "FriendAnnotationView.h"
 
+
 @implementation FriendAnnotation
 
 
@@ -57,6 +58,10 @@
     }
     
     return returnedAnnotationView;
+}
+
+- (void)createImage {
+    NSLog(@"%@", self.title);
 }
 
 //- (id)initWithName:(NSString *)newName Location:(CLLocationCoordinate2D)location

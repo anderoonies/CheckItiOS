@@ -280,23 +280,14 @@
             </objects>
             <point key="canvasLocation" x="-2285" y="-806"/>
         </scene>
-        <!--DayViewController-->
+        <!--MapViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="DayViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="vXZ-lx-hvc" customClass="DayViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="O3q-zO-CeN"/>
-                        <viewControllerLayoutGuide type="bottom" id="sho-sY-ihx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="MADayView">
+                <viewController title="MapViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="vXZ-lx-hvc" customClass="MapViewController" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="qhq-HW-5VX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="Zwy-17-Roo"/>
-                            <outlet property="delegate" destination="vXZ-lx-hvc" id="aIQ-cu-Kd6"/>
-                        </connections>
-                    </view>
+                    </mapView>
                     <navigationItem key="navigationItem" id="RkB-ZL-q31">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="rsE-m4-44u">
@@ -323,7 +314,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="dayView" destination="kh9-bI-dsS" id="dMF-0m-1eS"/>
+                        <outlet property="mapView" destination="qhq-HW-5VX" id="4Ka-aM-6YP"/>
                         <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
                         <segue destination="xDY-Vw-REq" kind="custom" identifier="SettingsSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
                     </connections>

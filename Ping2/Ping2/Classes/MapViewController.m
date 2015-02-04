@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSMutableArray *mapAnnotations;
 @property (nonatomic, strong) UIPopoverController *bridgePopoverController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic,strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+
 
 @end
 
@@ -35,13 +37,12 @@
     newRegion.span.latitudeDelta = 0.112872;
     newRegion.span.longitudeDelta = 0.109863;
     
-    [self.mapView setRegion:newRegion animated:YES];
+    [mapView setRegion:newRegion animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     // hide navigation bar
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
 }
 
@@ -49,11 +50,18 @@
 {
     [super viewDidLoad];
     
-    self.mapView.delegate = self;
+    mapView.delegate = self;
+    
+    // add gesture recognizer
+    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestures:)];
+    self.longPressGestureRecognizer.minimumPressDuration = 1.0f;
+    self.longPressGestureRecognizer.allowableMovement = 100.0f;
+    
+    [self.view addGestureRecognizer:self.longPressGestureRecognizer];
     
     // resizing
-    self.mapView.frame = self.view.bounds;
-    self.mapView.autoresizingMask = self.view.autoresizingMask;
+    mapView.frame = self.view.bounds;
+    mapView.autoresizingMask = self.view.autoresizingMask;
     
     // initialize locationmanager
     self.locationManager = [[CLLocationManager alloc] init];
@@ -71,10 +79,23 @@
     // create out annotations array (in this example only 2 for testing)
     self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:2];
     
+    [self generateAnnotations];
+    
+    // remove any annotations that exist
+    [mapView removeAnnotations:mapView.annotations];
+    
+    // add both annotations
+    [mapView addAnnotations:self.mapAnnotations];
+    
+    [self gotoDefaultLocation];
+}
+
+- (void)generateAnnotations {
+
     FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
     friend1.name = @"Ando";
     friend1.coordinate = CLLocationCoordinate2DMake(37.791, -122.443);
-    friend1.imageName = @"my_face";
+    [friend1 createImage];
     
     FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
     friend2.name = @"Andro";
@@ -82,20 +103,12 @@
     friend2.imageName = @"my_face2";
     
     // test Parse
-//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-//    testObject[@"foo"] = @"bar";
-//    [testObject saveInBackground];
+    //    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    //    testObject[@"foo"] = @"bar";
+    //    [testObject saveInBackground];
     
     [self.mapAnnotations addObject:friend1];
     [self.mapAnnotations addObject:friend2];
-    
-    // remove any annotations that exist
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    
-    // add both annotations
-    [self.mapView addAnnotations:self.mapAnnotations];
-    
-    [self gotoDefaultLocation];
 }
 
 #pragma mark - MKMapViewDelegate
@@ -130,9 +143,10 @@
         if ([annotation isKindOfClass:[FriendAnnotation class]]) // for Golden Gate Bridge
         {
 
-            returnedAnnotationView = [FriendAnnotation createViewAnnotationForMapView:self.mapView annotation:annotation];
-                        
-            returnedAnnotationView.image = [UIImage imageNamed:((FriendAnnotation *)annotation).imageName];
+            returnedAnnotationView = [FriendAnnotation createViewAnnotationForMapView:mapView annotation:annotation];
+            
+            returnedAnnotationView.image = [self makeAnnotationImage:annotation];
+//            returnedAnnotationView.image = [UIImage imageNamed:((FriendAnnotation *)annotation).imageName];
 
             ((FriendAnnotationView *)returnedAnnotationView).rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeContactAdd];
         }
@@ -140,6 +154,64 @@
     }
     
     return returnedAnnotationView;
+}
+
+- (UIImage *)makeAnnotationImage:(FriendAnnotation *)annotation
+{
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(40, 40), NO, 0.0f);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect rect = CGRectMake(0, 0, 30, 30);
+    CGContextSetFillColorWithColor(ctx, [UIColor grayColor].CGColor);
+    CGContextSetAlpha(ctx, 0.9f);
+    CGContextFillEllipseInRect(ctx, rect);
+    
+    UIImage *grayCircle = UIGraphicsGetImageFromCurrentImageContext();
+    
+    CGContextRelease(ctx);
+    
+    UILabel *initialLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,20,30)];
+    initialLabel.text = @"some text";
+    initialLabel.tintColor = [UIColor blackColor];
+
+    return grayCircle;
+}
+
+-(UIImage *)addText:(UIImage *)img text:(NSString *)text1{
+    int w = img.size.width;
+    int h = img.size.height;
+    //lon = h - lon;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
+    CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
+    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1);
+    char* text	= (char *)[text1 cStringUsingEncoding:NSASCIIStringEncoding];// "05/05/09";
+    CGContextSetTextDrawingMode(context, kCGTextFill);
+    CGContextSetRGBFillColor(context, 255, 255, 255, 1);
+    
+    //rotate text
+    CGContextSetTextMatrix(context, CGAffineTransformMakeRotation( -M_PI/4 ));
+    CGContextSetTextPosition(context, 4, 52);
+    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    return [UIImage imageWithCGImage:imageMasked];
+}
+
+#pragma mark -
+#pragma mark Gestures
+
+- (void)handleLongPressGestures:(UILongPressGestureRecognizer *)sender
+{
+    if ([sender isEqual:self.longPressGestureRecognizer]) {
+        if (sender.state == UIGestureRecognizerStateBegan)
+        {
+            CGPoint touchLocation = [sender locationInView:mapView];
+            
+            CLLocationCoordinate2D coordinate;
+            coordinate = [mapView convertPoint:touchLocation toCoordinateFromView:mapView];// how to convert this to a String or something else?
+            NSLog(@"LongPress coordinate: latitude = %f, longitude  = %f", coordinate.latitude, coordinate.longitude);
+        }
+    }
 }
 
 #pragma mark -
