@@ -581,9 +581,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ping2/Frameworks",
 					"$(PROJECT_DIR)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"(1)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"$(SRCROOT)/",
 					"(2)",
 				);
@@ -601,9 +599,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ping2/Frameworks",
 					"$(PROJECT_DIR)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"(1)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"$(SRCROOT)/",
 					"(2)",
 				);
