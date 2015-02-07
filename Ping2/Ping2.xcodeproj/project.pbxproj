@@ -45,12 +45,12 @@
 		8689F0761A7942370067AD13 /* MAWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0701A7942370067AD13 /* MAWeekView.m */; };
 		8689F0771A7942370067AD13 /* TapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0721A7942370067AD13 /* TapDetectingView.m */; };
 		8689F07A1A7984080067AD13 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0791A7984080067AD13 /* DayViewController.m */; };
-		86A29ABF1A844B5D00616BD3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A29ABC1A844B5D00616BD3 /* Bolts.framework */; };
-		86A29AC01A844B5D00616BD3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A29ABD1A844B5D00616BD3 /* Parse.framework */; };
-		86A29AC11A844B5D00616BD3 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A29ABE1A844B5D00616BD3 /* ParseUI.framework */; };
 		86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BC28511A82614D006FF652 /* UserAnnotation.m */; };
 		86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CE8FCE1A756D190088DA8F /* SettingsSegue.m */; };
 		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
+		86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0BF1A85925A00C537F0 /* Bolts.framework */; };
+		86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C01A85925A00C537F0 /* Parse.framework */; };
+		86DDA0C41A85925A00C537F0 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C11A85925A00C537F0 /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,9 +120,6 @@
 		8689F0721A7942370067AD13 /* TapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingView.m; sourceTree = "<group>"; };
 		8689F0781A7984080067AD13 /* DayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
 		8689F0791A7984080067AD13 /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
-		86A29ABC1A844B5D00616BD3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2)/Bolts.framework"; sourceTree = "<group>"; };
-		86A29ABD1A844B5D00616BD3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2)/Parse.framework"; sourceTree = "<group>"; };
-		86A29ABE1A844B5D00616BD3 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2)/ParseUI.framework"; sourceTree = "<group>"; };
 		86BC28501A82614D006FF652 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
 		86BC28511A82614D006FF652 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
 		86CE8FCD1A756D190088DA8F /* SettingsSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegue.h; sourceTree = "<group>"; };
@@ -131,6 +128,9 @@
 		86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ping2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBED1A391E2A00D5D071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ping2Tests.m; sourceTree = "<group>"; };
+		86DDA0BF1A85925A00C537F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Bolts.framework"; sourceTree = "<group>"; };
+		86DDA0C01A85925A00C537F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Parse.framework"; sourceTree = "<group>"; };
+		86DDA0C11A85925A00C537F0 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/ParseUI.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,12 +145,12 @@
 				8605E6141A6EE9E7004C7E8F /* SystemConfiguration.framework in Frameworks */,
 				8605E6121A6EE9E1004C7E8F /* StoreKit.framework in Frameworks */,
 				8605E6101A6EE9DD004C7E8F /* Security.framework in Frameworks */,
-				86A29ABF1A844B5D00616BD3 /* Bolts.framework in Frameworks */,
+				86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */,
 				8605E60E1A6EE9D8004C7E8F /* QuartzCore.framework in Frameworks */,
 				8605E60C1A6EE9D2004C7E8F /* MobileCoreServices.framework in Frameworks */,
-				86A29AC01A844B5D00616BD3 /* Parse.framework in Frameworks */,
+				86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */,
 				8605E60A1A6EE9C8004C7E8F /* CoreGraphics.framework in Frameworks */,
-				86A29AC11A844B5D00616BD3 /* ParseUI.framework in Frameworks */,
+				86DDA0C41A85925A00C537F0 /* ParseUI.framework in Frameworks */,
 				8605E6081A6EE9C3004C7E8F /* CFNetwork.framework in Frameworks */,
 				8605E6061A6EE9BE004C7E8F /* AudioToolbox.framework in Frameworks */,
 			);
@@ -169,9 +169,9 @@
 		8605E6001A6EE979004C7E8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				86A29ABC1A844B5D00616BD3 /* Bolts.framework */,
-				86A29ABD1A844B5D00616BD3 /* Parse.framework */,
-				86A29ABE1A844B5D00616BD3 /* ParseUI.framework */,
+				86DDA0BF1A85925A00C537F0 /* Bolts.framework */,
+				86DDA0C01A85925A00C537F0 /* Parse.framework */,
+				86DDA0C11A85925A00C537F0 /* ParseUI.framework */,
 				8605E61B1A6EE9FA004C7E8F /* Accounts.framework */,
 				8605E6191A6EE9F6004C7E8F /* Social.framework */,
 				8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */,
@@ -581,11 +581,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ping2/Frameworks",
 					"$(PROJECT_DIR)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"(1)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"$(SRCROOT)/",
 					"(2)",
+					"(2)",
+					"/Users/andybayer/Downloads/parse-library-1.6.2",
+					"(2)",
+					2,
 				);
 				INFOPLIST_FILE = Ping2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -601,11 +603,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ping2/Frameworks",
 					"$(PROJECT_DIR)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"(1)",
-					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"$(SRCROOT)/",
 					"(2)",
+					"(2)",
+					"/Users/andybayer/Downloads/parse-library-1.6.2",
+					"(2)",
+					2,
 				);
 				INFOPLIST_FILE = Ping2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
