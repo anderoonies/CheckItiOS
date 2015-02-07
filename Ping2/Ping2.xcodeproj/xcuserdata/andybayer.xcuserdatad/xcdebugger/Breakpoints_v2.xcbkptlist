@@ -433,6 +433,16 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "*0x25ae07e">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UISearchBar(UISearchBarStatic) _searchFieldEndEditing]"
+                  moduleName = "UIKit"
+                  offsetFromSymbolStart = "5">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -442,6 +452,16 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "*0x274460f">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UITextInputController(UITextInput_Internal) _setCaretSelectionAtEndOfSelection]"
+                  moduleName = "UIKit"
+                  offsetFromSymbolStart = "157">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
