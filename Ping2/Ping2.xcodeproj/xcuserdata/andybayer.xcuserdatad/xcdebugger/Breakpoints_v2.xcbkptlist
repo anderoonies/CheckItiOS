@@ -433,6 +433,16 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "*0x25ae07e">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[_UIScreenEdgePanRecognizerEdgeSettings setMaximumSwipeDuration:]"
+                  moduleName = "UIKit"
+                  offsetFromSymbolStart = "13">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -442,6 +452,16 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "*0x274460f">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UIStatusBarForegroundView _computeVisibleItemsPreservingHistory:]"
+                  moduleName = "UIKit"
+                  offsetFromSymbolStart = "3166">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
