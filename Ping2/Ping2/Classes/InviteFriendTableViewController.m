@@ -28,7 +28,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     self.friendList = [[NSMutableArray alloc] init];
-    
+        
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -74,9 +74,6 @@
     PFRelation *relation = [[PFUser currentUser] objectForKey:self.parseClassName];
     PFQuery *query = [relation query];
     
-    if ([self.objects count] == 0) {
-        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    }
     return query;
 }
 

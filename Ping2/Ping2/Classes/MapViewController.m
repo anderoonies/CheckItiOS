@@ -232,30 +232,33 @@
             
             mapView.centerCoordinate = coordinate;
             
-            [self showAnimation];
+            [self showSubview];
         }
     }
 }
 
-- (void)showAnimation {
+
+#pragma mark -
+#pragma mark New Event Subview
+- (void)showSubview {
     NewEventView *newEventView = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
     
     newEventView.tag = 1;
-        
+    
     newEventView.buttonView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
-                                       CGRectGetMinY(newEventView.frame),
-                                       CGRectGetWidth(newEventView.frame),
-                                       CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
+                                               CGRectGetMinY(newEventView.frame),
+                                               CGRectGetWidth(newEventView.frame),
+                                               CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
     
     newEventView.timeView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
-                                     CGRectGetMaxY(newEventView.buttonView.frame),
-                                     CGRectGetWidth(newEventView.frame),
-                                     CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
+                                             CGRectGetMaxY(newEventView.buttonView.frame),
+                                             CGRectGetWidth(newEventView.frame),
+                                             CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
     
     newEventView.friendView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
-                                       CGRectGetMaxY(newEventView.timeView.frame),
-                                       CGRectGetWidth(newEventView.frame),
-                                       CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
+                                               CGRectGetMaxY(newEventView.timeView.frame),
+                                               CGRectGetWidth(newEventView.frame),
+                                               CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
     
     
     for (UIView *view in [newEventView subviews]) {
@@ -268,7 +271,7 @@
         
         [view.layer addSublayer:bottomBorder];
     }
-
+    
     
     [self.view addSubview:newEventView];
     
@@ -279,22 +282,35 @@
                                                          self.view.frame.size.height - newEventView.frame.size.height,
                                                          self.view.frame.size.width,
                                                          newEventView.frame.size.height);
-                                }
+                     }
      ];
 }
 
-#pragma mark -
-#pragma mark New Event Subview
+- (void)hideSubview {
+    NewEventView *newEventView = (NewEventView *)[self.view viewWithTag:1];
+    
+    [UIView animateWithDuration:.75
+                     animations:^{
+                         newEventView.frame = CGRectMake(0,
+                                                         self.view.frame.size.height,
+                                                         self.view.frame.size.width,
+                                                         newEventView.frame.size.height);
+                     }
+     ];
+}
+
 - (void)updateSubview {
     NSMutableArray *friendStrings = [[NSMutableArray alloc] init];
     for (PFObject *object in _friendList) {
         [friendStrings addObject:object[@"username"]];
     }
-    NSLog(@"ay lamo %@", friendStrings);
-    
     
     NewEventView *eventView = (NewEventView *)[self.view viewWithTag:1];
     eventView.friendListLabel.text = [friendStrings componentsJoinedByString:@", "];
+}
+
+- (IBAction)createEventPressed:(id)sender {
+    [self hideSubview];
 }
 
 #pragma mark -

@@ -18,6 +18,9 @@
                             <state key="normal" title="Create">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="createEventPressed:" destination="-1" eventType="touchUpInside" id="dmz-x2-afu"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,16 +40,20 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
                     <rect key="frame" x="0.0" y="141" width="320" height="66"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRA-Tl-S5H">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRA-Tl-S5H">
                             <rect key="frame" x="297" y="21" width="15" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="b5L-vC-dxs"/>
+                                <constraint firstAttribute="width" constant="15" id="gVr-Wy-gMm"/>
+                            </constraints>
                             <state key="normal" image="table_indicator">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Invite friends..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
                             <rect key="frame" x="8" y="22" width="273" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -54,12 +61,18 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="9VE-Bo-RAd" firstAttribute="top" secondItem="XII-o0-zqe" secondAttribute="top" constant="22" id="5O4-8l-qZn"/>
+                    </constraints>
                     <connections>
                         <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QPf-q1-Rw5"/>
                     </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="XII-o0-zqe" secondAttribute="trailing" id="Bpn-PO-VbY"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="buttonView" destination="bK3-v5-iBL" id="yfI-aM-Wao"/>
