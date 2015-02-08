@@ -10,4 +10,6 @@
 
 @interface NewEventTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *friendCell;
+
 @end

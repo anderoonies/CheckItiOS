@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "NewEventView.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate> {
     IBOutlet MKMapView *mapView;
@@ -16,6 +17,9 @@
 //@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (nonatomic, strong) NSArray *friendList;
+
+- (void)updateSubview;
 
 @end
 

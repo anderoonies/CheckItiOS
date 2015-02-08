@@ -64,6 +64,19 @@
     NSLog(@"%@", self.title);
 }
 
+- (NSString *)getInitials {
+    NSMutableArray *initials = [[NSMutableArray alloc] init];
+    NSArray *subnames = [self.name componentsSeparatedByString:@" "];
+    for (NSString *substring in subnames) {
+        if ([substring length]) {
+            NSString *initial = [substring substringToIndex:1];
+            [initials addObject:initial];
+        }
+    }
+    
+    return [initials componentsJoinedByString:@""];
+}
+
 //- (id)initWithName:(NSString *)newName Location:(CLLocationCoordinate2D)location
 //{
 //    self = [super init];

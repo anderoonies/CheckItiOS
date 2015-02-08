@@ -148,7 +148,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMv-gR-Ti7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ha3-xn-ArU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2212" y="697"/>
+            <point key="canvasLocation" x="-1828" y="697"/>
         </scene>
         <!--Select Friends-->
         <scene sceneID="vlA-oM-ugh">
@@ -196,11 +196,13 @@
                     <connections>
                         <outlet property="addFriendButton" destination="DmE-2V-xkr" id="iVN-oB-fxO"/>
                         <outlet property="sendButton" destination="cyA-zN-Jc3" id="FRD-59-xw3"/>
+                        <segue destination="qe2-zr-Zwm" kind="unwind" identifier="returnToMap" unwindAction="returnToMap:" id="Rys-3g-tih"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHT-9X-Se9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qe2-zr-Zwm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1457" y="-94"/>
+            <point key="canvasLocation" x="-1467" y="0.0"/>
         </scene>
         <!--Item-->
         <scene sceneID="79L-U0-mew">
@@ -254,6 +256,7 @@
                         <outlet property="mapView" destination="qhq-HW-5VX" id="4Ka-aM-6YP"/>
                         <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
                         <segue destination="xDY-Vw-REq" kind="custom" identifier="SettingsSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
+                        <segue destination="Pj9-Zk-Ees" kind="push" identifier="ChooseFriendsSegue" id="38a-B6-bhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

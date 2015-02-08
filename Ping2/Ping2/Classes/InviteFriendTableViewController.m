@@ -7,11 +7,10 @@
 //
 
 #import "InviteFriendTableViewController.h"
+#import "MapViewController.h"
 #import <Parse/Parse.h>
 
 @interface InviteFriendTableViewController ()
-
-@property (strong, nonatomic)NSMutableArray *friendList;
 
 @end
 
@@ -27,6 +26,8 @@
     self.sendButton.action = @selector(sendInvite);
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    self.friendList = [[NSMutableArray alloc] init];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -142,10 +143,24 @@
 
 - (void)sendInvite {
     for (NSIndexPath *index in [self.tableView indexPathsForSelectedRows]) {
-        NSLog(@"%@", [self.tableView cellForRowAtIndexPath:index].textLabel.text);
+        PFObject *object = [self.objects objectAtIndex:[index row]];
+        NSLog(@"%@", object);
+        [self.friendList addObject:object];
     }
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"returnToMap" sender:self];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue destinationViewController] isKindOfClass:[MapViewController class]]) {
+        MapViewController *destVC = [segue destinationViewController];
+        destVC.friendList = _friendList;
+        
+        [destVC updateSubview];
+    }
+    
 }
 
 /*
@@ -182,14 +197,8 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
 
 @end
