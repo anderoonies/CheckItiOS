@@ -19,6 +19,8 @@
 		8605E6181A6EE9F2004C7E8F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */; };
 		8605E61A1A6EE9F6004C7E8F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6191A6EE9F6004C7E8F /* Social.framework */; };
 		8605E61C1A6EE9FA004C7E8F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E61B1A6EE9FA004C7E8F /* Accounts.framework */; };
+		8614B9C21A86767A00455EB4 /* NewEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8614B9C01A86767A00455EB4 /* NewEventView.xib */; };
+		8614B9C51A86794B00455EB4 /* NewEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8614B9C41A86794B00455EB4 /* NewEventView.m */; };
 		861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */; };
 		861FAA471A5E277F003BEB5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864368761A39204F00A7F930 /* Main.storyboard */; };
 		861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA491A5E286A003BEB5C /* CreateEventViewController.m */; };
@@ -76,6 +78,9 @@
 		8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8605E6191A6EE9F6004C7E8F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8605E61B1A6EE9FA004C7E8F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8614B9C11A86767A00455EB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = NewEventView.xib; sourceTree = "<group>"; };
+		8614B9C31A86794B00455EB4 /* NewEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewEventView.h; path = Ping2/Classes/NewEventView.h; sourceTree = SOURCE_ROOT; };
+		8614B9C41A86794B00455EB4 /* NewEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewEventView.m; path = Ping2/Classes/NewEventView.m; sourceTree = SOURCE_ROOT; };
 		861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendTableViewController.h; sourceTree = "<group>"; };
 		861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendTableViewController.m; sourceTree = "<group>"; };
 		861FAA481A5E286A003BEB5C /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
@@ -194,6 +199,7 @@
 			children = (
 				864368741A39204F00A7F930 /* LaunchScreen.xib */,
 				864368761A39204F00A7F930 /* Main.storyboard */,
+				8614B9C01A86767A00455EB4 /* NewEventView.xib */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -201,6 +207,8 @@
 		864368781A39204F00A7F930 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8614B9C31A86794B00455EB4 /* NewEventView.h */,
+				8614B9C41A86794B00455EB4 /* NewEventView.m */,
 				86E5BE471A7C02A8003E2F48 /* Controllers */,
 				8689F0681A7942370067AD13 /* Views for calendar-ui */,
 				864368791A39204F00A7F930 /* FriendAnnotation.h */,
@@ -401,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8614B9C21A86767A00455EB4 /* NewEventView.xib in Resources */,
 				8689F05D1A793FA20067AD13 /* ma_rightArrow.png in Resources */,
 				861FAA471A5E277F003BEB5C /* Main.storyboard in Resources */,
 				8643688B1A3929B600A7F930 /* LaunchScreen.xib in Resources */,
@@ -428,6 +437,7 @@
 			files = (
 				864368841A39204F00A7F930 /* MapViewController.m in Sources */,
 				861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */,
+				8614B9C51A86794B00455EB4 /* NewEventView.m in Sources */,
 				8686EFF41A7FC32D00B143B3 /* NewEventTableViewController.m in Sources */,
 				86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */,
 				865251BC1A7C3CE100523F5D /* SettingsViewController.m in Sources */,
@@ -468,6 +478,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8614B9C01A86767A00455EB4 /* NewEventView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8614B9C11A86767A00455EB4 /* Base */,
+			);
+			name = NewEventView.xib;
+			sourceTree = "<group>";
+		};
 		864368741A39204F00A7F930 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

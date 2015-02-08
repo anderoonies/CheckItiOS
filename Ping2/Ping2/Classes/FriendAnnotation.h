@@ -14,13 +14,16 @@
 @interface FriendAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *imageName;
-
+@property (nonatomic, strong) NSDate *startTime;
+@property (nonatomic, strong) NSDate *endTime;
+@property (nonatomic, strong) NSString *timeLabel;
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 
 + (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation;
 
 - (void)createImage;
+
+- (NSString *)getInitials;
 
 //- (id)initWithName:(NSString *)newName Location:(CLLocationCoordinate2D)location;
 

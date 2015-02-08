@@ -148,7 +148,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMv-gR-Ti7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ha3-xn-ArU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2212" y="697"/>
+            <point key="canvasLocation" x="-1828" y="697"/>
         </scene>
         <!--Select Friends-->
         <scene sceneID="vlA-oM-ugh">
@@ -196,75 +196,13 @@
                     <connections>
                         <outlet property="addFriendButton" destination="DmE-2V-xkr" id="iVN-oB-fxO"/>
                         <outlet property="sendButton" destination="cyA-zN-Jc3" id="FRD-59-xw3"/>
+                        <segue destination="qe2-zr-Zwm" kind="unwind" identifier="returnToMap" unwindAction="returnToMap:" id="Rys-3g-tih"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHT-9X-Se9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qe2-zr-Zwm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-987" y="0.0"/>
-        </scene>
-        <!--New Event Table View Controller-->
-        <scene sceneID="Cvc-lQ-ogU">
-            <objects>
-                <tableViewController id="sNG-wq-Dgl" customClass="NewEventTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ntv-YO-fSe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="XDx-66-ll1">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="5fz-Pu-BqZ">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5fz-Pu-BqZ" id="kU5-KR-KFw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kgR-13-kiE">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kgR-13-kiE" id="Bvr-MP-zDH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CHo-Hu-UNx">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CHo-Hu-UNx" id="XR2-Go-WVy">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GNj-0a-nXY">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GNj-0a-nXY" id="i8i-ty-W36">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8V1-8i-w42">
-                                                    <rect key="frame" x="138" y="8" width="45" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Pj9-Zk-Ees" kind="push" id="SYN-y8-Zug"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="sNG-wq-Dgl" id="Azg-c1-bIR"/>
-                            <outlet property="delegate" destination="sNG-wq-Dgl" id="ZZY-ej-zvj"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="qcV-JZ-mI5"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="myj-Mv-Pdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1485" y="0.0"/>
+            <point key="canvasLocation" x="-1467" y="0.0"/>
         </scene>
         <!--Item-->
         <scene sceneID="79L-U0-mew">
@@ -310,9 +248,6 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="YAv-ku-MDb">
                                 <rect key="frame" x="233" y="7" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="sNG-wq-Dgl" kind="push" identifier="AddEventSegue" id="5UL-6u-CXc"/>
-                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -321,6 +256,7 @@
                         <outlet property="mapView" destination="qhq-HW-5VX" id="4Ka-aM-6YP"/>
                         <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
                         <segue destination="xDY-Vw-REq" kind="custom" identifier="SettingsSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
+                        <segue destination="Pj9-Zk-Ees" kind="push" identifier="ChooseFriendsSegue" id="38a-B6-bhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

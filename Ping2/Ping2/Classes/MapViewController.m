@@ -11,8 +11,10 @@
 #import "FriendAnnotation.h"
 #import "UserAnnotation.h"
 #import "DetailViewController.h"
+#import "NewEventView.h"
 #import "FriendAnnotationView.h"
 #import <Parse/Parse.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface MapViewController () <MKMapViewDelegate>
 
@@ -43,8 +45,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // hide navigation bar
     [super viewWillAppear:animated];
+    
 }
 
 - (void)viewDidLoad
@@ -94,19 +96,13 @@
 - (void)generateAnnotations {
 
     FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
-    friend1.name = @"Ando";
+    friend1.name = @"Andy Bayer";
     friend1.coordinate = CLLocationCoordinate2DMake(37.791, -122.443);
-    [friend1 createImage];
+    
     
     FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
-    friend2.name = @"Andro";
+    friend2.name = @"Lisa Verowsky";
     friend2.coordinate = CLLocationCoordinate2DMake(37.91, -122.49);
-    friend2.imageName = @"my_face2";
-    
-    // test Parse
-    //    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    //    testObject[@"foo"] = @"bar";
-    //    [testObject saveInBackground];
     
     [self.mapAnnotations addObject:friend1];
     [self.mapAnnotations addObject:friend2];
@@ -184,46 +180,32 @@
                                     25,
                                     25);
     
-    CGContextSetFillColorWithColor(ctx, [[UIColor greenColor] CGColor]);
+    if ([annotation isKindOfClass:[UserAnnotation class]]) {
+        CGContextSetFillColorWithColor(ctx, [[UIColor blueColor] CGColor]);
+    } else {
+        CGContextSetFillColorWithColor(ctx, [[UIColor greenColor] CGColor]);
+    }
+    
     CGContextSetAlpha(ctx, .7f);
     CGContextFillEllipseInRect(ctx, greenCircle);
     
-//    putting initials in annotation—maybe implement later
-//    UILabel *initials = [[UILabel alloc] initWithFrame:greenCircle];
-//    initials.text = annotation.title;
-//    initials.textColor = [UIColor grayColor];
-//    initials.adjustsFontSizeToFitWidth = YES;
-//    initials.minimumScaleFactor = 0;
-//    initials.textAlignment = NSTextAlignmentCenter;
-//    
-//    [initials drawTextInRect:greenCircle];
+    if (![annotation isKindOfClass:[UserAnnotation class]]) {
+        UILabel *initials = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(greenCircle), CGRectGetMinY(greenCircle), CGRectGetWidth(greenCircle) - 5, CGRectGetHeight(greenCircle) -5)];
+        initials.text = [annotation getInitials];
+        [initials setFont:[UIFont systemFontOfSize:12]];
+        initials.textColor = [UIColor grayColor];
+        initials.minimumScaleFactor = 0;
+        initials.textAlignment = NSTextAlignmentCenter;
+        [initials sizeToFit];
+        
+        [initials drawTextInRect:greenCircle];
+    }
     
     UIImage *resultingCircle = UIGraphicsGetImageFromCurrentImageContext();
     
     CGContextRelease(ctx);
 
     return resultingCircle;
-}
-
--(UIImage *)addText:(UIImage *)img text:(NSString *)text1{
-    int w = img.size.width;
-    int h = img.size.height;
-    //lon = h - lon;
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
-    CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
-    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1);
-    char* text	= (char *)[text1 cStringUsingEncoding:NSASCIIStringEncoding];// "05/05/09";
-    CGContextSetTextDrawingMode(context, kCGTextFill);
-    CGContextSetRGBFillColor(context, 255, 255, 255, 1);
-    
-    //rotate text
-    CGContextSetTextMatrix(context, CGAffineTransformMakeRotation( -M_PI/4 ));
-    CGContextSetTextPosition(context, 4, 52);
-    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpace);
-    return [UIImage imageWithCGImage:imageMasked];
 }
 
 #pragma mark -
@@ -247,8 +229,88 @@
             
             _userAnnotation = newUserAnnotation;
             [mapView addAnnotation:newUserAnnotation];
+            
+            mapView.centerCoordinate = coordinate;
+            
+            [self showSubview];
         }
     }
+}
+
+
+#pragma mark -
+#pragma mark New Event Subview
+- (void)showSubview {
+    NewEventView *newEventView = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
+    
+    newEventView.tag = 1;
+    
+    newEventView.buttonView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
+                                               CGRectGetMinY(newEventView.frame),
+                                               CGRectGetWidth(newEventView.frame),
+                                               CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
+    
+    newEventView.timeView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
+                                             CGRectGetMaxY(newEventView.buttonView.frame),
+                                             CGRectGetWidth(newEventView.frame),
+                                             CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
+    
+    newEventView.friendView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
+                                               CGRectGetMaxY(newEventView.timeView.frame),
+                                               CGRectGetWidth(newEventView.frame),
+                                               CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
+    
+    
+    for (UIView *view in [newEventView subviews]) {
+        CALayer *bottomBorder = [CALayer layer];
+        
+        bottomBorder.frame = CGRectMake(0.0f, CGRectGetMaxY(view.frame), CGRectGetWidth(view.frame), 1.0f);
+        
+        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                         alpha:1.0f].CGColor;
+        
+        [view.layer addSublayer:bottomBorder];
+    }
+    
+    
+    [self.view addSubview:newEventView];
+    
+    newEventView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, newEventView.frame.size.height);
+    [UIView animateWithDuration:.75
+                     animations:^{
+                         newEventView.frame = CGRectMake(0,
+                                                         self.view.frame.size.height - newEventView.frame.size.height,
+                                                         self.view.frame.size.width,
+                                                         newEventView.frame.size.height);
+                     }
+     ];
+}
+
+- (void)hideSubview {
+    NewEventView *newEventView = (NewEventView *)[self.view viewWithTag:1];
+    
+    [UIView animateWithDuration:.75
+                     animations:^{
+                         newEventView.frame = CGRectMake(0,
+                                                         self.view.frame.size.height,
+                                                         self.view.frame.size.width,
+                                                         newEventView.frame.size.height);
+                     }
+     ];
+}
+
+- (void)updateSubview {
+    NSMutableArray *friendStrings = [[NSMutableArray alloc] init];
+    for (PFObject *object in _friendList) {
+        [friendStrings addObject:object[@"username"]];
+    }
+    
+    NewEventView *eventView = (NewEventView *)[self.view viewWithTag:1];
+    eventView.friendListLabel.text = [friendStrings componentsJoinedByString:@", "];
+}
+
+- (IBAction)createEventPressed:(id)sender {
+    [self hideSubview];
 }
 
 #pragma mark -
@@ -275,6 +337,9 @@
     self.navigationController.navigationBar.hidden=NO;
 }
 
+- (IBAction)friendDisclosureButton:(id)sender {
+    [self performSegueWithIdentifier:@"ChooseFriendsSegue" sender:self];
+}
 
 
 @end

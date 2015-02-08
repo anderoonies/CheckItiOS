@@ -17,8 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGFloat height = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height;
-    self.tableView.rowHeight = height / 4;
+    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.x, self.view.frame.size.width, self.tableView.rowHeight * 2);
+    
+//    CGFloat height = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height;
+//    self.tableView.rowHeight = height / 2;
     self.tableView.scrollEnabled = NO;
     self.tableView.alwaysBounceVertical = NO;
     [self.tableView setNeedsDisplay];
@@ -46,7 +48,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 4;
+    return 2;
 }
 
 /*
