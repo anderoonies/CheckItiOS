@@ -74,6 +74,9 @@
     PFRelation *relation = [[PFUser currentUser] objectForKey:self.parseClassName];
     PFQuery *query = [relation query];
     
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }
     return query;
 }
 
@@ -109,8 +112,6 @@
         PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
         [relation addObject:friend];
         [[PFUser currentUser] saveInBackground];
-        
-        NSLog(@"%@", [PFUser currentUser].username);
     }
 }
 
