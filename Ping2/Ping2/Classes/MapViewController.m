@@ -121,20 +121,24 @@
 
     FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
     friend1.name = @"James Ross";
+    friend1.timeLabel = @"3:30–4:30";
     friend1.coordinate = CLLocationCoordinate2DMake(42.055969, -87.673255);
     
     
     FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
-    friend2.name = @"Lisa Verowsky";
+    friend2.name = @"Lindsay Weir";
+    friend2.timeLabel = @"4:00–4:45";
     friend2.coordinate = CLLocationCoordinate2DMake(42.053213, -87.672268);
     
     FriendAnnotation *friend3 = [[FriendAnnotation alloc] init];
     friend3.name = @"Rust Hale";
+    friend3.timeLabel = @"4:00–4:45";
     friend3.coordinate = CLLocationCoordinate2DMake(42.057833, -87.676388);
     
     
     FriendAnnotation *friend4 = [[FriendAnnotation alloc] init];
     friend4.name = @"Will Levi";
+    friend4.timeLabel = @"5:00–5:30";
     friend4.coordinate = CLLocationCoordinate2DMake(42.054025, -87.676388);
     
     [self.mapAnnotations addObject:friend1];
