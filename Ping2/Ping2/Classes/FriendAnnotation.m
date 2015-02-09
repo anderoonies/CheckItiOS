@@ -47,7 +47,7 @@
                                      reuseIdentifier:NSStringFromClass([FriendAnnotation class])];
         
         // specify that the annotation can create the callout on tap
-        returnedAnnotationView.canShowCallout = YES;
+        returnedAnnotationView.canShowCallout = NO;
         
         // offset the annotation so that the bottom of the image rests on the correct coordinate
         returnedAnnotationView.centerOffset = CGPointMake( returnedAnnotationView.centerOffset.x + returnedAnnotationView.image.size.width/2, returnedAnnotationView.centerOffset.y - returnedAnnotationView.image.size.height/2 );

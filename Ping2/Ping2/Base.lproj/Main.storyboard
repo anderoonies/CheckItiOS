@@ -226,7 +226,7 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController title="MapViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="vXZ-lx-hvc" customClass="MapViewController" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="qhq-HW-5VX">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsPointsOfInterest="NO" id="qhq-HW-5VX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </mapView>
@@ -293,7 +293,75 @@
             </objects>
             <point key="canvasLocation" x="-1231" y="-806"/>
         </scene>
+        <!--Callout View Controller-->
+        <scene sceneID="SL8-CM-cfS">
+            <objects>
+                <viewController storyboardIdentifier="CalloutViewController" id="NIQ-d7-3Bi" customClass="CalloutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I3i-jG-RuY"/>
+                        <viewControllerLayoutGuide type="bottom" id="bbb-AH-xHW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z9C-YP-BYZ">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6p-MY-lcb">
+                                <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-mw-cW8">
+                                <rect key="frame" x="8" y="21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-Ch-NMT" customClass="UIControl">
+                                <rect key="frame" x="125" y="0.0" width="25" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="notify" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-SY-sxi">
+                                        <rect key="frame" x="6" y="12" width="15.5" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="iMb-AK-eJZ"/>
+                                            <constraint firstAttribute="width" constant="16.5" id="xCG-Rg-Wvd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="KoO-SY-sxi" secondAttribute="centerY" constant="0.5" id="1Ec-CI-mwv"/>
+                                    <constraint firstAttribute="centerX" secondItem="KoO-SY-sxi" secondAttribute="centerX" id="9ri-PB-4LO"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="notifyPressed:" destination="NIQ-d7-3Bi" eventType="touchUpInside" id="L11-Lj-eWb"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DSu-Ch-NMT" firstAttribute="height" secondItem="z9C-YP-BYZ" secondAttribute="height" id="1gl-3R-cTo"/>
+                            <constraint firstItem="DSu-Ch-NMT" firstAttribute="height" secondItem="z9C-YP-BYZ" secondAttribute="height" id="QED-WZ-EcU"/>
+                            <constraint firstAttribute="trailing" secondItem="DSu-Ch-NMT" secondAttribute="trailing" id="yj8-TZ-1wf"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="100"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="F6p-MY-lcb" id="w24-vb-8AS"/>
+                        <outlet property="notifyButton" destination="DSu-Ch-NMT" id="sEB-3V-bKm"/>
+                        <outlet property="notifyImage" destination="KoO-SY-sxi" id="Jjz-j2-oc1"/>
+                        <outlet property="timeLabel" destination="2ta-mw-cW8" id="DXN-h9-5BC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lP0-HU-cF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-734" y="-611"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="notify" width="256" height="283"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

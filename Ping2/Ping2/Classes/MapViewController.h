@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "NewEventView.h"
+#import "WYPopoverController.h"
+#import "CalloutViewController.h"
 
-@interface MapViewController : UIViewController <MKMapViewDelegate> {
+@interface MapViewController : UIViewController <MKMapViewDelegate, WYPopoverControllerDelegate> {
     IBOutlet MKMapView *mapView;
+    WYPopoverController *popoverController;
 }
 
 //@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
