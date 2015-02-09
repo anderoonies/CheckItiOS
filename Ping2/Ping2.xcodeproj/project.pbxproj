@@ -23,7 +23,6 @@
 		8614B9C51A86794B00455EB4 /* NewEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8614B9C41A86794B00455EB4 /* NewEventView.m */; };
 		861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */; };
 		861FAA471A5E277F003BEB5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864368761A39204F00A7F930 /* Main.storyboard */; };
-		861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA491A5E286A003BEB5C /* CreateEventViewController.m */; };
 		864368801A39204F00A7F930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 864368721A39204F00A7F930 /* AppDelegate.m */; };
 		864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643687A1A39204F00A7F930 /* FriendAnnotation.m */; };
 		864368841A39204F00A7F930 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643687C1A39204F00A7F930 /* MapViewController.m */; };
@@ -53,7 +52,6 @@
 		86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0BF1A85925A00C537F0 /* Bolts.framework */; };
 		86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C01A85925A00C537F0 /* Parse.framework */; };
 		86DDA0C41A85925A00C537F0 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C11A85925A00C537F0 /* ParseUI.framework */; };
-		86DF5F091A87CB010085F94B /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86DF5F071A87CB010085F94B /* CustomCalloutView.xib */; };
 		86DF5F0E1A87F46E0085F94B /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DF5F0B1A87F46E0085F94B /* WYPopoverController.m */; };
 		86DF5F0F1A87F46E0085F94B /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DF5F0D1A87F46E0085F94B /* WYStoryboardPopoverSegue.m */; };
 		86DF5F121A8810890085F94B /* CalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DF5F111A8810890085F94B /* CalloutViewController.m */; };
@@ -87,8 +85,6 @@
 		8614B9C41A86794B00455EB4 /* NewEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewEventView.m; path = Ping2/Classes/NewEventView.m; sourceTree = SOURCE_ROOT; };
 		861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendTableViewController.h; sourceTree = "<group>"; };
 		861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendTableViewController.m; sourceTree = "<group>"; };
-		861FAA481A5E286A003BEB5C /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
-		861FAA491A5E286A003BEB5C /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
 		864368711A39204F00A7F930 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		864368721A39204F00A7F930 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		864368751A39204F00A7F930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -140,7 +136,6 @@
 		86DDA0BF1A85925A00C537F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Bolts.framework"; sourceTree = "<group>"; };
 		86DDA0C01A85925A00C537F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Parse.framework"; sourceTree = "<group>"; };
 		86DDA0C11A85925A00C537F0 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/ParseUI.framework"; sourceTree = "<group>"; };
-		86DF5F081A87CB010085F94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = CustomCalloutView.xib; sourceTree = "<group>"; };
 		86DF5F0A1A87F46E0085F94B /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
 		86DF5F0B1A87F46E0085F94B /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		86DF5F0C1A87F46E0085F94B /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
@@ -211,7 +206,6 @@
 				864368741A39204F00A7F930 /* LaunchScreen.xib */,
 				864368761A39204F00A7F930 /* Main.storyboard */,
 				8614B9C01A86767A00455EB4 /* NewEventView.xib */,
-				86DF5F071A87CB010085F94B /* CustomCalloutView.xib */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -325,8 +319,6 @@
 			children = (
 				8686EFF21A7FC32D00B143B3 /* NewEventTableViewController.h */,
 				8686EFF31A7FC32D00B143B3 /* NewEventTableViewController.m */,
-				861FAA481A5E286A003BEB5C /* CreateEventViewController.h */,
-				861FAA491A5E286A003BEB5C /* CreateEventViewController.m */,
 				8643688D1A392D6C00A7F930 /* DetailViewController.h */,
 				8643688E1A392D6C00A7F930 /* DetailViewController.m */,
 				8643687B1A39204F00A7F930 /* MapViewController.h */,
@@ -435,7 +427,6 @@
 				8689F05C1A793FA20067AD13 /* ma_leftArrow@2x.png in Resources */,
 				8689F05E1A793FA20067AD13 /* ma_rightArrow@2x.png in Resources */,
 				864368851A39204F00A7F930 /* Images.xcassets in Resources */,
-				86DF5F091A87CB010085F94B /* CustomCalloutView.xib in Resources */,
 				8689F05F1A793FA20067AD13 /* ma_topBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +458,6 @@
 				864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */,
 				8689F0771A7942370067AD13 /* TapDetectingView.m in Sources */,
 				8689F0751A7942370067AD13 /* MAGridView.m in Sources */,
-				861FAA4A1A5E286A003BEB5C /* CreateEventViewController.m in Sources */,
 				8689F0741A7942370067AD13 /* MAEvent.m in Sources */,
 				8689F0731A7942370067AD13 /* MADayView.m in Sources */,
 				86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */,
@@ -522,14 +512,6 @@
 				864368771A39204F00A7F930 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		86DF5F071A87CB010085F94B /* CustomCalloutView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				86DF5F081A87CB010085F94B /* Base */,
-			);
-			name = CustomCalloutView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
