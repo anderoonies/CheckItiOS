@@ -78,6 +78,21 @@
     return [initials componentsJoinedByString:@""];
 }
 
+- (NSString *)generateTimeLabel
+{
+#define stdDateFormat @"HH:mm"
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:stdDateFormat];
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:_startTime];
+    NSString *startTimeString = [dateFormat stringFromDate:_startTime];
+    
+    NSString *endTimeString = [dateFormat stringFromDate:_endTime];
+    
+    return [NSString stringWithFormat:@"%@–%@", startTimeString, endTimeString];
+}
+
 //- (id)initWithName:(NSString *)newName Location:(CLLocationCoordinate2D)location
 //{
 //    self = [super init];

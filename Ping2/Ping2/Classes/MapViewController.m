@@ -118,27 +118,43 @@
 }
 
 - (void)generateAnnotations {
+#define THIRTY_MINUTES_IN_SECONDS 1800
+    
+    NSDate *curDate = [NSDate date];
+    
+    NSDateComponents *time = [[NSCalendar currentCalendar]
+                              components:NSCalendarUnitHour | NSCalendarUnitMinute
+                              fromDate:curDate];
+    NSInteger minutes = [time minute];
+    float minuteUnit = ceil((float) minutes / 15.0);
+    minutes = minuteUnit * 5.0;
+    [time setMinute: minutes];
+    curDate = [[NSCalendar currentCalendar] dateFromComponents:time];
 
     FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
     friend1.name = @"James Ross";
-    friend1.timeLabel = @"3:30–4:30";
+    friend1.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:curDate];
+    friend1.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:friend1.startTime];
     friend1.coordinate = CLLocationCoordinate2DMake(42.055969, -87.673255);
     
     
     FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
     friend2.name = @"Lindsay Weir";
-    friend2.timeLabel = @"4:00–4:45";
+    friend2.startTime = curDate;
+    friend2.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:friend2.startTime];
     friend2.coordinate = CLLocationCoordinate2DMake(42.053213, -87.672268);
     
     FriendAnnotation *friend3 = [[FriendAnnotation alloc] init];
     friend3.name = @"Rust Hale";
-    friend3.timeLabel = @"4:00–4:45";
+    friend3.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
+    friend3.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend3.startTime];
     friend3.coordinate = CLLocationCoordinate2DMake(42.057833, -87.676388);
     
     
     FriendAnnotation *friend4 = [[FriendAnnotation alloc] init];
     friend4.name = @"Will Levi";
-    friend4.timeLabel = @"5:00–5:30";
+    friend4.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
+    friend4.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend4.startTime];
     friend4.coordinate = CLLocationCoordinate2DMake(42.054025, -87.676388);
     
     [self.mapAnnotations addObject:friend1];
@@ -280,8 +296,7 @@
         
         calloutVC.preferredContentSize = CGSizeMake(200, 50);
         calloutVC.nameLabelValue = annotation.name;
-        calloutVC.timeLabelValue = annotation.timeLabel;
-
+        calloutVC.timeLabelValue = [annotation generateTimeLabel];
         
         popoverController = [[WYPopoverController alloc] initWithContentViewController: calloutVC];
         
