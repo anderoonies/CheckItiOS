@@ -8,6 +8,7 @@
 
 #import "FriendAnnotation.h"
 #import "FriendAnnotationView.h"
+#import "UserAnnotation.h"
 
 
 @implementation FriendAnnotation

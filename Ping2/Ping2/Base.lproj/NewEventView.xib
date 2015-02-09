@@ -63,6 +63,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="9VE-Bo-RAd" firstAttribute="top" secondItem="XII-o0-zqe" secondAttribute="top" constant="22" id="5O4-8l-qZn"/>
+                        <constraint firstAttribute="trailing" secondItem="wRA-Tl-S5H" secondAttribute="trailing" constant="8" id="rzN-OL-8z6"/>
+                        <constraint firstItem="9VE-Bo-RAd" firstAttribute="leading" secondItem="XII-o0-zqe" secondAttribute="leading" constant="8" id="vw8-Hm-wja"/>
                     </constraints>
                     <connections>
                         <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QPf-q1-Rw5"/>

@@ -171,7 +171,6 @@
     // in case it's the user location, we already have an annotation, so just return nil
     if (![annotation isKindOfClass:[MKUserLocation class]])
     {
-
         if ([annotation isKindOfClass:[FriendAnnotation class]]) // for Golden Gate Bridge
         {
 
@@ -182,7 +181,11 @@
 
             ((FriendAnnotationView *)returnedAnnotationView).rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeContactAdd];
         }
-
+    }
+    
+    if ([annotation isKindOfClass:[UserAnnotation class]])
+    {
+        returnedAnnotationView.draggable = YES;
     }
     
     return returnedAnnotationView;
@@ -333,7 +336,10 @@
             _userAnnotation = newUserAnnotation;
             [mapView addAnnotation:newUserAnnotation];
             
-            mapView.centerCoordinate = coordinate;
+            MKCoordinateRegion region;
+            
+            region.center = coordinate;
+            [mapView setRegion:region animated:YES];
             
             [self showSubview];
         }

@@ -226,7 +226,7 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController title="MapViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="vXZ-lx-hvc" customClass="MapViewController" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsPointsOfInterest="NO" id="qhq-HW-5VX">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" id="qhq-HW-5VX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </mapView>

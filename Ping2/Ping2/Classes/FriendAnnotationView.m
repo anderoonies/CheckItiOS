@@ -8,6 +8,7 @@
 
 #import "FriendAnnotationView.h"
 #import "FriendAnnotation.h"
+#import "UserAnnotation.h"
 #import <QuartzCore/QuartzCore.h> //for image rounding
 
 static CGFloat kMaxViewWidth = 150.0;
@@ -59,6 +60,10 @@ static CGFloat kRoundBoxLeft = 10.0;
     self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     if (self != nil)
     {
+        
+        if ([annotation isKindOfClass:[UserAnnotation class]]) {
+            self.draggable = YES;
+        }
         
         // create an annotation for a friend object
         FriendAnnotation *friendAnnotation = (FriendAnnotation *)self.annotation;
