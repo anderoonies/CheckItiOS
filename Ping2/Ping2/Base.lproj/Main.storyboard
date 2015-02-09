@@ -233,10 +233,10 @@
                     <navigationItem key="navigationItem" id="RkB-ZL-q31">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="rsE-m4-44u">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M2y-fv-Lo2">
-                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M2y-fv-Lo2">
+                                <rect key="frame" x="16" y="7" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings">
+                                <state key="normal" image="settings21">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -363,6 +363,7 @@
     </scenes>
     <resources>
         <image name="notify" width="256" height="283"/>
+        <image name="settings21" width="896" height="896"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

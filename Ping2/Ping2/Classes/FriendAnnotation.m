@@ -80,7 +80,7 @@
 
 - (NSString *)generateTimeLabel
 {
-#define stdDateFormat @"HH:mm"
+#define stdDateFormat @"h:mm"
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:stdDateFormat];
