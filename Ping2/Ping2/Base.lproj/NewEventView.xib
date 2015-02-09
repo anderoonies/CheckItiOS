@@ -36,6 +36,10 @@
                                 <segment title="120"/>
                                 <segment title="120"/>
                             </segments>
+                            <connections>
+                                <action selector="segmentPressed:" destination="-1" eventType="valueChanged" id="gQu-Yz-Fwf"/>
+                                <action selector="segmentPressed:" destination="iN0-l3-epB" eventType="valueChanged" id="rRG-f2-d4O"/>
+                            </connections>
                         </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

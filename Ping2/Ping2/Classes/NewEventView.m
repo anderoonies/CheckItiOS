@@ -46,4 +46,19 @@
     
 }
 
+- (IBAction)segmentPressed:(id)sender {
+    long clickedSegment = [sender selectedSegmentIndex];
+    
+    if (clickedSegment == 0) {
+        _minutes = 30;
+    } else if (clickedSegment == 1) {
+        _minutes = 60;
+    } else if (clickedSegment == 2) {
+        _minutes = 90;
+    } else if (clickedSegment == 3) {
+        _minutes = 120;
+    }
+}
+
+
 @end

@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIView *timeView;
 @property (weak, nonatomic) IBOutlet UIView *friendView;
 @property (weak, nonatomic) IBOutlet UILabel *friendListLabel;
+@property (assign, nonatomic) NSInteger minutes;
+
 @end

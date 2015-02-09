@@ -77,6 +77,11 @@
     
     mapView.delegate = self;
     
+    // add tap recognizer
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(handleSingleTap:)];
+    [self.view addGestureRecognizer:tap];
+    
     // add gesture recognizer
     self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestures:)];
     self.longPressGestureRecognizer.minimumPressDuration = 1.0f;
@@ -355,10 +360,7 @@
             _userAnnotation = newUserAnnotation;
             [mapView addAnnotation:newUserAnnotation];
             
-            MKCoordinateRegion region;
-            
-            region.center = coordinate;
-            [mapView setRegion:region animated:YES];
+            mapView.centerCoordinate = coordinate;
             
             [self showSubview];
         }
@@ -400,7 +402,6 @@
         [view.layer addSublayer:bottomBorder];
     }
     
-    
     [self.view addSubview:newEventView];
     
     newEventView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, newEventView.frame.size.height);
@@ -412,6 +413,14 @@
                                                          newEventView.frame.size.height);
                      }
      ];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)sender
+{
+    if ([self.view viewWithTag:1]) {
+        [mapView removeAnnotation:_userAnnotation];
+        [self hideSubview];
+    }
 }
 
 - (void)hideSubview {
@@ -438,7 +447,34 @@
 }
 
 - (IBAction)createEventPressed:(id)sender {
+    if (!_friendList) {
+        return;
+    }
+    
+    NewEventView *eventView = (NewEventView *)[self.view viewWithTag:1];
+    PFObject *event = [PFObject objectWithClassName:@"event"];
+    NSDate *curDate = [NSDate date];
+    event[@"user"] = [PFUser currentUser];
+    event[@"startTime"] = curDate;
+    event[@"endTime"] = [NSDate dateWithTimeInterval:eventView.minutes * 60 sinceDate:curDate];
+    event[@"canSee"] = _friendList;
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:_userAnnotation.coordinate.latitude longitude:_userAnnotation.coordinate.longitude];
+    event[@"location"] = point;
+
     [self hideSubview];
+    
+    [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"saved object");
+        } else {
+            NSLog(@"%@", error);
+        }
+    }];
+    
+}
+
+- (IBAction)segmentPressed:(id)sender {
+    
 }
 
 #pragma mark -
