@@ -31,6 +31,8 @@
 		8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 864368891A3920C100A7F930 /* FriendAnnotationView.m */; };
 		8643688B1A3929B600A7F930 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864368741A39204F00A7F930 /* LaunchScreen.xib */; };
 		8643688F1A392D6C00A7F930 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643688E1A392D6C00A7F930 /* DetailViewController.m */; };
+		8652051E1A8A4D0D006954BA /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8652051B1A8A4D0D006954BA /* WYPopoverController.m */; };
+		8652051F1A8A4D0D006954BA /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8652051D1A8A4D0D006954BA /* WYStoryboardPopoverSegue.m */; };
 		865251BC1A7C3CE100523F5D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865251BB1A7C3CE100523F5D /* SettingsViewController.m */; };
 		8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8653DA891A71AD9B00A3B765 /* LoginViewController.m */; };
 		86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86822CD51A76BEC2005E09B2 /* NewUserViewController.m */; };
@@ -52,8 +54,6 @@
 		86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0BF1A85925A00C537F0 /* Bolts.framework */; };
 		86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C01A85925A00C537F0 /* Parse.framework */; };
 		86DDA0C41A85925A00C537F0 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C11A85925A00C537F0 /* ParseUI.framework */; };
-		86DF5F0E1A87F46E0085F94B /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DF5F0B1A87F46E0085F94B /* WYPopoverController.m */; };
-		86DF5F0F1A87F46E0085F94B /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DF5F0D1A87F46E0085F94B /* WYStoryboardPopoverSegue.m */; };
 		86DF5F121A8810890085F94B /* CalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DF5F111A8810890085F94B /* CalloutViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +100,10 @@
 		864368891A3920C100A7F930 /* FriendAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendAnnotationView.m; sourceTree = "<group>"; };
 		8643688D1A392D6C00A7F930 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Ping2/Classes/DetailViewController.h; sourceTree = SOURCE_ROOT; };
 		8643688E1A392D6C00A7F930 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Ping2/Classes/DetailViewController.m; sourceTree = SOURCE_ROOT; };
+		8652051A1A8A4D0D006954BA /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
+		8652051B1A8A4D0D006954BA /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
+		8652051C1A8A4D0D006954BA /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
+		8652051D1A8A4D0D006954BA /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
 		865251BA1A7C3CE100523F5D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		865251BB1A7C3CE100523F5D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8653DA881A71AD9B00A3B765 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -136,10 +140,6 @@
 		86DDA0BF1A85925A00C537F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Bolts.framework"; sourceTree = "<group>"; };
 		86DDA0C01A85925A00C537F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Parse.framework"; sourceTree = "<group>"; };
 		86DDA0C11A85925A00C537F0 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/ParseUI.framework"; sourceTree = "<group>"; };
-		86DF5F0A1A87F46E0085F94B /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
-		86DF5F0B1A87F46E0085F94B /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
-		86DF5F0C1A87F46E0085F94B /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
-		86DF5F0D1A87F46E0085F94B /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
 		86DF5F101A8810890085F94B /* CalloutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutViewController.h; sourceTree = "<group>"; };
 		86DF5F111A8810890085F94B /* CalloutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,10 +213,6 @@
 		864368781A39204F00A7F930 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				86DF5F0A1A87F46E0085F94B /* WYPopoverController.h */,
-				86DF5F0B1A87F46E0085F94B /* WYPopoverController.m */,
-				86DF5F0C1A87F46E0085F94B /* WYStoryboardPopoverSegue.h */,
-				86DF5F0D1A87F46E0085F94B /* WYStoryboardPopoverSegue.m */,
 				8614B9C31A86794B00455EB4 /* NewEventView.h */,
 				8614B9C41A86794B00455EB4 /* NewEventView.m */,
 				86E5BE471A7C02A8003E2F48 /* Controllers */,
@@ -288,6 +284,10 @@
 				8689F0551A793FA20067AD13 /* Images */,
 				864368711A39204F00A7F930 /* AppDelegate.h */,
 				864368721A39204F00A7F930 /* AppDelegate.m */,
+				8652051A1A8A4D0D006954BA /* WYPopoverController.h */,
+				8652051B1A8A4D0D006954BA /* WYPopoverController.m */,
+				8652051C1A8A4D0D006954BA /* WYStoryboardPopoverSegue.h */,
+				8652051D1A8A4D0D006954BA /* WYStoryboardPopoverSegue.m */,
 				864368731A39204F00A7F930 /* Base.lproj */,
 				864368781A39204F00A7F930 /* Classes */,
 				8643687D1A39204F00A7F930 /* Images.xcassets */,
@@ -447,11 +447,10 @@
 			files = (
 				864368841A39204F00A7F930 /* MapViewController.m in Sources */,
 				861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */,
-				86DF5F0F1A87F46E0085F94B /* WYStoryboardPopoverSegue.m in Sources */,
 				8614B9C51A86794B00455EB4 /* NewEventView.m in Sources */,
 				8686EFF41A7FC32D00B143B3 /* NewEventTableViewController.m in Sources */,
+				8652051F1A8A4D0D006954BA /* WYStoryboardPopoverSegue.m in Sources */,
 				86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */,
-				86DF5F0E1A87F46E0085F94B /* WYPopoverController.m in Sources */,
 				865251BC1A7C3CE100523F5D /* SettingsViewController.m in Sources */,
 				86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */,
 				8689F07A1A7984080067AD13 /* DayViewController.m in Sources */,
@@ -464,6 +463,7 @@
 				86DF5F121A8810890085F94B /* CalloutViewController.m in Sources */,
 				8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */,
 				8689F0761A7942370067AD13 /* MAWeekView.m in Sources */,
+				8652051E1A8A4D0D006954BA /* WYPopoverController.m in Sources */,
 				8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */,
 				864368871A39204F00A7F930 /* main.m in Sources */,
 				864368801A39204F00A7F930 /* AppDelegate.m in Sources */,
