@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIView *friendView;
 @property (weak, nonatomic) IBOutlet UILabel *friendListLabel;
 @property (assign, nonatomic) NSInteger minutes;
+@property (assign, nonatomic) BOOL hidden;
 
 @end
