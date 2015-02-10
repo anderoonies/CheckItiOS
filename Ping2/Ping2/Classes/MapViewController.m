@@ -23,6 +23,7 @@
 @property (nonatomic,strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
 @property (nonatomic, strong) id recentSender;
+@property (nonatomic, strong) NewEventView *eventCreateSubview;
 
 @end
 
@@ -77,10 +78,34 @@
     
     mapView.delegate = self;
     
-    // add tap recognizer
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                          action:@selector(handleSingleTap:)];
-    [self.view addGestureRecognizer:tap];
+    self.eventCreateSubview = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
+    
+    self.eventCreateSubview.buttonView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
+                                               CGRectGetMinY(self.eventCreateSubview.frame),
+                                               CGRectGetWidth(self.eventCreateSubview.frame),
+                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
+    
+    self.eventCreateSubview.timeView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
+                                             CGRectGetMaxY(self.eventCreateSubview.buttonView.frame),
+                                             CGRectGetWidth(self.eventCreateSubview.frame),
+                                             CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
+    
+    self.eventCreateSubview.friendView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
+                                               CGRectGetMaxY(self.eventCreateSubview.timeView.frame),
+                                               CGRectGetWidth(self.eventCreateSubview.frame),
+                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
+    
+    
+    for (UIView *view in [self.eventCreateSubview subviews]) {
+        CALayer *bottomBorder = [CALayer layer];
+    
+        bottomBorder.frame = CGRectMake(0.0f, CGRectGetMaxY(view.frame), CGRectGetWidth(view.frame), 1.0f);
+        
+        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                         alpha:1.0f].CGColor;
+        
+        [view.layer addSublayer:bottomBorder];
+    }
     
     // add gesture recognizer
     self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestures:)];
@@ -371,68 +396,45 @@
 #pragma mark -
 #pragma mark New Event Subview
 - (void)showSubview {
-    NewEventView *newEventView = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
+    [self.view addSubview:self.eventCreateSubview];
     
-    newEventView.tag = 1;
-    
-    newEventView.buttonView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
-                                               CGRectGetMinY(newEventView.frame),
-                                               CGRectGetWidth(newEventView.frame),
-                                               CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
-    
-    newEventView.timeView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
-                                             CGRectGetMaxY(newEventView.buttonView.frame),
-                                             CGRectGetWidth(newEventView.frame),
-                                             CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
-    
-    newEventView.friendView.frame = CGRectMake(CGRectGetMinX(newEventView.frame),
-                                               CGRectGetMaxY(newEventView.timeView.frame),
-                                               CGRectGetWidth(newEventView.frame),
-                                               CGRectGetHeight(newEventView.frame) / [[newEventView subviews] count]);
-    
-    
-    for (UIView *view in [newEventView subviews]) {
-        CALayer *bottomBorder = [CALayer layer];
-        
-        bottomBorder.frame = CGRectMake(0.0f, CGRectGetMaxY(view.frame), CGRectGetWidth(view.frame), 1.0f);
-        
-        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-                                                         alpha:1.0f].CGColor;
-        
-        [view.layer addSublayer:bottomBorder];
-    }
-    
-    [self.view addSubview:newEventView];
-    
-    newEventView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, newEventView.frame.size.height);
+    self.eventCreateSubview.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.eventCreateSubview.frame.size.height);
     [UIView animateWithDuration:.75
                      animations:^{
-                         newEventView.frame = CGRectMake(0,
-                                                         self.view.frame.size.height - newEventView.frame.size.height,
+                         self.eventCreateSubview.frame = CGRectMake(0,
+                                                         self.view.frame.size.height - self.eventCreateSubview.frame.size.height,
                                                          self.view.frame.size.width,
-                                                         newEventView.frame.size.height);
+                                                         self.eventCreateSubview.frame.size.height);
                      }
      ];
 }
 
-- (void)handleSingleTap:(UITapGestureRecognizer *)sender
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ([self.view viewWithTag:1]) {
-        [mapView removeAnnotation:_userAnnotation];
-        [self hideSubview];
+    NSLog(@"%f", [self.view viewWithTag:1].frame.origin.y);
+    UITouch *aTouch = [touches anyObject];
+    if (aTouch.tapCount == 1)
+    {
+        CGPoint p = [aTouch locationInView:self.view];
+        for (UIView *aView in [self.view subviews]) {
+            if (([aView isKindOfClass:[NewEventView class]])&&(!CGRectContainsPoint(aView.frame, p)))
+            {
+                [mapView removeAnnotation:_userAnnotation];
+                [self hideSubview];
+            }
+        }
     }
 }
 
 - (void)hideSubview {
-    NewEventView *newEventView = (NewEventView *)[self.view viewWithTag:1];
-    
     [UIView animateWithDuration:.75
                      animations:^{
-                         newEventView.frame = CGRectMake(0,
+                         self.eventCreateSubview.frame = CGRectMake(0,
                                                          self.view.frame.size.height,
                                                          self.view.frame.size.width,
-                                                         newEventView.frame.size.height);
+                                                         self.eventCreateSubview.frame.size.height);
                      }
+                     completion:^(BOOL finished){ [self.eventCreateSubview removeFromSuperview]; }
      ];
 }
 
@@ -442,21 +444,18 @@
         [friendStrings addObject:object[@"username"]];
     }
     
-    NewEventView *eventView = (NewEventView *)[self.view viewWithTag:1];
-    eventView.friendListLabel.text = [friendStrings componentsJoinedByString:@", "];
+    self.eventCreateSubview.friendListLabel.text = [friendStrings componentsJoinedByString:@", "];
 }
 
 - (IBAction)createEventPressed:(id)sender {
     if (!_friendList) {
         return;
     }
-    
-    NewEventView *eventView = (NewEventView *)[self.view viewWithTag:1];
-    PFObject *event = [PFObject objectWithClassName:@"event"];
+        PFObject *event = [PFObject objectWithClassName:@"event"];
     NSDate *curDate = [NSDate date];
     event[@"user"] = [PFUser currentUser];
     event[@"startTime"] = curDate;
-    event[@"endTime"] = [NSDate dateWithTimeInterval:eventView.minutes * 60 sinceDate:curDate];
+    event[@"endTime"] = [NSDate dateWithTimeInterval:self.eventCreateSubview.minutes * 60 sinceDate:curDate];
     event[@"canSee"] = _friendList;
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:_userAnnotation.coordinate.latitude longitude:_userAnnotation.coordinate.longitude];
     event[@"location"] = point;
