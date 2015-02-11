@@ -254,6 +254,10 @@
 
 - (void)mapView:(MKMapView *)aMapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    if ([view.annotation isKindOfClass:[MKUserLocation class]]) {
+        return;
+    }
+    
     _recentSender = view;
     if (popoverController == nil) {
         [self showPopover:view];

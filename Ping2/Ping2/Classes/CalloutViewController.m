@@ -39,7 +39,6 @@
 }
 
 - (IBAction)notifyPressed:(id)sender {
-    NSLog(@"%@", sender);
     CABasicAnimation *animation =
     [CABasicAnimation animationWithKeyPath:@"position"];
     [animation setDuration:0.01];
