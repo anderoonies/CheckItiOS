@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445217690.864551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "-makeAnnotationImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445217690.864551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "-mapView:didAddAnnotationViews:"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445217690.864551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
-            landmarkName = "-showPopover:"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-makeAnnotationImage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445369126.145505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "-popoverControllerDidDismissPopover:"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "-showPopover:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -184,12 +184,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445217690.864551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "-mapView:didSelectAnnotationView:"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -200,12 +200,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445217690.864551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "-popoverControllerShouldDismissPopover:"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
+            landmarkName = "-showPopover:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -216,12 +216,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445369126.145505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "-handleLongPressGestures:"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
+            landmarkName = "-popoverControllerDidDismissPopover:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -232,12 +232,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445217690.864551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "-mapView:annotationView:calloutAccessoryControlTapped:"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-generateAnnotations"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -248,12 +248,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            timestampString = "445369126.145505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "-handleLongPressGestures:"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
+            landmarkName = "-popoverControllerDidDismissPopover:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ping2/Classes/MapViewController.m"
+            timestampString = "445369397.746665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
+            landmarkName = "-showPopover:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -263,13 +279,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ping2/Classes/MapViewController.m"
-            timestampString = "445270182.718585"
+            filePath = "Ping2/Classes/CalloutViewController.m"
+            timestampString = "445371040.302313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
-            landmarkName = "-showSubview"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-notifyPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

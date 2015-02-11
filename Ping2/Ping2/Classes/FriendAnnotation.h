@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) NSString *timeLabel;
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
+@property (nonatomic, assign) BOOL didNotify;
 
 + (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation;
 

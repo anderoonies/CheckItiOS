@@ -325,8 +325,13 @@
         calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
         
         calloutVC.preferredContentSize = CGSizeMake(200, 50);
+        calloutVC.annotation = annotation;
         calloutVC.nameLabelValue = annotation.name;
         calloutVC.timeLabelValue = [annotation generateTimeLabel];
+        
+        if (annotation.didNotify) {
+            calloutVC.notifyButtonColor = [UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0];
+        }
         
         popoverController = [[WYPopoverController alloc] initWithContentViewController: calloutVC];
         
@@ -451,7 +456,8 @@
     if (!_friendList) {
         return;
     }
-        PFObject *event = [PFObject objectWithClassName:@"event"];
+    
+    PFObject *event = [PFObject objectWithClassName:@"event"];
     NSDate *curDate = [NSDate date];
     event[@"user"] = [PFUser currentUser];
     event[@"startTime"] = curDate;

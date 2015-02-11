@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Andy Bayer. All rights reserved.
 //
 
+#import "FriendAnnotation.h"
 #import <UIKit/UIKit.h>
 
 @interface CalloutViewController : UIViewController
@@ -16,6 +17,8 @@
 @property (strong, nonatomic) NSString *timeLabelValue;
 @property (strong, nonatomic) IBOutlet UIControl *notifyButton;
 @property (weak, nonatomic) IBOutlet UIImageView *notifyImage;
+@property (strong, nonatomic) FriendAnnotation *annotation;
+@property (strong, nonatomic) UIColor *notifyButtonColor;
 
 
 - (void)setNameLabel:(UILabel *)nameLabel;

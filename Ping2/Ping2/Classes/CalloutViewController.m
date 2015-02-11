@@ -18,6 +18,10 @@
     [super viewDidLoad];
     self.nameLabel.text = self.nameLabelValue;
     self.timeLabel.text = self.timeLabelValue;
+    if (self.notifyButtonColor == nil) {
+        self.notifyButtonColor = [UIColor blueColor];
+    }
+    [self.notifyButton setBackgroundColor:self.notifyButtonColor];
     // Do any additional setup after loading the view.
 }
 
@@ -35,6 +39,7 @@
 }
 
 - (IBAction)notifyPressed:(id)sender {
+    NSLog(@"%@", sender);
     CABasicAnimation *animation =
     [CABasicAnimation animationWithKeyPath:@"position"];
     [animation setDuration:0.01];
@@ -45,6 +50,12 @@
     [animation setToValue:[NSValue valueWithCGPoint:
                            CGPointMake([_notifyImage center].x + 5.0f, [_notifyImage center].y)]];
     [[_notifyImage layer] addAnimation:animation forKey:@"position"];
+    
+    [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
+    
+    _annotation.didNotify = YES;
+    
+    
 }
 /*
 #pragma mark - Navigation
