@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.phoneField.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -40,16 +42,18 @@
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
     NSString *passwordAgain = self.passwordAgainField.text;
+    NSString *phoneNumber = [@"+1" stringByAppendingString:[[self.phoneField.text componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"() -"]] componentsJoinedByString:@""]];
     NSString *errorText = @"Please ";
     NSString *usernameBlankText = @"enter a username";
     NSString *passwordBlankText = @"enter a password";
     NSString *joinText = @", and ";
     NSString *passwordMismatchText = @"enter the same password twice";
+    NSString *phoneShortText = @"enter a 10 digit phone number";
     
     BOOL textError = NO;
     
     // Messaging nil will return 0, so these checks implicitly check for nil text.
-    if (username.length == 0 || password.length == 0 || passwordAgain.length == 0) {
+    if (username.length == 0 || password.length == 0 || passwordAgain.length == 0 || phoneNumber.length == 0) {
         textError = YES;
         
         // Set up the keyboard for the first field missing input:
@@ -62,6 +66,9 @@
         if (username.length == 0) {
             [self.usernameField becomeFirstResponder];
         }
+        if (phoneNumber.length ==0) {
+            [self.phoneField becomeFirstResponder];
+        }
         
         if (username.length == 0) {
             errorText = [errorText stringByAppendingString:usernameBlankText];
@@ -72,6 +79,10 @@
                 errorText = [errorText stringByAppendingString:joinText];
             }
             errorText = [errorText stringByAppendingString:passwordBlankText];
+        }
+        
+        if (phoneNumber.length < 10) {
+            errorText = [errorText stringByAppendingString:phoneShortText];
         }
     } else if ([password compare:passwordAgain] != NSOrderedSame) {
         // We have non-zero strings.
@@ -94,6 +105,7 @@
     PFUser *user = [PFUser user];
     user.username = username;
     user.password = password;
+    user[@"phone"] = phoneNumber;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"]
@@ -112,6 +124,48 @@
         [self performSegueWithIdentifier:@"returnToMap" sender:self];        
 //        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSArray *components = [newString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]];
+    NSString *decimalString = [components componentsJoinedByString:@""];
+    
+    NSUInteger length = decimalString.length;
+    BOOL hasLeadingOne = length > 0 && [decimalString characterAtIndex:0] == '1';
+    
+    if (length == 0 || (length > 10 && !hasLeadingOne) || (length > 11)) {
+        textField.text = decimalString;
+        return NO;
+    }
+    
+    NSUInteger index = 0;
+    NSMutableString *formattedString = [NSMutableString string];
+    
+    if (hasLeadingOne) {
+        [formattedString appendString:@"1 "];
+        index += 1;
+    }
+    
+    if (length - index > 3) {
+        NSString *areaCode = [decimalString substringWithRange:NSMakeRange(index, 3)];
+        [formattedString appendFormat:@"(%@) ",areaCode];
+        index += 3;
+    }
+    
+    if (length - index > 3) {
+        NSString *prefix = [decimalString substringWithRange:NSMakeRange(index, 3)];
+        [formattedString appendFormat:@"%@-",prefix];
+        index += 3;
+    }
+    
+    NSString *remainder = [decimalString substringFromIndex:index];
+    [formattedString appendString:remainder];
+    
+    textField.text = formattedString;
+    
+    return NO;
 }
 
 #pragma mark -

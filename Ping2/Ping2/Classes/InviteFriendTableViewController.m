@@ -8,6 +8,7 @@
 
 #import "InviteFriendTableViewController.h"
 #import "MapViewController.h"
+#import <AddressBook/AddressBook.h>
 #import <Parse/Parse.h>
 
 @interface InviteFriendTableViewController ()
@@ -19,6 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    CFErrorRef *error = NULL;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            if (granted) {
+                [self checkContacts];
+            } else {
+                // User denied access
+                // Display an alert telling user the contact could not be added
+            }
+        });
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+        [self checkContacts];
+    }
+
     // allows user to check multiple friends
     self.tableView.allowsMultipleSelection = YES;
     
@@ -45,6 +62,67 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark -
+#pragma mark Contacts
+
+- (void)friendQuery:(NSMutableArray *)friendNumbers
+{
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"phone" containedIn:friendNumbers]; //containedIn:_allContacts
+    [query findObjectsInBackgroundWithBlock:^(NSArray *friends, NSError *error) {
+        if (!error) {
+            NSLog(@"# of Friends %lu", (unsigned long) friends.count);
+            NSLog(@"Friends: %@", friends);
+        }
+        else {
+            NSLog(@"You have no friends");
+        }
+    }];
+}
+
+- (void)checkContacts
+{
+    NSMutableArray *friendNumbers = [[NSMutableArray alloc] init];
+    
+    CFErrorRef *error = NULL;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
+    
+    NSLog(@"%ld", numberOfPeople);
+    
+    for(int i = 0; i < numberOfPeople; i++) {
+        
+        ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
+        
+        NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+        NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
+        NSLog(@"Name:%@ %@", firstName, lastName);
+        
+        ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+        
+        for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
+            NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+            if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
+                phoneNumber = [@"+" stringByAppendingString:phoneNumber];
+            } else {
+                phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
+            }
+            
+            // get rid of all characters for consistency in lookups
+            phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()  -."]] componentsJoinedByString:@""];
+            
+            [friendNumbers addObject:phoneNumber];
+        }
+        
+        NSLog(@"=============================================");
+    }
+    
+    [self friendQuery:friendNumbers];
+}
+
+
 
 #pragma mark -
 #pragma mark PFQuery methods
@@ -104,16 +182,31 @@
         PFQuery *query = [PFUser query];
         [query whereKey:@"username" equalTo:enteredText];
         PFUser *friend = (PFUser *)[query getFirstObject];
+        if (friend == nil) {
+            return;
+        }
+        
         NSLog(@"Found %@", friend.username);
         
         PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
         [relation addObject:friend];
         [[PFUser currentUser] saveInBackground];
+        
+        [self.friendList addObject:friend];
     }
 }
 
 #pragma mark -
 #pragma mark Selections
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
+    
+    
+    
+    return cell;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
