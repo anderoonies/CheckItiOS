@@ -26,14 +26,15 @@
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
             if (granted) {
-                [self checkContacts];
+                NSLog(@"contacts granted");
             } else {
                 // User denied access
                 // Display an alert telling user the contact could not be added
+                NSLog(@"contacts denied");
             }
         });
     } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
-        [self checkContacts];
+        NSLog(@"contacts granted");
     }
 
     // allows user to check multiple friends
@@ -62,67 +63,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark -
-#pragma mark Contacts
-
-- (void)friendQuery:(NSMutableArray *)friendNumbers
-{
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"phone" containedIn:friendNumbers]; //containedIn:_allContacts
-    [query findObjectsInBackgroundWithBlock:^(NSArray *friends, NSError *error) {
-        if (!error) {
-            NSLog(@"# of Friends %lu", (unsigned long) friends.count);
-            NSLog(@"Friends: %@", friends);
-        }
-        else {
-            NSLog(@"You have no friends");
-        }
-    }];
-}
-
-- (void)checkContacts
-{
-    NSMutableArray *friendNumbers = [[NSMutableArray alloc] init];
-    
-    CFErrorRef *error = NULL;
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
-    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
-    
-    NSLog(@"%ld", numberOfPeople);
-    
-    for(int i = 0; i < numberOfPeople; i++) {
-        
-        ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-        
-        NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-        NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
-        NSLog(@"Name:%@ %@", firstName, lastName);
-        
-        ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-        
-        for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
-            NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-            if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
-                phoneNumber = [@"+" stringByAppendingString:phoneNumber];
-            } else {
-                phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
-            }
-            
-            // get rid of all characters for consistency in lookups
-            phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()  -."]] componentsJoinedByString:@""];
-            
-            [friendNumbers addObject:phoneNumber];
-        }
-        
-        NSLog(@"=============================================");
-    }
-    
-    [self friendQuery:friendNumbers];
-}
-
-
 
 #pragma mark -
 #pragma mark PFQuery methods
@@ -203,8 +143,50 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
     
-    
-    
+    NSLog(@"%@", object);
+   
+    if (object[@"phone"]) {
+        NSString *friendNumber = object[@"phone"];
+        
+        CFErrorRef *error = NULL;
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+        CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
+        
+        for(int i = 0; i < numberOfPeople; i++) {
+            
+            ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
+            
+            NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+            NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
+            
+            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+            
+            for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
+                NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+                if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
+                    phoneNumber = [@"+" stringByAppendingString:phoneNumber];
+                } else if(![[phoneNumber substringToIndex:1] isEqual:@"+"]) {
+                    phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
+                }
+                
+                // get rid of all characters for consistency in lookups
+                phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()  -."]] componentsJoinedByString:@""];
+                
+                if ([phoneNumber isEqualToString:friendNumber]) {
+                    if (lastName) {
+                        cell.textLabel.text = [firstName stringByAppendingString:lastName];
+                    } else {
+                        cell.textLabel.text = firstName;
+                    }
+                    return cell;
+                }
+            }
+        }
+        
+        cell.textLabel.text = object[@"username"];
+    }
+
     return cell;
 }
 

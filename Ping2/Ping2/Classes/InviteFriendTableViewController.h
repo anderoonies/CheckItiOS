@@ -16,6 +16,5 @@
 @property (strong, nonatomic) NSMutableArray *friendList;
 
 - (void)checkContacts;
-- (void)friendQuery;
 
 @end
