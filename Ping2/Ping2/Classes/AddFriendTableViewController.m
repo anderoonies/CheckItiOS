@@ -69,12 +69,9 @@
     }
     
     PFQuery *query = [PFUser query];
-    [query whereKey:@"phone" containedIn:_friendNumbers]; //containedIn:_allContacts
-    
+    [query whereKey:@"phone" containedIn:_friendNumbers];
     return query;
 }
-
-
 
 - (void)checkContacts
 {
@@ -99,7 +96,7 @@
             NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
             if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
                 phoneNumber = [@"+" stringByAppendingString:phoneNumber];
-            } else {
+            } else if(![[phoneNumber substringToIndex:1] isEqual:@"+"]) {
                 phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
             }
             
@@ -112,7 +109,6 @@
         NSLog(@"=============================================");
     }
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
@@ -150,7 +146,7 @@
                 
                 if ([phoneNumber isEqualToString:friendNumber]) {
                     if (lastName) {
-                        cell.textLabel.text = [firstName stringByAppendingString:lastName];
+                        cell.textLabel.text = [firstName stringByAppendingString:[@" " stringByAppendingString:lastName]];
                     } else {
                         cell.textLabel.text = firstName;
                     }
@@ -189,6 +185,31 @@
     if ([[tableView indexPathsForSelectedRows] count] < 1) {
         [self.navigationController setToolbarHidden:YES];
     }
+}
+
+- (IBAction)addFriendPressed:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    
+    UITableViewCell* cell = (UITableViewCell*)button.superview.superview;
+    UITableView* view = (UITableView*) cell.superview;
+    NSIndexPath* indexPath = [view indexPathForCell:cell];
+    
+    PFUser *newFriend = [self.objects objectAtIndex:[indexPath row]];
+    
+    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
+
+    
+    PFQuery *query = [PFUser query];
+    [query getObjectInBackgroundWithId:newFriend.objectId block:^(PFObject *object, NSError *error) {
+        if (object) {
+            NSLog(@"successfully added");
+            [relation addObject:object];
+        } else {
+            NSLog(@"%@", error.userInfo);
+        }
+    }];
+    
+    [[PFUser currentUser] saveInBackground];
 }
 
 /*

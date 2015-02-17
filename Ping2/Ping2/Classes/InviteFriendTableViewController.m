@@ -55,6 +55,11 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    // make sure toolbar is hidden when we navigate to the view    
+    [self.navigationController setToolbarHidden:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setToolbarHidden:YES];
 }
@@ -175,7 +180,7 @@
                 
                 if ([phoneNumber isEqualToString:friendNumber]) {
                     if (lastName) {
-                        cell.textLabel.text = [firstName stringByAppendingString:lastName];
+                        cell.textLabel.text = [firstName stringByAppendingString:[@" " stringByAppendingString:lastName]];
                     } else {
                         cell.textLabel.text = firstName;
                     }
