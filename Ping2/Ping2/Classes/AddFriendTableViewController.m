@@ -68,8 +68,25 @@
         [self checkContacts];
     }
     
+    PFRelation *friendRelation = [[PFUser currentUser] objectForKey:@"friend"];
+    PFQuery *friendQuery = [friendRelation query];
+    
+//    NSMutableArray *friendIDs = [[NSMutableArray alloc] init];
+//    
+//    [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (objects) {
+//            for (PFObject *object in objects) {
+//                NSLog(@"%@", object.objectId);
+//                [friendIDs addObject:object.objectId];
+//            }
+//        } else {
+//            NSLog(@"%@", error.userInfo);
+//        }
+//    }];
+    
     PFQuery *query = [PFUser query];
     [query whereKey:@"phone" containedIn:_friendNumbers];
+    [query whereKey:@"friend" doesNotMatchKey:[PFUser currentUser][@"objectID"] inQuery:query];
     return query;
 }
 

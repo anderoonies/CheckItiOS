@@ -440,12 +440,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/AddFriendTableViewController.m"
-            timestampString = "445887443.553689"
+            timestampString = "445884625.467133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-queryForTable"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -456,12 +456,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ping2/Classes/AddFriendTableViewController.m"
-            timestampString = "445884625.467133"
+            timestampString = "445896268.060278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-queryForTable"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ping2/Classes/AddFriendTableViewController.m"
+            timestampString = "445896591.353747"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-queryForTable"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
