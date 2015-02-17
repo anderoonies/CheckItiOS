@@ -193,7 +193,6 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Kcy-sY-kfP"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
                             <connections>
-                                <action selector="addFriend:" destination="Pj9-Zk-Ees" id="VcO-nR-86S"/>
                                 <segue destination="93F-Au-Y9o" kind="push" id="sUX-S2-Ktq"/>
                             </connections>
                         </barButtonItem>
@@ -201,7 +200,6 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addFriendButton" destination="DmE-2V-xkr" id="iVN-oB-fxO"/>
                         <outlet property="sendButton" destination="cyA-zN-Jc3" id="FRD-59-xw3"/>
                         <segue destination="qe2-zr-Zwm" kind="unwind" identifier="returnToMap" unwindAction="returnToMap:" id="Rys-3g-tih"/>
                     </connections>
