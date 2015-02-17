@@ -174,7 +174,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RmU-eW-aqK" id="Krn-az-WQE">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8w-gn-kTx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8w-gn-kTx">
                                             <rect key="frame" x="19" y="11" width="49" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -198,6 +198,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
                             <connections>
                                 <action selector="addFriend:" destination="Pj9-Zk-Ees" id="VcO-nR-86S"/>
+                                <segue destination="93F-Au-Y9o" kind="push" id="sUX-S2-Ktq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -213,6 +214,35 @@
                 <exit id="qe2-zr-Zwm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1467" y="0.0"/>
+        </scene>
+        <!--Add Friends-->
+        <scene sceneID="bnk-fx-Ti8">
+            <objects>
+                <tableViewController id="93F-Au-Y9o" customClass="AddFriendTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AVn-SO-91f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendCell" id="RyW-21-du3">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RyW-21-du3" id="z9B-x9-vQa">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="93F-Au-Y9o" id="cDh-Yc-xl9"/>
+                            <outlet property="delegate" destination="93F-Au-Y9o" id="rS2-fP-ayP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Friends" id="wsF-5t-DEl">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="CLp-OX-amU"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3L-Ko-QFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1056" y="0.0"/>
         </scene>
         <!--Item-->
         <scene sceneID="79L-U0-mew">
