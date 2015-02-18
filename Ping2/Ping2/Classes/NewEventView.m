@@ -22,11 +22,12 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    
     if (self)
     {
         // Initialization code.
         //
-        [[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil];
+//        [[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil];
     }
     return self;
 }

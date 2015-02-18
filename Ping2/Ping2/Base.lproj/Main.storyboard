@@ -279,10 +279,15 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController title="MapViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="vXZ-lx-hvc" customClass="MapViewController" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" id="qhq-HW-5VX">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gOR-f5-tEG"/>
+                        <viewControllerLayoutGuide type="bottom" id="XUw-V4-nBy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yxj-tb-FUB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </mapView>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <navigationItem key="navigationItem" id="RkB-ZL-q31">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="rsE-m4-44u">
@@ -301,12 +306,14 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="YAv-ku-MDb">
                                 <rect key="frame" x="233" y="7" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="addEventButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BAd-Z0-Bzh"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="qhq-HW-5VX" id="4Ka-aM-6YP"/>
                         <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
                         <segue destination="xDY-Vw-REq" kind="custom" identifier="SettingsSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
                         <segue destination="Pj9-Zk-Ees" kind="push" identifier="ChooseFriendsSegue" id="38a-B6-bhE"/>

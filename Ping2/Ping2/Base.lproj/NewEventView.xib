@@ -89,7 +89,7 @@
                 <outlet property="friendView" destination="XII-o0-zqe" id="OC6-i6-xGQ"/>
                 <outlet property="timeView" destination="e1G-IM-NBW" id="OAr-ya-8BK"/>
             </connections>
-            <point key="canvasLocation" x="408" y="-462"/>
+            <point key="canvasLocation" x="393" y="-504"/>
         </view>
     </objects>
     <resources>
