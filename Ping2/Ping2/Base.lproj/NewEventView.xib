@@ -56,6 +56,9 @@
                             <state key="normal" image="table_indicator">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QsR-Ti-OSj"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Invite friends..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
                             <rect key="frame" x="8" y="22" width="273" height="21"/>
