@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     // Do any additional setup after loading the view.
 }
@@ -68,9 +67,6 @@
         [self checkContacts];
     }
     
-    PFRelation *friendRelation = [[PFUser currentUser] objectForKey:@"friend"];
-    PFQuery *friendQuery = [friendRelation query];
-    
 //    NSMutableArray *friendIDs = [[NSMutableArray alloc] init];
 //    
 //    [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -84,9 +80,15 @@
 //        }
 //    }];
     
+//    NSArray *oids = [[[[PFUser currentUser] valueForKey:@"friend"] query] valueForKey:@"objectID"];
+    
+    PFRelation *friendRelation = [[PFUser currentUser] objectForKey:@"friend"];
+    PFQuery *friendQuery = [friendRelation query];
+    friendQuery.limit = 1000;
+    
     PFQuery *query = [PFUser query];
     [query whereKey:@"phone" containedIn:_friendNumbers];
-    [query whereKey:@"friend" doesNotMatchKey:[PFUser currentUser][@"objectID"] inQuery:query];
+    [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
     return query;
 }
 
