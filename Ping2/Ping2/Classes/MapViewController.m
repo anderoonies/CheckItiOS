@@ -73,9 +73,8 @@
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
     mapView_.delegate = self;
-    
-//    self.eventCreateSubview = [[NewEventView alloc] init];
 
+    NSLog(@"ay lmao");
     self.eventCreateSubview = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
     
     self.eventCreateSubview.buttonView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),

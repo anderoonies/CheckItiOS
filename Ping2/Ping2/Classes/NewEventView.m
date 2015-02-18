@@ -27,7 +27,9 @@
     {
         // Initialization code.
         //
-//        [[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil];
+        NSLog(@"ayo");
+        
+        [[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil];
     }
     return self;
 }
