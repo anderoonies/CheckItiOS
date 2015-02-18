@@ -182,36 +182,10 @@
 
 #pragma mark -
 #pragma mark Selections
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    // add the checkmark to the cell
-    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    // if the toolbar for sending the invite is not visibile, set it to visible
-    if ([self.navigationController.toolbar isHidden] == YES) {
-        [self.navigationController setToolbarHidden:NO];
-    }
-    
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // remove the checkmark from the cell
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-    
-    // if no more cells are checked, remove the toolbar
-    if ([[tableView indexPathsForSelectedRows] count] < 1) {
-        [self.navigationController setToolbarHidden:YES];
-    }
-}
-
 - (IBAction)addFriendPressed:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    
-    UITableViewCell* cell = (UITableViewCell*)button.superview.superview;
-    UITableView* view = (UITableView*) cell.superview;
-    NSIndexPath* indexPath = [view indexPathForCell:cell];
+    [(UIButton *)sender setHidden:YES];
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
     
     PFUser *newFriend = [self.objects objectAtIndex:[indexPath row]];
     
