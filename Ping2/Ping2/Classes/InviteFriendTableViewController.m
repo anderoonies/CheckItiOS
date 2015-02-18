@@ -8,6 +8,7 @@
 
 #import "InviteFriendTableViewController.h"
 #import "MapViewController.h"
+#import <AddressBook/AddressBook.h>
 #import <Parse/Parse.h>
 
 @interface InviteFriendTableViewController ()
@@ -19,6 +20,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    CFErrorRef *error = NULL;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            if (granted) {
+                NSLog(@"contacts granted");
+            } else {
+                // User denied access
+                // Display an alert telling user the contact could not be added
+                NSLog(@"contacts denied");
+            }
+        });
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+        NSLog(@"contacts granted");
+    }
+
     // allows user to check multiple friends
     self.tableView.allowsMultipleSelection = YES;
     
@@ -35,6 +53,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    // make sure toolbar is hidden when we navigate to the view    
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -104,16 +127,73 @@
         PFQuery *query = [PFUser query];
         [query whereKey:@"username" equalTo:enteredText];
         PFUser *friend = (PFUser *)[query getFirstObject];
+        if (friend == nil) {
+            return;
+        }
+        
         NSLog(@"Found %@", friend.username);
         
         PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
         [relation addObject:friend];
         [[PFUser currentUser] saveInBackground];
+        
+        [self.friendList addObject:friend];
     }
 }
 
 #pragma mark -
 #pragma mark Selections
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
+    
+    NSLog(@"%@", object);
+   
+    if (object[@"phone"]) {
+        NSString *friendNumber = object[@"phone"];
+        
+        CFErrorRef *error = NULL;
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+        CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
+        
+        for(int i = 0; i < numberOfPeople; i++) {
+            
+            ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
+            
+            NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+            NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
+            
+            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+            
+            for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
+                NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+                if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
+                    phoneNumber = [@"+" stringByAppendingString:phoneNumber];
+                } else if(![[phoneNumber substringToIndex:1] isEqual:@"+"]) {
+                    phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
+                }
+                
+                // get rid of all characters for consistency in lookups
+                phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()  -."]] componentsJoinedByString:@""];
+                
+                if ([phoneNumber isEqualToString:friendNumber]) {
+                    if (lastName) {
+                        cell.textLabel.text = [firstName stringByAppendingString:[@" " stringByAppendingString:lastName]];
+                    } else {
+                        cell.textLabel.text = firstName;
+                    }
+                    return cell;
+                }
+            }
+        }
+        
+        cell.textLabel.text = object[@"username"];
+    }
+
+    return cell;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

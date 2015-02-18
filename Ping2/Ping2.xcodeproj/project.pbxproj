@@ -48,12 +48,13 @@
 		8689F0761A7942370067AD13 /* MAWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0701A7942370067AD13 /* MAWeekView.m */; };
 		8689F0771A7942370067AD13 /* TapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0721A7942370067AD13 /* TapDetectingView.m */; };
 		8689F07A1A7984080067AD13 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8689F0791A7984080067AD13 /* DayViewController.m */; };
+		86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A6A6551A93A25B00EDC774 /* ParseUI.framework */; };
+		86A6A6591A93A4EA00EDC774 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A6A6581A93A4EA00EDC774 /* AddFriendTableViewController.m */; };
 		86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BC28511A82614D006FF652 /* UserAnnotation.m */; };
 		86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CE8FCE1A756D190088DA8F /* SettingsSegue.m */; };
 		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
 		86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0BF1A85925A00C537F0 /* Bolts.framework */; };
 		86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C01A85925A00C537F0 /* Parse.framework */; };
-		86DDA0C41A85925A00C537F0 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C11A85925A00C537F0 /* ParseUI.framework */; };
 		86DF5F121A8810890085F94B /* CalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DF5F111A8810890085F94B /* CalloutViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,9 @@
 		8689F0721A7942370067AD13 /* TapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingView.m; sourceTree = "<group>"; };
 		8689F0781A7984080067AD13 /* DayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
 		8689F0791A7984080067AD13 /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
+		86A6A6551A93A25B00EDC774 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (3)/ParseUI.framework"; sourceTree = "<group>"; };
+		86A6A6571A93A4EA00EDC774 /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
+		86A6A6581A93A4EA00EDC774 /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 		86BC28501A82614D006FF652 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
 		86BC28511A82614D006FF652 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
 		86CE8FCD1A756D190088DA8F /* SettingsSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegue.h; sourceTree = "<group>"; };
@@ -139,7 +143,6 @@
 		86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ping2Tests.m; sourceTree = "<group>"; };
 		86DDA0BF1A85925A00C537F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Bolts.framework"; sourceTree = "<group>"; };
 		86DDA0C01A85925A00C537F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Parse.framework"; sourceTree = "<group>"; };
-		86DDA0C11A85925A00C537F0 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../../../Downloads/parse-library-1.6.2 (2) 2/ParseUI.framework"; sourceTree = "<group>"; };
 		86DF5F101A8810890085F94B /* CalloutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutViewController.h; sourceTree = "<group>"; };
 		86DF5F111A8810890085F94B /* CalloutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,13 +158,13 @@
 				8605E6161A6EE9EE004C7E8F /* libz.dylib in Frameworks */,
 				8605E6141A6EE9E7004C7E8F /* SystemConfiguration.framework in Frameworks */,
 				8605E6121A6EE9E1004C7E8F /* StoreKit.framework in Frameworks */,
+				86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */,
 				8605E6101A6EE9DD004C7E8F /* Security.framework in Frameworks */,
 				86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */,
 				8605E60E1A6EE9D8004C7E8F /* QuartzCore.framework in Frameworks */,
 				8605E60C1A6EE9D2004C7E8F /* MobileCoreServices.framework in Frameworks */,
 				86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */,
 				8605E60A1A6EE9C8004C7E8F /* CoreGraphics.framework in Frameworks */,
-				86DDA0C41A85925A00C537F0 /* ParseUI.framework in Frameworks */,
 				8605E6081A6EE9C3004C7E8F /* CFNetwork.framework in Frameworks */,
 				8605E6061A6EE9BE004C7E8F /* AudioToolbox.framework in Frameworks */,
 			);
@@ -180,9 +183,9 @@
 		8605E6001A6EE979004C7E8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				86A6A6551A93A25B00EDC774 /* ParseUI.framework */,
 				86DDA0BF1A85925A00C537F0 /* Bolts.framework */,
 				86DDA0C01A85925A00C537F0 /* Parse.framework */,
-				86DDA0C11A85925A00C537F0 /* ParseUI.framework */,
 				8605E61B1A6EE9FA004C7E8F /* Accounts.framework */,
 				8605E6191A6EE9F6004C7E8F /* Social.framework */,
 				8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */,
@@ -217,10 +220,7 @@
 				8614B9C41A86794B00455EB4 /* NewEventView.m */,
 				86E5BE471A7C02A8003E2F48 /* Controllers */,
 				8689F0681A7942370067AD13 /* Views for calendar-ui */,
-				864368791A39204F00A7F930 /* FriendAnnotation.h */,
-				8643687A1A39204F00A7F930 /* FriendAnnotation.m */,
-				86BC28501A82614D006FF652 /* UserAnnotation.h */,
-				86BC28511A82614D006FF652 /* UserAnnotation.m */,
+				86A6A65D1A93A54F00EDC774 /* Annotations */,
 				864368881A3920C100A7F930 /* FriendAnnotationView.h */,
 				864368891A3920C100A7F930 /* FriendAnnotationView.m */,
 				86CE8FCD1A756D190088DA8F /* SettingsSegue.h */,
@@ -257,6 +257,41 @@
 			);
 			name = "Views for calendar-ui";
 			path = Views;
+			sourceTree = "<group>";
+		};
+		86A6A65B1A93A50200EDC774 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8653DA881A71AD9B00A3B765 /* LoginViewController.h */,
+				8653DA891A71AD9B00A3B765 /* LoginViewController.m */,
+				86822CD41A76BEC2005E09B2 /* NewUserViewController.h */,
+				86822CD51A76BEC2005E09B2 /* NewUserViewController.m */,
+				865251BA1A7C3CE100523F5D /* SettingsViewController.h */,
+				865251BB1A7C3CE100523F5D /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		86A6A65C1A93A51100EDC774 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				8643687B1A39204F00A7F930 /* MapViewController.h */,
+				8643687C1A39204F00A7F930 /* MapViewController.m */,
+				86DF5F101A8810890085F94B /* CalloutViewController.h */,
+				86DF5F111A8810890085F94B /* CalloutViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		86A6A65D1A93A54F00EDC774 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				864368791A39204F00A7F930 /* FriendAnnotation.h */,
+				8643687A1A39204F00A7F930 /* FriendAnnotation.m */,
+				86BC28501A82614D006FF652 /* UserAnnotation.h */,
+				86BC28511A82614D006FF652 /* UserAnnotation.m */,
+			);
+			name = Annotations;
 			sourceTree = "<group>";
 		};
 		86CFEBC61A391E2A00D5D071 = {
@@ -321,20 +356,14 @@
 				8686EFF31A7FC32D00B143B3 /* NewEventTableViewController.m */,
 				8643688D1A392D6C00A7F930 /* DetailViewController.h */,
 				8643688E1A392D6C00A7F930 /* DetailViewController.m */,
-				8643687B1A39204F00A7F930 /* MapViewController.h */,
-				8643687C1A39204F00A7F930 /* MapViewController.m */,
-				86DF5F101A8810890085F94B /* CalloutViewController.h */,
-				86DF5F111A8810890085F94B /* CalloutViewController.m */,
+				86A6A65C1A93A51100EDC774 /* Map */,
 				861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */,
 				861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */,
-				8653DA881A71AD9B00A3B765 /* LoginViewController.h */,
-				8653DA891A71AD9B00A3B765 /* LoginViewController.m */,
-				86822CD41A76BEC2005E09B2 /* NewUserViewController.h */,
-				86822CD51A76BEC2005E09B2 /* NewUserViewController.m */,
+				86A6A65B1A93A50200EDC774 /* Settings */,
 				8689F0781A7984080067AD13 /* DayViewController.h */,
 				8689F0791A7984080067AD13 /* DayViewController.m */,
-				865251BA1A7C3CE100523F5D /* SettingsViewController.h */,
-				865251BB1A7C3CE100523F5D /* SettingsViewController.m */,
+				86A6A6571A93A4EA00EDC774 /* AddFriendTableViewController.h */,
+				86A6A6581A93A4EA00EDC774 /* AddFriendTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -462,6 +491,7 @@
 				86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */,
 				86DF5F121A8810890085F94B /* CalloutViewController.m in Sources */,
 				8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */,
+				86A6A6591A93A4EA00EDC774 /* AddFriendTableViewController.m in Sources */,
 				8689F0761A7942370067AD13 /* MAWeekView.m in Sources */,
 				8652051E1A8A4D0D006954BA /* WYPopoverController.m in Sources */,
 				8653DA8A1A71AD9B00A3B765 /* LoginViewController.m in Sources */,
@@ -618,6 +648,8 @@
 					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"(2)",
 					2,
+					"/Users/andybayer/Downloads/parse-library-1.6.2",
+					"(3)",
 				);
 				INFOPLIST_FILE = Ping2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -640,6 +672,8 @@
 					"/Users/andybayer/Downloads/parse-library-1.6.2",
 					"(2)",
 					2,
+					"/Users/andybayer/Downloads/parse-library-1.6.2",
+					"(3)",
 				);
 				INFOPLIST_FILE = Ping2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

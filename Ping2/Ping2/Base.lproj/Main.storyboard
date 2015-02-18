@@ -111,22 +111,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Xe-BT-yn2">
-                                <rect key="frame" x="16" y="232" width="288" height="30"/>
+                                <rect key="frame" x="16" y="20" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcv-ZW-nhM">
-                                <rect key="frame" x="16" y="269" width="288" height="30"/>
+                                <rect key="frame" x="16" y="57" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="repeat password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2P-lX-Hir">
-                                <rect key="frame" x="16" y="307" width="288" height="30"/>
+                                <rect key="frame" x="16" y="95" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number (xxx) xxx-xxxx" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lZo-lY-NGV">
+                                <rect key="frame" x="16" y="131" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="phonePad" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vl-d6-Rsf">
-                                <rect key="frame" x="239" y="345" width="65" height="30"/>
+                                <rect key="frame" x="239" y="169" width="65" height="30"/>
                                 <state key="normal" title="New user">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -141,6 +146,7 @@
                     <connections>
                         <outlet property="passwordAgainField" destination="z2P-lX-Hir" id="ES2-ie-omv"/>
                         <outlet property="passwordField" destination="fcv-ZW-nhM" id="cUZ-5c-WhM"/>
+                        <outlet property="phoneField" destination="lZo-lY-NGV" id="aOc-C8-lLa"/>
                         <outlet property="usernameField" destination="2Xe-BT-yn2" id="bPw-ea-jZz"/>
                         <segue destination="ha3-xn-ArU" kind="unwind" identifier="returnToMap" unwindAction="returnToMap:" id="0Nv-VY-NOl"/>
                     </connections>
@@ -164,7 +170,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RmU-eW-aqK" id="Krn-az-WQE">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8w-gn-kTx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8w-gn-kTx">
                                             <rect key="frame" x="19" y="11" width="49" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -187,14 +193,13 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Kcy-sY-kfP"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
                             <connections>
-                                <action selector="addFriend:" destination="Pj9-Zk-Ees" id="VcO-nR-86S"/>
+                                <segue destination="93F-Au-Y9o" kind="push" id="sUX-S2-Ktq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addFriendButton" destination="DmE-2V-xkr" id="iVN-oB-fxO"/>
                         <outlet property="sendButton" destination="cyA-zN-Jc3" id="FRD-59-xw3"/>
                         <segue destination="qe2-zr-Zwm" kind="unwind" identifier="returnToMap" unwindAction="returnToMap:" id="Rys-3g-tih"/>
                     </connections>
@@ -203,6 +208,50 @@
                 <exit id="qe2-zr-Zwm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1467" y="0.0"/>
+        </scene>
+        <!--Add Friends-->
+        <scene sceneID="bnk-fx-Ti8">
+            <objects>
+                <tableViewController id="93F-Au-Y9o" customClass="AddFriendTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AVn-SO-91f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendCell" id="RyW-21-du3">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RyW-21-du3" id="z9B-x9-vQa">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmc-xx-7Ny">
+                                            <rect key="frame" x="266" y="5" width="46" height="30"/>
+                                            <state key="normal" title="Add">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected">
+                                                <color key="titleColor" red="0.294643192" green="0.68558933420000001" blue="0.26621480219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <state key="highlighted" title=" "/>
+                                            <connections>
+                                                <action selector="addFriendPressed:" destination="93F-Au-Y9o" eventType="touchUpInside" id="p8N-ec-05N"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="93F-Au-Y9o" id="cDh-Yc-xl9"/>
+                            <outlet property="delegate" destination="93F-Au-Y9o" id="rS2-fP-ayP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Friends" id="wsF-5t-DEl">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="CLp-OX-amU"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3L-Ko-QFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1056" y="0.0"/>
         </scene>
         <!--Item-->
         <scene sceneID="79L-U0-mew">
