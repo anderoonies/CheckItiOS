@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 #import "NewEventView.h"
 #import "WYPopoverController.h"
 #import "CalloutViewController.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, WYPopoverControllerDelegate> {
-    IBOutlet MKMapView *mapView;
+    GMSMapView *mapView_;
     WYPopoverController *popoverController;
 }
 

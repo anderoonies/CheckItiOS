@@ -78,7 +78,7 @@
     return [initials componentsJoinedByString:@""];
 }
 
-- (NSString *)generateTimeLabel
+- (NSString *)getTimeLabel
 {
 #define stdDateFormat @"h:mm"
     
