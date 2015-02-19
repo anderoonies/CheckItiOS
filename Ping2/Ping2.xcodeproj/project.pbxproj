@@ -396,8 +396,8 @@
 		86E5BE471A7C02A8003E2F48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8686EFF21A7FC32D00B143B3 /* NewEventTableViewController.h */,
 				8686EFF31A7FC32D00B143B3 /* NewEventTableViewController.m */,
+				8686EFF21A7FC32D00B143B3 /* NewEventTableViewController.h */,
 				8643688D1A392D6C00A7F930 /* DetailViewController.h */,
 				8643688E1A392D6C00A7F930 /* DetailViewController.m */,
 				86A6A65C1A93A51100EDC774 /* Map */,
