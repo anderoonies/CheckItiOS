@@ -78,8 +78,6 @@
     
     self.view = mapView_;
     
-    NSLog(@"hey");
-    
     [mapView_ animateToViewingAngle:60];
 
     self.eventCreateSubview = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
@@ -302,10 +300,6 @@
         popoverController.delegate = self;
         
         CGPoint annotation_point = [mapView_.projection pointForCoordinate:senderMarker.position];
-        
-        UIView *markerView = [[UIView alloc] initWithFrame:CGRectMake(annotation_point.x, annotation_point.y, self.view.frame.size.width, self.view.frame.size.height)];
-        
-        
         
         [popoverController presentPopoverFromRect:CGRectMake(annotation_point.x - senderMarker.icon.size.width / 2, annotation_point.y - senderMarker.icon.size.height, senderMarker.icon.size.width, senderMarker.icon.size.height) inView:mapView_ permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale];
     } else {
