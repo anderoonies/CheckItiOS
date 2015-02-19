@@ -26,7 +26,7 @@
 
 - (NSString *)getInitials;
 
-- (NSString *)generateTimeLabel;
+- (NSString *)getTimeLabel;
 
 //- (id)initWithName:(NSString *)newName Location:(CLLocationCoordinate2D)location;
 

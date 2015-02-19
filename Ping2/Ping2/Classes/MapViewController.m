@@ -12,6 +12,7 @@
 #import "UserAnnotation.h"
 #import "DetailViewController.h"
 #import "FriendAnnotationView.h"
+#import "CustomGMSMarker.h"
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -22,7 +23,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 //@property (nonatomic,strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
-@property (nonatomic, strong) GMSMarker *userMarker;
+@property (nonatomic, strong) CustomGMSMarker *userMarker;
 @property (nonatomic, strong) NewEventView *eventCreateSubview;
 
 @end
@@ -55,9 +56,9 @@
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat
                                                             longitude:lon
-                                                                 zoom:6];
+                                                                 zoom:17];
     
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_ = [GMSMapView mapWithFrame:self.view.frame camera:camera];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,11 +71,17 @@
 {
     [super viewDidLoad];
     
-    mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
+    [self generateAnnotations];
+    [self gotoDefaultLocation];
+    
     mapView_.delegate = self;
+    
+    self.view = mapView_;
+    
+    NSLog(@"hey");
+    
+    [mapView_ animateToViewingAngle:60];
 
-    NSLog(@"ay lmao");
     self.eventCreateSubview = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
     
     self.eventCreateSubview.buttonView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
@@ -110,10 +117,7 @@
 //    self.longPressGestureRecognizer.allowableMovement = 100.0f;
 //    
 //    [self.view addGestureRecognizer:self.longPressGestureRecognizer];
-    
-    // resizing
-    mapView_.frame = self.view.bounds;
-    mapView_.autoresizingMask = self.view.autoresizingMask;
+
     
     // initialize locationmanager
     self.locationManager = [[CLLocationManager alloc] init];
@@ -127,6 +131,9 @@
     
     // start getting user's location
     [self.locationManager startUpdatingLocation];
+    
+    mapView_.myLocationEnabled = YES;
+
 
     // create out annotations array (in this example only 2 for testing)
     self.mapMarkers = [[NSMutableArray alloc] initWithCapacity:2];
@@ -138,66 +145,65 @@
     
     // add both annotations
     for (FriendAnnotation *annotation in _mapMarkers) {
-        GMSMarker *marker = [GMSMarker markerWithPosition:annotation.coordinate];
+        CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:annotation.coordinate];
         marker.appearAnimation = kGMSMarkerAnimationPop;
         marker.icon = [self makeAnnotationImage:annotation];
         marker.title = [annotation getInitials];
-        marker.snippet = [annotation generateTimeLabel];
+        marker.snippet = [annotation getTimeLabel];
+        marker.annotation = annotation;
         marker.map = mapView_;
     }
-    
-    [self gotoDefaultLocation];
 }
 
 - (void)generateAnnotations {
-//#define THIRTY_MINUTES_IN_SECONDS 1800
-//    
-//    NSDate *curDate = [NSDate date];
-//    
-//    NSDateComponents *time = [[NSCalendar currentCalendar]
-//                              components:NSCalendarUnitHour | NSCalendarUnitMinute
-//                              fromDate:curDate];
-//    NSInteger minutes = [time minute];
-//    float minuteUnit = ceil((float) minutes / 15.0);
-//    minutes = minuteUnit * 5.0;
-//    [time setMinute: minutes];
-//    curDate = [[NSCalendar currentCalendar] dateFromComponents:time];
-//
-//    FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
-//    friend1.name = @"James Ross";
-//    friend1.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:curDate];
-//    friend1.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:friend1.startTime];
-//    friend1.coordinate = CLLocationCoordinate2DMake(42.055969, -87.673255);
-//    
-//    
-//    FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
-//    friend2.name = @"Lindsay Weir";
-//    friend2.startTime = curDate;
-//    friend2.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:friend2.startTime];
-//    friend2.coordinate = CLLocationCoordinate2DMake(42.053213, -87.672268);
-//    
-//    FriendAnnotation *friend3 = [[FriendAnnotation alloc] init];
-//    friend3.name = @"Rust Hale";
-//    friend3.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
-//    friend3.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend3.startTime];
-//    friend3.coordinate = CLLocationCoordinate2DMake(42.057833, -87.676388);
-//    
-//    
-//    FriendAnnotation *friend4 = [[FriendAnnotation alloc] init];
-//    friend4.name = @"Will Levi";
-//    friend4.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
-//    friend4.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend4.startTime];
-//    friend4.coordinate = CLLocationCoordinate2DMake(42.054025, -87.676388);
-//    
-//    [self.mapAnnotations addObject:friend1];
-//    [self.mapAnnotations addObject:friend2];
-//    [self.mapAnnotations addObject:friend3];
-//    [self.mapAnnotations addObject:friend4];
+#define THIRTY_MINUTES_IN_SECONDS 1800
+    
+    NSDate *curDate = [NSDate date];
+    
+    NSDateComponents *time = [[NSCalendar currentCalendar]
+                              components:NSCalendarUnitHour | NSCalendarUnitMinute
+                              fromDate:curDate];
+    NSInteger minutes = [time minute];
+    float minuteUnit = ceil((float) minutes / 15.0);
+    minutes = minuteUnit * 5.0;
+    [time setMinute: minutes];
+    curDate = [[NSCalendar currentCalendar] dateFromComponents:time];
+
+    FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
+    friend1.name = @"James Ross";
+    friend1.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:curDate];
+    friend1.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:friend1.startTime];
+    friend1.coordinate = CLLocationCoordinate2DMake(42.055969, -87.673255);
+    
+    
+    FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
+    friend2.name = @"Lindsay Weir";
+    friend2.startTime = curDate;
+    friend2.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:friend2.startTime];
+    friend2.coordinate = CLLocationCoordinate2DMake(42.053213, -87.672268);
+    
+    FriendAnnotation *friend3 = [[FriendAnnotation alloc] init];
+    friend3.name = @"Rust Hale";
+    friend3.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
+    friend3.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend3.startTime];
+    friend3.coordinate = CLLocationCoordinate2DMake(42.057833, -87.676388);
+    
+    
+    FriendAnnotation *friend4 = [[FriendAnnotation alloc] init];
+    friend4.name = @"Will Levi";
+    friend4.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
+    friend4.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend4.startTime];
+    friend4.coordinate = CLLocationCoordinate2DMake(42.054025, -87.676388);
+    
+    [self.mapMarkers addObject:friend1];
+    [self.mapMarkers addObject:friend2];
+    [self.mapMarkers addObject:friend3];
+    [self.mapMarkers addObject:friend4];
 }
 
 #pragma mark - GMSMapViewDelegate
 
--(BOOL) mapView:(GMSMapView *) mapView didTapMarker:(GMSMarker *)marker
+-(BOOL) mapView:(GMSMapView *) mapView didTapMarker:(CustomGMSMarker *)marker
 {
     if (popoverController == nil) {
         [self showPopover:marker];
@@ -275,8 +281,9 @@
 {
     if (popoverController == nil)
     {
-        FriendAnnotationView *senderView = sender;
-        FriendAnnotation *annotation = senderView.annotation;
+        CustomGMSMarker *senderMarker = [[CustomGMSMarker alloc] init];
+        senderMarker = (CustomGMSMarker *) sender;
+        FriendAnnotation *annotation = senderMarker.annotation;
         
         CalloutViewController *calloutVC = [[CalloutViewController alloc] init];
         calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
@@ -284,7 +291,7 @@
         calloutVC.preferredContentSize = CGSizeMake(200, 50);
         calloutVC.annotation = annotation;
         calloutVC.nameLabelValue = annotation.name;
-        calloutVC.timeLabelValue = [annotation generateTimeLabel];
+        calloutVC.timeLabelValue = [annotation getTimeLabel];
         
         if (annotation.didNotify) {
             calloutVC.notifyButtonColor = [UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0];
@@ -293,8 +300,14 @@
         popoverController = [[WYPopoverController alloc] initWithContentViewController: calloutVC];
         
         popoverController.delegate = self;
-
-        [popoverController presentPopoverFromRect:senderView.bounds inView:senderView permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale];
+        
+        CGPoint annotation_point = [mapView_.projection pointForCoordinate:senderMarker.position];
+        
+        UIView *markerView = [[UIView alloc] initWithFrame:CGRectMake(annotation_point.x, annotation_point.y, self.view.frame.size.width, self.view.frame.size.height)];
+        
+        
+        
+        [popoverController presentPopoverFromRect:CGRectMake(annotation_point.x - senderMarker.icon.size.width / 2, annotation_point.y - senderMarker.icon.size.height, senderMarker.icon.size.width, senderMarker.icon.size.height) inView:mapView_ permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale];
     } else {
         [self close:nil];
 //        [self mapView:mapView didDeselectAnnotationView:sender];

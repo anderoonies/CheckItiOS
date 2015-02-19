@@ -23,6 +23,7 @@
 		8614B9C51A86794B00455EB4 /* NewEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8614B9C41A86794B00455EB4 /* NewEventView.m */; };
 		861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */; };
 		861FAA471A5E277F003BEB5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864368761A39204F00A7F930 /* Main.storyboard */; };
+		86333DA31A96226E006CB72F /* CustomGMSMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 86333DA21A96226E006CB72F /* CustomGMSMarker.m */; };
 		864368801A39204F00A7F930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 864368721A39204F00A7F930 /* AppDelegate.m */; };
 		864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643687A1A39204F00A7F930 /* FriendAnnotation.m */; };
 		864368841A39204F00A7F930 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643687C1A39204F00A7F930 /* MapViewController.m */; };
@@ -96,6 +97,8 @@
 		8614B9C41A86794B00455EB4 /* NewEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewEventView.m; path = Ping2/Classes/NewEventView.m; sourceTree = SOURCE_ROOT; };
 		861FAA401A5E16CC003BEB5C /* InviteFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendTableViewController.h; sourceTree = "<group>"; };
 		861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendTableViewController.m; sourceTree = "<group>"; };
+		86333DA11A96226E006CB72F /* CustomGMSMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGMSMarker.h; sourceTree = "<group>"; };
+		86333DA21A96226E006CB72F /* CustomGMSMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGMSMarker.m; sourceTree = "<group>"; };
 		864368711A39204F00A7F930 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		864368721A39204F00A7F930 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		864368751A39204F00A7F930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				86A6A65D1A93A54F00EDC774 /* Annotations */,
 				864368881A3920C100A7F930 /* FriendAnnotationView.h */,
 				864368891A3920C100A7F930 /* FriendAnnotationView.m */,
+				86333DA11A96226E006CB72F /* CustomGMSMarker.h */,
+				86333DA21A96226E006CB72F /* CustomGMSMarker.m */,
 				86CE8FCD1A756D190088DA8F /* SettingsSegue.h */,
 				86CE8FCE1A756D190088DA8F /* SettingsSegue.m */,
 			);
@@ -527,6 +532,7 @@
 				8689F0771A7942370067AD13 /* TapDetectingView.m in Sources */,
 				8689F0751A7942370067AD13 /* MAGridView.m in Sources */,
 				8689F0741A7942370067AD13 /* MAEvent.m in Sources */,
+				86333DA31A96226E006CB72F /* CustomGMSMarker.m in Sources */,
 				8689F0731A7942370067AD13 /* MADayView.m in Sources */,
 				86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */,
 				86DF5F121A8810890085F94B /* CalloutViewController.m in Sources */,
