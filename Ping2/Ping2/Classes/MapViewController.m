@@ -109,14 +109,6 @@
         [view.layer addSublayer:bottomBorder];
     }
     
-//    // add gesture recognizer
-//    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestures:)];
-//    self.longPressGestureRecognizer.minimumPressDuration = 1.0f;
-//    self.longPressGestureRecognizer.allowableMovement = 100.0f;
-//    
-//    [self.view addGestureRecognizer:self.longPressGestureRecognizer];
-
-    
     // initialize locationmanager
     self.locationManager = [[CLLocationManager alloc] init];
     
@@ -211,19 +203,18 @@
     return YES;
 }
 
-//- (void)mapView:(MKMapView *)aMapView didSelectAnnotationView:(MKAnnotationView *)view
-//{
-//    if ([view.annotation isKindOfClass:[MKUserLocation class]]) {
-//        return;
-//    }
-//    
-//    _recentSender = view;
-//    if (popoverController == nil) {
-//        [self showPopover:view];
-//    } else {
-//        [self close:nil];
-//    }
-//}
+- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    CGPoint p = [mapView.projection pointForCoordinate:coordinate];
+    
+    for (UIView *aView in [self.view subviews]) {
+        if (([aView isKindOfClass:[NewEventView class]])&&(!CGRectContainsPoint(aView.frame, p)))
+        {
+            _userMarker.map = nil;
+            [self hideSubview];
+        }
+    }
+    
+}
 
 #pragma mark -
 #pragma mark Utilities
@@ -334,32 +325,6 @@
 
 #pragma mark -
 #pragma mark Gestures
-
-//- (void)handleLongPressGestures:(UILongPressGestureRecognizer *)sender
-//{
-//    if ([sender isEqual:self.longPressGestureRecognizer]) {
-//        if (sender.state == UIGestureRecognizerStateBegan)
-//        {
-//            CGPoint touchLocation = [sender locationInView:mapView];
-//            
-//            CLLocationCoordinate2D coordinate;
-//            coordinate = [mapView convertPoint:touchLocation toCoordinateFromView:mapView];// how to convert this to a String or something else?
-//            
-//            UserAnnotation *newUserAnnotation = [[UserAnnotation alloc] init];
-//            newUserAnnotation.name = @"Me";
-//            newUserAnnotation.coordinate = coordinate;
-//            
-//            [mapView removeAnnotation:_userAnnotation];
-//            
-//            _userAnnotation = newUserAnnotation;
-//            [mapView addAnnotation:newUserAnnotation];
-//            
-//            mapView.centerCoordinate = coordinate;
-//            
-//            [self showSubview];
-//        }
-//    }
-//}
 
 - (IBAction)addEventButtonPress:(id)sender
 {
