@@ -30,7 +30,7 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    [GMSServices provideAPIKey:@"895205137838-nr7edi7h3qv17ton973t37s6i6r08cbs.apps.googleusercontent.com"];
+    [GMSServices provideAPIKey:@"AIzaSyAU0aB9GyZpmZXWwKy5F5g2guGpVhKGX2g"];
     
     return YES;
 }
