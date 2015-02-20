@@ -7,10 +7,10 @@
 //
 
 #import <GoogleMaps/GoogleMaps.h>
-#import "FriendAnnotation.h"
+#import "UserAnnotation.h"
 
 @interface CustomGMSMarker : GMSMarker
 
-@property (nonatomic, strong) FriendAnnotation *annotation;
+@property (nonatomic, strong) UserAnnotation *annotation;
 
 @end

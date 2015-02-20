@@ -77,6 +77,7 @@
     _userAnnotation.name = @"Me";
     
     _userMarker = [[CustomGMSMarker alloc] init];
+    _userMarker.annotation = _userAnnotation;
     _userMarker.icon = [self makeAnnotationImage:_userAnnotation];
     _userMarker.groundAnchor = CGPointMake(0.5, 0.5);
     
@@ -276,6 +277,10 @@
 
 - (IBAction)showPopover:(id)sender
 {
+    if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
+        return;
+    }
+    
     if (popoverController == nil)
     {
         CustomGMSMarker *senderMarker = [[CustomGMSMarker alloc] init];
