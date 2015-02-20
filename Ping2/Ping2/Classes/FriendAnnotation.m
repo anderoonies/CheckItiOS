@@ -26,45 +26,6 @@
     return @"subtitle";
 }
 
-
-- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return destImage;
-}
-
-
-+ (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation
-{
-    //
-    MKAnnotationView *returnedAnnotationView =
-    [mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([FriendAnnotation class])];
-    if (returnedAnnotationView == nil)
-    {
-        returnedAnnotationView =
-        [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                     reuseIdentifier:NSStringFromClass([FriendAnnotation class])];
-        
-        // specify that the annotation can create the callout on tap
-        returnedAnnotationView.canShowCallout = NO;
-        
-        // offset the annotation so that the bottom of the image rests on the correct coordinate
-        returnedAnnotationView.centerOffset = CGPointMake( returnedAnnotationView.centerOffset.x + returnedAnnotationView.image.size.width/2, returnedAnnotationView.centerOffset.y - returnedAnnotationView.image.size.height/2 );
-    }
-    else
-    {
-        returnedAnnotationView.annotation = annotation;
-    }
-    
-    return returnedAnnotationView;
-}
-
-- (void)createImage {
-    NSLog(@"%@", self.title);
-}
-
 - (NSString *)getInitials {
     NSMutableArray *initials = [[NSMutableArray alloc] init];
     NSArray *subnames = [self.name componentsSeparatedByString:@" "];
@@ -84,8 +45,6 @@
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:stdDateFormat];
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:_startTime];
     NSString *startTimeString = [dateFormat stringFromDate:_startTime];
     
     NSString *endTimeString = [dateFormat stringFromDate:_endTime];

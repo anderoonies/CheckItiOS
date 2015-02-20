@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSMutableArray *mapMarkers;
 @property (nonatomic, strong) UIPopoverController *bridgePopoverController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-//@property (nonatomic,strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
 @property (nonatomic, strong) CustomGMSMarker *userMarker;
 @property (nonatomic, strong) NewEventView *eventCreateSubview;
@@ -304,7 +303,6 @@
         [popoverController presentPopoverFromRect:CGRectMake(annotation_point.x - senderMarker.icon.size.width/2, annotation_point.y - senderMarker.icon.size.height/2, senderMarker.icon.size.width, senderMarker.icon.size.height) inView:mapView_ permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale];
     } else {
         [self close:nil];
-//        [self mapView:mapView didDeselectAnnotationView:sender];
     }
 }
 

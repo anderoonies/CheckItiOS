@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1XF-9w-rJE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -372,7 +373,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-mw-cW8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-mw-cW8">
                                 <rect key="frame" x="8" y="21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -404,6 +405,7 @@
                             <constraint firstItem="DSu-Ch-NMT" firstAttribute="height" secondItem="z9C-YP-BYZ" secondAttribute="height" id="1gl-3R-cTo"/>
                             <constraint firstItem="2ta-mw-cW8" firstAttribute="top" secondItem="F6p-MY-lcb" secondAttribute="bottom" constant="1" id="5cs-js-BED"/>
                             <constraint firstItem="DSu-Ch-NMT" firstAttribute="height" secondItem="z9C-YP-BYZ" secondAttribute="height" id="QED-WZ-EcU"/>
+                            <constraint firstItem="2ta-mw-cW8" firstAttribute="leading" secondItem="z9C-YP-BYZ" secondAttribute="leadingMargin" constant="-8" id="e0m-jc-0Gg"/>
                             <constraint firstItem="I3i-jG-RuY" firstAttribute="top" secondItem="F6p-MY-lcb" secondAttribute="top" constant="-7" id="vIb-bi-n8q"/>
                             <constraint firstAttribute="trailing" secondItem="DSu-Ch-NMT" secondAttribute="trailing" id="yj8-TZ-1wf"/>
                         </constraints>

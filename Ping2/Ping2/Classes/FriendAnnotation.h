@@ -20,10 +20,6 @@
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 @property (nonatomic, assign) BOOL didNotify;
 
-+ (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation;
-
-- (void)createImage;
-
 - (NSString *)getInitials;
 
 - (NSString *)getTimeLabel;
