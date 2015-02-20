@@ -20,6 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
     // For dismissing keyboard
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                            action:@selector(dismissKeyboard)];
@@ -134,6 +138,14 @@
 
 - (void)dismissKeyboard {
     [self.view endEditing:YES];
+}
+
+#pragma mark -
+#pragma mark Navigation
+
+-(void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    [self performSegueWithIdentifier:@"returnToMap" sender:self];
 }
 
 @end

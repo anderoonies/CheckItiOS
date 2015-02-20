@@ -22,7 +22,6 @@
 		8614B9C21A86767A00455EB4 /* NewEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8614B9C01A86767A00455EB4 /* NewEventView.xib */; };
 		8614B9C51A86794B00455EB4 /* NewEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8614B9C41A86794B00455EB4 /* NewEventView.m */; };
 		861FAA421A5E16CC003BEB5C /* InviteFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861FAA411A5E16CC003BEB5C /* InviteFriendTableViewController.m */; };
-		861FAA471A5E277F003BEB5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864368761A39204F00A7F930 /* Main.storyboard */; };
 		86333DA31A96226E006CB72F /* CustomGMSMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 86333DA21A96226E006CB72F /* CustomGMSMarker.m */; };
 		864368801A39204F00A7F930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 864368721A39204F00A7F930 /* AppDelegate.m */; };
 		864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8643687A1A39204F00A7F930 /* FriendAnnotation.m */; };
@@ -46,7 +45,8 @@
 		86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A6A6551A93A25B00EDC774 /* ParseUI.framework */; };
 		86A6A6591A93A4EA00EDC774 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A6A6581A93A4EA00EDC774 /* AddFriendTableViewController.m */; };
 		86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BC28511A82614D006FF652 /* UserAnnotation.m */; };
-		86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CE8FCE1A756D190088DA8F /* SettingsSegue.m */; };
+		86C00D1B1A96D31600BA27FD /* SettingsSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C00D1A1A96D31600BA27FD /* SettingsSegue.m */; };
+		86C00D1E1A96D33B00BA27FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C00D1C1A96D33B00BA27FD /* Main.storyboard */; };
 		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
 		86D860151A951CBA00CA8E23 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860141A951CBA00CA8E23 /* GoogleMaps.framework */; };
 		86D860171A951D0200CA8E23 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86D860161A951D0200CA8E23 /* GoogleMaps.bundle */; };
@@ -96,7 +96,6 @@
 		864368711A39204F00A7F930 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		864368721A39204F00A7F930 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		864368751A39204F00A7F930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		864368771A39204F00A7F930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		864368791A39204F00A7F930 /* FriendAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendAnnotation.h; sourceTree = "<group>"; };
 		8643687A1A39204F00A7F930 /* FriendAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendAnnotation.m; sourceTree = "<group>"; };
 		8643687B1A39204F00A7F930 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -130,8 +129,9 @@
 		86A6A6581A93A4EA00EDC774 /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 		86BC28501A82614D006FF652 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
 		86BC28511A82614D006FF652 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
-		86CE8FCD1A756D190088DA8F /* SettingsSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegue.h; sourceTree = "<group>"; };
-		86CE8FCE1A756D190088DA8F /* SettingsSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSegue.m; sourceTree = "<group>"; };
+		86C00D191A96D31600BA27FD /* SettingsSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegue.h; sourceTree = "<group>"; };
+		86C00D1A1A96D31600BA27FD /* SettingsSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSegue.m; sourceTree = "<group>"; };
+		86C00D1D1A96D33B00BA27FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		86CFEBCF1A391E2A00D5D071 /* Ping2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ping2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBED1A391E2A00D5D071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				864368741A39204F00A7F930 /* LaunchScreen.xib */,
-				864368761A39204F00A7F930 /* Main.storyboard */,
+				86C00D1C1A96D33B00BA27FD /* Main.storyboard */,
 				8614B9C01A86767A00455EB4 /* NewEventView.xib */,
 			);
 			path = Base.lproj;
@@ -244,12 +244,12 @@
 				8614B9C41A86794B00455EB4 /* NewEventView.m */,
 				86E5BE471A7C02A8003E2F48 /* Controllers */,
 				86A6A65D1A93A54F00EDC774 /* Annotations */,
+				86C00D191A96D31600BA27FD /* SettingsSegue.h */,
+				86C00D1A1A96D31600BA27FD /* SettingsSegue.m */,
 				864368881A3920C100A7F930 /* FriendAnnotationView.h */,
 				864368891A3920C100A7F930 /* FriendAnnotationView.m */,
 				86333DA11A96226E006CB72F /* CustomGMSMarker.h */,
 				86333DA21A96226E006CB72F /* CustomGMSMarker.m */,
-				86CE8FCD1A756D190088DA8F /* SettingsSegue.h */,
-				86CE8FCE1A756D190088DA8F /* SettingsSegue.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -454,8 +454,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8614B9C21A86767A00455EB4 /* NewEventView.xib in Resources */,
+				86C00D1E1A96D33B00BA27FD /* Main.storyboard in Resources */,
 				8689F05D1A793FA20067AD13 /* ma_rightArrow.png in Resources */,
-				861FAA471A5E277F003BEB5C /* Main.storyboard in Resources */,
 				8643688B1A3929B600A7F930 /* LaunchScreen.xib in Resources */,
 				8689F05B1A793FA20067AD13 /* ma_leftArrow.png in Resources */,
 				8689F05C1A793FA20067AD13 /* ma_leftArrow@2x.png in Resources */,
@@ -487,10 +487,10 @@
 				8652051F1A8A4D0D006954BA /* WYStoryboardPopoverSegue.m in Sources */,
 				86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */,
 				865251BC1A7C3CE100523F5D /* SettingsViewController.m in Sources */,
+				86C00D1B1A96D31600BA27FD /* SettingsSegue.m in Sources */,
 				86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */,
 				864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */,
 				86333DA31A96226E006CB72F /* CustomGMSMarker.m in Sources */,
-				86CE8FCF1A756D190088DA8F /* SettingsSegue.m in Sources */,
 				86DF5F121A8810890085F94B /* CalloutViewController.m in Sources */,
 				8643688A1A3920C100A7F930 /* FriendAnnotationView.m in Sources */,
 				86A6A6591A93A4EA00EDC774 /* AddFriendTableViewController.m in Sources */,
@@ -537,10 +537,10 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		864368761A39204F00A7F930 /* Main.storyboard */ = {
+		86C00D1C1A96D33B00BA27FD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				864368771A39204F00A7F930 /* Base */,
+				86C00D1D1A96D33B00BA27FD /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

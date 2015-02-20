@@ -18,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
     self.phoneField.delegate = self;
     // Do any additional setup after loading the view.
 }
@@ -169,7 +173,12 @@
 }
 
 #pragma mark -
-#pragma mark Segues
+#pragma mark Navigation
+
+-(void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    [self performSegueWithIdentifier:@"returnToMap" sender:self];
+}
 
 
 /*
