@@ -148,6 +148,7 @@
         marker.title = [annotation getInitials];
         marker.snippet = [annotation getTimeLabel];
         marker.annotation = annotation;
+        marker.groundAnchor = CGPointMake(0.5, 0.5);
         marker.map = mapView_;
     }
 }
@@ -300,7 +301,7 @@
         
         CGPoint annotation_point = [mapView_.projection pointForCoordinate:senderMarker.position];
         
-        [popoverController presentPopoverFromRect:CGRectMake(annotation_point.x - senderMarker.icon.size.width / 2, annotation_point.y - senderMarker.icon.size.height, senderMarker.icon.size.width, senderMarker.icon.size.height) inView:mapView_ permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale];
+        [popoverController presentPopoverFromRect:CGRectMake(annotation_point.x - senderMarker.icon.size.width/2, annotation_point.y - senderMarker.icon.size.height/2, senderMarker.icon.size.width, senderMarker.icon.size.height) inView:mapView_ permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale];
     } else {
         [self close:nil];
 //        [self mapView:mapView didDeselectAnnotationView:sender];
