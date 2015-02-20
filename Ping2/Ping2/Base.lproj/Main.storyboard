@@ -314,6 +314,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="eventCreateButton" destination="YAv-ku-MDb" id="who-VJ-RXU"/>
                         <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
                         <segue destination="xDY-Vw-REq" kind="custom" identifier="SettingsSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
                         <segue destination="Pj9-Zk-Ees" kind="push" identifier="ChooseFriendsSegue" id="38a-B6-bhE"/>

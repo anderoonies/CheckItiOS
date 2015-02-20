@@ -19,6 +19,8 @@
 
 //@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
+@property (weak, nonatomic) IBOutlet UIButton *eventCreateButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (nonatomic, strong) NSArray *friendList;
 

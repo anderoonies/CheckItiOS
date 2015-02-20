@@ -74,9 +74,16 @@
     [self generateAnnotations];
     [self gotoDefaultLocation];
     
+    _userAnnotation = [[UserAnnotation alloc] init];
+    _userAnnotation.name = @"Me";
+    
+    _userMarker = [[CustomGMSMarker alloc] init];
+    _userMarker.icon = [self makeAnnotationImage:_userAnnotation];
+    _userMarker.groundAnchor = CGPointMake(0.5, 0.5);
+    
     mapView_.delegate = self;
     
-    self.view = mapView_;
+    [self.view insertSubview:mapView_ atIndex:0];
     
     [mapView_ animateToViewingAngle:60];
 
@@ -209,7 +216,8 @@
     for (UIView *aView in [self.view subviews]) {
         if (([aView isKindOfClass:[NewEventView class]])&&(!CGRectContainsPoint(aView.frame, p)))
         {
-            _userMarker.map = nil;
+            self.eventCreateButton.enabled = YES;
+            [self hideMarkerButton];
             [self hideSubview];
         }
     }
@@ -308,11 +316,6 @@
 {
     popoverController.delegate = nil;
     popoverController = nil;
-    
-//    NSArray *selectedAnnotations = mapView.selectedAnnotations;
-//    for (MKAnnotationView *annotationView in selectedAnnotations) {
-//        [mapView deselectAnnotation:(id)annotationView animated:YES];
-//    }
 }
 
 - (void)close:(id)sender
@@ -328,18 +331,29 @@
 
 - (IBAction)addEventButtonPress:(id)sender
 {
-    CGPoint point = mapView_.center;
-    CLLocationCoordinate2D center = [mapView_.projection coordinateForPoint:point];
+    self.eventCreateButton.enabled = NO;
     
-    UserAnnotation *newUserAnnotation = [[UserAnnotation alloc] init];
-    newUserAnnotation.name = @"Me";
-    newUserAnnotation.coordinate = center;
+    CGPoint point = [mapView_.projection pointForCoordinate:mapView_.camera.target];
+    CLLocationCoordinate2D center = mapView_.camera.target;
     
-    _userAnnotation = newUserAnnotation;
+    _userAnnotation.coordinate = center;
     
-    _userMarker.map = nil;
+    UIButton *markerButton = [[UIButton alloc] init];
+    markerButton.tag = 3;
     
-    _userMarker.position = _userAnnotation.coordinate;
+    [markerButton setImage:_userMarker.icon forState:UIControlStateNormal];
+    
+    
+    CGRect endFrame = CGRectMake(point.x-_userMarker.icon.size.width / 2, point.y-_userMarker.icon.size.height / 2, _userMarker.icon.size.width, _userMarker.icon.size.height);
+    
+    CGRect startFrame = CGRectMake(point.x-_userMarker.icon.size.width / 2, 0, _userMarker.icon.size.width, _userMarker.icon.size.width);
+    
+    markerButton.frame = startFrame;
+    
+    [self.view addSubview:markerButton];
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{ markerButton.frame = endFrame; }];
     
     [self showSubview];
     
@@ -352,7 +366,7 @@
     [self.view addSubview:self.eventCreateSubview];
     
     self.eventCreateSubview.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.eventCreateSubview.frame.size.height);
-    [UIView animateWithDuration:.75
+    [UIView animateWithDuration:.5
                      animations:^{
                          self.eventCreateSubview.frame = CGRectMake(0,
                                                          self.view.frame.size.height - self.eventCreateSubview.frame.size.height,
@@ -362,25 +376,8 @@
      ];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"%f", [self.view viewWithTag:1].frame.origin.y);
-    UITouch *aTouch = [touches anyObject];
-    if (aTouch.tapCount == 1)
-    {
-        CGPoint p = [aTouch locationInView:self.view];
-        for (UIView *aView in [self.view subviews]) {
-            if (([aView isKindOfClass:[NewEventView class]])&&(!CGRectContainsPoint(aView.frame, p)))
-            {
-                _userMarker.map = nil;
-                [self hideSubview];
-            }
-        }
-    }
-}
-
 - (void)hideSubview {
-    [UIView animateWithDuration:.75
+    [UIView animateWithDuration:.25
                      animations:^{
                          self.eventCreateSubview.frame = CGRectMake(0,
                                                          self.view.frame.size.height,
@@ -388,6 +385,16 @@
                                                          self.eventCreateSubview.frame.size.height);
                      }
                      completion:^(BOOL finished){ [self.eventCreateSubview removeFromSuperview]; }
+     ];
+}
+
+- (void)hideMarkerButton {
+    UIView *markerButton = [self.view viewWithTag:3];
+    CGRect startFrame = CGRectMake(CGRectGetMaxX(markerButton.frame)-_userMarker.icon.size.width / 2, 0, _userMarker.icon.size.width, _userMarker.icon.size.width);
+
+    [UIView animateWithDuration:0.5
+                     animations:^{ markerButton.frame = startFrame; }
+                     completion:^(BOOL finished){ [markerButton removeFromSuperview];  }
      ];
 }
 
@@ -405,16 +412,26 @@
         return;
     }
     
+    CLLocationCoordinate2D centerCoord = mapView_.camera.target;
+    
+    
     PFObject *event = [PFObject objectWithClassName:@"event"];
     NSDate *curDate = [NSDate date];
     event[@"user"] = [PFUser currentUser];
     event[@"startTime"] = curDate;
     event[@"endTime"] = [NSDate dateWithTimeInterval:self.eventCreateSubview.minutes * 60 sinceDate:curDate];
     event[@"canSee"] = _friendList;
-    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:_userAnnotation.coordinate.latitude longitude:_userAnnotation.coordinate.longitude];
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:centerCoord.latitude longitude:centerCoord.longitude];
     event[@"location"] = point;
 
+    _userAnnotation.coordinate = centerCoord;
+    _userMarker.position = centerCoord;
+    _userMarker.map = mapView_;
+    
+    [[self.view viewWithTag:3] removeFromSuperview];
     [self hideSubview];
+    
+    self.eventCreateButton.enabled = YES;
     
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
