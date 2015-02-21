@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface Ping2Tests : XCTestCase
+@interface KetchTests : XCTestCase
 
 @end
 
-@implementation Ping2Tests
+@implementation KetchTests
 
 - (void)setUp {
     [super setUp];

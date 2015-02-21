@@ -49,7 +49,7 @@
 		86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BC28511A82614D006FF652 /* UserAnnotation.m */; };
 		86C00D1B1A96D31600BA27FD /* LeftToRightSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C00D1A1A96D31600BA27FD /* LeftToRightSegue.m */; };
 		86C00D1E1A96D33B00BA27FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C00D1C1A96D33B00BA27FD /* Main.storyboard */; };
-		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
+		86CFEBEF1A391E2A00D5D071 /* KetchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* KetchTests.m */; };
 		86D860191A951D3C00CA8E23 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860181A951D3C00CA8E23 /* AVFoundation.framework */; };
 		86D8601B1A951D4100CA8E23 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D8601A1A951D4100CA8E23 /* CoreData.framework */; };
 		86D8601D1A951D4700CA8E23 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D8601C1A951D4700CA8E23 /* CoreText.framework */; };
@@ -134,10 +134,10 @@
 		86C00D191A96D31600BA27FD /* LeftToRightSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftToRightSegue.h; sourceTree = "<group>"; };
 		86C00D1A1A96D31600BA27FD /* LeftToRightSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftToRightSegue.m; sourceTree = "<group>"; };
 		86C00D1D1A96D33B00BA27FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		86CFEBCF1A391E2A00D5D071 /* Ping2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ping2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		86CFEBCF1A391E2A00D5D071 /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		86CFEBE81A391E2A00D5D071 /* KetchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KetchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBED1A391E2A00D5D071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ping2Tests.m; sourceTree = "<group>"; };
+		86CFEBEE1A391E2A00D5D071 /* KetchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KetchTests.m; sourceTree = "<group>"; };
 		86D860181A951D3C00CA8E23 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		86D8601A1A951D4100CA8E23 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		86D8601C1A951D4700CA8E23 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -305,8 +305,8 @@
 				86DDA0BF1A85925A00C537F0 /* Bolts.framework */,
 				86A6A6551A93A25B00EDC774 /* ParseUI.framework */,
 				8605E6001A6EE979004C7E8F /* Frameworks */,
-				86CFEBD11A391E2A00D5D071 /* Ping2 */,
-				86CFEBEB1A391E2A00D5D071 /* Ping2Tests */,
+				86CFEBD11A391E2A00D5D071 /* Ketch */,
+				86CFEBEB1A391E2A00D5D071 /* KetchTests */,
 				86CFEBD01A391E2A00D5D071 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -314,13 +314,13 @@
 		86CFEBD01A391E2A00D5D071 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				86CFEBCF1A391E2A00D5D071 /* Ping2.app */,
-				86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */,
+				86CFEBCF1A391E2A00D5D071 /* Ketch.app */,
+				86CFEBE81A391E2A00D5D071 /* KetchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		86CFEBD11A391E2A00D5D071 /* Ping2 */ = {
+		86CFEBD11A391E2A00D5D071 /* Ketch */ = {
 			isa = PBXGroup;
 			children = (
 				8689F0551A793FA20067AD13 /* Images */,
@@ -336,15 +336,17 @@
 				8643687E1A39204F00A7F930 /* Info.plist */,
 				8643687F1A39204F00A7F930 /* main.m */,
 			);
+			name = Ketch;
 			path = Ping2;
 			sourceTree = "<group>";
 		};
-		86CFEBEB1A391E2A00D5D071 /* Ping2Tests */ = {
+		86CFEBEB1A391E2A00D5D071 /* KetchTests */ = {
 			isa = PBXGroup;
 			children = (
-				86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */,
+				86CFEBEE1A391E2A00D5D071 /* KetchTests.m */,
 				86CFEBEC1A391E2A00D5D071 /* Supporting Files */,
 			);
+			name = KetchTests;
 			path = Ping2Tests;
 			sourceTree = "<group>";
 		};
@@ -376,9 +378,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		86CFEBCE1A391E2A00D5D071 /* Ping2 */ = {
+		86CFEBCE1A391E2A00D5D071 /* Ketch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 86CFEBF21A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "Ping2" */;
+			buildConfigurationList = 86CFEBF21A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "Ketch" */;
 			buildPhases = (
 				86CFEBCB1A391E2A00D5D071 /* Sources */,
 				86CFEBCC1A391E2A00D5D071 /* Frameworks */,
@@ -388,14 +390,14 @@
 			);
 			dependencies = (
 			);
-			name = Ping2;
+			name = Ketch;
 			productName = Ping2;
-			productReference = 86CFEBCF1A391E2A00D5D071 /* Ping2.app */;
+			productReference = 86CFEBCF1A391E2A00D5D071 /* Ketch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		86CFEBE71A391E2A00D5D071 /* Ping2Tests */ = {
+		86CFEBE71A391E2A00D5D071 /* KetchTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 86CFEBF51A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "Ping2Tests" */;
+			buildConfigurationList = 86CFEBF51A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "KetchTests" */;
 			buildPhases = (
 				86CFEBE41A391E2A00D5D071 /* Sources */,
 				86CFEBE51A391E2A00D5D071 /* Frameworks */,
@@ -406,9 +408,9 @@
 			dependencies = (
 				86CFEBEA1A391E2A00D5D071 /* PBXTargetDependency */,
 			);
-			name = Ping2Tests;
+			name = KetchTests;
 			productName = Ping2Tests;
-			productReference = 86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */;
+			productReference = 86CFEBE81A391E2A00D5D071 /* KetchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -429,7 +431,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 86CFEBCA1A391E2A00D5D071 /* Build configuration list for PBXProject "Ping2" */;
+			buildConfigurationList = 86CFEBCA1A391E2A00D5D071 /* Build configuration list for PBXProject "Ketch" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -442,8 +444,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				86CFEBCE1A391E2A00D5D071 /* Ping2 */,
-				86CFEBE71A391E2A00D5D071 /* Ping2Tests */,
+				86CFEBCE1A391E2A00D5D071 /* Ketch */,
+				86CFEBE71A391E2A00D5D071 /* KetchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -506,7 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */,
+				86CFEBEF1A391E2A00D5D071 /* KetchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +517,7 @@
 /* Begin PBXTargetDependency section */
 		86CFEBEA1A391E2A00D5D071 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 86CFEBCE1A391E2A00D5D071 /* Ping2 */;
+			target = 86CFEBCE1A391E2A00D5D071 /* Ketch */;
 			targetProxy = 86CFEBE91A391E2A00D5D071 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -660,7 +662,7 @@
 				);
 				INFOPLIST_FILE = Ping2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ketch;
 			};
 			name = Debug;
 		};
@@ -690,7 +692,7 @@
 				);
 				INFOPLIST_FILE = Ping2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ketch;
 			};
 			name = Release;
 		};
@@ -708,7 +710,7 @@
 				);
 				INFOPLIST_FILE = Ping2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KetchTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ping2.app/Ping2";
 			};
 			name = Debug;
@@ -723,7 +725,7 @@
 				);
 				INFOPLIST_FILE = Ping2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KetchTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ping2.app/Ping2";
 			};
 			name = Release;
@@ -731,7 +733,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		86CFEBCA1A391E2A00D5D071 /* Build configuration list for PBXProject "Ping2" */ = {
+		86CFEBCA1A391E2A00D5D071 /* Build configuration list for PBXProject "Ketch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				86CFEBF01A391E2A00D5D071 /* Debug */,
@@ -740,7 +742,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		86CFEBF21A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "Ping2" */ = {
+		86CFEBF21A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "Ketch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				86CFEBF31A391E2A00D5D071 /* Debug */,
@@ -749,7 +751,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		86CFEBF51A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "Ping2Tests" */ = {
+		86CFEBF51A391E2A00D5D071 /* Build configuration list for PBXNativeTarget "KetchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				86CFEBF61A391E2A00D5D071 /* Debug */,

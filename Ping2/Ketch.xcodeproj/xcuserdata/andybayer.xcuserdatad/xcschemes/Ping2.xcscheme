@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "86CFEBCE1A391E2A00D5D071"
-               BuildableName = "Ping2.app"
-               BlueprintName = "Ping2"
-               ReferencedContainer = "container:Ping2.xcodeproj">
+               BuildableName = "Ketch.app"
+               BlueprintName = "Ketch"
+               ReferencedContainer = "container:Ketch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "86CFEBE71A391E2A00D5D071"
-               BuildableName = "Ping2Tests.xctest"
-               BlueprintName = "Ping2Tests"
-               ReferencedContainer = "container:Ping2.xcodeproj">
+               BuildableName = "KetchTests.xctest"
+               BlueprintName = "KetchTests"
+               ReferencedContainer = "container:Ketch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "86CFEBE71A391E2A00D5D071"
-               BuildableName = "Ping2Tests.xctest"
-               BlueprintName = "Ping2Tests"
-               ReferencedContainer = "container:Ping2.xcodeproj">
+               BuildableName = "KetchTests.xctest"
+               BlueprintName = "KetchTests"
+               ReferencedContainer = "container:Ketch.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "86CFEBCE1A391E2A00D5D071"
-            BuildableName = "Ping2.app"
-            BlueprintName = "Ping2"
-            ReferencedContainer = "container:Ping2.xcodeproj">
+            BuildableName = "Ketch.app"
+            BlueprintName = "Ketch"
+            ReferencedContainer = "container:Ketch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "86CFEBCE1A391E2A00D5D071"
-            BuildableName = "Ping2.app"
-            BlueprintName = "Ping2"
-            ReferencedContainer = "container:Ping2.xcodeproj">
+            BuildableName = "Ketch.app"
+            BlueprintName = "Ketch"
+            ReferencedContainer = "container:Ketch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "86CFEBCE1A391E2A00D5D071"
-            BuildableName = "Ping2.app"
-            BlueprintName = "Ping2"
-            ReferencedContainer = "container:Ping2.xcodeproj">
+            BuildableName = "Ketch.app"
+            BlueprintName = "Ketch"
+            ReferencedContainer = "container:Ketch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
