@@ -197,7 +197,6 @@
 		8605E6001A6EE979004C7E8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				869849F51A98FC0E0072794A /* GoogleMaps.framework */,
 				86D860261A951D6B00CA8E23 /* OpenGLES.framework */,
 				86D860241A951D6100CA8E23 /* libicucore.dylib */,
 				86D860221A951D5B00CA8E23 /* libc++.dylib */,
@@ -207,6 +206,7 @@
 				86D8601A1A951D4100CA8E23 /* CoreData.framework */,
 				86D860181A951D3C00CA8E23 /* AVFoundation.framework */,
 				86D860161A951D0200CA8E23 /* GoogleMaps.bundle */,
+				869849F51A98FC0E0072794A /* GoogleMaps.framework */,
 				86A6A6551A93A25B00EDC774 /* ParseUI.framework */,
 				86DDA0BF1A85925A00C537F0 /* Bolts.framework */,
 				86DDA0C01A85925A00C537F0 /* Parse.framework */,
@@ -568,7 +568,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/",
+					"./**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -615,7 +618,10 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/",
+					"./**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
