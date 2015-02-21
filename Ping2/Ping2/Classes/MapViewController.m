@@ -13,6 +13,7 @@
 #import "DetailViewController.h"
 #import "FriendAnnotationView.h"
 #import "CustomGMSMarker.h"
+#import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -456,12 +457,6 @@
 
 - (IBAction)settingsPressed:(id)sender {
     [self performSegueWithIdentifier:@"SettingsSegue" sender:sender];
-//    PFUser *currentUser = [PFUser currentUser];
-//    if (currentUser) {
-//        [self performSegueWithIdentifier:@"SettingsSegue" sender:sender];
-//    } else {
-//        [self performSegueWithIdentifier:@"LoginSegue" sender:sender];
-//    }
 }
 
 - (IBAction)pushAddLocation:(id)sender {
