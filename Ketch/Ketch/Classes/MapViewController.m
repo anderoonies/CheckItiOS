@@ -10,7 +10,6 @@
 #import "MapViewController.h"
 #import "FriendAnnotation.h"
 #import "UserAnnotation.h"
-#import "DetailViewController.h"
 #import "FriendAnnotationView.h"
 #import "CustomGMSMarker.h"
 #import <GoogleMaps/GoogleMaps.h>
@@ -20,6 +19,7 @@
 @interface MapViewController () <GMSMapViewDelegate, WYPopoverControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *mapMarkers;
+@property (nonatomic, strong) NSMutableArray *parseEvents;
 @property (nonatomic, strong) UIPopoverController *bridgePopoverController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
@@ -65,6 +65,11 @@
 {
     [super viewWillAppear:animated];
     
+    if (![PFUser currentUser]) {
+        [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
+    }
+    
+    [self generateAnnotations];
 }
 
 - (void)viewDidLoad
@@ -155,49 +160,38 @@
 }
 
 - (void)generateAnnotations {
-#define THIRTY_MINUTES_IN_SECONDS 1800
+    PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
+    [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
+    [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
     
-    NSDate *curDate = [NSDate date];
-    
-    NSDateComponents *time = [[NSCalendar currentCalendar]
-                              components:NSCalendarUnitHour | NSCalendarUnitMinute
-                              fromDate:curDate];
-    NSInteger minutes = [time minute];
-    float minuteUnit = ceil((float) minutes / 15.0);
-    minutes = minuteUnit * 5.0;
-    [time setMinute: minutes];
-    curDate = [[NSCalendar currentCalendar] dateFromComponents:time];
-
-    FriendAnnotation *friend1 = [[FriendAnnotation alloc] init];
-    friend1.name = @"James Ross";
-    friend1.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:curDate];
-    friend1.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS sinceDate:friend1.startTime];
-    friend1.coordinate = CLLocationCoordinate2DMake(42.055969, -87.673255);
-    
-    
-    FriendAnnotation *friend2 = [[FriendAnnotation alloc] init];
-    friend2.name = @"Lindsay Weir";
-    friend2.startTime = curDate;
-    friend2.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:friend2.startTime];
-    friend2.coordinate = CLLocationCoordinate2DMake(42.053213, -87.672268);
-    
-    FriendAnnotation *friend3 = [[FriendAnnotation alloc] init];
-    friend3.name = @"Rust Hale";
-    friend3.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
-    friend3.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend3.startTime];
-    friend3.coordinate = CLLocationCoordinate2DMake(42.057833, -87.676388);
-    
-    
-    FriendAnnotation *friend4 = [[FriendAnnotation alloc] init];
-    friend4.name = @"Will Levi";
-    friend4.startTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 2 sinceDate:curDate];
-    friend4.endTime = [NSDate dateWithTimeInterval:THIRTY_MINUTES_IN_SECONDS * 3 sinceDate:friend4.startTime];
-    friend4.coordinate = CLLocationCoordinate2DMake(42.054025, -87.676388);
-    
-    [self.mapMarkers addObject:friend1];
-    [self.mapMarkers addObject:friend2];
-    [self.mapMarkers addObject:friend3];
-    [self.mapMarkers addObject:friend4];
+    [eventQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects) {
+                if (![_parseEvents containsObject:object]) {
+                    FriendAnnotation *friend = [[FriendAnnotation alloc] init];
+                    PFObject *creator = [object[@"user"] fetchIfNeeded];
+                    friend.name = creator[@"username"];
+                    friend.startTime = object[@"startTime"];
+                    friend.endTime = object[@"endTime"];
+                    PFGeoPoint *geoPoint = object[@"location"];
+                    friend.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                    
+                    CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude)];
+                    marker.appearAnimation = kGMSMarkerAnimationPop;
+                    marker.icon = [self makeAnnotationImage:friend];
+                    marker.title = [friend getInitials];
+                    marker.snippet = [friend getTimeLabel];
+                    marker.annotation = friend;
+                    marker.groundAnchor = CGPointMake(0.5, 0.5);
+                    marker.map = mapView_;
+                    
+                    [_parseEvents addObject:object];
+                }
+             }
+        } else {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 #pragma mark - GMSMapViewDelegate
@@ -445,22 +439,17 @@
             NSLog(@"%@", error);
         }
     }];
-    
-}
-
-- (IBAction)segmentPressed:(id)sender {
-    
 }
 
 #pragma mark -
 #pragma mark Buttons
 
 - (IBAction)settingsPressed:(id)sender {
-    [self performSegueWithIdentifier:@"SettingsSegue" sender:sender];
-}
-
-- (IBAction)pushAddLocation:(id)sender {
-    [self performSegueWithIdentifier:@"AddLocationSegue" sender:self];
+    if (![PFUser currentUser]) {
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
+    }
 }
 
 #pragma mark - 

@@ -188,9 +188,9 @@
                 }
             }
         }
-        
-        cell.textLabel.text = object[@"username"];
     }
+    
+    cell.textLabel.text = object[@"username"];
 
     return cell;
 }
