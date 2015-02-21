@@ -52,10 +52,10 @@
 
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    UIViewController *destinationVC = [sender destinationViewController];
-    destinationVC.navigationController.navigationBarHidden = NO;
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    UIViewController *destinationVC = [sender destinationViewController];
+//    destinationVC.navigationController.navigationBarHidden = NO;
+//}
 
 /*
 #pragma mark - Navigation

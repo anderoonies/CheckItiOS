@@ -70,7 +70,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Hqe-ZI-r16" kind="custom" identifier="LeftToRightSegue" customClass="LeftToRightSegue" id="reG-KO-6Fy"/>
+                                    <segue destination="Hqe-ZI-r16" kind="custom" identifier="NewUserSegue" customClass="LeftToRightSegue" id="reG-KO-6Fy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oB-af-A9E">
@@ -79,7 +79,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="d8U-fu-Ytr" kind="custom" customClass="LeftToRightSegue" id="Y6M-ka-vsV"/>
+                                    <segue destination="d8U-fu-Ytr" kind="custom" identifier="LoginSegue" customClass="LeftToRightSegue" id="Y6M-ka-vsV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -313,7 +313,7 @@
                     <connections>
                         <outlet property="eventCreateButton" destination="YAv-ku-MDb" id="who-VJ-RXU"/>
                         <segue destination="1bU-kw-DKs" kind="push" identifier="ShowDetailsSegue" id="b4P-ba-yHc"/>
-                        <segue destination="xDY-Vw-REq" kind="custom" identifier="SettingsSegue" customClass="SettingsSegue" id="0s6-b0-3AU"/>
+                        <segue destination="xDY-Vw-REq" kind="custom" identifier="SettingsSegue" customClass="LeftToRightSegue" id="0s6-b0-3AU"/>
                         <segue destination="Pj9-Zk-Ees" kind="push" identifier="ChooseFriendsSegue" id="38a-B6-bhE"/>
                     </connections>
                 </viewController>

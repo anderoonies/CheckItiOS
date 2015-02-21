@@ -47,7 +47,7 @@
 		86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A6A6551A93A25B00EDC774 /* ParseUI.framework */; };
 		86A6A6591A93A4EA00EDC774 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A6A6581A93A4EA00EDC774 /* AddFriendTableViewController.m */; };
 		86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BC28511A82614D006FF652 /* UserAnnotation.m */; };
-		86C00D1B1A96D31600BA27FD /* SettingsSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C00D1A1A96D31600BA27FD /* SettingsSegue.m */; };
+		86C00D1B1A96D31600BA27FD /* LeftToRightSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C00D1A1A96D31600BA27FD /* LeftToRightSegue.m */; };
 		86C00D1E1A96D33B00BA27FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C00D1C1A96D33B00BA27FD /* Main.storyboard */; };
 		86CFEBEF1A391E2A00D5D071 /* Ping2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CFEBEE1A391E2A00D5D071 /* Ping2Tests.m */; };
 		86D860191A951D3C00CA8E23 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860181A951D3C00CA8E23 /* AVFoundation.framework */; };
@@ -131,8 +131,8 @@
 		86A6A6581A93A4EA00EDC774 /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 		86BC28501A82614D006FF652 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
 		86BC28511A82614D006FF652 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
-		86C00D191A96D31600BA27FD /* SettingsSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegue.h; sourceTree = "<group>"; };
-		86C00D1A1A96D31600BA27FD /* SettingsSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSegue.m; sourceTree = "<group>"; };
+		86C00D191A96D31600BA27FD /* LeftToRightSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftToRightSegue.h; sourceTree = "<group>"; };
+		86C00D1A1A96D31600BA27FD /* LeftToRightSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftToRightSegue.m; sourceTree = "<group>"; };
 		86C00D1D1A96D33B00BA27FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		86CFEBCF1A391E2A00D5D071 /* Ping2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBE81A391E2A00D5D071 /* Ping2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ping2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,8 +239,8 @@
 				8614B9C41A86794B00455EB4 /* NewEventView.m */,
 				86E5BE471A7C02A8003E2F48 /* Controllers */,
 				86A6A65D1A93A54F00EDC774 /* Annotations */,
-				86C00D191A96D31600BA27FD /* SettingsSegue.h */,
-				86C00D1A1A96D31600BA27FD /* SettingsSegue.m */,
+				86C00D191A96D31600BA27FD /* LeftToRightSegue.h */,
+				86C00D1A1A96D31600BA27FD /* LeftToRightSegue.m */,
 				864368881A3920C100A7F930 /* FriendAnnotationView.h */,
 				864368891A3920C100A7F930 /* FriendAnnotationView.m */,
 				86333DA11A96226E006CB72F /* CustomGMSMarker.h */,
@@ -487,7 +487,7 @@
 				8652051F1A8A4D0D006954BA /* WYStoryboardPopoverSegue.m in Sources */,
 				86822CD61A76BEC2005E09B2 /* NewUserViewController.m in Sources */,
 				865251BC1A7C3CE100523F5D /* SettingsViewController.m in Sources */,
-				86C00D1B1A96D31600BA27FD /* SettingsSegue.m in Sources */,
+				86C00D1B1A96D31600BA27FD /* LeftToRightSegue.m in Sources */,
 				86BC28521A82614D006FF652 /* UserAnnotation.m in Sources */,
 				864368831A39204F00A7F930 /* FriendAnnotation.m in Sources */,
 				86333DA31A96226E006CB72F /* CustomGMSMarker.m in Sources */,

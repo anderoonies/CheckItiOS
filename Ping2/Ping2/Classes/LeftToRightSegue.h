@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsSegue : UIStoryboardSegue
+@interface LeftToRightSegue : UIStoryboardSegue
 
 @end

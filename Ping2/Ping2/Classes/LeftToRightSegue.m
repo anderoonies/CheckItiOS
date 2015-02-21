@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Andy Bayer. All rights reserved.
 //
 
-#import "SettingsSegue.h"
+#import "LeftToRightSegue.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation SettingsSegue
+@implementation LeftToRightSegue
 
 -(void)perform {
     
