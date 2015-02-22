@@ -76,6 +76,10 @@
 {
     [super viewDidLoad];
     
+    if (![PFUser currentUser]) {
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    }
+    
     [self generateAnnotations];
     [self gotoDefaultLocation];
     
