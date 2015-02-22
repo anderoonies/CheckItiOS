@@ -66,30 +66,21 @@
     } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         [self checkContacts];
     }
-    
-//    NSMutableArray *friendIDs = [[NSMutableArray alloc] init];
-//    
-//    [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (objects) {
-//            for (PFObject *object in objects) {
-//                NSLog(@"%@", object.objectId);
-//                [friendIDs addObject:object.objectId];
-//            }
-//        } else {
-//            NSLog(@"%@", error.userInfo);
-//        }
-//    }];
-    
-//    NSArray *oids = [[[[PFUser currentUser] valueForKey:@"friend"] query] valueForKey:@"objectID"];
-    
+
     PFRelation *friendRelation = [[PFUser currentUser] objectForKey:@"friend"];
     PFQuery *friendQuery = [friendRelation query];
     friendQuery.limit = 1000;
     
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"phone" containedIn:_friendNumbers];
-    [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
-    return query;
+    if ([friendQuery countObjects]==0) {
+        [self friendAlert];
+        return friendQuery;
+    } else {
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"phone" containedIn:_friendNumbers];
+        [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
+        return query;
+    }
+    
 }
 
 - (void)checkContacts
@@ -203,6 +194,49 @@
     }];
     
     [[PFUser currentUser] saveInBackground];
+}
+
+#pragma mark -
+#pragma mark Friend Alert
+
+#define ADD_FRIEND 5
+
+- (void)friendAlert {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter username"
+                                                    message:nil
+                                                   delegate:self
+                                          cancelButtonTitle:@"Continue"
+                                          otherButtonTitles:nil];
+    
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.tag = ADD_FRIEND;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeDefault;
+    alertTextField.placeholder = @"Friend's username";
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSString *enteredText = [[alertView textFieldAtIndex:0] text];
+    if (alertView.tag == ADD_FRIEND) {
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:enteredText];
+        
+        PFUser *friend = (PFUser *)[query getFirstObject];
+        if (friend == nil) {
+            return;
+        }
+        
+        NSLog(@"Found %@", friend.username);
+        
+        PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
+        [relation addObject:friend];
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"saved friend");
+            }
+        }];
+    }
 }
 
 /*

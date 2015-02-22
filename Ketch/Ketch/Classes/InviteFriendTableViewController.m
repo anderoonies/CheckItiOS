@@ -100,46 +100,6 @@
     return query;
 }
 
-#pragma mark -
-#pragma mark Friends
-
-// define a constant to be used as a tag for the UI Alert View
-#define ADD_FRIEND 1
-
-- (IBAction)addFriend:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter username"
-                                                    message:nil
-                                                    delegate:self
-                                                    cancelButtonTitle:@"Continue"
-                                                    otherButtonTitles:nil];
-    
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alert.tag = ADD_FRIEND;
-    UITextField * alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeDefault;
-    alertTextField.placeholder = @"Friend's username";
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSString *enteredText = [[alertView textFieldAtIndex:0] text];
-    if (alertView.tag == ADD_FRIEND) {
-        PFQuery *query = [PFUser query];
-        [query whereKey:@"username" equalTo:enteredText];
-        PFUser *friend = (PFUser *)[query getFirstObject];
-        if (friend == nil) {
-            return;
-        }
-        
-        NSLog(@"Found %@", friend.username);
-        
-        PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
-        [relation addObject:friend];
-        [[PFUser currentUser] saveInBackground];
-        
-        [self.friendList addObject:friend];
-    }
-}
 
 #pragma mark -
 #pragma mark Selections
