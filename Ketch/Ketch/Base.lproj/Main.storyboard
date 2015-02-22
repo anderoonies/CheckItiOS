@@ -181,8 +181,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkZ-1l-qfH">
+                                <rect key="frame" x="126" y="107" width="69" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="9hn-l5-9I9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="LkZ-1l-qfH" secondAttribute="centerY" constant="175" id="fsD-Vb-guZ"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="userLabel" destination="i1u-nP-IS1" id="H34-HI-mf3"/>

@@ -49,6 +49,10 @@
     
 }
 
+- (IBAction)logoutPressed:(id)sender {
+    [PFUser logOut];
+}
+
 /*
 #pragma mark - Navigation
 

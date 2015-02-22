@@ -65,20 +65,12 @@
 {
     [super viewWillAppear:animated];
     
-    if (![PFUser currentUser]) {
-        [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
-    }
-    
     [self generateAnnotations];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if (![PFUser currentUser]) {
-        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-    }
     
     [self generateAnnotations];
     [self gotoDefaultLocation];
@@ -164,6 +156,11 @@
 }
 
 - (void)generateAnnotations {
+    if ([PFUser currentUser]==nil) {
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+        return;
+    }
+    
     PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
     [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
