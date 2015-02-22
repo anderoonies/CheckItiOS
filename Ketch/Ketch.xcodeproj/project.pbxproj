@@ -54,6 +54,7 @@
 		8677B2D01A990FD700C3733A /* KetchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2CF1A990FD700C3733A /* KetchTests.m */; };
 		8677B2D31A991F6100C3733A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2D21A991F6100C3733A /* SettingsViewController.m */; };
 		86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A6A6551A93A25B00EDC774 /* ParseUI.framework */; };
+		86CA22F51A9A98F3009A81E1 /* ContactUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CA22F41A9A98F3009A81E1 /* ContactUtilities.m */; };
 		86D860191A951D3C00CA8E23 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860181A951D3C00CA8E23 /* AVFoundation.framework */; };
 		86D8601B1A951D4100CA8E23 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D8601A1A951D4100CA8E23 /* CoreData.framework */; };
 		86D8601D1A951D4700CA8E23 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D8601C1A951D4700CA8E23 /* CoreText.framework */; };
@@ -143,6 +144,8 @@
 		8677B2D11A991F6100C3733A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8677B2D21A991F6100C3733A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		86A6A6551A93A25B00EDC774 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (3)/ParseUI.framework"; sourceTree = "<group>"; };
+		86CA22F31A9A98F3009A81E1 /* ContactUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUtilities.h; sourceTree = "<group>"; };
+		86CA22F41A9A98F3009A81E1 /* ContactUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUtilities.m; sourceTree = "<group>"; };
 		86CFEBCF1A391E2A00D5D071 /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CFEBE81A391E2A00D5D071 /* KetchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KetchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D860181A951D3C00CA8E23 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -255,6 +258,8 @@
 				8677B2D21A991F6100C3733A /* SettingsViewController.m */,
 				8677B27F1A990FB900C3733A /* AddFriendTableViewController.h */,
 				8677B2801A990FB900C3733A /* AddFriendTableViewController.m */,
+				86CA22F31A9A98F3009A81E1 /* ContactUtilities.h */,
+				86CA22F41A9A98F3009A81E1 /* ContactUtilities.m */,
 				8677B2811A990FB900C3733A /* CalloutViewController.h */,
 				8677B2821A990FB900C3733A /* CalloutViewController.m */,
 				8677B2831A990FB900C3733A /* CreateEventViewController.h */,
@@ -455,6 +460,7 @@
 				8677B2B31A990FB900C3733A /* AddFriendTableViewController.m in Sources */,
 				8677B2B81A990FB900C3733A /* FriendAnnotation.m in Sources */,
 				8677B2B61A990FB900C3733A /* CustomGMSMarker.m in Sources */,
+				86CA22F51A9A98F3009A81E1 /* ContactUtilities.m in Sources */,
 				8677B2B51A990FB900C3733A /* CreateEventViewController.m in Sources */,
 				8677B2CC1A990FB900C3733A /* WYStoryboardPopoverSegue.m in Sources */,
 				8677B2BA1A990FB900C3733A /* InviteFriendTableViewController.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "AddFriendTableViewController.h"
+#import "ContactUtilities.h"
 #import <AddressBook/AddressBook.h>
 
 @interface AddFriendTableViewController ()
@@ -53,10 +54,12 @@
     CFErrorRef *error = NULL;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
     
+    ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
+    
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
             if (granted) {
-                [self checkContacts];
+                _friendNumbers = [contactUtilities getCleanNumbers];
             } else {
                 // User denied access
                 // Display an alert telling user the contact could not be added
@@ -64,7 +67,7 @@
             }
         });
     } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
-        [self checkContacts];
+        _friendNumbers = [contactUtilities getCleanNumbers];
     }
 
     PFRelation *friendRelation = [[PFUser currentUser] objectForKey:@"friend"];
@@ -83,88 +86,17 @@
     
 }
 
-- (void)checkContacts
-{
-    CFErrorRef *error = NULL;
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
-    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
-    
-    NSLog(@"%ld", numberOfPeople);
-    
-    for(int i = 0; i < numberOfPeople; i++) {
-        
-        ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-        
-        NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-        NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
-        NSLog(@"Name:%@ %@", firstName, lastName);
-        
-        ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-        
-        for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
-            NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-            if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
-                phoneNumber = [@"+" stringByAppendingString:phoneNumber];
-            } else if(![[phoneNumber substringToIndex:1] isEqual:@"+"]) {
-                phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
-            }
-            
-            // get rid of all characters for consistency in lookups
-            phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()  -."]] componentsJoinedByString:@""];
-            
-            [_friendNumbers addObject:phoneNumber];
-        }
-        
-        NSLog(@"=============================================");
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
     
+    ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
+    
     NSLog(@"%@", object);
     
     if (object[@"phone"]) {
-        NSString *friendNumber = object[@"phone"];
-        
-        CFErrorRef *error = NULL;
-        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
-        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-        CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
-        
-        for(int i = 0; i < numberOfPeople; i++) {
-            
-            ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-            
-            NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-            NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
-            
-            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-            
-            for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
-                NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-                if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
-                    phoneNumber = [@"+" stringByAppendingString:phoneNumber];
-                } else if(![[phoneNumber substringToIndex:1] isEqual:@"+"]) {
-                    phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
-                }
-                
-                // get rid of all characters for consistency in lookups
-                phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()  -."]] componentsJoinedByString:@""];
-                
-                if ([phoneNumber isEqualToString:friendNumber]) {
-                    if (lastName) {
-                        cell.textLabel.text = [firstName stringByAppendingString:[@" " stringByAppendingString:lastName]];
-                    } else {
-                        cell.textLabel.text = firstName;
-                    }
-                    return cell;
-                }
-            }
-        }
-        
+        cell.textLabel.text = [contactUtilities phoneToName:object[@"phone"]];
+    } else {
         cell.textLabel.text = object[@"username"];
     }
     
@@ -182,7 +114,6 @@
     
     PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
 
-    
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:newFriend.objectId block:^(PFObject *object, NSError *error) {
         if (object) {
@@ -194,6 +125,7 @@
     }];
     
     [[PFUser currentUser] saveInBackground];
+    [self loadObjects];
 }
 
 #pragma mark -
@@ -237,6 +169,11 @@
             }
         }];
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    PFQueryTableViewController *destination = [sender destinationViewController];
+    [destination loadObjects];
 }
 
 /*

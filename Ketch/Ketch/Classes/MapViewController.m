@@ -12,6 +12,7 @@
 #import "UserAnnotation.h"
 #import "FriendAnnotationView.h"
 #import "CustomGMSMarker.h"
+#import "ContactUtilities.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
@@ -161,6 +162,8 @@
         return;
     }
     
+    ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
+    
     PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
     [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
@@ -171,7 +174,7 @@
                 if (![_parseEvents containsObject:object]) {
                     FriendAnnotation *friend = [[FriendAnnotation alloc] init];
                     PFObject *creator = [object[@"user"] fetchIfNeeded];
-                    friend.name = creator[@"username"];
+                    friend.name = [contactUtilities phoneToName:creator[@"phone"]];
                     friend.startTime = object[@"startTime"];
                     friend.endTime = object[@"endTime"];
                     PFGeoPoint *geoPoint = object[@"location"];
