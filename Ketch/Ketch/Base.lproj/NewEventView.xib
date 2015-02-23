@@ -25,33 +25,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1G-IM-NBW">
-                    <rect key="frame" x="0.0" y="71" width="320" height="62"/>
-                    <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aHf-z9-hns">
-                            <rect key="frame" x="8" y="17" width="304" height="29"/>
-                            <segments>
-                                <segment title="30"/>
-                                <segment title="60"/>
-                                <segment title="120"/>
-                                <segment title="120"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentPressed:" destination="iN0-l3-epB" eventType="valueChanged" id="rRG-f2-d4O"/>
-                            </connections>
-                        </segmentedControl>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
                     <rect key="frame" x="0.0" y="141" width="320" height="66"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRA-Tl-S5H">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRA-Tl-S5H">
                             <rect key="frame" x="297" y="21" width="15" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="24" id="b5L-vC-dxs"/>
-                                <constraint firstAttribute="width" constant="15" id="gVr-Wy-gMm"/>
-                            </constraints>
                             <state key="normal" image="table_indicator">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -59,7 +37,7 @@
                                 <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QsR-Ti-OSj"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Invite friends..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invite friends..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
                             <rect key="frame" x="8" y="22" width="273" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -67,26 +45,30 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="9VE-Bo-RAd" firstAttribute="top" secondItem="XII-o0-zqe" secondAttribute="top" constant="22" id="5O4-8l-qZn"/>
-                        <constraint firstAttribute="trailing" secondItem="wRA-Tl-S5H" secondAttribute="trailing" constant="8" id="rzN-OL-8z6"/>
-                        <constraint firstItem="9VE-Bo-RAd" firstAttribute="leading" secondItem="XII-o0-zqe" secondAttribute="leading" constant="8" id="vw8-Hm-wja"/>
-                    </constraints>
                     <connections>
                         <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QPf-q1-Rw5"/>
                     </connections>
                 </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNq-yy-7TI" customClass="CustomScrollView">
+                    <rect key="frame" x="0.0" y="65" width="320" height="62"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-GL-nJp">
+                            <rect key="frame" x="-184" y="19" width="1076" height="24"/>
+                            <string key="text">test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text </string>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="XII-o0-zqe" secondAttribute="trailing" id="Bpn-PO-VbY"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="buttonView" destination="bK3-v5-iBL" id="yfI-aM-Wao"/>
                 <outlet property="friendListLabel" destination="9VE-Bo-RAd" id="8QX-ut-bLH"/>
                 <outlet property="friendView" destination="XII-o0-zqe" id="OC6-i6-xGQ"/>
-                <outlet property="timeView" destination="e1G-IM-NBW" id="OAr-ya-8BK"/>
+                <outlet property="timeScrollView" destination="gNq-yy-7TI" id="ACF-Mj-Xw1"/>
             </connections>
             <point key="canvasLocation" x="393" y="-504"/>
         </view>

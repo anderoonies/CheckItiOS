@@ -97,13 +97,13 @@
                                                CGRectGetWidth(self.eventCreateSubview.frame),
                                                CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
     
-    self.eventCreateSubview.timeView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
+    self.eventCreateSubview.timeScrollView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
                                              CGRectGetMaxY(self.eventCreateSubview.buttonView.frame),
                                              CGRectGetWidth(self.eventCreateSubview.frame),
                                              CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
     
     self.eventCreateSubview.friendView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-                                               CGRectGetMaxY(self.eventCreateSubview.timeView.frame),
+                                               CGRectGetMaxY(self.eventCreateSubview.timeScrollView.frame),
                                                CGRectGetWidth(self.eventCreateSubview.frame),
                                                CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
     
