@@ -11,6 +11,11 @@
 
 @implementation CustomScrollView
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -30,12 +35,12 @@
                             [NSNumber numberWithFloat:1.0], nil];
     hMaskLayer.startPoint = CGPointMake(0, 0.5);
     hMaskLayer.endPoint = CGPointMake(1.0, 0.5);
-    hMaskLayer.bounds = self.bounds;
+    hMaskLayer.bounds = self.superview.frame;
     hMaskLayer.anchorPoint = CGPointZero;
     
     // Set the frame
     
-    self.layer.mask = hMaskLayer;
+    self.superview.layer.mask = hMaskLayer;
     
     [CATransaction commit];
 }

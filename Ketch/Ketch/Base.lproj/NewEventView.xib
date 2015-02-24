@@ -10,6 +10,24 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
+                    <rect key="frame" x="0.0" y="71" width="320" height="62"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNq-yy-7TI" customClass="CustomScrollView">
+                            <rect key="frame" x="0.0" y="3" width="320" height="62"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-GL-nJp">
+                                    <rect key="frame" x="-184" y="19" width="1076" height="24"/>
+                                    <string key="text">test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text </string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                     <subviews>
@@ -49,18 +67,6 @@
                         <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QPf-q1-Rw5"/>
                     </connections>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNq-yy-7TI" customClass="CustomScrollView">
-                    <rect key="frame" x="0.0" y="65" width="320" height="62"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-GL-nJp">
-                            <rect key="frame" x="-184" y="19" width="1076" height="24"/>
-                            <string key="text">test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text </string>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -69,6 +75,7 @@
                 <outlet property="friendListLabel" destination="9VE-Bo-RAd" id="8QX-ut-bLH"/>
                 <outlet property="friendView" destination="XII-o0-zqe" id="OC6-i6-xGQ"/>
                 <outlet property="timeScrollView" destination="gNq-yy-7TI" id="ACF-Mj-Xw1"/>
+                <outlet property="timeView" destination="IdO-H6-1cS" id="xt7-sy-VTq"/>
             </connections>
             <point key="canvasLocation" x="393" y="-504"/>
         </view>

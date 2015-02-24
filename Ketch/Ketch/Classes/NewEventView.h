@@ -11,6 +11,7 @@
 
 @interface NewEventView : UIView
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property (weak, nonatomic) IBOutlet UIView *timeView;
 @property (weak, nonatomic) IBOutlet CustomScrollView *timeScrollView;
 @property (weak, nonatomic) IBOutlet UIView *friendView;
 @property (weak, nonatomic) IBOutlet UILabel *friendListLabel;
