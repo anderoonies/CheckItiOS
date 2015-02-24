@@ -297,7 +297,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Friends" id="wsF-5t-DEl">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="CLp-OX-amU"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="CLp-OX-amU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3L-Ko-QFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
