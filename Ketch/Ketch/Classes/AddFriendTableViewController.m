@@ -74,13 +74,14 @@
     PFQuery *friendQuery = [friendRelation query];
     friendQuery.limit = 1000;
     
-    if ([friendQuery countObjects]==0) {
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"phone" containedIn:_friendNumbers];
+    [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
+    
+    if ([query countObjects]==0) {
         [self friendAlert];
         return friendQuery;
     } else {
-        PFQuery *query = [PFUser query];
-        [query whereKey:@"phone" containedIn:_friendNumbers];
-        [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
         return query;
     }
     
