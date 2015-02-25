@@ -35,6 +35,8 @@
     self = [super initWithCoder:aCoder];
     if (self) {
         // The key of the PFObject to display in the label of the default cell style
+        self.parseClassName = @"friend";
+        
         self.textKey = @"username";
         
         // Whether the built-in pull-to-refresh is enabled
@@ -125,7 +127,7 @@
         }
     }];
     
-    [[PFUser currentUser] saveInBackground];
+    [[PFUser currentUser] save];
     [self loadObjects];
 }
 
