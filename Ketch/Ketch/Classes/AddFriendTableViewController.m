@@ -8,6 +8,7 @@
 
 #import "AddFriendTableViewController.h"
 #import "ContactUtilities.h"
+#import "InviteFriendTableViewController.h"
 #import <AddressBook/AddressBook.h>
 
 @interface AddFriendTableViewController ()
@@ -19,12 +20,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self loadObjects];
+    
+    _friendList = [[NSMutableArray alloc] initWithCapacity:[self.objects count]];
+    
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        NSInteger numberOfViewControllers = self.navigationController.viewControllers.count;
+        InviteFriendTableViewController *destinationVC = (InviteFriendTableViewController *)[self.navigationController.viewControllers objectAtIndex:numberOfViewControllers - 2];
+        
+        [destinationVC loadObjects];
+    }
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark -
@@ -99,6 +114,9 @@
     
     if (object[@"phone"]) {
         cell.textLabel.text = [contactUtilities phoneToName:object[@"phone"]];
+        if (cell.textLabel.text==nil) {
+            cell.textLabel.text = object[@"username"];
+        }
     } else {
         cell.textLabel.text = object[@"username"];
     }
@@ -106,14 +124,45 @@
     return cell;
 }
 
+- (void)objectsDidLoad:(NSError *)error {
+    _friendList = [NSMutableArray arrayWithArray:self.objects];
+    [super objectsDidLoad:error];
+}
+
+- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+    return _friendList[indexPath.row];
+}
+
+#pragma mark -
+#pragma mark Table View Delegate
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if ([_friendList count]>0) {
+        return [_friendList count];
+    } else {
+        return [self.objects count];
+    }
+}
+
 #pragma mark -
 #pragma mark Selections
 - (IBAction)addFriendPressed:(id)sender {
-    [(UIButton *)sender setHidden:YES];
+    UIButton *addButton = (UIButton *)sender;
+    [addButton setTitle:@"Added" forState:UIControlStateSelected];
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
     
-    PFUser *newFriend = [self.objects objectAtIndex:[indexPath row]];
+    PFUser *newFriend = [_friendList objectAtIndex:[indexPath row]];
+    
+//    [_friendList removeObjectAtIndex:indexPath.row];
+//    
+//    NSLog(@"%ld", (long)indexPath.row);
+//    
+//    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     
     PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
 
@@ -122,12 +171,12 @@
         if (object) {
             NSLog(@"successfully added");
             [relation addObject:object];
+            [[PFUser currentUser] save];
         } else {
             NSLog(@"%@", error.userInfo);
         }
     }];
     
-    [[PFUser currentUser] save];
     [self loadObjects];
 }
 
@@ -176,10 +225,24 @@
     [self loadObjects];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    PFQueryTableViewController *destination = [sender destinationViewController];
-    [destination loadObjects];
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    PFQueryTableViewController *destination = (PFQueryTableViewController *)[segue destinationViewController];
+//    [destination loadObjects];
+//}
+//
+//-(void)slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
+//{
+//    CATransition* transition = [CATransition animation];
+//    transition.duration = .25;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    transition.type = kCATransitionPush; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+//    transition.subtype = kCATransitionFromLeft; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+//    
+//    
+//    
+//    [self performSegueWithIdentifier:@"returnToInvite" sender:gestureRecognizer];
+//    
+//}
 
 /*
 #pragma mark - Navigation

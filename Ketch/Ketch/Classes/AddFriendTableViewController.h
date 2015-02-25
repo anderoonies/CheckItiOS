@@ -11,5 +11,6 @@
 
 @interface AddFriendTableViewController : PFQueryTableViewController
 @property (nonatomic, strong) NSMutableArray *friendNumbers;
+@property (nonatomic, strong) NSMutableArray *friendList;
 
 @end

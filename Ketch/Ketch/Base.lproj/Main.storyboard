@@ -241,7 +241,7 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Kcy-sY-kfP"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
                             <connections>
-                                <segue destination="93F-Au-Y9o" kind="push" id="sUX-S2-Ktq"/>
+                                <segue destination="s6W-Sy-zEb" kind="push" id="zuv-3L-nJ0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -257,14 +257,116 @@
             </objects>
             <point key="canvasLocation" x="-1045" y="0.0"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="OC0-Yz-RhA">
+            <objects>
+                <tableViewController id="s6W-Sy-zEb" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ag4-P5-d6N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="VVb-f0-60I">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="o8g-RZ-eRu">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o8g-RZ-eRu" id="gjG-Il-Mnx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add by Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLN-of-OZB">
+                                                    <rect key="frame" x="8" y="11" width="139" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="F1J-E7-TEt" kind="push" id="FYu-5s-gQE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="azF-4c-wVa">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="azF-4c-wVa" id="Rhr-gY-OAN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add from Contacts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFz-tu-slS">
+                                                    <rect key="frame" x="8" y="11" width="146" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="93F-Au-Y9o" kind="push" id="bMK-nm-3q8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="s6W-Sy-zEb" id="UnF-5t-1Au"/>
+                            <outlet property="delegate" destination="s6W-Sy-zEb" id="Uz1-he-Q1A"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="6WB-EX-6zY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DlS-HW-mXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-608" y="0.0"/>
+        </scene>
+        <!--Add Username-->
+        <scene sceneID="jmv-xS-kJr">
+            <objects>
+                <viewController id="F1J-E7-TEt" customClass="SearchFriendViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f2s-E8-AQ0"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZtB-1F-RPz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="89P-Rh-rDY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBs-Tb-eB1">
+                                <rect key="frame" x="16" y="52" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiI-YI-Luj">
+                                <rect key="frame" x="274" y="90" width="30" height="30"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPressed:" destination="F1J-E7-TEt" eventType="touchUpInside" id="Euu-KE-yt8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Username" id="MqF-bL-f34">
+                        <barButtonItem key="backBarButtonItem" title=" " id="rxy-12-YuS"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchField" destination="YBs-Tb-eB1" id="bKZ-Uf-p9O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YIz-jw-QfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-158" y="-258"/>
+        </scene>
         <!--Add Friends-->
         <scene sceneID="bnk-fx-Ti8">
             <objects>
+                <exit id="0ck-0p-X4q" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3L-Ko-QFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="93F-Au-Y9o" customClass="AddFriendTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AVn-SO-91f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendCell" id="RyW-21-du3">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -296,10 +398,12 @@
                     <navigationItem key="navigationItem" title="Add Friends" id="wsF-5t-DEl">
                         <barButtonItem key="backBarButtonItem" title="Back" id="CLp-OX-amU"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="0ck-0p-X4q" kind="unwind" identifier="returnToInvite" unwindAction="returnToInvite:" id="4rg-ih-aBL"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g3L-Ko-QFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-634" y="0.0"/>
+            <point key="canvasLocation" x="-158" y="378"/>
         </scene>
         <!--Item-->
         <scene sceneID="79L-U0-mew">

@@ -9,6 +9,7 @@
 #import "InviteFriendTableViewController.h"
 #import "MapViewController.h"
 #import "ContactUtilities.h"
+#import "AddFriendTableViewController.h"
 #import <AddressBook/AddressBook.h>
 #import <Parse/Parse.h>
 
@@ -59,7 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     // make sure toolbar is hidden when we navigate to the view    
     [self.navigationController setToolbarHidden:YES];
-    [self loadObjects];
+//    [self loadObjects];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -114,6 +115,9 @@
    
     if (object[@"phone"]) {
         cell.textLabel.text = [contactUtils phoneToName:object[@"phone"]];
+        if (cell.textLabel.text==nil) {
+            cell.textLabel.text=object[@"username"];
+        }
     } else {
         cell.textLabel.text = object[@"username"];
     }
@@ -163,8 +167,14 @@
         destVC.friendList = _friendList;
         
         [destVC updateSubview];
+    } else if ([[segue sourceViewController] isKindOfClass:[AddFriendTableViewController class]]) {
+        NSLog(@"coming in");
     }
     
+}
+
+- (IBAction)returnToInvite:(UIStoryboardSegue *)segue {
+    self.navigationController.navigationBar.hidden=NO;
 }
 
 /*

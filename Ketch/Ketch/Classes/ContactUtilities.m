@@ -50,7 +50,7 @@
         }
     }
     
-    return @"bluh";
+    return nil;
 }
 
 - (NSMutableArray *)getCleanNumbers {
