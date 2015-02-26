@@ -73,7 +73,6 @@
 {
     [super viewDidLoad];
     
-    [self generateAnnotations];
     [self gotoDefaultLocation];
     
     _userAnnotation = [[UserAnnotation alloc] init];
@@ -143,7 +142,6 @@
     // remove any annotations that exist
     [mapView_ clear];
     
-    // add both annotations
     for (FriendAnnotation *annotation in _mapMarkers) {
         CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:annotation.coordinate];
         marker.appearAnimation = kGMSMarkerAnimationPop;
@@ -168,32 +166,59 @@
     [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
     
-    [eventQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
+    [eventQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
+
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[eventQuery, userEvent]];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            NSLog(@"fetching");
             for (PFObject *object in objects) {
-                if (![_parseEvents containsObject:object]) {
-                    FriendAnnotation *friend = [[FriendAnnotation alloc] init];
-                    PFObject *creator = [object[@"user"] fetchIfNeeded];
-                    friend.name = [contactUtilities phoneToName:creator[@"phone"]];
-                    friend.startTime = object[@"startTime"];
-                    friend.endTime = object[@"endTime"];
+                FriendAnnotation *annotation;
+                if (object[@"user"]==[PFUser currentUser]) {
+                    annotation = [[UserAnnotation alloc] init];
+                    annotation.name = @"Me";
+                    annotation.startTime = object[@"startTime"];
+                    annotation.endTime = object[@"endTime"];
                     PFGeoPoint *geoPoint = object[@"location"];
-                    friend.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                    
-                    CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude)];
-                    marker.appearAnimation = kGMSMarkerAnimationPop;
-                    marker.icon = [self makeAnnotationImage:friend];
-                    marker.title = [friend getInitials];
-                    marker.snippet = [friend getTimeLabel];
-                    marker.annotation = friend;
-                    marker.groundAnchor = CGPointMake(0.5, 0.5);
-                    marker.map = mapView_;
-                    
-                    [_parseEvents addObject:object];
+                    annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                } else {
+                    annotation = [[FriendAnnotation alloc] init];
+                    PFObject *creator = [object[@"user"] fetchIfNeeded];
+                    annotation.name = [contactUtilities phoneToName:creator[@"phone"]];
+                    if (annotation.name==nil) {
+                        annotation.name = creator[@"username"];
+                    }
+                    annotation.startTime = object[@"startTime"];
+                    annotation.endTime = object[@"endTime"];
+                    PFGeoPoint *geoPoint = object[@"location"];
+                    annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                 }
-             }
+                
+                CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:CLLocationCoordinate2DMake(annotation.coordinate.latitude, annotation.coordinate.longitude)];
+                marker.appearAnimation = kGMSMarkerAnimationPop;
+                marker.icon = [self makeAnnotationImage:annotation];
+                marker.title = [annotation getInitials];
+                marker.snippet = [annotation getTimeLabel];
+                marker.annotation = annotation;
+                marker.groundAnchor = CGPointMake(0.5, 0.5);
+                marker.map = mapView_;
+                [_mapMarkers addObject:marker];
+            }
         } else {
             NSLog(@"%@", error);
+        }
+    }];
+    
+    PFQuery *deleteQuery = [PFQuery queryWithClassName:@"event"];
+    [deleteQuery whereKey:@"endTime" lessThan:[NSDate date]];
+    [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects) {
+                [object deleteInBackground];
+            }
         }
     }];
 }
