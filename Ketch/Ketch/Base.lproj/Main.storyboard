@@ -359,9 +359,7 @@
         <!--Add Friends-->
         <scene sceneID="bnk-fx-Ti8">
             <objects>
-                <exit id="0ck-0p-X4q" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g3L-Ko-QFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="93F-Au-Y9o" customClass="AddFriendTableViewController" sceneMemberID="viewController">
+                <tableViewController id="93F-Au-Y9o" customClass="ContactsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AVn-SO-91f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,6 +400,8 @@
                         <segue destination="0ck-0p-X4q" kind="unwind" identifier="returnToInvite" unwindAction="returnToInvite:" id="4rg-ih-aBL"/>
                     </connections>
                 </tableViewController>
+                <exit id="0ck-0p-X4q" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3L-Ko-QFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-158" y="378"/>
         </scene>

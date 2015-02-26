@@ -25,7 +25,7 @@
 		8677B2B01A990FB900C3733A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8677B2781A990FB900C3733A /* LaunchScreen.xib */; };
 		8677B2B11A990FB900C3733A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8677B27A1A990FB900C3733A /* Main.storyboard */; };
 		8677B2B21A990FB900C3733A /* NewEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8677B27C1A990FB900C3733A /* NewEventView.xib */; };
-		8677B2B31A990FB900C3733A /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2801A990FB900C3733A /* AddFriendTableViewController.m */; };
+		8677B2B31A990FB900C3733A /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2801A990FB900C3733A /* ContactsTableViewController.m */; };
 		8677B2B41A990FB900C3733A /* CalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2821A990FB900C3733A /* CalloutViewController.m */; };
 		8677B2B51A990FB900C3733A /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2841A990FB900C3733A /* CreateEventViewController.m */; };
 		8677B2B61A990FB900C3733A /* CustomGMSMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2861A990FB900C3733A /* CustomGMSMarker.m */; };
@@ -98,8 +98,8 @@
 		8677B2791A990FB900C3733A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8677B27B1A990FB900C3733A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8677B27D1A990FB900C3733A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewEventView.xib; sourceTree = "<group>"; };
-		8677B27F1A990FB900C3733A /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
-		8677B2801A990FB900C3733A /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
+		8677B27F1A990FB900C3733A /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		8677B2801A990FB900C3733A /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		8677B2811A990FB900C3733A /* CalloutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutViewController.h; sourceTree = "<group>"; };
 		8677B2821A990FB900C3733A /* CalloutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutViewController.m; sourceTree = "<group>"; };
 		8677B2831A990FB900C3733A /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
@@ -261,8 +261,8 @@
 				86C003171A9E981E0069FA8F /* SearchFriendViewController.m */,
 				8677B2D11A991F6100C3733A /* SettingsViewController.h */,
 				8677B2D21A991F6100C3733A /* SettingsViewController.m */,
-				8677B27F1A990FB900C3733A /* AddFriendTableViewController.h */,
-				8677B2801A990FB900C3733A /* AddFriendTableViewController.m */,
+				8677B27F1A990FB900C3733A /* ContactsTableViewController.h */,
+				8677B2801A990FB900C3733A /* ContactsTableViewController.m */,
 				86CA22F31A9A98F3009A81E1 /* ContactUtilities.h */,
 				86CA22F41A9A98F3009A81E1 /* ContactUtilities.m */,
 				8677B2811A990FB900C3733A /* CalloutViewController.h */,
@@ -462,7 +462,7 @@
 				8677B2C21A990FB900C3733A /* UserAnnotation.m in Sources */,
 				8677B2B41A990FB900C3733A /* CalloutViewController.m in Sources */,
 				8677B2BD1A990FB900C3733A /* MapViewController.m in Sources */,
-				8677B2B31A990FB900C3733A /* AddFriendTableViewController.m in Sources */,
+				8677B2B31A990FB900C3733A /* ContactsTableViewController.m in Sources */,
 				8677B2B81A990FB900C3733A /* FriendAnnotation.m in Sources */,
 				8677B2B61A990FB900C3733A /* CustomGMSMarker.m in Sources */,
 				86CA22F51A9A98F3009A81E1 /* ContactUtilities.m in Sources */,

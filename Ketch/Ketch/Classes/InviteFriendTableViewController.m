@@ -9,7 +9,7 @@
 #import "InviteFriendTableViewController.h"
 #import "MapViewController.h"
 #import "ContactUtilities.h"
-#import "AddFriendTableViewController.h"
+#import "ContactsTableViewController.h"
 #import <AddressBook/AddressBook.h>
 #import <Parse/Parse.h>
 
@@ -167,7 +167,7 @@
         destVC.friendList = _friendList;
         
         [destVC updateSubview];
-    } else if ([[segue sourceViewController] isKindOfClass:[AddFriendTableViewController class]]) {
+    } else if ([[segue sourceViewController] isKindOfClass:[ContactsTableViewController class]]) {
         NSLog(@"coming in");
     }
     

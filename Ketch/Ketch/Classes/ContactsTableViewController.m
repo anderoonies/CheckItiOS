@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 Andy Bayer. All rights reserved.
 //
 
-#import "AddFriendTableViewController.h"
+#import "ContactsTableViewController.h"
 #import "ContactUtilities.h"
 #import "InviteFriendTableViewController.h"
 #import <AddressBook/AddressBook.h>
 
-@interface AddFriendTableViewController ()
+@interface ContactsTableViewController ()
 
 @end
 
-@implementation AddFriendTableViewController
+@implementation ContactsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -186,43 +186,41 @@
 #define ADD_FRIEND 5
 
 - (void)friendAlert {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter username"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You're already friends with all contacts!"
                                                     message:nil
                                                    delegate:self
-                                          cancelButtonTitle:@"Continue"
+                                          cancelButtonTitle:@"Close"
                                           otherButtonTitles:nil];
     
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.alertViewStyle = UIAlertViewStyleDefault;
     alert.tag = ADD_FRIEND;
-    UITextField * alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeDefault;
-    alertTextField.placeholder = @"Friend's username";
     [alert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *enteredText = [[alertView textFieldAtIndex:0] text];
     if (alertView.tag == ADD_FRIEND) {
-        PFQuery *query = [PFUser query];
-        [query whereKey:@"username" equalTo:enteredText];
-        
-        PFUser *friend = (PFUser *)[query getFirstObject];
-        if (friend == nil) {
-            return;
-        }
-        
-        NSLog(@"Found %@", friend.username);
-        
-        PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
-        [relation addObject:friend];
-        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"saved friend");
-            }
-        }];
+        [self.navigationController popToViewController:<#(UIViewController *)#> animated:<#(BOOL)#>]
+//        PFQuery *query = [PFUser query];
+//        [query whereKey:@"username" equalTo:enteredText];
+//        
+//        PFUser *friend = (PFUser *)[query getFirstObject];
+//        if (friend == nil) {
+//            return;
+//        }
+//        
+//        NSLog(@"Found %@", friend.username);
+//        
+//        PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
+//        [relation addObject:friend];
+//        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (succeeded) {
+//                NSLog(@"saved friend");
+//            }
+//        }];
     }
     
-    [self loadObjects];
+//    [self loadObjects];
 }
 
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
