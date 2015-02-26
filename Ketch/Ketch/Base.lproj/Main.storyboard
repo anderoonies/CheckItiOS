@@ -238,7 +238,7 @@
                         <barButtonItem systemItem="play" id="cyA-zN-Jc3"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Select Friends" id="Fo5-bN-1XF">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Kcy-sY-kfP"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="j2n-C5-qS8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
                             <connections>
                                 <segue destination="s6W-Sy-zEb" kind="push" id="zuv-3L-nJ0"/>
@@ -257,7 +257,7 @@
             </objects>
             <point key="canvasLocation" x="-1045" y="0.0"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Add Friends-->
         <scene sceneID="OC0-Yz-RhA">
             <objects>
                 <tableViewController id="s6W-Sy-zEb" sceneMemberID="viewController">
@@ -310,7 +310,9 @@
                             <outlet property="delegate" destination="s6W-Sy-zEb" id="Uz1-he-Q1A"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6WB-EX-6zY"/>
+                    <navigationItem key="navigationItem" title="Add Friends" id="6WB-EX-6zY">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ie8-02-bX3"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlS-HW-mXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -328,13 +330,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBs-Tb-eB1">
-                                <rect key="frame" x="16" y="52" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBs-Tb-eB1">
+                                <rect key="frame" x="16" y="44" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiI-YI-Luj">
-                                <rect key="frame" x="274" y="90" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiI-YI-Luj">
+                                <rect key="frame" x="274" y="82" width="30" height="30"/>
                                 <state key="normal" title="Add">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -344,6 +346,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YBs-Tb-eB1" firstAttribute="top" secondItem="tiI-YI-Luj" secondAttribute="top" constant="-38" id="lh8-6g-W1B"/>
+                            <constraint firstItem="YBs-Tb-eB1" firstAttribute="top" secondItem="f2s-E8-AQ0" secondAttribute="bottom" id="pz0-cA-e8C"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Username" id="MqF-bL-f34">
                         <barButtonItem key="backBarButtonItem" title=" " id="rxy-12-YuS"/>
@@ -356,7 +362,7 @@
             </objects>
             <point key="canvasLocation" x="-158" y="-258"/>
         </scene>
-        <!--Add Friends-->
+        <!--Add Contacts-->
         <scene sceneID="bnk-fx-Ti8">
             <objects>
                 <tableViewController id="93F-Au-Y9o" customClass="ContactsTableViewController" sceneMemberID="viewController">
@@ -393,8 +399,8 @@
                             <outlet property="delegate" destination="93F-Au-Y9o" id="rS2-fP-ayP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Friends" id="wsF-5t-DEl">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="CLp-OX-amU"/>
+                    <navigationItem key="navigationItem" title="Add Contacts" id="wsF-5t-DEl">
+                        <barButtonItem key="backBarButtonItem" title=" " id="CLp-OX-amU"/>
                     </navigationItem>
                     <connections>
                         <segue destination="0ck-0p-X4q" kind="unwind" identifier="returnToInvite" unwindAction="returnToInvite:" id="4rg-ih-aBL"/>
@@ -438,6 +444,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RkB-ZL-q31">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="RgP-ZE-zIq"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="rsE-m4-44u">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M2y-fv-Lo2">
                                 <rect key="frame" x="16" y="7" width="22" height="22"/>

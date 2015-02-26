@@ -60,7 +60,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     // make sure toolbar is hidden when we navigate to the view    
     [self.navigationController setToolbarHidden:YES];
-//    [self loadObjects];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

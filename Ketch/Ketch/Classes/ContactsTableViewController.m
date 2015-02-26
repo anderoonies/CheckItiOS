@@ -97,7 +97,7 @@
     
     if ([query countObjects]==0) {
         [self friendAlert];
-        return friendQuery;
+        return nil;
     } else {
         return query;
     }
@@ -198,9 +198,8 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSString *enteredText = [[alertView textFieldAtIndex:0] text];
     if (alertView.tag == ADD_FRIEND) {
-        [self.navigationController popToViewController:<#(UIViewController *)#> animated:<#(BOOL)#>]
+        [self.navigationController popViewControllerAnimated:YES];
 //        PFQuery *query = [PFUser query];
 //        [query whereKey:@"username" equalTo:enteredText];
 //        
