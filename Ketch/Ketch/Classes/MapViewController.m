@@ -368,6 +368,7 @@
     
     UIButton *markerButton = [[UIButton alloc] init];
     markerButton.tag = 3;
+    markerButton.enabled = NO;
     
     [markerButton setImage:_userMarker.icon forState:UIControlStateNormal];
     
