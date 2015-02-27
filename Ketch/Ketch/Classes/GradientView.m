@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Andy Bayer. All rights reserved.
 //
 
-#import "CustomScrollView.h"
+#import "GradientView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation CustomScrollView
+@implementation GradientView
 
 - (void)viewWillAppear:(BOOL)animated
 {

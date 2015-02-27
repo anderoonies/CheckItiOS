@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomScrollView : UIScrollView
+@interface GradientView : UIView
 
 @end

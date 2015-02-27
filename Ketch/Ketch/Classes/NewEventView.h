@@ -6,16 +6,18 @@
 //  Copyright (c) 2015 Andy Bayer. All rights reserved.
 //
 
-#import "CustomScrollView.h"
+#import "GradientView.h"
 #import <UIKit/UIKit.h>
 
 @interface NewEventView : UIView
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIView *timeView;
-@property (weak, nonatomic) IBOutlet CustomScrollView *timeScrollView;
 @property (weak, nonatomic) IBOutlet UIView *friendView;
 @property (weak, nonatomic) IBOutlet UILabel *friendListLabel;
-@property (assign, nonatomic) NSInteger minutes;
+@property (strong, nonatomic) NSMutableArray *minutesArray;
+@property (assign) int arrayPos;
+@property (assign) int minutes;
 @property (assign, nonatomic) BOOL hidden;
 
 @end

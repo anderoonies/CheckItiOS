@@ -65,7 +65,7 @@
 		86D860271A951D6B00CA8E23 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860261A951D6B00CA8E23 /* OpenGLES.framework */; };
 		86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0BF1A85925A00C537F0 /* Bolts.framework */; };
 		86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C01A85925A00C537F0 /* Parse.framework */; };
-		86FF010B1A9BE644009C4661 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FF010A1A9BE644009C4661 /* CustomScrollView.m */; };
+		86FF010B1A9BE644009C4661 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FF010A1A9BE644009C4661 /* GradientView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,8 +159,8 @@
 		86D860261A951D6B00CA8E23 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		86DDA0BF1A85925A00C537F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Bolts.framework"; sourceTree = "<group>"; };
 		86DDA0C01A85925A00C537F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Parse.framework"; sourceTree = "<group>"; };
-		86FF01091A9BE644009C4661 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
-		86FF010A1A9BE644009C4661 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
+		86FF01091A9BE644009C4661 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		86FF010A1A9BE644009C4661 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,8 +291,8 @@
 				8677B29C1A990FB900C3733A /* SignInViewController.m */,
 				8677B29D1A990FB900C3733A /* UserAnnotation.h */,
 				8677B29E1A990FB900C3733A /* UserAnnotation.m */,
-				86FF01091A9BE644009C4661 /* CustomScrollView.h */,
-				86FF010A1A9BE644009C4661 /* CustomScrollView.m */,
+				86FF01091A9BE644009C4661 /* GradientView.h */,
+				86FF010A1A9BE644009C4661 /* GradientView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -471,7 +471,7 @@
 				8677B2BA1A990FB900C3733A /* InviteFriendTableViewController.m in Sources */,
 				8677B2BC1A990FB900C3733A /* LoginViewController.m in Sources */,
 				8677B2CA1A990FB900C3733A /* main.m in Sources */,
-				86FF010B1A9BE644009C4661 /* CustomScrollView.m in Sources */,
+				86FF010B1A9BE644009C4661 /* GradientView.m in Sources */,
 				8677B2B91A990FB900C3733A /* FriendAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,20 +13,24 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
                     <rect key="frame" x="0.0" y="71" width="320" height="62"/>
                     <subviews>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNq-yy-7TI" customClass="CustomScrollView">
-                            <rect key="frame" x="0.0" y="3" width="320" height="62"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WyY-3T-bPI" customClass="GradientView">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-GL-nJp">
-                                    <rect key="frame" x="-184" y="19" width="1076" height="24"/>
-                                    <string key="text">test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text test text </string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnU-wi-vDD">
+                                    <rect key="frame" x="0.0" y="4" width="320" height="54"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                        </scrollView>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="ALg-64-dzA" appends="YES" id="S3B-uI-xQT"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
@@ -74,11 +78,12 @@
                 <outlet property="buttonView" destination="bK3-v5-iBL" id="yfI-aM-Wao"/>
                 <outlet property="friendListLabel" destination="9VE-Bo-RAd" id="8QX-ut-bLH"/>
                 <outlet property="friendView" destination="XII-o0-zqe" id="OC6-i6-xGQ"/>
-                <outlet property="timeScrollView" destination="gNq-yy-7TI" id="ACF-Mj-Xw1"/>
-                <outlet property="timeView" destination="IdO-H6-1cS" id="xt7-sy-VTq"/>
+                <outlet property="timeLabel" destination="cnU-wi-vDD" id="nSp-h2-NyM"/>
+                <outlet property="timeView" destination="IdO-H6-1cS" id="DzR-er-NAc"/>
             </connections>
             <point key="canvasLocation" x="393" y="-504"/>
         </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="ALg-64-dzA"/>
     </objects>
     <resources>
         <image name="table_indicator" width="50" height="80"/>

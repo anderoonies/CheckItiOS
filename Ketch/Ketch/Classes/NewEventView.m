@@ -36,6 +36,20 @@
 {
     [super awakeFromNib];
     
+    _minutesArray = [[NSMutableArray alloc] initWithCapacity:12];
+    
+    for (int i=0; i<=120; i+=5) {
+        int j=0;
+        [_minutesArray addObject:[NSNumber numberWithInt:i]];
+        j+=1;
+    }
+    
+    _arrayPos = 6;
+    
+    for (int i=0; i<5; i++) {
+        self.timeLabel.text = [self.timeLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@ ", [_minutesArray objectAtIndex:i]]];
+    };
+    
     // center views horizontally
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
     
@@ -43,9 +57,24 @@
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.friendView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
     
-    self.timeScrollView.contentSize = CGSizeMake(40000, self.timeScrollView.contentSize.height);
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(updateTimeWithGestureRecognizer:)];
+    [self.timeView addGestureRecognizer:panGestureRecognizer];
     
     
+}
+
+-(void)updateTimeWithGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
+    NSLog(@"%f", [panGestureRecognizer translationInView:self.timeView].x);
+    NSInteger shift = [panGestureRecognizer translationInView:self.timeView].x;
+    NSInteger shiftIncrement = shift % 10;
+    if (shiftIncrement < 0) {
+        [self timeShift:shiftIncrement];
+    } else if (shiftIncrement > 0) {
+        [self timeShift:shiftIncrement];
+    }
+}
+
+- (void)timeShift:(NSInteger)increment {
     
 }
 
