@@ -7,6 +7,8 @@
 //  Copyright (c) 2014 Andy Bayer. All rights reserved.
 //
 
+// some icons from http://www.flaticon.com/authors/icons8 from http://www.flaticon.com, licensed by http://creativecommons.org/licenses/by/3.0/
+
 #import "MapViewController.h"
 #import "FriendAnnotation.h"
 #import "UserAnnotation.h"
@@ -90,23 +92,23 @@
     
     [mapView_ animateToViewingAngle:60];
 
-    self.eventCreateSubview = [[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0];
+    self.eventCreateSubview = [[[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0] initWithFrame:CGRectMake(0, self.view.frame.size.height-210, self.view.frame.size.width, 210)];
     
-    self.eventCreateSubview.buttonView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-                                               CGRectGetMinY(self.eventCreateSubview.frame),
-                                               CGRectGetWidth(self.eventCreateSubview.frame),
-                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-    
-    self.eventCreateSubview.timeView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-                                             CGRectGetMaxY(self.eventCreateSubview.buttonView.frame),
-                                             CGRectGetWidth(self.eventCreateSubview.frame),
-                                             CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-    
-    self.eventCreateSubview.friendView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-                                               CGRectGetMaxY(self.eventCreateSubview.timeView.frame),
-                                               CGRectGetWidth(self.eventCreateSubview.frame),
-                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-    
+//    self.eventCreateSubview.buttonView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
+//                                               CGRectGetMinY(self.eventCreateSubview.frame),
+//                                               CGRectGetWidth(self.eventCreateSubview.frame),
+//                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
+//    
+//    self.eventCreateSubview.timeView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
+//                                             CGRectGetMaxY(self.eventCreateSubview.buttonView.frame),
+//                                             CGRectGetWidth(self.eventCreateSubview.frame),
+//                                             CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
+//    
+//    self.eventCreateSubview.friendView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
+//                                               CGRectGetMaxY(self.eventCreateSubview.timeView.frame),
+//                                               CGRectGetWidth(self.eventCreateSubview.frame),
+//                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
+//    
     
     for (UIView *view in [self.eventCreateSubview subviews]) {
         CALayer *bottomBorder = [CALayer layer];
@@ -116,7 +118,7 @@
         bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
                                                          alpha:1.0f].CGColor;
         
-        [view.layer addSublayer:bottomBorder];
+        [self.eventCreateSubview.layer addSublayer:bottomBorder];
     }
     
     // initialize locationmanager
