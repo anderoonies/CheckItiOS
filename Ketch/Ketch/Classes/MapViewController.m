@@ -109,16 +109,16 @@
 //                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
 //    
     
-    for (UIView *view in [self.eventCreateSubview subviews]) {
-        CALayer *bottomBorder = [CALayer layer];
-    
-        bottomBorder.frame = CGRectMake(0.0f, CGRectGetMaxY(view.frame), CGRectGetWidth(view.frame), 1.0f);
-        
-        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-                                                         alpha:1.0f].CGColor;
-        
-        [self.eventCreateSubview.layer addSublayer:bottomBorder];
-    }
+//    for (UIView *view in [self.eventCreateSubview subviews]) {
+//        CALayer *bottomBorder = [CALayer layer];
+//    
+//        bottomBorder.frame = CGRectMake(0.0f, CGRectGetMaxY(view.frame), CGRectGetWidth(view.frame), 1.0f);
+//        
+//        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+//                                                         alpha:1.0f].CGColor;
+//        
+//        [self.eventCreateSubview.layer addSublayer:bottomBorder];
+//    }
     
     // initialize locationmanager
     self.locationManager = [[CLLocationManager alloc] init];
@@ -243,7 +243,6 @@
     for (UIView *aView in [self.view subviews]) {
         if (([aView isKindOfClass:[NewEventView class]])&&(!CGRectContainsPoint(aView.frame, p)))
         {
-            self.eventCreateButton.enabled = YES;
             [self hideMarkerButton];
             [self hideSubview];
         }
@@ -362,6 +361,7 @@
 - (IBAction)addEventButtonPress:(id)sender
 {
     self.eventCreateButton.enabled = NO;
+    self.settingsButton.enabled = NO;
     
     CGPoint point = [mapView_.projection pointForCoordinate:mapView_.camera.target];
     CLLocationCoordinate2D center = mapView_.camera.target;
@@ -415,7 +415,10 @@
                                                          self.view.frame.size.width,
                                                          self.eventCreateSubview.frame.size.height);
                      }
-                     completion:^(BOOL finished){ [self.eventCreateSubview removeFromSuperview]; }
+                     completion:^(BOOL finished){ [self.eventCreateSubview removeFromSuperview];
+                                                     self.eventCreateButton.enabled = YES;
+                                                     self.settingsButton.enabled = YES;
+                                                }
      ];
 }
 
@@ -461,8 +464,6 @@
     
     [[self.view viewWithTag:3] removeFromSuperview];
     [self hideSubview];
-    
-    self.eventCreateButton.enabled = YES;
     
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

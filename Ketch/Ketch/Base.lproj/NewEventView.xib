@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
-                    <rect key="frame" x="0.0" y="71" width="320" height="62"/>
+                    <rect key="frame" x="0.0" y="71" width="320" height="70"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                 </view>
@@ -21,6 +21,7 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abl-03-Ufd">
                             <rect key="frame" x="266" y="17" width="46" height="30"/>
                             <state key="normal" title="Create">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -28,16 +29,14 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
-                    <rect key="frame" x="0.0" y="141" width="320" height="66"/>
+                    <rect key="frame" x="0.0" y="141" width="320" height="69"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRA-Tl-S5H">
                             <rect key="frame" x="297" y="21" width="15" height="24"/>
-                            <state key="normal" image="table_indicator">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <state key="normal" image="table_indicator"/>
                             <connections>
                                 <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QsR-Ti-OSj"/>
                             </connections>
@@ -45,11 +44,12 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invite friends..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
                             <rect key="frame" x="8" y="22" width="273" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QPf-q1-Rw5"/>
                     </connections>

@@ -32,6 +32,9 @@
     
     [GMSServices provideAPIKey:@"AIzaSyCR2YAIxv2_U1SXCS8CqOALv0r-7KFZjJM"];
     
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [self.window setTintColor:[UIColor colorWithRed:56.0/255.0 green:202.0/255.0 blue:155.0/255.0 alpha:1]];
+    
     return YES;
 }
 

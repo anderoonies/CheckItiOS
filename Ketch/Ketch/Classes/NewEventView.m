@@ -24,6 +24,11 @@
 {
     self = [super initWithFrame:frame];
     
+    // resize subviews
+    self.buttonView.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height/3);
+    self.timeView.frame = CGRectMake(self.frame.origin.x, self.buttonView.frame.origin.y + self.buttonView.frame.size.height, self.frame.size.width, self.frame.size.height/3);
+    self.friendView.frame = CGRectMake(self.frame.origin.x, self.timeView.frame.origin.y + self.timeView.frame.size.height, self.frame.size.width, self.frame.size.height/3);
+    
     _minutesArray = [[NSMutableArray alloc] initWithCapacity:23];
     
     for (int i=5; i<=120; i+=5) {
@@ -32,7 +37,7 @@
         j+=1;
     }
     
-    self.timePickerView = [[V8HorizontalPickerView alloc] initWithFrame:self.timeView.frame];
+    self.timePickerView = [[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(0, self.timeView.frame.origin.y, self.frame.size.width, self.frame.size.height/3)];
     self.timePickerView.backgroundColor = [UIColor whiteColor];
     self.timePickerView.selectedTextColor = [UIColor darkGrayColor];
     self.timePickerView.textColor = [UIColor lightGrayColor];
@@ -40,7 +45,7 @@
     self.timePickerView.dataSource = self;
     self.timePickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
     self.timePickerView.selectionPoint = CGPointMake(self.timePickerView.frame.size.width/2, 0);
-    self.timePickerView.selectionIndicatorView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"selectionchevron.png"]];
+    self.timePickerView.selectionIndicatorView = [[UIImageView alloc] initWithImage:[self imageWithImage:[UIImage imageNamed:@"chevron1.png"] scaledToSize:CGSizeMake(20, 10)]];
     
     [self addSubview:self.timePickerView];
     
@@ -95,19 +100,16 @@
     return textSize.width + 40.0f; // 20px padding on each side
 }
 
-//- (IBAction)segmentPressed:(id)sender {
-//    long clickedSegment = [sender selectedSegmentIndex];
-//    
-//    if (clickedSegment == 0) {
-//        _minutes = 30;
-//    } else if (clickedSegment == 1) {
-//        _minutes = 60;
-//    } else if (clickedSegment == 2) {
-//        _minutes = 90;
-//    } else if (clickedSegment == 3) {
-//        _minutes = 120;
-//    }
-//}
+#pragma mark -
+#pragma mark Utilities
+
+-(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
 
 @end

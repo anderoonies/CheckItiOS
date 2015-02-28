@@ -238,7 +238,9 @@
                         <barButtonItem systemItem="play" id="cyA-zN-Jc3"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Select Friends" id="Fo5-bN-1XF">
-                        <barButtonItem key="backBarButtonItem" title=" " id="j2n-C5-qS8"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="j2n-C5-qS8">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -261,7 +263,7 @@
         <!--Add Friends-->
         <scene sceneID="OC0-Yz-RhA">
             <objects>
-                <tableViewController id="s6W-Sy-zEb" sceneMemberID="viewController">
+                <tableViewController id="s6W-Sy-zEb" customClass="AddFriendTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ag4-P5-d6N">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,7 +314,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Friends" id="6WB-EX-6zY">
-                        <barButtonItem key="backBarButtonItem" title=" " id="ie8-02-bX3"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="ie8-02-bX3">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlS-HW-mXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,7 +357,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Username" id="MqF-bL-f34">
-                        <barButtonItem key="backBarButtonItem" title=" " id="rxy-12-YuS"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="rxy-12-YuS">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchField" destination="YBs-Tb-eB1" id="bKZ-Uf-p9O"/>
@@ -403,7 +409,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Contacts" id="wsF-5t-DEl">
-                        <barButtonItem key="backBarButtonItem" title=" " id="CLp-OX-amU"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="CLp-OX-amU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="0ck-0p-X4q" kind="unwind" identifier="returnToInvite" unwindAction="returnToInvite:" id="4rg-ih-aBL"/>
@@ -414,16 +422,23 @@
             </objects>
             <point key="canvasLocation" x="-158" y="378"/>
         </scene>
-        <!--Item-->
+        <!-- -->
         <scene sceneID="79L-U0-mew">
             <objects>
                 <navigationController id="1XF-9w-rJE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="XhQ-av-zyW"/>
-                    <navigationItem key="navigationItem" id="Q9P-Mn-INb"/>
+                    <navigationItem key="navigationItem" title=" " id="Q9P-Mn-INb">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wlL-2D-qhC">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eTI-iD-hH6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.31125737928200614" green="0.83282050112303108" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.2196078431372549" green="0.792156862745098" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="4Xb-IS-06D"/>
@@ -475,6 +490,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="eventCreateButton" destination="YAv-ku-MDb" id="who-VJ-RXU"/>
+                        <outlet property="settingsButton" destination="M2y-fv-Lo2" id="IFJ-jN-ZoS"/>
                         <segue destination="xDY-Vw-REq" kind="custom" identifier="LoginSegue" customClass="LeftToRightSegue" id="0s6-b0-3AU"/>
                         <segue destination="Pj9-Zk-Ees" kind="push" identifier="ChooseFriendsSegue" id="38a-B6-bhE"/>
                         <segue destination="Lc0-Kv-s3d" kind="custom" identifier="SettingsSegue" customClass="LeftToRightSegue" id="Kq1-fL-6Cb"/>
