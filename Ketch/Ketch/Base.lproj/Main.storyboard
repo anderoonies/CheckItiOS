@@ -238,7 +238,7 @@
                         <barButtonItem systemItem="play" id="cyA-zN-Jc3"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Select Friends" id="Fo5-bN-1XF">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Kcy-sY-kfP">
+                        <barButtonItem key="backBarButtonItem" title=" " id="s9k-1I-X2t">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
@@ -297,7 +297,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Friends" id="wsF-5t-DEl">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="CLp-OX-amU">
+                        <barButtonItem key="backBarButtonItem" title=" " id="CLp-OX-amU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
@@ -340,6 +340,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RkB-ZL-q31">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="FoO-cH-yy7"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="rsE-m4-44u">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M2y-fv-Lo2">
                                 <rect key="frame" x="16" y="7" width="22" height="22"/>
@@ -453,4 +454,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" red="0.31125737930000003" green="0.83282050110000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -94,22 +94,6 @@
 
     self.eventCreateSubview = [[[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0] initWithFrame:CGRectMake(0, self.view.frame.size.height-210, self.view.frame.size.width, 210)];
     
-//    self.eventCreateSubview.buttonView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-//                                               CGRectGetMinY(self.eventCreateSubview.frame),
-//                                               CGRectGetWidth(self.eventCreateSubview.frame),
-//                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-//    
-//    self.eventCreateSubview.timeView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-//                                             CGRectGetMaxY(self.eventCreateSubview.buttonView.frame),
-//                                             CGRectGetWidth(self.eventCreateSubview.frame),
-//                                             CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-//    
-//    self.eventCreateSubview.friendView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-//                                               CGRectGetMaxY(self.eventCreateSubview.timeView.frame),
-//                                               CGRectGetWidth(self.eventCreateSubview.frame),
-//                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-//    
-    
     for (UIView *view in [self.eventCreateSubview subviews]) {
         CALayer *bottomBorder = [CALayer layer];
     
