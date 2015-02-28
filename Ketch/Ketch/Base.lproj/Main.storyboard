@@ -378,21 +378,23 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RyW-21-du3" id="z9B-x9-vQa">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmc-xx-7Ny">
-                                            <rect key="frame" x="266" y="5" width="46" height="30"/>
-                                            <state key="normal" title="Add">
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmc-xx-7Ny">
+                                            <rect key="frame" x="290" y="8" width="22" height="22"/>
+                                            <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="selected">
                                                 <color key="titleColor" red="0.294643192" green="0.68558933420000001" blue="0.26621480219999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="highlighted" title=" "/>
                                             <connections>
-                                                <action selector="addFriendPressed:" destination="93F-Au-Y9o" eventType="touchUpInside" id="p8N-ec-05N"/>
+                                                <action selector="addFriendPressed:" destination="93F-Au-Y9o" eventType="touchUpInside" id="lXN-3a-tgh"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accessoryView" destination="cmc-xx-7Ny" id="jFm-yp-92u"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

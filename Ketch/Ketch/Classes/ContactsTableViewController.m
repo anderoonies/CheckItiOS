@@ -129,9 +129,9 @@
     [super objectsDidLoad:error];
 }
 
-- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
-    return _friendList[indexPath.row];
-}
+//- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+//    return _friendList[indexPath.row];
+//}
 
 #pragma mark -
 #pragma mark Table View Delegate
@@ -141,31 +141,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([_friendList count]>0) {
-        return [_friendList count];
-    } else {
-        return [self.objects count];
-    }
+    return [self.objects count];
 }
 
 #pragma mark -
 #pragma mark Selections
-- (IBAction)addFriendPressed:(id)sender {
-    UIButton *addButton = (UIButton *)sender;
-    [addButton setTitle:@"Added" forState:UIControlStateSelected];
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PFUser *newFriend = [_friendList objectAtIndex:[indexPath row]];
     
-//    [_friendList removeObjectAtIndex:indexPath.row];
-//    
-//    NSLog(@"%ld", (long)indexPath.row);
-//    
-//    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView cellForRowAtIndexPath:indexPath].accessoryView = nil;
+    [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     
     PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
-
+    
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:newFriend.objectId block:^(PFObject *object, NSError *error) {
         if (object) {
@@ -176,8 +164,13 @@
             NSLog(@"%@", error.userInfo);
         }
     }];
+}
+
+- (IBAction)addFriendPressed:(id)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
     
-    [self loadObjects];
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 #pragma mark -
