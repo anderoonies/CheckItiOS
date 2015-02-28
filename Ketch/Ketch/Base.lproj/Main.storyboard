@@ -240,6 +240,7 @@
                     <navigationItem key="navigationItem" title="Select Friends" id="Fo5-bN-1XF">
                         <barButtonItem key="backBarButtonItem" title=" " id="j2n-C5-qS8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="s6W-Sy-zEb" kind="push" id="zuv-3L-nJ0"/>
                             </connections>
@@ -420,6 +421,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eTI-iD-hH6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.31125737928200614" green="0.83282050112303108" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="4Xb-IS-06D"/>
@@ -461,6 +463,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="YAv-ku-MDb">
                                 <rect key="frame" x="233" y="7" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="addEventButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BAd-Z0-Bzh"/>
                                 </connections>
