@@ -31,25 +31,21 @@
                     </subviews>
                     <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
                     <rect key="frame" x="0.0" y="141" width="320" height="69"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRA-Tl-S5H">
-                            <rect key="frame" x="297" y="21" width="15" height="24"/>
-                            <state key="normal" image="table_indicator"/>
-                            <connections>
-                                <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QsR-Ti-OSj"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invite friends..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
-                            <rect key="frame" x="8" y="22" width="273" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Invite Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-Bo-RAd">
+                            <rect key="frame" x="105" y="24" width="111" height="22"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.294643192" green="0.68558933420000001" blue="0.26621480219999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="9VE-Bo-RAd" secondAttribute="centerY" id="72X-dM-EQN"/>
+                        <constraint firstAttribute="centerX" secondItem="9VE-Bo-RAd" secondAttribute="centerX" constant="-0.5" id="HT1-lF-QJ8"/>
+                    </constraints>
                     <connections>
                         <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QPf-q1-Rw5"/>
                     </connections>
@@ -66,9 +62,6 @@
             <point key="canvasLocation" x="393" y="-504"/>
         </view>
     </objects>
-    <resources>
-        <image name="table_indicator" width="50" height="80"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

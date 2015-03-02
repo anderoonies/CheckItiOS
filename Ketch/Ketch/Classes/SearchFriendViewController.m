@@ -49,28 +49,47 @@
 - (IBAction)addPressed:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
-    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
     PFQuery *query = [PFUser query];
+    PFUser *currentUser = [PFUser currentUser];
     [query whereKey:@"username" equalTo:self.searchField.text];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        PFRelation *relation = [currentUser objectForKey:@"friend"];
         if (!error) {
             PFQuery *relationQuery = [relation query];
             [relationQuery whereKey:@"username" equalTo:object[@"username"]];
-            [relationQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-                if (number>0) {
-                    alert.title = @"Already your friend!";
-                    [alert show];
-                    return;
-                } else {
-                    [relation addObject:object];
-                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (succeeded) {
-                            alert.title = @"Friend added";
-                            [alert show];
-                        }
-                    }];
-                }
-            }];
+            NSInteger count = [relationQuery countObjects];
+            if (count>0) {
+                alert.title = @"Already your friend!";
+                [alert show];
+                return;
+            } else {
+                [relation addObject:object];
+                [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        alert.title = @"Friend added";
+                        [alert show];
+                    }
+                }];
+            }
+//            [relationQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+//                if (!error) {
+//                    if (number>0) {
+//                        alert.title = @"Already your friend!";
+//                        [alert show];
+//                        return;
+//                    } else {
+//                        [relation addObject:object];
+//                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                            if (succeeded) {
+//                                alert.title = @"Friend added";
+//                                [alert show];
+//                            }
+//                        }];
+//                    }
+//                } else {
+//                    NSLog(@"count error");
+//                }
+//            }];
         } else {
             alert.title = @"Friend not found";
             [alert show];

@@ -93,7 +93,9 @@
     
     PFQuery *query = [PFUser query];
     [query whereKey:@"phone" containedIn:_friendNumbers];
-    [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
+    if ([friendQuery countObjects]>0) {
+        [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
+    }
     
     if ([query countObjects]==0) {
         [self friendAlert];
@@ -152,14 +154,13 @@
     [self.tableView cellForRowAtIndexPath:indexPath].accessoryView = nil;
     [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     
-    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
-    
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:newFriend.objectId block:^(PFObject *object, NSError *error) {
         if (object) {
+            PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
             NSLog(@"successfully added");
             [relation addObject:object];
-            [[PFUser currentUser] save];
+            [[PFUser currentUser] saveInBackground];
         } else {
             NSLog(@"%@", error.userInfo);
         }

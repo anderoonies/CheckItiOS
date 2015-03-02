@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *eventCreateButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
-@property (nonatomic, strong) NSArray *friendList;
+@property (nonatomic, strong) NSMutableArray *friendList;
 
 - (void)updateSubview;
 

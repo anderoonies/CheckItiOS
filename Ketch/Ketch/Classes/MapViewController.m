@@ -67,14 +67,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self generateAnnotations];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self gotoDefaultLocation];
     
     _userAnnotation = [[UserAnnotation alloc] init];
@@ -434,11 +432,27 @@
 
 - (void)updateSubview {
     NSMutableArray *friendStrings = [[NSMutableArray alloc] init];
-    for (PFObject *object in _friendList) {
-        [friendStrings addObject:object[@"username"]];
-    }
+    ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
+    if ([_friendList count]==0) {
+        self.eventCreateSubview.friendListLabel.text = @"Invite Friends";
+    } else {
     
-    self.eventCreateSubview.friendListLabel.text = [friendStrings componentsJoinedByString:@", "];
+        for (PFObject *object in _friendList) {
+            if (object[@"phone"]) {
+                NSString *phone = [contactUtilities phoneToName:object[@"phone"]];
+                if (phone) {
+                    [friendStrings addObject:phone];
+                } else {
+                    [friendStrings addObject:object[@"username"]];
+                }
+            } else {
+                [friendStrings addObject:object[@"username"]];
+            }
+        }
+        
+        self.eventCreateSubview.friendListLabel.text = [friendStrings componentsJoinedByString:@", "];
+        self.eventCreateSubview.friendListLabel.textColor = [UIColor blackColor];
+    }
 }
 
 - (IBAction)createEventPressed:(id)sender {

@@ -49,6 +49,9 @@
     
     [self addSubview:self.timePickerView];
     
+    [self.timePickerView scrollToElement:0 animated:NO];
+    
+    
     if (self)
     {
         // Initialization code.
@@ -80,6 +83,10 @@
 - (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker {
     return [_minutesArray count];
 };
+
+- (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index {
+    self.minutes = (NSInteger)[_minutesArray objectAtIndex:index];
+}
 
 
 #pragma mark - 

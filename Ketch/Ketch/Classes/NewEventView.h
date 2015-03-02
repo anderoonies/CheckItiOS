@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *friendListLabel;
 @property (strong, nonatomic) NSMutableArray *minutesArray;
 @property (assign) int arrayPos;
-@property (assign) int minutes;
+@property (assign) NSInteger minutes;
 @property (assign) CGFloat shift;
 @property (assign) BOOL increasing;
 @property (assign, nonatomic) BOOL hidden;

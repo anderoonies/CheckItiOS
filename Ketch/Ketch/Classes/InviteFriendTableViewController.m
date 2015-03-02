@@ -10,6 +10,7 @@
 #import "MapViewController.h"
 #import "ContactUtilities.h"
 #import "ContactsTableViewController.h"
+#import "AddFriendTableViewController.h"
 #import <AddressBook/AddressBook.h>
 #import <Parse/Parse.h>
 
@@ -64,6 +65,15 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setToolbarHidden:YES];
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        NSInteger numberOfViewControllers = self.navigationController.viewControllers.count;
+        MapViewController *destinationVC = (MapViewController *)[self.navigationController.viewControllers objectAtIndex:numberOfViewControllers - 1];
+        
+        destinationVC.friendList=_friendList;
+        [destinationVC updateSubview];
+    }
+    
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,7 +109,36 @@
     PFRelation *relation = [[PFUser currentUser] objectForKey:self.parseClassName];
     PFQuery *query = [relation query];
     
+    if ([query countObjects]==0 && self.navigationController.topViewController == self) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You haven't made any friends yet!"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Close"
+                                              otherButtonTitles:@"Add friends", nil];
+        
+        alert.alertViewStyle = UIAlertViewStyleDefault;
+        alert.tag = 4;
+        [alert show];
+
+        return nil;
+    }
+    
     return query;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 4) {
+        if (buttonIndex==alertView.cancelButtonIndex) {
+            [alertView removeFromSuperview];
+        } else {
+            AddFriendTableViewController *vc = [[AddFriendTableViewController alloc] init];
+            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddFriendsTableViewController"];
+            
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+
 }
 
 
@@ -155,7 +194,7 @@
         [self.friendList addObject:object];
     }
     
-    [self performSegueWithIdentifier:@"returnToMap" sender:self];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Navigation
