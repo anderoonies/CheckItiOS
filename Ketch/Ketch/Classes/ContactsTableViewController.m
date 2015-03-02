@@ -157,9 +157,7 @@
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:newFriend.objectId block:^(PFObject *object, NSError *error) {
         if (object) {
-            PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
-            NSLog(@"successfully added");
-            [relation addObject:object];
+            [[[PFUser currentUser] objectForKey:@"friend"] addObject:object];
             [[PFUser currentUser] saveInBackground];
         } else {
             NSLog(@"%@", error.userInfo);

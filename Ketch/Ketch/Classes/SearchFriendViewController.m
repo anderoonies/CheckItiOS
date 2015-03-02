@@ -50,11 +50,10 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
     PFQuery *query = [PFUser query];
-    PFUser *currentUser = [PFUser currentUser];
     [query whereKey:@"username" equalTo:self.searchField.text];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        PFRelation *relation = [currentUser objectForKey:@"friend"];
         if (!error) {
+            PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
             PFQuery *relationQuery = [relation query];
             [relationQuery whereKey:@"username" equalTo:object[@"username"]];
             NSInteger count = [relationQuery countObjects];
@@ -63,7 +62,7 @@
                 [alert show];
                 return;
             } else {
-                [relation addObject:object];
+                [[[PFUser currentUser] objectForKey:@"friend"] addObject:object];
                 [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         alert.title = @"Friend added";
