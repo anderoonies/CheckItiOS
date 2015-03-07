@@ -465,9 +465,13 @@
     
     PFObject *event = [PFObject objectWithClassName:@"event"];
     NSDate *curDate = [NSDate date];
+    NSInteger seconds = 60;
+    NSInteger minutes = self.eventCreateSubview.minutes;
+    NSTimeInterval interval = minutes * seconds;
+    NSDate *endDate = [curDate dateByAddingTimeInterval:interval];
     event[@"user"] = [PFUser currentUser];
     event[@"startTime"] = curDate;
-    event[@"endTime"] = [NSDate dateWithTimeInterval:self.eventCreateSubview.minutes * 60 sinceDate:curDate];
+    event[@"endTime"] = endDate;
     event[@"canSee"] = _friendList;
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:centerCoord.latitude longitude:centerCoord.longitude];
     event[@"location"] = point;

@@ -29,7 +29,7 @@
     self.timeView.frame = CGRectMake(self.frame.origin.x, self.buttonView.frame.origin.y + self.buttonView.frame.size.height, self.frame.size.width, self.frame.size.height/3);
     self.friendView.frame = CGRectMake(self.frame.origin.x, self.timeView.frame.origin.y + self.timeView.frame.size.height, self.frame.size.width, self.frame.size.height/3);
     
-    _minutesArray = [[NSMutableArray alloc] initWithCapacity:23];
+    _minutesArray = [[NSMutableArray alloc] initWithCapacity:12];
     
     for (int i=5; i<=120; i+=5) {
         int j=0;
@@ -50,6 +50,8 @@
     [self addSubview:self.timePickerView];
     
     [self.timePickerView scrollToElement:0 animated:NO];
+    int cur_minutes = [(NSNumber *)[_minutesArray objectAtIndex:0] intValue];
+    self.minutes = cur_minutes;
     
     
     if (self)
@@ -85,7 +87,7 @@
 };
 
 - (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index {
-    self.minutes = (NSInteger)[_minutesArray objectAtIndex:index];
+    self.minutes = [(NSNumber *)[_minutesArray objectAtIndex:index] intValue];
 }
 
 
