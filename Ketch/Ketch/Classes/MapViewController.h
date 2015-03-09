@@ -12,7 +12,7 @@
 #import "WYPopoverController.h"
 #import "CalloutViewController.h"
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, WYPopoverControllerDelegate> {
+@interface MapViewController : UIViewController <GMSMapViewDelegate, MKMapViewDelegate, WYPopoverControllerDelegate> {
     GMSMapView *mapView_;
     WYPopoverController *popoverController;
 }

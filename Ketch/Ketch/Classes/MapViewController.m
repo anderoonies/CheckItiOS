@@ -14,6 +14,7 @@
 #import "UserAnnotation.h"
 #import "FriendAnnotationView.h"
 #import "CustomGMSMarker.h"
+#import <GoogleMaps/GMSMarker.h>
 #import "ContactUtilities.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
@@ -61,7 +62,6 @@
     
     [self generateAnnotations];
     
-    mapView_.delegate = self;
     [self gotoAverageLocation];
     
     [self.view insertSubview:mapView_ atIndex:0];
@@ -87,6 +87,8 @@
                forKeyPath:@"myLocation"
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
+    
+    mapView_.delegate = self;
     
     // remove any annotations that exist
     [mapView_ clear];
@@ -213,7 +215,6 @@
 
 
 #pragma mark - GMSMapViewDelegate
-
 -(BOOL) mapView:(GMSMapView *) mapView didTapMarker:(CustomGMSMarker *)marker
 {
     if (popoverController == nil) {
