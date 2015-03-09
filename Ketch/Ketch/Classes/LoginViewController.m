@@ -158,4 +158,10 @@
 
 }
 
+- (IBAction)backPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"dismissed");
+    }];
+}
+
 @end

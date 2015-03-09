@@ -20,9 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:swipeLeft];
+//    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+//    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+//    [self.view addGestureRecognizer:swipeLeft];
     
     self.navigationController.navigationBar.hidden = YES;
 }
@@ -36,21 +36,21 @@
 #pragma mark -
 #pragma mark Navigation
 
-- (void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
-{
-    CATransition* transition = [CATransition animation];
-    transition.duration = .25;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionPush; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-    transition.subtype = kCATransitionFromRight; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-
-
-
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    self.navigationController.navigationBar.hidden = NO;
-    [self.navigationController popViewControllerAnimated:YES];
-
-}
+//- (void)slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *)gestureRecognizer
+//{
+//    CATransition* transition = [CATransition animation];
+//    transition.duration = .25;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    transition.type = kCATransitionPush; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+//    transition.subtype = kCATransitionFromRight; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+//
+//
+//
+//    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+//    self.navigationController.navigationBar.hidden = NO;
+//    [self.navigationController popViewControllerAnimated:YES];
+//
+//}
 
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 //    UIViewController *destinationVC = [sender destinationViewController];

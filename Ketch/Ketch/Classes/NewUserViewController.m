@@ -193,6 +193,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)backPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"dismissed");
+    }];
+}
 
 /*
 #pragma mark - Navigation

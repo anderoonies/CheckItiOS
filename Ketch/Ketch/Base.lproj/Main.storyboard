@@ -18,22 +18,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-hy-9bJ">
-                                <rect key="frame" x="16" y="233" width="288" height="30"/>
+                                <rect key="frame" x="16" y="20" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vhL-89-qs8">
-                                <rect key="frame" x="16" y="271" width="288" height="30"/>
+                                <rect key="frame" x="16" y="58" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukN-oK-6tw">
-                                <rect key="frame" x="258" y="309" width="38" height="30"/>
+                                <rect key="frame" x="258" y="96" width="38" height="30"/>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="loginPressed:" destination="d8U-fu-Ytr" eventType="touchUpInside" id="aJ2-nk-hfu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0b-qo-StQ">
+                                <rect key="frame" x="16" y="96" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPressed:" destination="d8U-fu-Ytr" eventType="touchUpInside" id="OjI-gV-AsA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,7 +79,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Hqe-ZI-r16" kind="custom" identifier="NewUserSegue" customClass="LeftToRightSegue" id="reG-KO-6Fy"/>
+                                    <segue destination="Hqe-ZI-r16" kind="modal" identifier="" id="reG-KO-6Fy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oB-af-A9E">
@@ -79,7 +88,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="d8U-fu-Ytr" kind="custom" identifier="LoginSegue" customClass="LeftToRightSegue" id="Y6M-ka-vsV"/>
+                                    <segue destination="d8U-fu-Ytr" kind="modal" identifier="LoginSegue" id="Y6M-ka-vsV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,10 +101,6 @@
                     <navigationItem key="navigationItem" id="ULt-AA-ZAB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUG-5X-D7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <containerView opaque="NO" contentMode="scaleToFill" id="kgV-Su-9Oz">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </containerView>
             </objects>
             <point key="canvasLocation" x="-2121" y="0.0"/>
         </scene>
@@ -138,6 +143,15 @@
                                 </state>
                                 <connections>
                                     <action selector="newUserPressed:" destination="Hqe-ZI-r16" eventType="touchUpInside" id="k0I-xG-XCo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piF-xl-Ee4">
+                                <rect key="frame" x="16" y="169" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPressed:" destination="Hqe-ZI-r16" eventType="touchUpInside" id="AdO-aV-gkf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -188,6 +202,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="9hn-l5-9I9"/>
+                                    <segue destination="xDY-Vw-REq" kind="push" id="bfp-Ew-ODY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -577,4 +592,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="bfp-Ew-ODY"/>
+    </inferredMetricsTieBreakers>
 </document>
