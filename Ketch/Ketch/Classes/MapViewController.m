@@ -34,34 +34,8 @@
 
 #pragma mark -
 
-@implementation MapViewController
-
-- (void)gotoDefaultLocation
-{
-    // pad our map by 10% around the farthest annotations
-#define MAP_PADDING 1.1
-    
-    // we'll make sure that our minimum vertical span is about a kilometer
-    // there are ~111km to a degree of latitude. regionThatFits will take care of
-    // longitude, which is more complicated, anyway.
-#define MINIMUM_VISIBLE_LATITUDE 0.01
-    
-    CGFloat minLatitude = 42.056861, maxLatitude = 42.056861, minLongitude = -87.679650, maxLongitude = -87.679650;
-    for (FriendAnnotation *friend in _mapMarkers) {
-        minLatitude = MIN(minLatitude, friend.coordinate.latitude);
-        maxLatitude = MAX(maxLatitude, friend.coordinate.latitude);
-        minLongitude = MIN(minLongitude, friend.coordinate.longitude);
-        maxLongitude = MAX(maxLongitude, friend.coordinate.longitude);
-    }
-    
-    CGFloat lat= (minLatitude + maxLatitude) / 2;
-    CGFloat lon = (minLongitude + maxLongitude) / 2;
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat
-                                                            longitude:lon
-                                                                 zoom:17];
-    
-    mapView_ = [GMSMapView mapWithFrame:self.view.frame camera:camera];
+@implementation MapViewController {
+    BOOL firstLocationUpdate_;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,7 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self gotoDefaultLocation];
     
     _userAnnotation = [[UserAnnotation alloc] init];
     _userAnnotation.name = @"Me";
@@ -83,40 +56,17 @@
     _userMarker.icon = [self makeAnnotationImage:_userAnnotation];
     _userMarker.groundAnchor = CGPointMake(0.5, 0.5);
     
+    // create out annotations array (in this example only 2 for testing)
+    self.mapMarkers = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    [self generateAnnotations];
+    
     mapView_.delegate = self;
+    [self gotoAverageLocation];
     
     [self.view insertSubview:mapView_ atIndex:0];
     
-    [mapView_ animateToViewingAngle:60];
-
     self.eventCreateSubview = [[[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0] initWithFrame:CGRectMake(0, self.view.frame.size.height-210, self.view.frame.size.width, 210)];
-    
-//    self.eventCreateSubview.buttonView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-//                                               CGRectGetMinY(self.eventCreateSubview.frame),
-//                                               CGRectGetWidth(self.eventCreateSubview.frame),
-//                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-//    
-//    self.eventCreateSubview.timeView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-//                                             CGRectGetMaxY(self.eventCreateSubview.buttonView.frame),
-//                                             CGRectGetWidth(self.eventCreateSubview.frame),
-//                                             CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-//    
-//    self.eventCreateSubview.friendView.frame = CGRectMake(CGRectGetMinX(self.eventCreateSubview.frame),
-//                                               CGRectGetMaxY(self.eventCreateSubview.timeView.frame),
-//                                               CGRectGetWidth(self.eventCreateSubview.frame),
-//                                               CGRectGetHeight(self.eventCreateSubview.frame) / [[self.eventCreateSubview subviews] count]);
-//    
-    
-//    for (UIView *view in [self.eventCreateSubview subviews]) {
-//        CALayer *bottomBorder = [CALayer layer];
-//    
-//        bottomBorder.frame = CGRectMake(0.0f, CGRectGetMaxY(view.frame), CGRectGetWidth(view.frame), 1.0f);
-//        
-//        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-//                                                         alpha:1.0f].CGColor;
-//        
-//        [self.eventCreateSubview.layer addSublayer:bottomBorder];
-//    }
     
     // initialize locationmanager
     self.locationManager = [[CLLocationManager alloc] init];
@@ -132,12 +82,11 @@
     [self.locationManager startUpdatingLocation];
     
     mapView_.myLocationEnabled = YES;
-
-
-    // create out annotations array (in this example only 2 for testing)
-    self.mapMarkers = [[NSMutableArray alloc] initWithCapacity:2];
     
-    [self generateAnnotations];
+    [mapView_ addObserver:self
+               forKeyPath:@"myLocation"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
     
     // remove any annotations that exist
     [mapView_ clear];
@@ -223,6 +172,46 @@
     }];
 }
 
+- (void)gotoAverageLocation
+{
+    // pad our map by 10% around the farthest annotations
+#define MAP_PADDING 1.1
+    
+    // we'll make sure that our minimum vertical span is about a kilometer
+    // there are ~111km to a degree of latitude. regionThatFits will take care of
+    // longitude, which is more complicated, anyway.
+#define MINIMUM_VISIBLE_LATITUDE 0.01
+    
+    CGFloat minLatitude = 42.056861, maxLatitude = 42.056861, minLongitude = -87.679650, maxLongitude = -87.679650;
+    for (FriendAnnotation *friend in _mapMarkers) {
+        minLatitude = MIN(minLatitude, friend.coordinate.latitude);
+        maxLatitude = MAX(maxLatitude, friend.coordinate.latitude);
+        minLongitude = MIN(minLongitude, friend.coordinate.longitude);
+        maxLongitude = MAX(maxLongitude, friend.coordinate.longitude);
+    }
+    
+    CGFloat lat= (minLatitude + maxLatitude) / 2;
+    CGFloat lon = (minLongitude + maxLongitude) / 2;
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat
+                                                            longitude:lon
+                                                                 zoom:17];
+    
+    mapView_ = [GMSMapView mapWithFrame:self.view.frame camera:camera];
+}
+
+- (void)gotoUserLocation {
+    CLLocation *myLocation = self.locationManager.location;
+    myLocation = mapView_.myLocation;
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
+                                                            longitude:myLocation.coordinate.longitude
+                                                                 zoom:17];
+    
+    mapView_ = [GMSMapView mapWithFrame:self.view.frame camera:camera];
+}
+
+
 #pragma mark - GMSMapViewDelegate
 
 -(BOOL) mapView:(GMSMapView *) mapView didTapMarker:(CustomGMSMarker *)marker
@@ -246,6 +235,23 @@
         }
     }
     
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    if (!firstLocationUpdate_) {
+        // If the first location update has not yet been recieved, then jump to that
+        // location.
+        firstLocationUpdate_ = YES;
+        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
+                                                         zoom:17];
+        [mapView_ animateToViewingAngle:60];
+
+    }
 }
 
 #pragma mark -
