@@ -461,8 +461,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RkB-ZL-q31">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="Ketch" id="RkB-ZL-q31">
                         <barButtonItem key="backBarButtonItem" title=" " id="RgP-ZE-zIq"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="rsE-m4-44u">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M2y-fv-Lo2">
