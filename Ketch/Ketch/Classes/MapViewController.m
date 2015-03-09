@@ -483,6 +483,17 @@
     [[self.view viewWithTag:3] removeFromSuperview];
     [self hideSubview];
     
+    // remove user's previous event
+    PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
+    [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userEvent findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects) {
+                [object delete];
+            }
+        }t
+    }];
+    
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"saved object");
