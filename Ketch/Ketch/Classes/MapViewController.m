@@ -491,7 +491,7 @@
             for (PFObject *object in objects) {
                 [object delete];
             }
-        }t
+        }
     }];
     
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
