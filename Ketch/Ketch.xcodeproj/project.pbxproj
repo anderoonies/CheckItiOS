@@ -27,7 +27,6 @@
 		8677B2B21A990FB900C3733A /* NewEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8677B27C1A990FB900C3733A /* NewEventView.xib */; };
 		8677B2B31A990FB900C3733A /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2801A990FB900C3733A /* ContactsTableViewController.m */; };
 		8677B2B41A990FB900C3733A /* CalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2821A990FB900C3733A /* CalloutViewController.m */; };
-		8677B2B51A990FB900C3733A /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2841A990FB900C3733A /* CreateEventViewController.m */; };
 		8677B2B61A990FB900C3733A /* CustomGMSMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2861A990FB900C3733A /* CustomGMSMarker.m */; };
 		8677B2B81A990FB900C3733A /* FriendAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B28A1A990FB900C3733A /* FriendAnnotation.m */; };
 		8677B2B91A990FB900C3733A /* FriendAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B28C1A990FB900C3733A /* FriendAnnotationView.m */; };
@@ -35,7 +34,6 @@
 		8677B2BB1A990FB900C3733A /* LeftToRightSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2901A990FB900C3733A /* LeftToRightSegue.m */; };
 		8677B2BC1A990FB900C3733A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2921A990FB900C3733A /* LoginViewController.m */; };
 		8677B2BD1A990FB900C3733A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2941A990FB900C3733A /* MapViewController.m */; };
-		8677B2BE1A990FB900C3733A /* NewEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2961A990FB900C3733A /* NewEventTableViewController.m */; };
 		8677B2BF1A990FB900C3733A /* NewEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2981A990FB900C3733A /* NewEventView.m */; };
 		8677B2C01A990FB900C3733A /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B29A1A990FB900C3733A /* NewUserViewController.m */; };
 		8677B2C11A990FB900C3733A /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B29C1A990FB900C3733A /* SignInViewController.m */; };
@@ -107,8 +105,6 @@
 		8677B2801A990FB900C3733A /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		8677B2811A990FB900C3733A /* CalloutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutViewController.h; sourceTree = "<group>"; };
 		8677B2821A990FB900C3733A /* CalloutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutViewController.m; sourceTree = "<group>"; };
-		8677B2831A990FB900C3733A /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
-		8677B2841A990FB900C3733A /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
 		8677B2851A990FB900C3733A /* CustomGMSMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGMSMarker.h; sourceTree = "<group>"; };
 		8677B2861A990FB900C3733A /* CustomGMSMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGMSMarker.m; sourceTree = "<group>"; };
 		8677B2891A990FB900C3733A /* FriendAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendAnnotation.h; sourceTree = "<group>"; };
@@ -123,8 +119,6 @@
 		8677B2921A990FB900C3733A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8677B2931A990FB900C3733A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		8677B2941A990FB900C3733A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		8677B2951A990FB900C3733A /* NewEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventTableViewController.h; sourceTree = "<group>"; };
-		8677B2961A990FB900C3733A /* NewEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventTableViewController.m; sourceTree = "<group>"; };
 		8677B2971A990FB900C3733A /* NewEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventView.h; sourceTree = "<group>"; };
 		8677B2981A990FB900C3733A /* NewEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventView.m; sourceTree = "<group>"; };
 		8677B2991A990FB900C3733A /* NewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserViewController.h; sourceTree = "<group>"; };
@@ -247,6 +241,67 @@
 			path = Ping2/Frameworks;
 			sourceTree = "<group>";
 		};
+		86079D9C1AAE3A740027BE2F /* Settings/Login */ = {
+			isa = PBXGroup;
+			children = (
+				8677B2D11A991F6100C3733A /* SettingsViewController.h */,
+				8677B2D21A991F6100C3733A /* SettingsViewController.m */,
+				8677B2911A990FB900C3733A /* LoginViewController.h */,
+				8677B2921A990FB900C3733A /* LoginViewController.m */,
+				8677B2991A990FB900C3733A /* NewUserViewController.h */,
+				8677B29A1A990FB900C3733A /* NewUserViewController.m */,
+				8677B29B1A990FB900C3733A /* SignInViewController.h */,
+				8677B29C1A990FB900C3733A /* SignInViewController.m */,
+			);
+			name = Settings/Login;
+			sourceTree = "<group>";
+		};
+		86079D9D1AAE3AC20027BE2F /* New Event */ = {
+			isa = PBXGroup;
+			children = (
+				86FF01091A9BE644009C4661 /* GradientView.h */,
+				86FF010A1A9BE644009C4661 /* GradientView.m */,
+				86F614BE1AA10B4800E82F13 /* V8HorizontalPickerViewProtocol.h */,
+				86F614BC1AA10B4800E82F13 /* V8HorizontalPickerView.h */,
+				86F614BD1AA10B4800E82F13 /* V8HorizontalPickerView.m */,
+				8677B2971A990FB900C3733A /* NewEventView.h */,
+				8677B2981A990FB900C3733A /* NewEventView.m */,
+			);
+			name = "New Event";
+			sourceTree = "<group>";
+		};
+		86079D9E1AAE3BA10027BE2F /* Friend Adding */ = {
+			isa = PBXGroup;
+			children = (
+				86C003161A9E981E0069FA8F /* SearchFriendViewController.h */,
+				86C003171A9E981E0069FA8F /* SearchFriendViewController.m */,
+				8677B27F1A990FB900C3733A /* ContactsTableViewController.h */,
+				8677B2801A990FB900C3733A /* ContactsTableViewController.m */,
+				8677B28D1A990FB900C3733A /* InviteFriendTableViewController.h */,
+				8677B28E1A990FB900C3733A /* InviteFriendTableViewController.m */,
+				869C76A31AA2627700153A4C /* AddFriendTableViewController.h */,
+				869C76A41AA2627700153A4C /* AddFriendTableViewController.m */,
+			);
+			name = "Friend Adding";
+			sourceTree = "<group>";
+		};
+		86079D9F1AAE3BC60027BE2F /* Map/Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				8677B2811A990FB900C3733A /* CalloutViewController.h */,
+				8677B2821A990FB900C3733A /* CalloutViewController.m */,
+				8677B2891A990FB900C3733A /* FriendAnnotation.h */,
+				8677B28A1A990FB900C3733A /* FriendAnnotation.m */,
+				8677B28B1A990FB900C3733A /* FriendAnnotationView.h */,
+				8677B28C1A990FB900C3733A /* FriendAnnotationView.m */,
+				8677B2931A990FB900C3733A /* MapViewController.h */,
+				8677B2941A990FB900C3733A /* MapViewController.m */,
+				8677B29D1A990FB900C3733A /* UserAnnotation.h */,
+				8677B29E1A990FB900C3733A /* UserAnnotation.m */,
+			);
+			name = Map/Annotations;
+			sourceTree = "<group>";
+		};
 		8677B2751A990FB900C3733A /* Ketch */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,49 +326,16 @@
 		8677B27E1A990FB900C3733A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				86F614BE1AA10B4800E82F13 /* V8HorizontalPickerViewProtocol.h */,
-				86F614BC1AA10B4800E82F13 /* V8HorizontalPickerView.h */,
-				86F614BD1AA10B4800E82F13 /* V8HorizontalPickerView.m */,
-				86C003161A9E981E0069FA8F /* SearchFriendViewController.h */,
-				86C003171A9E981E0069FA8F /* SearchFriendViewController.m */,
-				8677B2D11A991F6100C3733A /* SettingsViewController.h */,
-				8677B2D21A991F6100C3733A /* SettingsViewController.m */,
-				8677B27F1A990FB900C3733A /* ContactsTableViewController.h */,
-				8677B2801A990FB900C3733A /* ContactsTableViewController.m */,
+				86079D9D1AAE3AC20027BE2F /* New Event */,
+				86079D9E1AAE3BA10027BE2F /* Friend Adding */,
 				86CA22F31A9A98F3009A81E1 /* ContactUtilities.h */,
 				86CA22F41A9A98F3009A81E1 /* ContactUtilities.m */,
-				8677B2811A990FB900C3733A /* CalloutViewController.h */,
-				8677B2821A990FB900C3733A /* CalloutViewController.m */,
-				8677B2831A990FB900C3733A /* CreateEventViewController.h */,
-				8677B2841A990FB900C3733A /* CreateEventViewController.m */,
+				86079D9F1AAE3BC60027BE2F /* Map/Annotations */,
 				8677B2851A990FB900C3733A /* CustomGMSMarker.h */,
 				8677B2861A990FB900C3733A /* CustomGMSMarker.m */,
-				8677B2891A990FB900C3733A /* FriendAnnotation.h */,
-				8677B28A1A990FB900C3733A /* FriendAnnotation.m */,
-				8677B28B1A990FB900C3733A /* FriendAnnotationView.h */,
-				8677B28C1A990FB900C3733A /* FriendAnnotationView.m */,
-				8677B28D1A990FB900C3733A /* InviteFriendTableViewController.h */,
-				8677B28E1A990FB900C3733A /* InviteFriendTableViewController.m */,
 				8677B28F1A990FB900C3733A /* LeftToRightSegue.h */,
 				8677B2901A990FB900C3733A /* LeftToRightSegue.m */,
-				8677B2911A990FB900C3733A /* LoginViewController.h */,
-				8677B2921A990FB900C3733A /* LoginViewController.m */,
-				8677B2931A990FB900C3733A /* MapViewController.h */,
-				8677B2941A990FB900C3733A /* MapViewController.m */,
-				8677B2951A990FB900C3733A /* NewEventTableViewController.h */,
-				8677B2961A990FB900C3733A /* NewEventTableViewController.m */,
-				8677B2971A990FB900C3733A /* NewEventView.h */,
-				8677B2981A990FB900C3733A /* NewEventView.m */,
-				8677B2991A990FB900C3733A /* NewUserViewController.h */,
-				8677B29A1A990FB900C3733A /* NewUserViewController.m */,
-				8677B29B1A990FB900C3733A /* SignInViewController.h */,
-				8677B29C1A990FB900C3733A /* SignInViewController.m */,
-				8677B29D1A990FB900C3733A /* UserAnnotation.h */,
-				8677B29E1A990FB900C3733A /* UserAnnotation.m */,
-				86FF01091A9BE644009C4661 /* GradientView.h */,
-				86FF010A1A9BE644009C4661 /* GradientView.m */,
-				869C76A31AA2627700153A4C /* AddFriendTableViewController.h */,
-				869C76A41AA2627700153A4C /* AddFriendTableViewController.m */,
+				86079D9C1AAE3A740027BE2F /* Settings/Login */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -477,7 +499,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8677B2BB1A990FB900C3733A /* LeftToRightSegue.m in Sources */,
-				8677B2BE1A990FB900C3733A /* NewEventTableViewController.m in Sources */,
 				8677B2BF1A990FB900C3733A /* NewEventView.m in Sources */,
 				869C76A51AA2627700153A4C /* AddFriendTableViewController.m in Sources */,
 				8677B2C11A990FB900C3733A /* SignInViewController.m in Sources */,
@@ -492,7 +513,6 @@
 				8677B2B81A990FB900C3733A /* FriendAnnotation.m in Sources */,
 				8677B2B61A990FB900C3733A /* CustomGMSMarker.m in Sources */,
 				86CA22F51A9A98F3009A81E1 /* ContactUtilities.m in Sources */,
-				8677B2B51A990FB900C3733A /* CreateEventViewController.m in Sources */,
 				86C003181A9E981E0069FA8F /* SearchFriendViewController.m in Sources */,
 				8677B2CC1A990FB900C3733A /* WYStoryboardPopoverSegue.m in Sources */,
 				8677B2BA1A990FB900C3733A /* InviteFriendTableViewController.m in Sources */,

@@ -456,7 +456,7 @@
 }
 
 - (IBAction)createEventPressed:(id)sender {
-    if (!_friendList) {
+    if ([_friendList count]==0) {
         return;
     }
     
