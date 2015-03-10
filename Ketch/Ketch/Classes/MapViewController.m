@@ -13,7 +13,6 @@
 #import "FriendAnnotation.h"
 #import "UserAnnotation.h"
 #import "FriendAnnotationView.h"
-#import "CustomGMSMarker.h"
 #import <GoogleMaps/GMSMarker.h>
 #import "ContactUtilities.h"
 #import <GoogleMaps/GoogleMaps.h>
@@ -27,7 +26,6 @@
 @property (nonatomic, strong) UIPopoverController *bridgePopoverController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
-@property (nonatomic, strong) CustomGMSMarker *userMarker;
 @property (nonatomic, strong) NewEventView *eventCreateSubview;
 
 @end
@@ -48,6 +46,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _contactUtilities = [[ContactUtilities alloc] init];
+    
+    NSTimer *timer = [NSTimer timerWithTimeInterval:3600
+                                             target:(id)self
+                                           selector:@selector(generateAnnotations)
+                                           userInfo:nil
+                                            repeats:YES];
+    
+    self.fetchTimer = timer;
     
     _userAnnotation = [[UserAnnotation alloc] init];
     _userAnnotation.name = @"Me";
@@ -110,9 +118,7 @@
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
         return;
     }
-    
-    ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
-    
+        
     PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
     [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
@@ -138,7 +144,7 @@
                 } else {
                     annotation = [[FriendAnnotation alloc] init];
                     PFObject *creator = [object[@"user"] fetchIfNeeded];
-                    annotation.name = [contactUtilities phoneToName:creator[@"phone"]];
+                    annotation.name = [_contactUtilities phoneToName:creator[@"phone"]];
                     if (annotation.name==nil) {
                         annotation.name = creator[@"username"];
                     }
@@ -307,19 +313,24 @@
 
 - (IBAction)showPopover:(id)sender
 {
+    CustomGMSMarker *senderMarker = [[CustomGMSMarker alloc] init];
+    senderMarker = (CustomGMSMarker *) sender;
+    
+    FriendAnnotation *annotation = senderMarker.annotation;
+    CalloutViewController *calloutVC = [[CalloutViewController alloc] init];
+    
     if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
-        return;
+        annotation = (UserAnnotation *)annotation;
+        
+        OwnCalloutViewController *calloutVC = [[OwnCalloutViewController alloc] init];
+        calloutVC.mapVC = self;
+        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"OwnCalloutViewController"];
+    } else {
+        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
     }
     
     if (popoverController == nil)
     {
-        CustomGMSMarker *senderMarker = [[CustomGMSMarker alloc] init];
-        senderMarker = (CustomGMSMarker *) sender;
-        FriendAnnotation *annotation = senderMarker.annotation;
-        
-        CalloutViewController *calloutVC = [[CalloutViewController alloc] init];
-        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
-        
         calloutVC.preferredContentSize = CGSizeMake(200, 50);
         calloutVC.annotation = annotation;
         calloutVC.nameLabelValue = annotation.name;
@@ -392,6 +403,10 @@
                      animations:^{ markerButton.frame = endFrame; }];
     
     [self showSubview];
+    
+}
+
+- (IBAction)deletePressed:(id)sender {
     
 }
 

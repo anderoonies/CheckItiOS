@@ -19,6 +19,8 @@
 		8605E6181A6EE9F2004C7E8F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */; };
 		8605E61A1A6EE9F6004C7E8F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6191A6EE9F6004C7E8F /* Social.framework */; };
 		8605E61C1A6EE9FA004C7E8F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E61B1A6EE9FA004C7E8F /* Accounts.framework */; };
+		8676CB831AAE6DD4002CAB2A /* OwnCalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8676CB821AAE6DD4002CAB2A /* OwnCalloutViewController.m */; };
+		8676CB851AAE75F9002CAB2A /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8676CB841AAE75F9002CAB2A /* close@3x.png */; };
 		8677B1BC1A9906AE00C3733A /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8677B1BA1A9906AE00C3733A /* GoogleMaps.bundle */; };
 		8677B1BD1A9906AE00C3733A /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677B1BB1A9906AE00C3733A /* GoogleMaps.framework */; };
 		8677B2AF1A990FB900C3733A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2771A990FB900C3733A /* AppDelegate.m */; };
@@ -94,6 +96,9 @@
 		8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8605E6191A6EE9F6004C7E8F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8605E61B1A6EE9FA004C7E8F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8676CB811AAE6DD4002CAB2A /* OwnCalloutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnCalloutViewController.h; sourceTree = "<group>"; };
+		8676CB821AAE6DD4002CAB2A /* OwnCalloutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnCalloutViewController.m; sourceTree = "<group>"; };
+		8676CB841AAE75F9002CAB2A /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@3x.png"; path = "../close@3x.png"; sourceTree = "<group>"; };
 		8677B1BA1A9906AE00C3733A /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		8677B1BB1A9906AE00C3733A /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		8677B2761A990FB900C3733A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -298,6 +303,8 @@
 				8677B2941A990FB900C3733A /* MapViewController.m */,
 				8677B29D1A990FB900C3733A /* UserAnnotation.h */,
 				8677B29E1A990FB900C3733A /* UserAnnotation.m */,
+				8676CB811AAE6DD4002CAB2A /* OwnCalloutViewController.h */,
+				8676CB821AAE6DD4002CAB2A /* OwnCalloutViewController.m */,
 			);
 			name = Map/Annotations;
 			sourceTree = "<group>";
@@ -343,6 +350,7 @@
 		8677B29F1A990FB900C3733A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8676CB841AAE75F9002CAB2A /* close@3x.png */,
 				869C76A81AA2686E00153A4C /* greenindicator.png */,
 				869C769E1AA260D200153A4C /* chevron1.png */,
 				8677B2A01A990FB900C3733A /* ma_leftArrow.png */,
@@ -467,6 +475,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8676CB851AAE75F9002CAB2A /* close@3x.png in Resources */,
 				8677B2C51A990FB900C3733A /* ma_rightArrow.png in Resources */,
 				8677B2C81A990FB900C3733A /* Images.xcassets in Resources */,
 				8677B2B21A990FB900C3733A /* NewEventView.xib in Resources */,
@@ -502,6 +511,7 @@
 				8677B2BF1A990FB900C3733A /* NewEventView.m in Sources */,
 				869C76A51AA2627700153A4C /* AddFriendTableViewController.m in Sources */,
 				8677B2C11A990FB900C3733A /* SignInViewController.m in Sources */,
+				8676CB831AAE6DD4002CAB2A /* OwnCalloutViewController.m in Sources */,
 				8677B2AF1A990FB900C3733A /* AppDelegate.m in Sources */,
 				8677B2C01A990FB900C3733A /* NewUserViewController.m in Sources */,
 				8677B2CB1A990FB900C3733A /* WYPopoverController.m in Sources */,

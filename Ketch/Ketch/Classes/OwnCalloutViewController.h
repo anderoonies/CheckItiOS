@@ -1,26 +1,27 @@
 //
-//  CalloutViewController.h
-//  Ping2
+//  OwnCalloutViewController.h
+//  Ketch
 //
-//  Created by Andy Bayer on 2/8/15.
+//  Created by Andy Bayer on 3/9/15.
 //  Copyright (c) 2015 Andy Bayer. All rights reserved.
 //
 
-#import "FriendAnnotation.h"
 #import "MapViewController.h"
-#import <UIKit/UIKit.h>
+#import "CalloutViewController.h"
+#import <Parse/Parse.h>
 
-@interface CalloutViewController : UIViewController
+@interface OwnCalloutViewController : CalloutViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) NSString *nameLabelValue;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) NSString *timeLabelValue;
-@property (strong, nonatomic) IBOutlet UIControl *notifyButton;
-@property (weak, nonatomic) IBOutlet UIImageView *notifyImage;
 @property (strong, nonatomic) FriendAnnotation *annotation;
 @property (strong, nonatomic) UIColor *notifyButtonColor;
+@property (strong, nonatomic) MapViewController *mapVC;
 
+@property (weak, nonatomic) IBOutlet UIImageView *closeImage;
+@property (weak, nonatomic) IBOutlet UIControl *closeButton;
 
 - (void)setNameLabel:(UILabel *)nameLabel;
 - (void)setTimeLabel:(UILabel *)timeLabel;

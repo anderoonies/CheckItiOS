@@ -580,10 +580,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lP0-HU-cF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-734" y="-611"/>
+            <point key="canvasLocation" x="-738" y="-605"/>
+        </scene>
+        <!--Own Callout View Controller-->
+        <scene sceneID="Me2-jg-KVa">
+            <objects>
+                <viewController storyboardIdentifier="OwnCalloutViewController" id="u7N-F9-vLX" customClass="OwnCalloutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mes-hL-yUT"/>
+                        <viewControllerLayoutGuide type="bottom" id="GO7-DZ-rCZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pKY-PG-YYC">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMn-p8-DhZ">
+                                <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEW-0B-7sr">
+                                <rect key="frame" x="8" y="21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyQ-Sz-krj" customClass="UIControl">
+                                <rect key="frame" x="125" y="0.0" width="25" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="close@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="t8z-Yw-PtN">
+                                        <rect key="frame" x="6" y="12" width="16" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="BUm-63-hfA"/>
+                                            <constraint firstAttribute="width" constant="16.5" id="UU6-Ge-SF0"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81292459240000003" green="0.21580935700000001" blue="0.2183924928" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="t8z-Yw-PtN" secondAttribute="centerY" constant="0.5" id="YCq-p7-RUQ"/>
+                                    <constraint firstAttribute="centerX" secondItem="t8z-Yw-PtN" secondAttribute="centerX" id="ipy-mI-BIb"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="notifyPressed:" destination="u7N-F9-vLX" eventType="touchUpInside" id="dQd-vz-QX2"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wyQ-Sz-krj" firstAttribute="height" secondItem="pKY-PG-YYC" secondAttribute="height" id="GGp-8c-Rap"/>
+                            <constraint firstItem="DEW-0B-7sr" firstAttribute="top" secondItem="bMn-p8-DhZ" secondAttribute="bottom" constant="1" id="GUt-zx-45S"/>
+                            <constraint firstItem="wyQ-Sz-krj" firstAttribute="height" secondItem="pKY-PG-YYC" secondAttribute="height" id="N3S-9L-Bhn"/>
+                            <constraint firstItem="Mes-hL-yUT" firstAttribute="top" secondItem="bMn-p8-DhZ" secondAttribute="top" constant="-7" id="a8r-9E-bId"/>
+                            <constraint firstAttribute="trailing" secondItem="wyQ-Sz-krj" secondAttribute="trailing" id="ba0-19-PEU"/>
+                            <constraint firstItem="DEW-0B-7sr" firstAttribute="leading" secondItem="pKY-PG-YYC" secondAttribute="leadingMargin" constant="-8" id="kIj-E8-wAg"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="100"/>
+                    <connections>
+                        <outlet property="closeButton" destination="wyQ-Sz-krj" id="rsT-ST-Fna"/>
+                        <outlet property="closeImage" destination="t8z-Yw-PtN" id="i7h-cU-wvv"/>
+                        <outlet property="nameLabel" destination="bMn-p8-DhZ" id="Vi9-A2-4Ir"/>
+                        <outlet property="notifyImage" destination="t8z-Yw-PtN" id="vQL-xx-jRr"/>
+                        <outlet property="timeLabel" destination="DEW-0B-7sr" id="lDi-yI-Q3Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5JQ-AO-WRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-490" y="-605"/>
         </scene>
     </scenes>
     <resources>
+        <image name="close@3x.png" width="36" height="36"/>
         <image name="notify" width="256" height="283"/>
         <image name="settings21" width="896" height="896"/>
     </resources>
