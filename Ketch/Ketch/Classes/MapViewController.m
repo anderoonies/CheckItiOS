@@ -15,6 +15,7 @@
 #import "FriendAnnotationView.h"
 #import <GoogleMaps/GMSMarker.h>
 #import "ContactUtilities.h"
+#import "CalloutViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
@@ -318,26 +319,27 @@
     
     FriendAnnotation *annotation = senderMarker.annotation;
     CalloutViewController *calloutVC = [[CalloutViewController alloc] init];
-    
-    if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
-        annotation = (UserAnnotation *)annotation;
-        
-        OwnCalloutViewController *calloutVC = [[OwnCalloutViewController alloc] init];
-        calloutVC.mapVC = self;
-        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"OwnCalloutViewController"];
-    } else {
-        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
-    }
+    calloutVC.mapVC = self;
+
+    calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
     
     if (popoverController == nil)
     {
         calloutVC.preferredContentSize = CGSizeMake(200, 50);
         calloutVC.annotation = annotation;
-        calloutVC.nameLabelValue = annotation.name;
-        calloutVC.timeLabelValue = [annotation getTimeLabel];
         
-        if (annotation.didNotify) {
-            calloutVC.notifyButtonColor = [UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0];
+        if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
+            calloutVC.own = YES;
+            calloutVC.nameLabelValue = annotation.name;
+            calloutVC.timeLabelValue = @"lul T^T";
+        } else {
+            calloutVC.own = NO;
+            calloutVC.nameLabelValue = annotation.name;
+            calloutVC.timeLabelValue = [annotation getTimeLabel];
+            
+            if (annotation.didNotify) {
+                calloutVC.notifyButtonColor = [UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0];
+            }
         }
         
         popoverController = [[WYPopoverController alloc] initWithContentViewController: calloutVC];

@@ -10,8 +10,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "NewEventView.h"
 #import "WYPopoverController.h"
-#import "CalloutViewController.h"
-#import "OwnCalloutViewController.h"
 #import "ContactUtilities.h"
 #import "CustomGMSMarker.h"
 

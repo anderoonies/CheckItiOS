@@ -7,6 +7,7 @@
 //
 
 #import "CalloutViewController.h"
+#import <Parse/Parse.h>
 
 @interface CalloutViewController ()
 
@@ -18,9 +19,26 @@
     [super viewDidLoad];
     self.nameLabel.text = self.nameLabelValue;
     self.timeLabel.text = self.timeLabelValue;
-    if (self.notifyButtonColor == nil) {
+    
+    UIImage *buttonImage = [[UIImage alloc] init];
+    UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:self.notifyButton.frame];
+    
+    if ([self isOwn]) {
+        self.notifyButtonColor = [UIColor redColor];
+        
+        buttonImage = [self imageWithImage:[UIImage imageNamed:@"close@3x.png"] scaledToSize:buttonImageView.frame.size];
+        [buttonImageView setImage:buttonImage];
+        NSLog(@"%f and %f", buttonImage.size.width, buttonImage.size.height);
+        self.notifyImage = buttonImageView;
+    } else {
         self.notifyButtonColor = [UIColor blueColor];
+        
+        buttonImage = [UIImage imageNamed:@"notify"];
+        buttonImageView.image = buttonImage;
+        self.notifyImage = buttonImageView;
     }
+    
+    
     [self.notifyButton setBackgroundColor:self.notifyButtonColor];
     // Do any additional setup after loading the view.
 }
@@ -38,9 +56,15 @@
     _timeLabel = timeLabel;
 }
 
-- (IBAction)notifyPressed:(id)sender {
-    CABasicAnimation *animation =
-    [CABasicAnimation animationWithKeyPath:@"position"];
+- (IBAction)buttonPressed:(id)sender {
+    if ([self isOwn]) {
+        [self cancelPressed];
+    } else {
+        [self notifyPressed];
+    }
+}
+- (void)notifyPressed {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
     [animation setDuration:0.01];
     [animation setRepeatCount:8];
     [animation setAutoreverses:YES];
@@ -49,13 +73,22 @@
     [animation setToValue:[NSValue valueWithCGPoint:
                            CGPointMake([_notifyImage center].x + 5.0f, [_notifyImage center].y)]];
     [[_notifyImage layer] addAnimation:animation forKey:@"position"];
-    
+
     [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
-    
+
     _annotation.didNotify = YES;
-    
-    
 }
+
+- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
+
 /*
 #pragma mark - Navigation
 
@@ -65,5 +98,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+@end
+
+@implementation CalloutViewController (OwnCalloutViewController)
+
+- (void)cancelPressed {
+    PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
+    [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userEvent findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects) {
+                [object delete];
+            }
+        }
+    }];
+    
+    self.mapVC.userMarker.map = nil;
+}
 
 @end

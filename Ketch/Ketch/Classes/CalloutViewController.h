@@ -7,8 +7,8 @@
 //
 
 #import "FriendAnnotation.h"
-#import "MapViewController.h"
 #import <UIKit/UIKit.h>
+#import "MapViewController.h"
 
 @interface CalloutViewController : UIViewController
 
@@ -17,12 +17,23 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) NSString *timeLabelValue;
 @property (strong, nonatomic) IBOutlet UIControl *notifyButton;
-@property (weak, nonatomic) IBOutlet UIImageView *notifyImage;
+@property (strong, nonatomic) IBOutlet UIImageView *notifyImage;
 @property (strong, nonatomic) FriendAnnotation *annotation;
 @property (strong, nonatomic) UIColor *notifyButtonColor;
+@property (strong, nonatomic) MapViewController *mapVC;
+@property (nonatomic, assign, getter=isOwn) BOOL own;
 
 
 - (void)setNameLabel:(UILabel *)nameLabel;
 - (void)setTimeLabel:(UILabel *)timeLabel;
+- (IBAction)buttonPressed:(id)sender;
+- (void)notifyPressed;
+
+@end
+
+
+@interface CalloutViewController (OwnCalloutViewController)
+
+- (void)cancelPressed;
 
 @end
