@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ContactUtilities.h"
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -32,10 +33,47 @@
     
     [GMSServices provideAPIKey:@"AIzaSyCR2YAIxv2_U1SXCS8CqOALv0r-7KFZjJM"];
     
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [self.window setTintColor:[UIColor colorWithRed:56.0/255.0 green:202.0/255.0 blue:155.0/255.0 alpha:1]];
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+    ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
+    
+    NSString *phoneNumber = [userInfo objectForKey:@"p"];
+    NSString *name = [contactUtilities phoneToName:phoneNumber];
+    if (!name) {
+        name = [PFUser currentUser].username;
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ketch"
+                                message: [NSString stringWithFormat:@"%@ nudged you!", name]
+                                delegate:self
+                                cancelButtonTitle:@"OK"
+                                otherButtonTitles:nil,                                                        nil];
+    
+    [alert show];
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

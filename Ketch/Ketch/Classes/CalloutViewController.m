@@ -83,6 +83,19 @@
     
     actionSheet.tag = 1;
     [actionSheet showInView:self.mapVC.view];
+
+    _annotation.didNotify = YES;
+    
+    NSString *notificationMessage = [[NSString alloc] init];
+    notificationMessage = [NSString stringWithFormat:@"%@ nudged you!", [PFUser currentUser]];
+    
+    NSDictionary *data = @{
+                           @"alert" : @"Someone nudged you!",
+                           @"pn" : [PFUser currentUser][@"phone"] // Photo's object id
+                           };
+    PFPush *push = [[PFPush alloc] init];
+    [push setData:data];
+    [push sendPushInBackground];
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
@@ -142,7 +155,7 @@
             [self.mapVC close:self];
             self.mapVC.userMarker.map = nil;
         } else if (actionSheet.tag == 1) {
-            [PFCloud callFunctionInBackground:@"push" withParameters:@{@"targetUserId":self.annotation.} block:^(id object, NSError *error) {
+            [PFCloud callFunctionInBackground:@"push" withParameters:@{@"targetUserId":self.annotation} block:^(id object, NSError *error) {
                 if (!error) {
                     NSLog(@"push called");
                 } else {
