@@ -77,6 +77,17 @@
     [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
 
     _annotation.didNotify = YES;
+    
+    NSString *notificationMessage = [[NSString alloc] init];
+    notificationMessage = [NSString stringWithFormat:@"%@ nudged you!", [PFUser currentUser]];
+    
+    NSDictionary *data = @{
+                           @"alert" : @"Someone nudged you!",
+                           @"pn" : [PFUser currentUser][@"phone"] // Photo's object id
+                           };
+    PFPush *push = [[PFPush alloc] init];
+    [push setData:data];
+    [push sendPushInBackground];
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
