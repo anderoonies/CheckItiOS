@@ -59,10 +59,10 @@
 
     ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
     
-    NSString *phoneNumber = [userInfo objectForKey:@"p"];
+    NSString *phoneNumber = [userInfo objectForKey:@"pn"];
     NSString *name = [contactUtilities phoneToName:phoneNumber];
     if (!name) {
-        name = [PFUser currentUser].username;
+        name = [userInfo objectForKey:@"un"];
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ketch"

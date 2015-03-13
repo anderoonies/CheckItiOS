@@ -83,7 +83,8 @@
     
     NSDictionary *data = @{
                            @"alert" : @"Someone nudged you!",
-                           @"pn" : [PFUser currentUser][@"phone"] // Photo's object id
+                           @"un" : [PFUser currentUser].username,
+                           @"pn" : [PFUser currentUser][@"phone"]
                            };
     PFPush *push = [[PFPush alloc] init];
     [push setData:data];
