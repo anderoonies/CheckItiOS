@@ -28,6 +28,7 @@
 @property (nonatomic, strong) CustomGMSMarker *userMarker;
 
 - (void)updateSubview;
+- (void)close:(id)sender;
 
 @end
 

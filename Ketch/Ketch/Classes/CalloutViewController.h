@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "MapViewController.h"
 
-@interface CalloutViewController : UIViewController
+@interface CalloutViewController : UIViewController <UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) NSString *nameLabelValue;

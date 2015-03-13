@@ -104,17 +104,37 @@
 @implementation CalloutViewController (OwnCalloutViewController)
 
 - (void)cancelPressed {
-    PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
-    [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userEvent findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            for (PFObject *object in objects) {
-                [object delete];
-            }
-        }
-    }];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:@"Delete Event"
+                                                    otherButtonTitles:nil];
     
-    self.mapVC.userMarker.map = nil;
+    [actionSheet showInView:self.mapVC.view];
 }
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"The %@ button was tapped.", [actionSheet buttonTitleAtIndex:buttonIndex]);
+    
+    if (buttonIndex == [actionSheet cancelButtonIndex]) {
+        [actionSheet removeFromSuperview];
+        return;
+    } else {
+        PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
+        [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
+        [userEvent findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                for (PFObject *object in objects) {
+                    [object delete];
+                }
+            }
+        }];
+        
+        [self.mapVC close:self];
+        self.mapVC.userMarker.map = nil;
+    }
+}
+
 
 @end

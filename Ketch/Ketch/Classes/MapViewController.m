@@ -162,8 +162,16 @@
                 marker.snippet = [annotation getTimeLabel];
                 marker.annotation = annotation;
                 marker.groundAnchor = CGPointMake(0.5, 0.5);
-                marker.map = mapView_;
-                [_mapMarkers addObject:marker];
+                
+                if ([annotation isKindOfClass:[UserAnnotation class]]) {
+                    _userAnnotation = (UserAnnotation *)annotation;
+                    _userMarker.annotation = (UserAnnotation *)annotation;
+                    _userMarker.position = annotation.coordinate;
+                    _userMarker.map = mapView_;
+                } else {
+                    marker.map = mapView_;
+                    [_mapMarkers addObject:marker];
+                }
             }
         } else {
             NSLog(@"%@", error);
@@ -319,7 +327,6 @@
     
     FriendAnnotation *annotation = senderMarker.annotation;
     CalloutViewController *calloutVC = [[CalloutViewController alloc] init];
-    calloutVC.mapVC = self;
 
     calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
     
@@ -327,6 +334,7 @@
     {
         calloutVC.preferredContentSize = CGSizeMake(200, 50);
         calloutVC.annotation = annotation;
+        calloutVC.mapVC = self;
         
         if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
             calloutVC.own = YES;
