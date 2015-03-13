@@ -61,6 +61,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     // make sure toolbar is hidden when we navigate to the view    
     [self.navigationController setToolbarHidden:YES];
+    
+    // unless we have enough friends
+    if ([[self.tableView indexPathsForSelectedRows] count]) {
+        if ([self.navigationController.toolbar isHidden] == YES) {
+            [self.navigationController setToolbarHidden:NO];
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
