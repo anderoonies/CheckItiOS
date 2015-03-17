@@ -66,7 +66,7 @@
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ketch"
-                                message: [NSString stringWithFormat:@"%@ nudged you!", name]
+                                                message: [userInfo objectForKey:@"alert"]
                                 delegate:self
                                 cancelButtonTitle:@"OK"
                                 otherButtonTitles:nil,                                                        nil];

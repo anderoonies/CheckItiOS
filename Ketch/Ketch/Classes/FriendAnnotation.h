@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 
 // annotation that appears on the map of a friend object
 
 @interface FriendAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) NSString *timeLabel;

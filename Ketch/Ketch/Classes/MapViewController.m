@@ -153,6 +153,7 @@
                     annotation.endTime = object[@"endTime"];
                     PFGeoPoint *geoPoint = object[@"location"];
                     annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                    annotation.user = (PFUser *)object[@"user"];
                 }
                 
                 CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:CLLocationCoordinate2DMake(annotation.coordinate.latitude, annotation.coordinate.longitude)];
