@@ -86,9 +86,8 @@
                            @"un" : [PFUser currentUser].username,
                            @"pn" : [PFUser currentUser][@"phone"]
                            };
-    PFPush *push = [[PFPush alloc] init];
-    [push setData:data];
-    [push sendPushInBackground];
+
+    [PFCloud callFunction:@"push" withParameters:@{ @"targetUserId" : self.annotation.user.objectId }];
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
