@@ -20,26 +20,23 @@
     self.nameLabel.text = self.nameLabelValue;
     self.timeLabel.text = self.timeLabelValue;
     
-    UIImage *buttonImage = [[UIImage alloc] init];
+//    UIImage *buttonImage = [[UIImage alloc] init];
     UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:self.notifyButton.frame];
     
     if ([self isOwn]) {
         self.notifyButtonColor = [UIColor redColor];
         
-        buttonImage = [self imageWithImage:[UIImage imageNamed:@"close@3x.png"] scaledToSize:buttonImageView.frame.size];
-        [buttonImageView setImage:buttonImage];
-        NSLog(@"%f and %f", buttonImage.size.width, buttonImage.size.height);
-        self.notifyImage = buttonImageView;
+//        buttonImage = [self imageWithImage:[UIImage imageNamed:@"close"] scaledToSize:buttonImageView.frame.size];
     } else {
         self.notifyButtonColor = [UIColor blueColor];
-        
-        buttonImage = [UIImage imageNamed:@"notify"];
-        buttonImageView.image = buttonImage;
-        self.notifyImage = buttonImageView;
+
+//        self.notifyImage = buttonImageView;
     }
     
     
     [self.notifyButton setBackgroundColor:self.notifyButtonColor];
+    self.notifyImage = buttonImageView;
+    NSLog(@"%f and %f", self.notifyImage.frame.size.width, self.notifyImage.frame.size.height);
     // Do any additional setup after loading the view.
 }
 
@@ -64,19 +61,28 @@
     }
 }
 - (void)notifyPressed {
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
-    [animation setDuration:0.01];
-    [animation setRepeatCount:8];
-    [animation setAutoreverses:YES];
-    [animation setFromValue:[NSValue valueWithCGPoint:
-                             CGPointMake([_notifyImage center].x - 5.0f, [_notifyImage center].y)]];
-    [animation setToValue:[NSValue valueWithCGPoint:
-                           CGPointMake([_notifyImage center].x + 5.0f, [_notifyImage center].y)]];
-    [[_notifyImage layer] addAnimation:animation forKey:@"position"];
-
-    [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
-
-    _annotation.didNotify = YES;
+//    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+//    [animation setDuration:0.01];
+//    [animation setRepeatCount:8];
+//    [animation setAutoreverses:YES];
+//    [animation setFromValue:[NSValue valueWithCGPoint:
+//                             CGPointMake([_notifyImage center].x - 5.0f, [_notifyImage center].y)]];
+//    [animation setToValue:[NSValue valueWithCGPoint:
+//                           CGPointMake([_notifyImage center].x + 5.0f, [_notifyImage center].y)]];
+//    [[_notifyImage layer] addAnimation:animation forKey:@"position"];
+//
+//    [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
+//
+//    _annotation.didNotify = YES;
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                              otherButtonTitles:[NSString stringWithFormat:@"Nudge %@", self.nameLabel.text], nil];
+    
+    actionSheet.tag = 1;
+    [actionSheet showInView:self.mapVC.view];
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
@@ -110,6 +116,7 @@
                                                destructiveButtonTitle:@"Delete Event"
                                                     otherButtonTitles:nil];
     
+    actionSheet.tag = 2;
     [actionSheet showInView:self.mapVC.view];
 }
 
@@ -121,18 +128,28 @@
         [actionSheet removeFromSuperview];
         return;
     } else {
-        PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
-        [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
-        [userEvent findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                for (PFObject *object in objects) {
-                    [object delete];
+        if (actionSheet.tag == 2) {
+            PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
+            [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
+            [userEvent findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    for (PFObject *object in objects) {
+                        [object delete];
+                    }
                 }
-            }
-        }];
-        
-        [self.mapVC close:self];
-        self.mapVC.userMarker.map = nil;
+            }];
+            
+            [self.mapVC close:self];
+            self.mapVC.userMarker.map = nil;
+        } else if (actionSheet.tag == 1) {
+            [PFCloud callFunctionInBackground:@"push" withParameters:@{@"targetUserId":self.annotation.} block:^(id object, NSError *error) {
+                if (!error) {
+                    NSLog(@"push called");
+                } else {
+                    NSLog(@"%@", error);
+                }
+            }];
+        }
     }
 }
 
