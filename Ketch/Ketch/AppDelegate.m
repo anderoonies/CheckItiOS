@@ -59,8 +59,6 @@
 
     ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
     
-    NSLog(@"%@", userInfo);
-    
     NSString *name = [contactUtilities phoneToName:[userInfo objectForKey:@"senderPhone"]];
     
     if (!name) {
