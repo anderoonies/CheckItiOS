@@ -59,14 +59,18 @@
 
     ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
     
-    NSString *phoneNumber = [userInfo objectForKey:@"pn"];
-    NSString *name = [contactUtilities phoneToName:phoneNumber];
+    NSLog(@"%@", userInfo);
+    
+    NSString *name = [contactUtilities phoneToName:[userInfo objectForKey:@"senderPhone"]];
+    
     if (!name) {
-        name = [userInfo objectForKey:@"un"];
+        name = [userInfo objectForKey:@"senderUsername"];
     }
     
+    NSString *message = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@ nudged you!", name]];
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ketch"
-                                                message: [userInfo objectForKey:@"alert"]
+                                                message: message
                                 delegate:self
                                 cancelButtonTitle:@"OK"
                                 otherButtonTitles:nil,                                                        nil];

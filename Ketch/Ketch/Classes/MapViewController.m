@@ -184,6 +184,7 @@
     [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects) {
+                NSLog(@"DELETO!!!!!!!!");
                 [object deleteInBackground];
             }
         }

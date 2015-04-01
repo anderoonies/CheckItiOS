@@ -71,9 +71,9 @@
 //                           CGPointMake([_notifyImage center].x + 5.0f, [_notifyImage center].y)]];
 //    [[_notifyImage layer] addAnimation:animation forKey:@"position"];
 //
-//    [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
-//
-//    _annotation.didNotify = YES;
+    [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
+
+    _annotation.didNotify = YES;
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
@@ -85,17 +85,6 @@
     [actionSheet showInView:self.mapVC.view];
 
     _annotation.didNotify = YES;
-    
-    NSString *notificationMessage = [[NSString alloc] init];
-    notificationMessage = [NSString stringWithFormat:@"%@ nudged you!", [PFUser currentUser]];
-    
-    NSDictionary *data = @{
-                           @"alert" : @"Someone nudged you!",
-                           @"un" : [PFUser currentUser].username,
-                           @"pn" : [PFUser currentUser][@"phone"]
-                           };
-
-    [PFCloud callFunction:@"push" withParameters:@{ @"targetUserId" : self.annotation.user.objectId }];
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
@@ -155,13 +144,7 @@
             [self.mapVC close:self];
             self.mapVC.userMarker.map = nil;
         } else if (actionSheet.tag == 1) {
-            [PFCloud callFunctionInBackground:@"push" withParameters:@{@"targetUserId":self.annotation} block:^(id object, NSError *error) {
-                if (!error) {
-                    NSLog(@"push called");
-                } else {
-                    NSLog(@"%@", error);
-                }
-            }];
+            [PFCloud callFunction:@"push" withParameters:@{@"targetUserId":self.annotation.user.objectId, @"senderId":[PFUser currentUser].objectId, @"senderUsername":[PFUser currentUser][@"username"], @"senderPhone":[PFUser currentUser][@"phone"]} error:nil];
         }
     }
 }
