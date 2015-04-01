@@ -341,7 +341,7 @@
         if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
             calloutVC.own = YES;
             calloutVC.nameLabelValue = annotation.name;
-            calloutVC.timeLabelValue = @"lul T^T";
+            calloutVC.timeLabelValue = [annotation getTimeLabel];
         } else {
             calloutVC.own = NO;
             calloutVC.nameLabelValue = annotation.name;
