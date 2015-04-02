@@ -37,7 +37,7 @@
         j+=1;
     }
     
-    self.timePickerView = [[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(0, self.timeView.frame.origin.y, self.frame.size.width, self.frame.size.height/3)];
+    self.timePickerView = [[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(0, self.timeView.frame.origin.y, self.timeView.frame.size.width, self.frame.size.height/3)];
     self.timePickerView.backgroundColor = [UIColor whiteColor];
     self.timePickerView.selectedTextColor = [UIColor darkGrayColor];
     self.timePickerView.textColor = [UIColor lightGrayColor];
@@ -69,7 +69,8 @@
     
     _arrayPos = 6;
     
-    _timePickerView.frame = self.timeView.frame;
+    _timePickerView.frame = CGRectMake(0, self.timeView.frame.origin.y
+                                       , self.timeView.frame.size.width, self.timeView.frame.size.height);
     
     // center views horizontally
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];

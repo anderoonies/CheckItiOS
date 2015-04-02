@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController"/>
@@ -10,15 +10,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
                     <rect key="frame" x="0.0" y="71" width="320" height="70"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abl-03-Ufd">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abl-03-Ufd">
                             <rect key="frame" x="266" y="17" width="46" height="30"/>
                             <state key="normal" title="Create">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,6 +30,9 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="abl-03-Ufd" secondAttribute="trailing" constant="8" id="rgg-VX-k95"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XII-o0-zqe" customClass="UIControl">
                     <rect key="frame" x="0.0" y="141" width="320" height="69"/>
@@ -52,6 +55,14 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bK3-v5-iBL" secondAttribute="trailing" id="5JF-D4-j7p"/>
+                <constraint firstAttribute="centerX" secondItem="IdO-H6-1cS" secondAttribute="centerX" id="DHz-kB-J7I"/>
+                <constraint firstAttribute="trailing" secondItem="IdO-H6-1cS" secondAttribute="trailing" id="GrS-Lt-etb"/>
+                <constraint firstAttribute="bottom" secondItem="bK3-v5-iBL" secondAttribute="bottom" constant="147" id="PAn-iM-ATp"/>
+                <constraint firstItem="bK3-v5-iBL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SvR-w7-g89"/>
+                <constraint firstItem="IdO-H6-1cS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u1y-3w-O9f"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="buttonView" destination="bK3-v5-iBL" id="yfI-aM-Wao"/>
