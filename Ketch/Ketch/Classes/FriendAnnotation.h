@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) PFUser *user;
+@property (nonatomic, strong) PFObject *parseEvent;
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) NSString *timeLabel;

@@ -132,7 +132,6 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"fetching");
             for (PFObject *object in objects) {
                 FriendAnnotation *annotation;
                 if (object[@"user"]==[PFUser currentUser]) {
@@ -144,6 +143,7 @@
                     annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                 } else {
                     annotation = [[FriendAnnotation alloc] init];
+                    annotation.parseEvent = object;
                     PFObject *creator = [object[@"user"] fetchIfNeeded];
                     annotation.name = [_contactUtilities phoneToName:creator[@"phone"]];
                     if (annotation.name==nil) {
@@ -152,6 +152,9 @@
                     annotation.startTime = object[@"startTime"];
                     annotation.endTime = object[@"endTime"];
                     PFGeoPoint *geoPoint = object[@"location"];
+                    if ([object[@"nudgers"] containsObject:[PFUser currentUser]]) {
+                        annotation.didNotify=YES;
+                    }
                     annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                     annotation.user = (PFUser *)object[@"user"];
                 }
@@ -184,7 +187,6 @@
     [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects) {
-                NSLog(@"DELETO!!!!!!!!");
                 [object deleteInBackground];
             }
         }
@@ -491,6 +493,8 @@
 
 - (IBAction)createEventPressed:(id)sender {
     if ([_friendList count]==0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error:" message:@"Please select friends" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
         return;
     }
     
@@ -509,6 +513,7 @@
     event[@"canSee"] = _friendList;
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:centerCoord.latitude longitude:centerCoord.longitude];
     event[@"location"] = point;
+    event[@"nudgers"] = [[NSMutableArray alloc] initWithObjects:nil];
 
     _userAnnotation.coordinate = centerCoord;
     _userMarker.position = centerCoord;

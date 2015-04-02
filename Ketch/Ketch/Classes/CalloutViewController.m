@@ -25,12 +25,12 @@
     
     if ([self isOwn]) {
         self.notifyButtonColor = [UIColor redColor];
-        
-//        buttonImage = [self imageWithImage:[UIImage imageNamed:@"close"] scaledToSize:buttonImageView.frame.size];
     } else {
-        self.notifyButtonColor = [UIColor blueColor];
-
-//        self.notifyImage = buttonImageView;
+        if (_annotation.didNotify) {
+            self.notifyButtonColor = [UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0];
+        } else {
+            self.notifyButtonColor = [UIColor blueColor];
+        }
     }
     
     
@@ -70,10 +70,6 @@
 //    [animation setToValue:[NSValue valueWithCGPoint:
 //                           CGPointMake([_notifyImage center].x + 5.0f, [_notifyImage center].y)]];
 //    [[_notifyImage layer] addAnimation:animation forKey:@"position"];
-//
-    [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
-
-    _annotation.didNotify = YES;
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
@@ -83,8 +79,6 @@
     
     actionSheet.tag = 1;
     [actionSheet showInView:self.mapVC.view];
-
-    _annotation.didNotify = YES;
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
@@ -144,6 +138,19 @@
             [self.mapVC close:self];
             self.mapVC.userMarker.map = nil;
         } else if (actionSheet.tag == 1) {
+            _annotation.didNotify = YES;
+            [_notifyButton setBackgroundColor:[UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0]];
+            PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
+            [eventQuery getObjectInBackgroundWithId:_annotation.parseEvent.objectId block:^(PFObject *object, NSError *error) {
+                if (!error) {
+                    NSLog(@"%@", object);
+                    NSMutableArray *nudgers = [[NSMutableArray alloc] initWithArray:object[@"nudgers"]];
+                    [nudgers addObject:[PFUser currentUser]];
+                    object[@"nudgers"] = nudgers;
+                    [object saveInBackground];
+                }
+            }];
+            
             [PFCloud callFunction:@"push" withParameters:@{@"targetUserId":self.annotation.user.objectId, @"senderId":[PFUser currentUser].objectId, @"senderUsername":[PFUser currentUser][@"username"], @"senderPhone":[PFUser currentUser][@"phone"]} error:nil];
         }
     }
