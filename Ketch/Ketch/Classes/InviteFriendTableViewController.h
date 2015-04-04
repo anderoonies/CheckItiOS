@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <ParseUI/ParseUI.h>
 
-@interface InviteFriendTableViewController : PFQueryTableViewController
+@interface InviteFriendTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendButton;
 @property (strong, nonatomic) NSMutableArray *friendList;
 
-- (void)checkContacts;
+-(void)passFriendList:(NSMutableArray*)friendList;
 
 @end

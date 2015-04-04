@@ -16,6 +16,7 @@
 #import <GoogleMaps/GMSMarker.h>
 #import "ContactUtilities.h"
 #import "CalloutViewController.h"
+#import "InviteFriendTableViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
@@ -562,6 +563,14 @@
 
 - (IBAction)friendDisclosureButton:(id)sender {
     [self performSegueWithIdentifier:@"ChooseFriendsSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue destinationViewController] isKindOfClass:[InviteFriendTableViewController class]]) {
+        InviteFriendTableViewController* inviteVC = (InviteFriendTableViewController *)[segue destinationViewController];
+        inviteVC.friendList = [[NSMutableArray alloc] init];
+        [inviteVC passFriendList:_friendList];
+    }
 }
 
 

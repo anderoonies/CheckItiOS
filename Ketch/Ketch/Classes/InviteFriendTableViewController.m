@@ -16,6 +16,8 @@
 
 @interface InviteFriendTableViewController ()
 
+@property (strong, nonatomic) ContactUtilities *contactUtilities;
+
 @end
 
 @implementation InviteFriendTableViewController
@@ -39,6 +41,8 @@
     } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         NSLog(@"contacts granted");
     }
+    
+    _contactUtilities = [[ContactUtilities alloc] init];
 
     // allows user to check multiple friends
     self.tableView.allowsMultipleSelection = YES;
@@ -48,8 +52,10 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    self.friendList = [[NSMutableArray alloc] init];
-        
+    if (!self.friendList) {
+        self.friendList = [[NSMutableArray alloc] init];
+    }
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -66,6 +72,21 @@
     if ([[self.tableView indexPathsForSelectedRows] count]) {
         if ([self.navigationController.toolbar isHidden] == YES) {
             [self.navigationController setToolbarHidden:NO];
+        }
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    for (int section = 0; section < [self.tableView numberOfSections]; section++) {
+        for (int row = 0; row < [self.tableView numberOfRowsInSection:section]; row++) {
+            if ([_friendList indexOfObject:[self.objects objectAtIndex:row]]!=NSNotFound) {
+                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
+                [self tableView:self.tableView didSelectRowAtIndexPath:path];
+                [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+                UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:path];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.selected = YES;
+            }
         }
     }
 }
@@ -156,17 +177,15 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
     
-    ContactUtilities *contactUtils = [[ContactUtilities alloc] init];
-   
     if (object[@"phone"]) {
-        cell.textLabel.text = [contactUtils phoneToName:object[@"phone"]];
+        cell.textLabel.text = [_contactUtilities phoneToName:object[@"phone"]];
         if (cell.textLabel.text==nil) {
             cell.textLabel.text=object[@"username"];
         }
     } else {
         cell.textLabel.text = object[@"username"];
     }
-
+    
     return cell;
 }
 
@@ -174,11 +193,15 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     // add the checkmark to the cell
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     // if the toolbar for sending the invite is not visibile, set it to visible
     if ([self.navigationController.toolbar isHidden] == YES) {
         [self.navigationController setToolbarHidden:NO];
+    }
+    
+    PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    if ([self.friendList indexOfObject:object]==NSNotFound) {
+        [self.friendList addObject:object];
     }
     
 }
@@ -195,12 +218,6 @@
 }
 
 - (void)sendInvite {
-    for (NSIndexPath *index in [self.tableView indexPathsForSelectedRows]) {
-        PFObject *object = [self.objects objectAtIndex:[index row]];
-        NSLog(@"%@", object);
-        [self.friendList addObject:object];
-    }
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -220,6 +237,10 @@
 
 - (IBAction)returnToInvite:(UIStoryboardSegue *)segue {
     self.navigationController.navigationBar.hidden=NO;
+}
+
+- (void)passFriendList:(NSMutableArray *)friendList {
+    _friendList = friendList;
 }
 
 /*
