@@ -618,6 +618,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "2d859336-2c9c-40da-8e5a-e54a25ec38d6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -658,6 +659,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "2d859336-2c9c-40da-8e5a-e54a25ec38d6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -692,7 +694,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Ketch;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b93c01c1-705c-4d8c-bf54-0b9da71273ec";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -726,7 +728,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Ketch;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b93c01c1-705c-4d8c-bf54-0b9da71273ec";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

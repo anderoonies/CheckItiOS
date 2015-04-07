@@ -51,7 +51,7 @@
     
     _contactUtilities = [[ContactUtilities alloc] init];
     
-    NSTimer *timer = [NSTimer timerWithTimeInterval:3600
+    NSTimer *timer = [NSTimer timerWithTimeInterval:60
                                              target:(id)self
                                            selector:@selector(generateAnnotations)
                                            userInfo:nil

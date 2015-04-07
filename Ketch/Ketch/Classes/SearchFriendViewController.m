@@ -51,6 +51,12 @@
     alert.alertViewStyle = UIAlertViewStyleDefault;
     PFQuery *query = [PFUser query];
     [query whereKey:@"username" equalTo:self.searchField.text];
+    if (self.searchField.text==[PFUser currentUser].username) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You can't be your own friend" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {
             PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
