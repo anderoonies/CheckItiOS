@@ -110,32 +110,50 @@
     // The app delegate cares about this, but so do a lot of other objects.
     // For now, do this inline.
     
-    PFUser *user = [PFUser user];
-    user.username = username;
-    user.password = password;
-    user[@"phone"] = phoneNumber;
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"]
+    PFQuery *phoneQuery = [PFUser query];
+    [phoneQuery whereKey:@"phone" equalTo:phoneNumber];
+    [phoneQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"%@", objects);
+        if ([objects count]>0) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"User already exists with that number"
                                                                 message:nil
                                                                delegate:self
                                                       cancelButtonTitle:nil
-                                                      otherButtonTitles:@"OK", nil];
+                                                      otherButtonTitles:@"Close", nil];
             [alertView show];
-            // Bring the keyboard back up, because they'll probably need to change something.
-            [self.usernameField becomeFirstResponder];
+
+            [self.phoneField becomeFirstResponder];
             return;
+        } else {
+            PFUser *user = [PFUser user];
+            user.username = username;
+            user.password = password;
+            user[@"phone"] = phoneNumber;
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (error) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"]
+                                                                        message:nil
+                                                                       delegate:self
+                                                              cancelButtonTitle:nil
+                                                              otherButtonTitles:@"Close", nil];
+                    [alertView show];
+                    // Bring the keyboard back up, because they'll probably need to change something.
+                    [self.usernameField becomeFirstResponder];
+                    return;
+                }
+                
+                // Success!
+                NSLog(@"good");
+                PFUser *user = [PFUser currentUser];
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                [currentInstallation setObject: user forKey: @"owner"];
+                [currentInstallation saveInBackground];
+                [self performSegueWithIdentifier:@"returnToMap" sender:self];        
+                //        [self dismissViewControllerAnimated:YES completion:nil];
+            }];
         }
-        
-        // Success!
-        NSLog(@"good");
-        PFUser *user = [PFUser currentUser];
-        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-        [currentInstallation setObject: user forKey: @"owner"];
-        [currentInstallation saveInBackground];
-        [self performSegueWithIdentifier:@"returnToMap" sender:self];        
-//        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
