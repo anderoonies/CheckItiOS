@@ -143,10 +143,7 @@
             PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
             [eventQuery getObjectInBackgroundWithId:_annotation.parseEvent.objectId block:^(PFObject *object, NSError *error) {
                 if (!error) {
-                    NSLog(@"%@", object);
-                    NSMutableArray *nudgers = [[NSMutableArray alloc] initWithArray:object[@"nudgers"]];
-                    [nudgers addObject:[PFUser currentUser]];
-                    object[@"nudgers"] = nudgers;
+                    [object addObject:[PFUser currentUser] forKey:@"nudgers"];
                     [object saveInBackground];
                 }
             }];

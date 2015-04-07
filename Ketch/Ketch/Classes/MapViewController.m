@@ -153,7 +153,7 @@
                     annotation.startTime = object[@"startTime"];
                     annotation.endTime = object[@"endTime"];
                     PFGeoPoint *geoPoint = object[@"location"];
-                    if ([object[@"nudgers"] containsObject:[PFUser currentUser]]) {
+                    if ([[object valueForKey:@"nudgers"] containsObject:[PFUser currentUser]]) {
                         annotation.didNotify=YES;
                     }
                     annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);

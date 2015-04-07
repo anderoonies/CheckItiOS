@@ -68,7 +68,7 @@
                 [alert show];
                 return;
             } else {
-                [[[PFUser currentUser] objectForKey:@"friend"] addObject:object];
+                [[PFUser currentUser] addObject:object forKey:@"friend"];
                 [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         alert.title = @"Friend added";
