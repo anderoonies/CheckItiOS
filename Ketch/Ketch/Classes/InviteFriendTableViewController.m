@@ -210,6 +210,7 @@
 {
     // remove the checkmark from the cell
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    [_friendList removeObject:[self.objects objectAtIndex:indexPath.row]];
     
     // if no more cells are checked, remove the toolbar
     if ([[tableView indexPathsForSelectedRows] count] < 1) {

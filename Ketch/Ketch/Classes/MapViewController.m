@@ -546,7 +546,7 @@
         if (succeeded) {
             NSLog(@"saved object");
         } else {
-            NSLog(@"%@", error);
+            NSLog(@"FATAL ERROR %@", error);
         }
     }];
 }
