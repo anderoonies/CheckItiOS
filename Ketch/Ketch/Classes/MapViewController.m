@@ -343,8 +343,8 @@
         
         if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
             calloutVC.own = YES;
-            calloutVC.nameLabelValue = annotation.name;
-            calloutVC.timeLabelValue = [annotation getTimeLabel];
+            calloutVC.nameLabelValue = _userMarker.annotation.name;
+            calloutVC.timeLabelValue = [_userMarker.annotation getTimeLabel];
         } else {
             calloutVC.own = NO;
             calloutVC.nameLabelValue = annotation.name;
@@ -516,9 +516,17 @@
     event[@"location"] = point;
     event[@"nudgers"] = [[NSMutableArray alloc] initWithObjects:nil];
 
+    
+    UserAnnotation *annotation = [[UserAnnotation alloc] init];
+    annotation.name = @"Me";
+    annotation.startTime = curDate;
+    annotation.endTime = endDate;
+    annotation.coordinate = CLLocationCoordinate2DMake(centerCoord.latitude, centerCoord.longitude);
+    
     _userAnnotation.coordinate = centerCoord;
     _userMarker.position = centerCoord;
     _userMarker.map = mapView_;
+    _userMarker.annotation = annotation;
     
     [[self.view viewWithTag:3] removeFromSuperview];
     [self hideSubview];

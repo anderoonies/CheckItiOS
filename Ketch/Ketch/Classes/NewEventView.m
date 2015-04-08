@@ -88,7 +88,7 @@
 };
 
 - (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index {
-    self.minutes = [(NSNumber *)[_minutesArray objectAtIndex:index] intValue];
+    self.minutes = (int)[[_minutesArray objectAtIndex:index] integerValue];
 }
 
 
