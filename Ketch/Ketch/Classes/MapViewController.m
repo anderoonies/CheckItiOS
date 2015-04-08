@@ -183,15 +183,15 @@
         }
     }];
     
-    PFQuery *deleteQuery = [PFQuery queryWithClassName:@"event"];
-    [deleteQuery whereKey:@"endTime" lessThan:[NSDate date]];
-    [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            for (PFObject *object in objects) {
-                [object deleteInBackground];
-            }
-        }
-    }];
+//    PFQuery *deleteQuery = [PFQuery queryWithClassName:@"event"];
+//    [deleteQuery whereKey:@"endTime" lessThan:[NSDate date]];
+//    [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            for (PFObject *object in objects) {
+//                [object deleteInBackground];
+//            }
+//        }
+//    }];
 }
 
 - (void)gotoAverageLocation

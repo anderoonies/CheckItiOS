@@ -47,8 +47,6 @@
 }
 
 - (IBAction)addPressed:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
-    alert.alertViewStyle = UIAlertViewStyleDefault;
     PFQuery *query = [PFUser query];
     [query whereKey:@"username" equalTo:self.searchField.text];
     if (self.searchField.text==[PFUser currentUser].username) {
@@ -58,6 +56,9 @@
     }
     
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+        alert.alertViewStyle = UIAlertViewStyleDefault;
+        
         if (!error) {
             PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
             PFQuery *relationQuery = [relation query];
@@ -73,6 +74,8 @@
                     if (succeeded) {
                         alert.title = @"Friend added";
                         [alert show];
+                    } else {
+                        NSLog(@"%@", error);
                     }
                 }];
             }
