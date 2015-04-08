@@ -69,35 +69,20 @@
                 [alert show];
                 return;
             } else {
-                [[PFUser currentUser] addObject:object forKey:@"friend"];
+//                PFUser *currentUser = [PFUser currentUser];
+//                [currentUser addUniqueObject:object forKey:@"friend"];
+                [relation addObject:object];
                 [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         alert.title = @"Friend added";
                         [alert show];
                     } else {
+                        alert.title = @"Error!";
+                        [alert show];
                         NSLog(@"%@", error);
                     }
                 }];
             }
-//            [relationQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-//                if (!error) {
-//                    if (number>0) {
-//                        alert.title = @"Already your friend!";
-//                        [alert show];
-//                        return;
-//                    } else {
-//                        [relation addObject:object];
-//                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                            if (succeeded) {
-//                                alert.title = @"Friend added";
-//                                [alert show];
-//                            }
-//                        }];
-//                    }
-//                } else {
-//                    NSLog(@"count error");
-//                }
-//            }];
         } else {
             alert.title = @"Friend not found";
             [alert show];
