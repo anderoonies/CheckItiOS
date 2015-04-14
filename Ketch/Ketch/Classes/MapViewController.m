@@ -59,13 +59,18 @@
     
     self.fetchTimer = timer;
     
-    _userAnnotation = [[UserAnnotation alloc] init];
-    _userAnnotation.name = @"Me";
+    self.userAnnotation = [[UserAnnotation alloc] init];
+    self.userAnnotation.name = @"Me";
     
-    _userMarker = [[CustomGMSMarker alloc] init];
-    _userMarker.annotation = _userAnnotation;
-    _userMarker.icon = [self makeAnnotationImage:_userAnnotation];
-    _userMarker.groundAnchor = CGPointMake(0.5, 0.5);
+    self.userMarker = [[CustomGMSMarker alloc] init];
+    self.userMarker.annotation = self.userAnnotation;
+    self.userMarker.icon = [self makeAnnotationImage:self.userAnnotation];
+    self.userMarker.groundAnchor = CGPointMake(0.5, 0.5);
+    self.userMarker.appearAnimation = kGMSMarkerAnimationPop;
+    self.userMarker.icon = [self makeAnnotationImage:self.userAnnotation];
+    self.userMarker.annotation = self.userAnnotation;
+    self.userMarker.groundAnchor = CGPointMake(0.5, 0.5);
+    self.userMarker.map = mapView_;
     
     // create out annotations array (in this example only 2 for testing)
     self.mapMarkers = [[NSMutableArray alloc] initWithCapacity:2];
@@ -122,43 +127,51 @@
     }
         
     PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
-    [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
+    [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     
     PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
-    [eventQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
-
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[eventQuery, userEvent]];
+    [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userEvent whereKey:@"endTime" greaterThan:[NSDate date]];
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [userEvent findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects) {
-                FriendAnnotation *annotation;
-                if (object[@"user"]==[PFUser currentUser]) {
-                    annotation = [[UserAnnotation alloc] init];
-                    annotation.name = @"Me";
-                    annotation.startTime = object[@"startTime"];
-                    annotation.endTime = object[@"endTime"];
-                    PFGeoPoint *geoPoint = object[@"location"];
-                    annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                } else {
-                    annotation = [[FriendAnnotation alloc] init];
-                    annotation.parseEvent = object;
-                    PFObject *creator = [object[@"user"] fetchIfNeeded];
-                    annotation.name = [_contactUtilities phoneToName:creator[@"phone"]];
-                    if (annotation.name==nil) {
-                        annotation.name = creator[@"username"];
-                    }
-                    annotation.startTime = object[@"startTime"];
-                    annotation.endTime = object[@"endTime"];
-                    PFGeoPoint *geoPoint = object[@"location"];
-                    if ([[object valueForKey:@"nudgers"] containsObject:[PFUser currentUser]]) {
-                        annotation.didNotify=YES;
-                    }
-                    annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                    annotation.user = (PFUser *)object[@"user"];
+                UserAnnotation *annotation = [[UserAnnotation alloc] init];
+                annotation.name = @"Me";
+                annotation.startTime = object[@"startTime"];
+                annotation.endTime = object[@"endTime"];
+                PFGeoPoint *geoPoint = object[@"location"];
+                annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                
+            }
+        }
+    }];
+    
+    [eventQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [_mapMarkers removeAllObjects];
+            [mapView_ clear];
+            for (PFObject *object in objects) {
+                FriendAnnotation *annotation = [[FriendAnnotation alloc] init];
+                annotation.parseEvent = object;
+                PFObject *creator = [object[@"user"] fetchIfNeeded];
+                annotation.name = [_contactUtilities phoneToName:creator[@"phone"]];
+                
+                if (annotation.name==nil) {
+                    annotation.name = creator[@"username"];
                 }
+                
+                annotation.startTime = object[@"startTime"];
+                annotation.endTime = object[@"endTime"];
+                PFGeoPoint *geoPoint = object[@"location"];
+                
+                if ([[object valueForKey:@"nudgers"] containsObject:[PFUser currentUser]]) {
+                    annotation.didNotify=YES;
+                }
+                
+                annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                annotation.user = (PFUser *)object[@"user"];
                 
                 CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:CLLocationCoordinate2DMake(annotation.coordinate.latitude, annotation.coordinate.longitude)];
                 marker.appearAnimation = kGMSMarkerAnimationPop;
@@ -167,31 +180,13 @@
                 marker.snippet = [annotation getTimeLabel];
                 marker.annotation = annotation;
                 marker.groundAnchor = CGPointMake(0.5, 0.5);
-                
-                if ([annotation isKindOfClass:[UserAnnotation class]]) {
-                    _userAnnotation = (UserAnnotation *)annotation;
-                    _userMarker.annotation = (UserAnnotation *)annotation;
-                    _userMarker.position = annotation.coordinate;
-                    _userMarker.map = mapView_;
-                } else {
-                    marker.map = mapView_;
-                    [_mapMarkers addObject:marker];
-                }
+                marker.map = mapView_;
+                [_mapMarkers addObject:marker];
             }
         } else {
             NSLog(@"%@", error);
         }
     }];
-    
-//    PFQuery *deleteQuery = [PFQuery queryWithClassName:@"event"];
-//    [deleteQuery whereKey:@"endTime" lessThan:[NSDate date]];
-//    [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            for (PFObject *object in objects) {
-//                [object deleteInBackground];
-//            }
-//        }
-//    }];
 }
 
 - (void)gotoAverageLocation
@@ -343,8 +338,8 @@
         
         if ([[(CustomGMSMarker *)sender annotation] isKindOfClass:[UserAnnotation class]]) {
             calloutVC.own = YES;
-            calloutVC.nameLabelValue = _userMarker.annotation.name;
-            calloutVC.timeLabelValue = [_userMarker.annotation getTimeLabel];
+            calloutVC.nameLabelValue = self.userMarker.annotation.name;
+            calloutVC.timeLabelValue = [self.userMarker.annotation getTimeLabel];
         } else {
             calloutVC.own = NO;
             calloutVC.nameLabelValue = annotation.name;
@@ -397,18 +392,18 @@
     CGPoint point = [mapView_.projection pointForCoordinate:mapView_.camera.target];
     CLLocationCoordinate2D center = mapView_.camera.target;
     
-    _userAnnotation.coordinate = center;
+    self.userAnnotation.coordinate = center;
     
     UIButton *markerButton = [[UIButton alloc] init];
     markerButton.tag = 3;
     markerButton.enabled = NO;
     
-    [markerButton setImage:_userMarker.icon forState:UIControlStateNormal];
+    [markerButton setImage:self.userMarker.icon forState:UIControlStateNormal];
     
     
-    CGRect endFrame = CGRectMake(point.x-_userMarker.icon.size.width / 2, point.y-_userMarker.icon.size.height / 2, _userMarker.icon.size.width, _userMarker.icon.size.height);
+    CGRect endFrame = CGRectMake(point.x-self.userMarker.icon.size.width / 2, point.y-self.userMarker.icon.size.height / 2, self.userMarker.icon.size.width, self.userMarker.icon.size.height);
     
-    CGRect startFrame = CGRectMake(point.x-_userMarker.icon.size.width / 2, 0, _userMarker.icon.size.width, _userMarker.icon.size.width);
+    CGRect startFrame = CGRectMake(point.x-self.userMarker.icon.size.width / 2, 0, self.userMarker.icon.size.width, self.userMarker.icon.size.width);
     
     markerButton.frame = startFrame;
     
@@ -459,7 +454,7 @@
 
 - (void)hideMarkerButton {
     UIView *markerButton = [self.view viewWithTag:3];
-    CGRect startFrame = CGRectMake(CGRectGetMaxX(markerButton.frame)-_userMarker.icon.size.width / 2, 0, _userMarker.icon.size.width, _userMarker.icon.size.width);
+    CGRect startFrame = CGRectMake(CGRectGetMaxX(markerButton.frame)-self.userMarker.icon.size.width / 2, 0, self.userMarker.icon.size.width, self.userMarker.icon.size.width);
 
     [UIView animateWithDuration:0.5
                      animations:^{ markerButton.frame = startFrame; }
@@ -523,10 +518,10 @@
     annotation.endTime = endDate;
     annotation.coordinate = CLLocationCoordinate2DMake(centerCoord.latitude, centerCoord.longitude);
     
-    _userAnnotation.coordinate = centerCoord;
-    _userMarker.position = centerCoord;
-    _userMarker.map = mapView_;
-    _userMarker.annotation = annotation;
+    self.userAnnotation.coordinate = centerCoord;
+    self.userMarker.position = centerCoord;
+    self.userMarker.map = mapView_;
+    self.userMarker.annotation = annotation;
     
     [[self.view viewWithTag:3] removeFromSuperview];
     [self hideSubview];

@@ -13,7 +13,6 @@
 		8605E60C1A6EE9D2004C7E8F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E60B1A6EE9D2004C7E8F /* MobileCoreServices.framework */; };
 		8605E60E1A6EE9D8004C7E8F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E60D1A6EE9D8004C7E8F /* QuartzCore.framework */; };
 		8605E6101A6EE9DD004C7E8F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E60F1A6EE9DD004C7E8F /* Security.framework */; };
-		8605E6121A6EE9E1004C7E8F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6111A6EE9E1004C7E8F /* StoreKit.framework */; };
 		8605E6141A6EE9E7004C7E8F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6131A6EE9E7004C7E8F /* SystemConfiguration.framework */; };
 		8605E6161A6EE9EE004C7E8F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6151A6EE9EE004C7E8F /* libz.dylib */; };
 		8605E6181A6EE9F2004C7E8F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */; };
@@ -89,7 +88,6 @@
 		8605E60B1A6EE9D2004C7E8F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8605E60D1A6EE9D8004C7E8F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8605E60F1A6EE9DD004C7E8F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		8605E6111A6EE9E1004C7E8F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8605E6131A6EE9E7004C7E8F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8605E6151A6EE9EE004C7E8F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -193,7 +191,6 @@
 				8605E61C1A6EE9FA004C7E8F /* Accounts.framework in Frameworks */,
 				8605E61A1A6EE9F6004C7E8F /* Social.framework in Frameworks */,
 				8605E6181A6EE9F2004C7E8F /* libsqlite3.dylib in Frameworks */,
-				8605E6121A6EE9E1004C7E8F /* StoreKit.framework in Frameworks */,
 				86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */,
 				8605E6101A6EE9DD004C7E8F /* Security.framework in Frameworks */,
 				86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */,
@@ -231,7 +228,6 @@
 				8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */,
 				8605E6151A6EE9EE004C7E8F /* libz.dylib */,
 				8605E6131A6EE9E7004C7E8F /* SystemConfiguration.framework */,
-				8605E6111A6EE9E1004C7E8F /* StoreKit.framework */,
 				8605E60F1A6EE9DD004C7E8F /* Security.framework */,
 				8605E60D1A6EE9D8004C7E8F /* QuartzCore.framework */,
 				8605E60B1A6EE9D2004C7E8F /* MobileCoreServices.framework */,
@@ -440,6 +436,11 @@
 					86CFEBCE1A391E2A00D5D071 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 23U6U945X5;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					86CFEBE71A391E2A00D5D071 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -611,7 +612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = (
@@ -653,7 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-all_load",
@@ -692,9 +693,10 @@
 					2/GoogleMaps.framework/Versions,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Ketch;
-				PROVISIONING_PROFILE = "b93c01c1-705c-4d8c-bf54-0b9da71273ec";
+				PROVISIONING_PROFILE = "2d859336-2c9c-40da-8e5a-e54a25ec38d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -726,9 +728,10 @@
 					2/GoogleMaps.framework/Versions,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Ketch;
-				PROVISIONING_PROFILE = "b93c01c1-705c-4d8c-bf54-0b9da71273ec";
+				PROVISIONING_PROFILE = "2d859336-2c9c-40da-8e5a-e54a25ec38d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
