@@ -55,6 +55,11 @@
     [currentInstallation saveInBackground];
 }
 
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 
     ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];

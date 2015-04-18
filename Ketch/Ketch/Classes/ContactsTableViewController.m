@@ -109,6 +109,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
+    cell.accessoryView = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
     ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
     
