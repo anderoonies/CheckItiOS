@@ -60,7 +60,7 @@
         alert.alertViewStyle = UIAlertViewStyleDefault;
         
         if (!error) {
-            PFRelation *relation = [[PFUser currentUser] objectForKey:@"friend"];
+            PFRelation *relation = [[PFUser currentUser] relationForKey:@"friend"];
             PFQuery *relationQuery = [relation query];
             [relationQuery whereKey:@"username" equalTo:object[@"username"]];
             NSInteger count = [relationQuery countObjects];
