@@ -128,8 +128,8 @@
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
     
     PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
-    [eventQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
+    [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userEvent whereKey:@"endTime" greaterThan:[NSDate date]];
 
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[eventQuery, userEvent]];
     

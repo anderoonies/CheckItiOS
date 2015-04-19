@@ -159,7 +159,13 @@
     [query getObjectInBackgroundWithId:newFriend.objectId block:^(PFObject *object, NSError *error) {
         if (object) {
             [[[PFUser currentUser] objectForKey:@"friend"] addObject:object];
-            [[PFUser currentUser] saveInBackground];
+            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"added");
+                } else {
+                    NSLog(@"%@", error);
+                }
+            }];
         } else {
             NSLog(@"%@", error.userInfo);
         }
