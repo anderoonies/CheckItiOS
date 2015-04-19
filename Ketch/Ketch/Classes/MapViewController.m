@@ -72,8 +72,10 @@
     
     [self generateAnnotations];
     
-    [self gotoAverageLocation];
+    [self gotoStartLocation];
     
+    [mapView_ animateToLocation:mapView_.myLocation.coordinate];
+
     [self.view insertSubview:mapView_ atIndex:0];
     
     self.eventCreateSubview = [[[[NSBundle mainBundle] loadNibNamed:@"NewEventView" owner:self options:nil] objectAtIndex:0] initWithFrame:CGRectMake(0, self.view.frame.size.height-210, self.view.frame.size.width, 210)];
@@ -183,6 +185,9 @@
         }
     }];
     
+    
+//    **Deletion was moved to a BG job within Parse**
+    
 //    PFQuery *deleteQuery = [PFQuery queryWithClassName:@"event"];
 //    [deleteQuery whereKey:@"endTime" lessThan:[NSDate date]];
 //    [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -194,7 +199,7 @@
 //    }];
 }
 
-- (void)gotoAverageLocation
+- (void)gotoStartLocation
 {
     // pad our map by 10% around the farthest annotations
 #define MAP_PADDING 1.1
@@ -273,6 +278,13 @@
         [mapView_ animateToViewingAngle:60];
 
     }
+}
+
+#pragma mark -
+#pragma mark Location Manager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [mapView_ animateToLocation:[[locations lastObject] coordinate]];
 }
 
 #pragma mark -

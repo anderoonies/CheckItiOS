@@ -69,8 +69,6 @@
                 [alert show];
                 return;
             } else {
-//                PFUser *currentUser = [PFUser currentUser];
-//                [currentUser addUniqueObject:object forKey:@"friend"];
                 [relation addObject:object];
                 [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
