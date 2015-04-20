@@ -72,6 +72,7 @@
                 [relation addObject:object];
                 [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
+                        [PFCloud callFunctionInBackground:@"friendAddNotify" withParameters:@{@"targetId": object.objectId, @"username": [PFUser currentUser].username}];
                         alert.title = @"Friend added";
                         [alert show];
                     } else {

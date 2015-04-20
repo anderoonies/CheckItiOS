@@ -162,6 +162,7 @@
             [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     NSLog(@"added");
+                    [PFCloud callFunctionInBackground:@"friendAddNotify" withParameters:@{@"targetId": object.objectId, @"username": [PFUser currentUser].username}];
                 } else {
                     NSLog(@"%@", error);
                 }

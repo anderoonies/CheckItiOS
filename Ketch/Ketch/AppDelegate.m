@@ -52,34 +52,23 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[ @"global" ];
-    [currentInstallation saveInBackground];
+    [currentInstallation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            [PFCloud callFunctionInBackground:@"errorLog" withParameters:@{@"issue": error}];
+        }
+    }];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"%@", error);
+    [PFCloud callFunctionInBackground:@"errorLog" withParameters:@{@"issue": error}];
+
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 
-    ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
-    
-    NSString *name = [contactUtilities phoneToName:[userInfo objectForKey:@"senderPhone"]];
-    
-    if (!name) {
-        name = [userInfo objectForKey:@"senderUsername"];
-    }
-    
-    NSString *message = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@ nudged you!", name]];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ketch"
-                                                message: message
-                                delegate:self
-                                cancelButtonTitle:@"OK"
-                                otherButtonTitles:nil,                                                        nil];
-    
-    [alert show];
-    
+    [PFPush handlePush:userInfo];
     
 }
 

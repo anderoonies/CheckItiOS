@@ -94,8 +94,9 @@
             NSLog(@"success");
             PFUser *user = [PFUser currentUser];
             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-            [currentInstallation setObject: user forKey: @"owner"];
+            [currentInstallation setObject:user forKey: @"owner"];
             [currentInstallation saveInBackground];
+            [user saveInBackground];
             [self performSegueWithIdentifier:@"returnToMap" sender:self];
         } else {
             // Didn't get a user.
