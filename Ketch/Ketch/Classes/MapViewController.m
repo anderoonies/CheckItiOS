@@ -135,6 +135,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            [mapView_ clear];
             for (PFObject *object in objects) {
                 FriendAnnotation *annotation;
                 if (object[@"user"]==[PFUser currentUser]) {
