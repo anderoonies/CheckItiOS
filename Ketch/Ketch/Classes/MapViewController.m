@@ -51,11 +51,8 @@
     
     _contactUtilities = [[ContactUtilities alloc] init];
     
-    NSTimer *timer = [NSTimer timerWithTimeInterval:60
-                                             target:(id)self
-                                           selector:@selector(generateAnnotations)
-                                           userInfo:nil
-                                            repeats:YES];
+    NSTimer* timer = [NSTimer timerWithTimeInterval:60.0f target:self selector:@selector(generateAnnotations) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
     self.fetchTimer = timer;
     
