@@ -14,21 +14,16 @@
 {
     self = [super initWithFrame:frame];
     
-    self.button = [[UIButton alloc] init];
-    
     if (self)
     {
         // Initialization code.
         [[NSBundle mainBundle] loadNibNamed:@"CoolBar" owner:self options:nil];
     }
-    
-    self.frame = frame;
-    self.autoresizesSubviews = NO;
-    
+        
     return self;
 }
 
-- (void)setButtonText:(NSString *)buttonText {
+- (void)updateButtonText:(NSString *)buttonText {
     _button.titleLabel.text = buttonText;
 }
 

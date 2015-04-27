@@ -51,9 +51,6 @@
     // allows user to check multiple friends
     self.tableView.allowsMultipleSelection = YES;
     
-    self.sendButton.target = self;
-    self.sendButton.action = @selector(sendInvite);
-    
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     if (!self.friendList) {
@@ -61,20 +58,17 @@
     }
     
     
-    CoolBar *toolBar = [[[[NSBundle mainBundle] loadNibNamed:@"CoolBar" owner:self options:nil] objectAtIndex:0] initWithFrame:CGRectMake(0, self.view.frame.size.height-70.0f, self.view.frame.size.width, 70)];
+    NSArray* arr = [[NSBundle mainBundle] loadNibNamed:@"CoolBar" owner:nil options:nil]; // did it load?
+    id obj = [arr objectAtIndex: 0];
+    CoolBar *toolBar = (CoolBar *) obj;
+    toolBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 70);
+    
+    toolBar.button.titleLabel.text = @"TEST";
     
     self.coolBar = toolBar;
     
-//    toolBar.layer.zPosition++;
+    [self.navigationController.view addSubview:self.coolBar];
     
-    [self.view addSubview:toolBar];
-//    [toolBar constrainBottomSpaceToView:self.view predicate:nil];
-//    [toolBar constrainWidthToView:self.view predicate:nil];
-    
-    [toolBar alignBottomEdgeWithView:self.view predicate:0];
-    
-    [toolBar.button.titleLabel setText:@"INVITE FRIENDS"];
-    toolBar.button.alpha = 0.4f;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -85,7 +79,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     // make sure toolbar is hidden when we navigate to the view    
-    [self.navigationController setToolbarHidden:YES];
+    [self.navigationController.view addSubview:self.coolBar];
     
     // unless we have enough friends
     if ([[self.tableView indexPathsForSelectedRows] count]) {
@@ -120,6 +114,10 @@
         [destinationVC updateSubview];
     }
     
+    [self exitButton];
+    
+    [[self.navigationController.view viewWithTag:99] removeFromSuperview];
+
     [super viewWillDisappear:animated];
 }
 
@@ -214,7 +212,8 @@
     // add the checkmark to the cell
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     // if the toolbar for sending the invite is not visibile, set it to visible
-    self.coolBar.button.alpha = 1.0f;
+    [self enterButton];
+    
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
     if ([self.friendList indexOfObject:object]==NSNotFound) {
         [self.friendList addObject:object];
@@ -230,7 +229,8 @@
     
     // if no more cells are checked, remove the toolbar
     if ([[tableView indexPathsForSelectedRows] count] < 1) {
-        self.coolBar.button.alpha = 0.4f;
+        [self exitButton];
+        [_friendList removeAllObjects];
     }
 }
 
@@ -258,6 +258,37 @@
 
 - (void)passFriendList:(NSMutableArray *)friendList {
     _friendList = friendList;
+}
+
+#pragma mark -
+#pragma mark Animation
+
+- (void)enterButton {
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         self.coolBar.frame = CGRectMake(0,
+                                                         self.view.frame.size.height-70.0f,
+                                                         self.view.frame.size.width,
+                                                         70.0f);
+                     }
+                     completion:^(BOOL finished) {
+                         self.coolBar.button.enabled = YES;
+                     }
+     ];
+}
+
+- (void)exitButton {
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         self.coolBar.frame = CGRectMake(0,
+                                                         self.view.frame.size.height,
+                                                         self.view.frame.size.width,
+                                                         70.0f);
+                     }
+                     completion:^(BOOL finished) {
+                         self.coolBar.button.enabled = NO;
+                     }
+     ];
 }
 
 /*

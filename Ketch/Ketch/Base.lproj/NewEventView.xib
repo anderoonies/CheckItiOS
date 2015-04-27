@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController"/>
@@ -27,7 +28,7 @@
                     <constraints>
                         <constraint firstItem="13i-ZN-Twh" firstAttribute="width" secondItem="IdO-H6-1cS" secondAttribute="height" multiplier="69:35" id="O8y-ts-MOs"/>
                         <constraint firstAttribute="centerY" secondItem="13i-ZN-Twh" secondAttribute="centerY" id="TrB-Mv-s4M"/>
-                        <constraint firstItem="13i-ZN-Twh" firstAttribute="height" secondItem="IdO-H6-1cS" secondAttribute="height" id="gH9-wL-YPy"/>
+                        <constraint firstItem="13i-ZN-Twh" firstAttribute="height" secondItem="IdO-H6-1cS" secondAttribute="height" multiplier="0.7" id="gH9-wL-YPy"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL" customClass="UIControl">

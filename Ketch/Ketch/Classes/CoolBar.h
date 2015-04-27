@@ -12,6 +12,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) NSString* buttonText;
 
-- (void)setButtonText:(NSString *)buttonText;
+- (void)updateButtonText:(NSString *)buttonText;
 
 @end
