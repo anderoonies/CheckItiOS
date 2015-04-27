@@ -10,7 +10,8 @@
 #import "V8HorizontalPickerView.h"
 #import <UIKit/UIKit.h>
 
-@interface NewEventView : UIView <V8HorizontalPickerViewDataSource, V8HorizontalPickerViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface NewEventView : UIView <UIPickerViewDataSource, UIPickerViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIControl *buttonView;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;

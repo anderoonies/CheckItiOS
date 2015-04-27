@@ -12,11 +12,15 @@
 #import "ContactsTableViewController.h"
 #import "AddFriendTableViewController.h"
 #import <AddressBook/AddressBook.h>
+#import "CoolBar.h"
+#import "UIView+FLKAutoLayout.h"
 #import <Parse/Parse.h>
 
 @interface InviteFriendTableViewController ()
 
 @property (strong, nonatomic) ContactUtilities *contactUtilities;
+
+@property (strong, nonatomic) CoolBar *coolBar;
 
 @end
 
@@ -56,6 +60,21 @@
         self.friendList = [[NSMutableArray alloc] init];
     }
     
+    
+    CoolBar *toolBar = [[[[NSBundle mainBundle] loadNibNamed:@"CoolBar" owner:self options:nil] objectAtIndex:0] initWithFrame:CGRectMake(0, self.view.frame.size.height-70.0f, self.view.frame.size.width, 70)];
+    
+    self.coolBar = toolBar;
+    
+//    toolBar.layer.zPosition++;
+    
+    [self.view addSubview:toolBar];
+//    [toolBar constrainBottomSpaceToView:self.view predicate:nil];
+//    [toolBar constrainWidthToView:self.view predicate:nil];
+    
+    [toolBar alignBottomEdgeWithView:self.view predicate:0];
+    
+    [toolBar.button.titleLabel setText:@"INVITE FRIENDS"];
+    toolBar.button.alpha = 0.4f;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -195,10 +214,7 @@
     // add the checkmark to the cell
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     // if the toolbar for sending the invite is not visibile, set it to visible
-    if ([self.navigationController.toolbar isHidden] == YES) {
-        [self.navigationController setToolbarHidden:NO];
-    }
-    
+    self.coolBar.button.alpha = 1.0f;
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
     if ([self.friendList indexOfObject:object]==NSNotFound) {
         [self.friendList addObject:object];
@@ -214,7 +230,7 @@
     
     // if no more cells are checked, remove the toolbar
     if ([[tableView indexPathsForSelectedRows] count] < 1) {
-        [self.navigationController setToolbarHidden:YES];
+        self.coolBar.button.alpha = 0.4f;
     }
 }
 

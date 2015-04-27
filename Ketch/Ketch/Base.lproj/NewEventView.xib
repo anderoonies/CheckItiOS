@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController"/>
@@ -10,21 +11,24 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
                     <rect key="frame" x="0.0" y="71" width="320" height="70"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-Vq-JuR">
-                            <rect key="frame" x="154" y="24" width="60" height="24"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13i-ZN-Twh">
-                            <rect key="frame" x="8" y="-46" width="138" height="162"/>
+                        <pickerView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13i-ZN-Twh">
+                            <rect key="frame" x="91" y="-46" width="138" height="162"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="QQ8-JY-hhL"/>
+                                <outlet property="delegate" destination="-1" id="cUi-18-qHs"/>
+                            </connections>
                         </pickerView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="13i-ZN-Twh" firstAttribute="width" secondItem="IdO-H6-1cS" secondAttribute="height" multiplier="69:35" id="O8y-ts-MOs"/>
+                        <constraint firstAttribute="centerY" secondItem="13i-ZN-Twh" secondAttribute="centerY" id="TrB-Mv-s4M"/>
+                        <constraint firstItem="13i-ZN-Twh" firstAttribute="height" secondItem="IdO-H6-1cS" secondAttribute="height" id="gH9-wL-YPy"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL" customClass="UIControl">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
@@ -60,6 +64,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="9VE-Bo-RAd" secondAttribute="centerY" id="72X-dM-EQN"/>
@@ -69,6 +74,12 @@
                         <action selector="friendDisclosureButton:" destination="-1" eventType="touchUpInside" id="QPf-q1-Rw5"/>
                     </connections>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-Vq-JuR">
+                    <rect key="frame" x="239" y="93" width="60" height="24"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -76,7 +87,9 @@
                 <constraint firstAttribute="centerX" secondItem="IdO-H6-1cS" secondAttribute="centerX" id="DHz-kB-J7I"/>
                 <constraint firstAttribute="trailing" secondItem="IdO-H6-1cS" secondAttribute="trailing" id="GrS-Lt-etb"/>
                 <constraint firstAttribute="bottom" secondItem="bK3-v5-iBL" secondAttribute="bottom" constant="147" id="PAn-iM-ATp"/>
+                <constraint firstAttribute="centerY" secondItem="IdO-H6-1cS" secondAttribute="centerY" constant="-1" id="Qmh-No-tN2"/>
                 <constraint firstItem="bK3-v5-iBL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SvR-w7-g89"/>
+                <constraint firstItem="tKv-Vq-JuR" firstAttribute="leading" secondItem="13i-ZN-Twh" secondAttribute="trailing" constant="10" id="eGi-vr-C12"/>
                 <constraint firstItem="IdO-H6-1cS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="71" id="gIB-p4-K0t"/>
                 <constraint firstItem="IdO-H6-1cS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u1y-3w-O9f"/>
             </constraints>
@@ -86,6 +99,7 @@
                 <outlet property="createButton" destination="abl-03-Ufd" id="M9E-YU-9qr"/>
                 <outlet property="friendListLabel" destination="9VE-Bo-RAd" id="8QX-ut-bLH"/>
                 <outlet property="friendView" destination="XII-o0-zqe" id="OC6-i6-xGQ"/>
+                <outlet property="pickerView" destination="13i-ZN-Twh" id="04C-MH-6bQ"/>
                 <outlet property="timeView" destination="IdO-H6-1cS" id="DzR-er-NAc"/>
             </connections>
             <point key="canvasLocation" x="393" y="-504"/>

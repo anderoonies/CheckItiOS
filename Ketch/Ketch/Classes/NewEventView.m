@@ -27,11 +27,6 @@
     self.createButton.enabled = NO;
     self.createButton.alpha = 0.4f;
     
-    // resize subviews
-//    self.buttonView.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height/3);
-//    self.timeView.frame = CGRectMake(self.frame.origin.x, self.buttonView.frame.origin.y + self.buttonView.frame.size.height, self.frame.size.width, self.frame.size.height/3);
-//    self.friendView.frame = CGRectMake(self.frame.origin.x, self.timeView.frame.origin.y + self.timeView.frame.size.height, self.frame.size.width, self.frame.size.height/3);
-    
     _minutesArray = [[NSMutableArray alloc] initWithCapacity:12];
     
     for (int i=5; i<=120; i+=5) {
@@ -43,19 +38,7 @@
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     
-//    self.timePickerView = [[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(0, self.timeView.frame.origin.y, self.frame.size.width, self.frame.size.height/3)];
-//    self.timePickerView.backgroundColor = [UIColor whiteColor];
-//    self.timePickerView.selectedTextColor = [UIColor darkGrayColor];
-//    self.timePickerView.textColor = [UIColor lightGrayColor];
-//    self.timePickerView.delegate = self;
-//    self.timePickerView.dataSource = self;
-//    self.timePickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
-//    self.timePickerView.selectionPoint = CGPointMake(self.timePickerView.frame.size.width/2, 0);
-//    self.timePickerView.selectionIndicatorView = [[UIImageView alloc] initWithImage:[self imageWithImage:[UIImage imageNamed:@"chevron1.png"] scaledToSize:CGSizeMake(20, 10)]];
-//    
-//    [self addSubview:self.timePickerView];
-//    
-//    [self.timePickerView scrollToElement:0 animated:NO];
+    [self.pickerView selectRow:5 inComponent:0 animated:YES];
     
     int cur_minutes = [(NSNumber *)[_minutesArray objectAtIndex:0] intValue];
     self.minutes = cur_minutes;
@@ -75,10 +58,7 @@
     [super awakeFromNib];
     
     _arrayPos = 6;
-    
-//    _timePickerView.frame = CGRectMake(0, self.timeView.frame.origin.y
-//                                       , self.timeView.frame.size.width, self.timeView.frame.size.height);
-    
+
     // center views horizontally
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
     
@@ -86,36 +66,6 @@
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.friendView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
 }
-
-//#pragma mark -
-//#pragma mark V8PickerViewDelegate
-//
-//- (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker {
-//    return [_minutesArray count];
-//};
-//
-//- (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index {
-//    self.minutes = (int)[[_minutesArray objectAtIndex:index] integerValue];
-//}
-//
-//
-//#pragma mark - 
-//#pragma mark V8PickerViewDataSource
-//
-//- (NSString *)horizontalPickerView:(V8HorizontalPickerView *)picker titleForElementAtIndex:(NSInteger)index {
-//    return [NSString stringWithFormat:@"%@", [_minutesArray objectAtIndex:index]];
-//};
-//
-//- (NSInteger) horizontalPickerView:(V8HorizontalPickerView *)picker widthForElementAtIndex:(NSInteger)index {
-//    CGSize constrainedSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
-//    NSString *text = [NSString stringWithFormat:@"%@", [_minutesArray objectAtIndex:index]];
-//    CGRect textRect = [text boundingRectWithSize:constrainedSize
-//                                         options:NSStringDrawingUsesLineFragmentOrigin
-//                                      attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0f]}
-//                                         context:nil];
-//    CGSize textSize = textRect.size;
-//    return textSize.width + 40.0f; // 20px padding on each side
-//}
 
 #pragma mark -
 #pragma mark UIPickerViewDataSource

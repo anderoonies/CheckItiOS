@@ -66,9 +66,13 @@
 		86D860231A951D5B00CA8E23 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860221A951D5B00CA8E23 /* libc++.dylib */; };
 		86D860251A951D6100CA8E23 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860241A951D6100CA8E23 /* libicucore.dylib */; };
 		86D860271A951D6B00CA8E23 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860261A951D6B00CA8E23 /* OpenGLES.framework */; };
+		86D9EE651AEEA89F004BC761 /* CoolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86D9EE641AEEA89F004BC761 /* CoolBar.xib */; };
+		86D9EE681AEEA8F4004BC761 /* CoolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9EE671AEEA8F4004BC761 /* CoolBar.m */; };
+		86D9EE741AEEE351004BC761 /* FLKAutoLayoutPredicateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9EE6B1AEEE351004BC761 /* FLKAutoLayoutPredicateList.m */; };
+		86D9EE761AEEE351004BC761 /* UIView+FLKAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9EE6F1AEEE351004BC761 /* UIView+FLKAutoLayout.m */; };
+		86D9EE781AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9EE731AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m */; };
 		86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0BF1A85925A00C537F0 /* Bolts.framework */; };
 		86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C01A85925A00C537F0 /* Parse.framework */; };
-		86F614BF1AA10B4800E82F13 /* V8HorizontalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F614BD1AA10B4800E82F13 /* V8HorizontalPickerView.m */; };
 		86FF010B1A9BE644009C4661 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FF010A1A9BE644009C4661 /* GradientView.m */; };
 /* End PBXBuildFile section */
 
@@ -164,11 +168,17 @@
 		86D860221A951D5B00CA8E23 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		86D860241A951D6100CA8E23 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		86D860261A951D6B00CA8E23 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		86D9EE641AEEA89F004BC761 /* CoolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoolBar.xib; sourceTree = "<group>"; };
+		86D9EE661AEEA8F4004BC761 /* CoolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoolBar.h; path = Classes/CoolBar.h; sourceTree = "<group>"; };
+		86D9EE671AEEA8F4004BC761 /* CoolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoolBar.m; path = Classes/CoolBar.m; sourceTree = "<group>"; };
+		86D9EE6A1AEEE351004BC761 /* FLKAutoLayoutPredicateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKAutoLayoutPredicateList.h; sourceTree = "<group>"; };
+		86D9EE6B1AEEE351004BC761 /* FLKAutoLayoutPredicateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKAutoLayoutPredicateList.m; sourceTree = "<group>"; };
+		86D9EE6E1AEEE351004BC761 /* UIView+FLKAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayout.h"; sourceTree = "<group>"; };
+		86D9EE6F1AEEE351004BC761 /* UIView+FLKAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayout.m"; sourceTree = "<group>"; };
+		86D9EE721AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayoutPredicate.h"; sourceTree = "<group>"; };
+		86D9EE731AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayoutPredicate.m"; sourceTree = "<group>"; };
 		86DDA0BF1A85925A00C537F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Bolts.framework"; sourceTree = "<group>"; };
 		86DDA0C01A85925A00C537F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Parse.framework"; sourceTree = "<group>"; };
-		86F614BC1AA10B4800E82F13 /* V8HorizontalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V8HorizontalPickerView.h; sourceTree = "<group>"; };
-		86F614BD1AA10B4800E82F13 /* V8HorizontalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = V8HorizontalPickerView.m; sourceTree = "<group>"; };
-		86F614BE1AA10B4800E82F13 /* V8HorizontalPickerViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V8HorizontalPickerViewProtocol.h; sourceTree = "<group>"; };
 		86FF01091A9BE644009C4661 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		86FF010A1A9BE644009C4661 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,9 +273,6 @@
 			children = (
 				86FF01091A9BE644009C4661 /* GradientView.h */,
 				86FF010A1A9BE644009C4661 /* GradientView.m */,
-				86F614BE1AA10B4800E82F13 /* V8HorizontalPickerViewProtocol.h */,
-				86F614BC1AA10B4800E82F13 /* V8HorizontalPickerView.h */,
-				86F614BD1AA10B4800E82F13 /* V8HorizontalPickerView.m */,
 				8677B2971A990FB900C3733A /* NewEventView.h */,
 				8677B2981A990FB900C3733A /* NewEventView.m */,
 			);
@@ -310,6 +317,9 @@
 				8677B2761A990FB900C3733A /* AppDelegate.h */,
 				8677B2771A990FB900C3733A /* AppDelegate.m */,
 				8677B2781A990FB900C3733A /* LaunchScreen.xib */,
+				86D9EE641AEEA89F004BC761 /* CoolBar.xib */,
+				86D9EE661AEEA8F4004BC761 /* CoolBar.h */,
+				86D9EE671AEEA8F4004BC761 /* CoolBar.m */,
 				8677B27A1A990FB900C3733A /* Main.storyboard */,
 				8677B27C1A990FB900C3733A /* NewEventView.xib */,
 				8677B27E1A990FB900C3733A /* Classes */,
@@ -374,6 +384,7 @@
 				86DDA0C01A85925A00C537F0 /* Parse.framework */,
 				86DDA0BF1A85925A00C537F0 /* Bolts.framework */,
 				86A6A6551A93A25B00EDC774 /* ParseUI.framework */,
+				86D9EE691AEEE351004BC761 /* FLKAutoLayout */,
 				8605E6001A6EE979004C7E8F /* Frameworks */,
 				86CFEBD01A391E2A00D5D071 /* Products */,
 				8677B2751A990FB900C3733A /* Ketch */,
@@ -388,6 +399,19 @@
 				86CFEBE81A391E2A00D5D071 /* KetchTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		86D9EE691AEEE351004BC761 /* FLKAutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				86D9EE6A1AEEE351004BC761 /* FLKAutoLayoutPredicateList.h */,
+				86D9EE6B1AEEE351004BC761 /* FLKAutoLayoutPredicateList.m */,
+				86D9EE6E1AEEE351004BC761 /* UIView+FLKAutoLayout.h */,
+				86D9EE6F1AEEE351004BC761 /* UIView+FLKAutoLayout.m */,
+				86D9EE721AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.h */,
+				86D9EE731AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m */,
+			);
+			path = FLKAutoLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,6 +509,7 @@
 				8677B2C91A990FB900C3733A /* Info.plist in Resources */,
 				8677B2C41A990FB900C3733A /* ma_leftArrow@2x.png in Resources */,
 				869C769F1AA260D200153A4C /* chevron1.png in Resources */,
+				86D9EE651AEEA89F004BC761 /* CoolBar.xib in Resources */,
 				8677B2C61A990FB900C3733A /* ma_rightArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D9EE741AEEE351004BC761 /* FLKAutoLayoutPredicateList.m in Sources */,
 				8677B2BB1A990FB900C3733A /* LeftToRightSegue.m in Sources */,
 				8677B2BF1A990FB900C3733A /* NewEventView.m in Sources */,
 				869C76A51AA2627700153A4C /* AddFriendTableViewController.m in Sources */,
@@ -512,18 +538,20 @@
 				8677B2CB1A990FB900C3733A /* WYPopoverController.m in Sources */,
 				8677B2D31A991F6100C3733A /* SettingsViewController.m in Sources */,
 				8677B2C21A990FB900C3733A /* UserAnnotation.m in Sources */,
+				86D9EE761AEEE351004BC761 /* UIView+FLKAutoLayout.m in Sources */,
 				8677B2B41A990FB900C3733A /* CalloutViewController.m in Sources */,
 				8677B2BD1A990FB900C3733A /* MapViewController.m in Sources */,
 				8677B2B31A990FB900C3733A /* ContactsTableViewController.m in Sources */,
+				86D9EE781AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m in Sources */,
 				8677B2B81A990FB900C3733A /* FriendAnnotation.m in Sources */,
 				8677B2B61A990FB900C3733A /* CustomGMSMarker.m in Sources */,
 				86CA22F51A9A98F3009A81E1 /* ContactUtilities.m in Sources */,
+				86D9EE681AEEA8F4004BC761 /* CoolBar.m in Sources */,
 				86C003181A9E981E0069FA8F /* SearchFriendViewController.m in Sources */,
 				8677B2CC1A990FB900C3733A /* WYStoryboardPopoverSegue.m in Sources */,
 				8677B2BA1A990FB900C3733A /* InviteFriendTableViewController.m in Sources */,
 				8677B2BC1A990FB900C3733A /* LoginViewController.m in Sources */,
 				8677B2CA1A990FB900C3733A /* main.m in Sources */,
-				86F614BF1AA10B4800E82F13 /* V8HorizontalPickerView.m in Sources */,
 				86FF010B1A9BE644009C4661 /* GradientView.m in Sources */,
 				8677B2B91A990FB900C3733A /* FriendAnnotationView.m in Sources */,
 			);
