@@ -10,5 +10,6 @@
 
 @interface SearchFriendViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 @end

@@ -238,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="-2958.75" y="0.0"/>
         </scene>
-        <!--Select Friends-->
+        <!--SELECT FRIENDS-->
         <scene sceneID="vlA-oM-ugh">
             <objects>
                 <tableViewController id="Pj9-Zk-Ees" customClass="InviteFriendTableViewController" sceneMemberID="viewController">
@@ -271,7 +271,7 @@
                         <barButtonItem width="278" style="plain" systemItem="fixedSpace" id="hgs-2V-J1h"/>
                         <barButtonItem systemItem="play" id="cyA-zN-Jc3"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Select Friends" id="Fo5-bN-1XF">
+                    <navigationItem key="navigationItem" title="SELECT FRIENDS" id="Fo5-bN-1XF">
                         <barButtonItem key="backBarButtonItem" title=" " id="j2n-C5-qS8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -294,7 +294,7 @@
             </objects>
             <point key="canvasLocation" x="-1959.375" y="0.0"/>
         </scene>
-        <!--Add Friends-->
+        <!--ADD FRIENDS-->
         <scene sceneID="OC0-Yz-RhA">
             <objects>
                 <tableViewController storyboardIdentifier="AddFriendsTableViewController" id="s6W-Sy-zEb" customClass="AddFriendTableViewController" sceneMemberID="viewController">
@@ -312,7 +312,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add by Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLN-of-OZB">
                                                     <rect key="frame" x="8" y="11" width="139" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -329,7 +329,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add from Contacts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFz-tu-slS">
                                                     <rect key="frame" x="8" y="11" width="146" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -347,7 +347,7 @@
                             <outlet property="delegate" destination="s6W-Sy-zEb" id="Uz1-he-Q1A"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Friends" id="6WB-EX-6zY">
+                    <navigationItem key="navigationItem" title="ADD FRIENDS" id="6WB-EX-6zY">
                         <barButtonItem key="backBarButtonItem" title=" " id="ie8-02-bX3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -357,7 +357,7 @@
             </objects>
             <point key="canvasLocation" x="-1140" y="0.0"/>
         </scene>
-        <!--Add Username-->
+        <!--SEARCH-->
         <scene sceneID="jmv-xS-kJr">
             <objects>
                 <viewController id="F1J-E7-TEt" customClass="SearchFriendViewController" sceneMemberID="viewController">
@@ -369,42 +369,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBs-Tb-eB1">
-                                <rect key="frame" x="16" y="44" width="568" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBs-Tb-eB1" customClass="UISearchse">
+                                <rect key="frame" x="16" y="52" width="568" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7kw-PG-5hr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiI-YI-Luj">
-                                <rect key="frame" x="554" y="102" width="30" height="30"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L46-Vc-psW" customClass="UIControl">
+                                <rect key="frame" x="0.0" y="102" width="600" height="63"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH7-eP-7ci">
+                                        <rect key="frame" x="140" y="0.0" width="320" height="63"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="31"/>
+                                        <state key="normal" title="ADD FRIEND">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addPressed:" destination="F1J-E7-TEt" eventType="touchUpInside" id="yDM-9W-WcW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="sH7-eP-7ci" secondAttribute="centerX" id="R1n-sx-e0U"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="addPressed:" destination="F1J-E7-TEt" eventType="touchUpInside" id="Euu-KE-yt8"/>
+                                    <action selector="addPressed:" destination="F1J-E7-TEt" eventType="touchUpInside" id="zGs-fA-DZG"/>
                                 </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YBs-Tb-eB1" firstAttribute="leading" secondItem="89P-Rh-rDY" secondAttribute="leadingMargin" id="EAw-o9-sJu"/>
-                            <constraint firstItem="YBs-Tb-eB1" firstAttribute="top" secondItem="f2s-E8-AQ0" secondAttribute="bottom" constant="20" id="NA8-ZW-HEn"/>
+                            <constraint firstItem="L46-Vc-psW" firstAttribute="width" secondItem="89P-Rh-rDY" secondAttribute="width" id="PzC-D8-mgp"/>
+                            <constraint firstItem="L46-Vc-psW" firstAttribute="top" secondItem="YBs-Tb-eB1" secondAttribute="bottom" id="TuM-ej-aHn"/>
                             <constraint firstItem="YBs-Tb-eB1" firstAttribute="trailing" secondItem="89P-Rh-rDY" secondAttribute="trailingMargin" id="Z0F-vu-juo"/>
-                            <constraint firstItem="YBs-Tb-eB1" firstAttribute="top" secondItem="tiI-YI-Luj" secondAttribute="top" constant="-38" id="lh8-6g-W1B"/>
-                            <constraint firstItem="tiI-YI-Luj" firstAttribute="trailing" secondItem="89P-Rh-rDY" secondAttribute="trailingMargin" id="ou0-Ew-Lo4"/>
+                            <constraint firstItem="YBs-Tb-eB1" firstAttribute="top" secondItem="f2s-E8-AQ0" secondAttribute="bottom" constant="20" id="bf4-15-1KX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Username" id="MqF-bL-f34">
+                    <navigationItem key="navigationItem" title="SEARCH" id="MqF-bL-f34">
                         <barButtonItem key="backBarButtonItem" title=" " id="rxy-12-YuS">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="sH7-eP-7ci" id="MZA-Kh-cpk"/>
                         <outlet property="searchField" destination="YBs-Tb-eB1" id="bKZ-Uf-p9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIz-jw-QfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-296.25" y="-272.53521126760563"/>
+            <point key="canvasLocation" x="-297" y="-273"/>
         </scene>
         <!--Add Contacts-->
         <scene sceneID="bnk-fx-Ti8">
@@ -533,13 +551,13 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6p-MY-lcb">
                                 <rect key="frame" x="8" y="8" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-mw-cW8">
                                 <rect key="frame" x="8" y="21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

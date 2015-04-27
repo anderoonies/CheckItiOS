@@ -19,15 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CALayer *border = [CALayer layer];
-    CGFloat borderWidth = .5;
-    border.borderColor = [UIColor lightGrayColor].CGColor;
-    border.frame = CGRectMake(0, self.searchField.frame.size.height - borderWidth, self.searchField.frame.size.width, self.searchField.frame.size.height);
-    border.borderWidth = borderWidth;
-    [self.searchField.layer addSublayer:border];
-    self.searchField.layer.masksToBounds = YES;
+    [self.searchField addTarget:self
+                  action:@selector(textFieldDidChange)
+        forControlEvents:UIControlEventEditingChanged];
     
     [self.searchField becomeFirstResponder];
+    
+    self.addButton.alpha = 0.4f;
+    self.addButton.enabled = NO;
     // Do any additional setup after loading the view.
 }
 
@@ -85,6 +84,23 @@
         } else {
             alert.title = @"Friend not found";
             [alert show];
+        }
+    }];
+}
+
+- (void)textFieldDidChange {
+    NSString *searchString = [[NSString alloc] initWithString:self.searchField.text];
+    PFQuery *userQuery = [PFUser query];
+    
+    [userQuery whereKey:@"username" equalTo:searchString];
+    
+    [userQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (number>0) {
+            self.addButton.alpha = 1.0f;
+            self.addButton.enabled = YES;
+        } else {
+            self.addButton.alpha = 0.4f;
+            self.addButton.enabled = NO;
         }
     }];
 }

@@ -12,6 +12,17 @@
             <subviews>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-H6-1cS">
                     <rect key="frame" x="0.0" y="71" width="320" height="70"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-Vq-JuR">
+                            <rect key="frame" x="154" y="24" width="60" height="24"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13i-ZN-Twh">
+                            <rect key="frame" x="8" y="-46" width="138" height="162"/>
+                        </pickerView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                 </view>
@@ -33,7 +44,7 @@
                     <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="abl-03-Ufd" secondAttribute="centerX" id="Axo-Ku-oez"/>
-                        <constraint firstAttribute="trailing" secondItem="abl-03-Ufd" secondAttribute="trailing" constant="8" id="rgg-VX-k95"/>
+                        <constraint firstAttribute="centerY" secondItem="abl-03-Ufd" secondAttribute="centerY" id="Sl1-Li-UgP"/>
                     </constraints>
                     <connections>
                         <action selector="createEventPressed:" destination="-1" eventType="touchUpInside" id="P9M-23-ll1"/>
@@ -66,6 +77,7 @@
                 <constraint firstAttribute="trailing" secondItem="IdO-H6-1cS" secondAttribute="trailing" id="GrS-Lt-etb"/>
                 <constraint firstAttribute="bottom" secondItem="bK3-v5-iBL" secondAttribute="bottom" constant="147" id="PAn-iM-ATp"/>
                 <constraint firstItem="bK3-v5-iBL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SvR-w7-g89"/>
+                <constraint firstItem="IdO-H6-1cS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="71" id="gIB-p4-K0t"/>
                 <constraint firstItem="IdO-H6-1cS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u1y-3w-O9f"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
