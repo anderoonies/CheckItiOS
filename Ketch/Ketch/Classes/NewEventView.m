@@ -24,6 +24,9 @@
 {
     self = [super initWithFrame:frame];
     
+    self.createButton.enabled = NO;
+    self.createButton.alpha = 0.4f;
+    
     // resize subviews
     self.buttonView.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height/3);
     self.timeView.frame = CGRectMake(self.frame.origin.x, self.buttonView.frame.origin.y + self.buttonView.frame.size.height, self.frame.size.width, self.frame.size.height/3);
@@ -37,7 +40,7 @@
         j+=1;
     }
     
-    self.timePickerView = [[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(0, self.timeView.frame.origin.y, self.timeView.frame.size.width, self.frame.size.height/3)];
+    self.timePickerView = [[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(0, self.timeView.frame.origin.y, self.frame.size.width, self.frame.size.height/3)];
     self.timePickerView.backgroundColor = [UIColor whiteColor];
     self.timePickerView.selectedTextColor = [UIColor darkGrayColor];
     self.timePickerView.textColor = [UIColor lightGrayColor];

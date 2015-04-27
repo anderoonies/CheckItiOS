@@ -42,6 +42,7 @@
     [application registerForRemoteNotifications];
     
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"Avenir" size:20.0], NSFontAttributeName,nil]];
     [self.window setTintColor:[UIColor colorWithRed:56.0/255.0 green:202.0/255.0 blue:155.0/255.0 alpha:1]];
     
     if (application.applicationState != UIApplicationStateBackground) {

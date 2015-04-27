@@ -11,7 +11,8 @@
 #import <UIKit/UIKit.h>
 
 @interface NewEventView : UIView <V8HorizontalPickerViewDataSource, V8HorizontalPickerViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property (weak, nonatomic) IBOutlet UIControl *buttonView;
+@property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (strong, nonatomic) V8HorizontalPickerView *timePickerView;
 @property (weak, nonatomic) IBOutlet UIView *timeView;
 @property (weak, nonatomic) IBOutlet UIView *friendView;

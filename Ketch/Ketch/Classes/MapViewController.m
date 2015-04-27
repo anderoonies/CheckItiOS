@@ -483,7 +483,8 @@
     if ([_friendList count]==0) {
         self.eventCreateSubview.friendListLabel.text = @"Invite Friends";
     } else {
-    
+        self.eventCreateSubview.createButton.enabled = YES;
+        self.eventCreateSubview.createButton.alpha = 1.0f;
         for (PFObject *object in _friendList) {
             if (object[@"phone"]) {
                 NSString *phone = [contactUtilities phoneToName:object[@"phone"]];
