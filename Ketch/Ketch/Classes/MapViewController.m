@@ -481,7 +481,7 @@
     NSMutableArray *friendStrings = [[NSMutableArray alloc] init];
     ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
     if ([_friendList count]==0) {
-        self.eventCreateSubview.friendListLabel.text = @"Invite Friends";
+        self.eventCreateSubview.friendListLabel.text = @"INVITE FRIENDS";
     } else {
         self.eventCreateSubview.createButton.enabled = YES;
         self.eventCreateSubview.createButton.alpha = 1.0f;

@@ -63,7 +63,10 @@
     CoolBar *toolBar = (CoolBar *) obj;
     toolBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 70);
     
-    toolBar.button.titleLabel.text = @"TEST";
+    [toolBar.button setTitle:@"INVITE FRIENDS" forState:UIControlStateNormal];
+    
+    [toolBar addTarget:self action:@selector(sendInvite) forControlEvents:UIControlEventTouchUpInside];
+    [toolBar.button addTarget:self action:@selector(sendInvite) forControlEvents:UIControlEventTouchUpInside];
     
     self.coolBar = toolBar;
     

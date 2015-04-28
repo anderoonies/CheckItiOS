@@ -23,8 +23,4 @@
     return self;
 }
 
-- (void)updateButtonText:(NSString *)buttonText {
-    _button.titleLabel.text = buttonText;
-}
-
 @end
