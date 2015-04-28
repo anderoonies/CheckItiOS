@@ -26,6 +26,9 @@
 
 @implementation InviteFriendTableViewController
 
+#define FRIEND_SEGMENT_INDEX 0
+#define GROUP_SEGMENT_INDEX 1
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -71,6 +74,8 @@
     self.coolBar = toolBar;
     
     [self.navigationController.view addSubview:self.coolBar];
+    
+    [self.segmentControl addTarget:self action:@selector(selectorChanged:) forControlEvents:UIControlEventValueChanged];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -189,6 +194,51 @@
 
 }
 
+#pragma mark -
+#pragma mark Segment Methods
+
+- (void)loadGroups {
+    self.parseClassName = @"group";
+    
+    self.textKey = @"name";
+    
+    [self loadObjects];
+    
+    for (int section = 0; section < [self.tableView numberOfSections]; section++) {
+        for (int row = 0; row < [self.tableView numberOfRowsInSection:section]; row++) {
+            if ([_groupList indexOfObject:[self.objects objectAtIndex:row]]!=NSNotFound) {
+                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
+                [self tableView:self.tableView didSelectRowAtIndexPath:path];
+                [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+                UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:path];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.selected = YES;
+            }
+        }
+    }
+}
+
+- (void)loadFriends {
+    self.parseClassName = @"friend";
+    
+    self.textKey = @"username";
+    
+    [self loadObjects];
+    
+    for (int section = 0; section < [self.tableView numberOfSections]; section++) {
+        for (int row = 0; row < [self.tableView numberOfRowsInSection:section]; row++) {
+            if ([_friendList indexOfObject:[self.objects objectAtIndex:row]]!=NSNotFound) {
+                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
+                [self tableView:self.tableView didSelectRowAtIndexPath:path];
+                [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+                UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:path];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.selected = YES;
+            }
+        }
+    }
+}
+
 
 #pragma mark -
 #pragma mark Selections
@@ -197,14 +247,19 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
     
-    if (object[@"phone"]) {
-        cell.textLabel.text = [_contactUtilities phoneToName:object[@"phone"]];
-        if (cell.textLabel.text==nil) {
-            cell.textLabel.text=object[@"username"];
+    if (self.segmentControl.selectedSegmentIndex==FRIEND_SEGMENT_INDEX) {
+        if (object[@"phone"]) {
+            cell.textLabel.text = [_contactUtilities phoneToName:object[@"phone"]];
+            if (cell.textLabel.text==nil) {
+                cell.textLabel.text=object[@"username"];
+            }
+        } else {
+            cell.textLabel.text = object[@"username"];
         }
     } else {
-        cell.textLabel.text = object[@"username"];
+        cell.textLabel.text = object[@"name"];
     }
+    
     
     return cell;
 }
@@ -228,7 +283,9 @@
 {
     // remove the checkmark from the cell
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-    [_friendList removeObject:[self.objects objectAtIndex:indexPath.row]];
+    
+    if (self.segmentControl.selectedSegmentIndex==FRIEND_SEGMENT_INDEX)
+        [_friendList removeObject:[self.objects objectAtIndex:indexPath.row]];
     
     // if no more cells are checked, remove the toolbar
     if ([[tableView indexPathsForSelectedRows] count] < 1) {
@@ -259,8 +316,9 @@
     self.navigationController.navigationBar.hidden=NO;
 }
 
-- (void)passFriendList:(NSMutableArray *)friendList {
+- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList {
     _friendList = friendList;
+    _groupList = groupList;
 }
 
 #pragma mark -
@@ -292,6 +350,22 @@
                          self.coolBar.button.enabled = NO;
                      }
      ];
+}
+
+#pragma mark - 
+#pragma mark Selector
+
+- (IBAction)selectorChanged:(id)sender {
+    switch (self.segmentControl.selectedSegmentIndex) {
+        case 0:
+            [self loadFriends];
+            break;
+        case 1:
+            [self loadGroups];
+            break;
+        default:
+            break;
+    }
 }
 
 /*
