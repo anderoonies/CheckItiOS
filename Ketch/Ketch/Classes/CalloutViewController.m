@@ -17,6 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.blurbLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    self.blurbLabel.numberOfLines = 0;
+    
     self.nameLabel.text = self.nameLabelValue;
     self.timeLabel.text = self.timeLabelValue;
     self.blurbLabel.text = self.blurbLabelValue;
