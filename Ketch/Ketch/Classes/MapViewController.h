@@ -13,7 +13,7 @@
 #import "ContactUtilities.h"
 #import "CustomGMSMarker.h"
 
-@interface MapViewController : UIViewController <GMSMapViewDelegate, MKMapViewDelegate, WYPopoverControllerDelegate, CLLocationManagerDelegate> {
+@interface MapViewController : UIViewController <GMSMapViewDelegate, MKMapViewDelegate, WYPopoverControllerDelegate, CLLocationManagerDelegate, BlurbCalloutViewControllerDelegate> {
     GMSMapView *mapView_;
     WYPopoverController *popoverController;
 }

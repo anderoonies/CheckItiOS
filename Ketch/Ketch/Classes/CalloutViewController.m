@@ -19,6 +19,7 @@
     [super viewDidLoad];
     self.nameLabel.text = self.nameLabelValue;
     self.timeLabel.text = self.timeLabelValue;
+    self.blurbLabel.text = self.blurbLabelValue;
     
 //    UIImage *buttonImage = [[UIImage alloc] init];
     UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:self.notifyButton.frame];

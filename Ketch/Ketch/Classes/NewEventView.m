@@ -108,6 +108,21 @@
     return newImage;
 }
 
+#pragma mark -
+#pragma mark Blurb
+
+- (IBAction)blurbPressed:(id)sender
+{
+    _calloutVC = [[BlurbCalloutViewController alloc] init];
+    
+    WYPopoverController *popoverController = [[WYPopoverController alloc] initWithContentViewController: _calloutVC];
+    
+    popoverController.delegate = self;
+    
+    [popoverController presentPopoverFromRect:self.blurbControl.frame inView:self permittedArrowDirections:WYPopoverArrowDirectionUp animated:YES options:WYPopoverAnimationOptionFadeWithScale];
+    
+}
+
 
 @end
 

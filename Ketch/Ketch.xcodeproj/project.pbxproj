@@ -56,6 +56,10 @@
 		869C76A51AA2627700153A4C /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 869C76A41AA2627700153A4C /* AddFriendTableViewController.m */; };
 		869C76A91AA2686E00153A4C /* greenindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 869C76A81AA2686E00153A4C /* greenindicator.png */; };
 		86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A6A6551A93A25B00EDC774 /* ParseUI.framework */; };
+		86BDBC491AF0308600E815F5 /* message30.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BDBC481AF0308600E815F5 /* message30.png */; };
+		86BDBC4F1AF046BC00E815F5 /* BlurbCalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BDBC4E1AF046BC00E815F5 /* BlurbCalloutViewController.m */; };
+		86BDBC541AF0542500E815F5 /* speech95.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BDBC531AF0542500E815F5 /* speech95.png */; };
+		86BDBC561AF0646100E815F5 /* filledspeech95.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BDBC551AF0646100E815F5 /* filledspeech95.png */; };
 		86C003181A9E981E0069FA8F /* SearchFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C003171A9E981E0069FA8F /* SearchFriendViewController.m */; };
 		86CA22F51A9A98F3009A81E1 /* ContactUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CA22F41A9A98F3009A81E1 /* ContactUtilities.m */; };
 		86D860191A951D3C00CA8E23 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D860181A951D3C00CA8E23 /* AVFoundation.framework */; };
@@ -154,6 +158,11 @@
 		869C76A41AA2627700153A4C /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 		869C76A81AA2686E00153A4C /* greenindicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenindicator.png; sourceTree = "<group>"; };
 		86A6A6551A93A25B00EDC774 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (3)/ParseUI.framework"; sourceTree = "<group>"; };
+		86BDBC481AF0308600E815F5 /* message30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message30.png; sourceTree = "<group>"; };
+		86BDBC4D1AF046BC00E815F5 /* BlurbCalloutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurbCalloutViewController.h; sourceTree = "<group>"; };
+		86BDBC4E1AF046BC00E815F5 /* BlurbCalloutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurbCalloutViewController.m; sourceTree = "<group>"; };
+		86BDBC531AF0542500E815F5 /* speech95.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speech95.png; sourceTree = "<group>"; };
+		86BDBC551AF0646100E815F5 /* filledspeech95.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filledspeech95.png; sourceTree = "<group>"; };
 		86C003161A9E981E0069FA8F /* SearchFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendViewController.h; sourceTree = "<group>"; };
 		86C003171A9E981E0069FA8F /* SearchFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendViewController.m; sourceTree = "<group>"; };
 		86CA22F31A9A98F3009A81E1 /* ContactUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUtilities.h; sourceTree = "<group>"; };
@@ -275,6 +284,8 @@
 				86FF010A1A9BE644009C4661 /* GradientView.m */,
 				8677B2971A990FB900C3733A /* NewEventView.h */,
 				8677B2981A990FB900C3733A /* NewEventView.m */,
+				86BDBC4D1AF046BC00E815F5 /* BlurbCalloutViewController.h */,
+				86BDBC4E1AF046BC00E815F5 /* BlurbCalloutViewController.m */,
 			);
 			name = "New Event";
 			sourceTree = "<group>";
@@ -355,6 +366,9 @@
 		8677B29F1A990FB900C3733A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				86BDBC551AF0646100E815F5 /* filledspeech95.png */,
+				86BDBC531AF0542500E815F5 /* speech95.png */,
+				86BDBC481AF0308600E815F5 /* message30.png */,
 				8676CB841AAE75F9002CAB2A /* close@3x.png */,
 				869C76A81AA2686E00153A4C /* greenindicator.png */,
 				869C769E1AA260D200153A4C /* chevron1.png */,
@@ -500,11 +514,14 @@
 				8677B2C81A990FB900C3733A /* Images.xcassets in Resources */,
 				8677B2B21A990FB900C3733A /* NewEventView.xib in Resources */,
 				8677B2C71A990FB900C3733A /* ma_topBackground.png in Resources */,
+				86BDBC541AF0542500E815F5 /* speech95.png in Resources */,
 				8677B2B11A990FB900C3733A /* Main.storyboard in Resources */,
 				869C76A91AA2686E00153A4C /* greenindicator.png in Resources */,
 				8677B2C31A990FB900C3733A /* ma_leftArrow.png in Resources */,
+				86BDBC561AF0646100E815F5 /* filledspeech95.png in Resources */,
 				8677B2B01A990FB900C3733A /* LaunchScreen.xib in Resources */,
 				8677B1BC1A9906AE00C3733A /* GoogleMaps.bundle in Resources */,
+				86BDBC491AF0308600E815F5 /* message30.png in Resources */,
 				8677B2CD1A990FB900C3733A /* Info.plist in Resources */,
 				8677B2C91A990FB900C3733A /* Info.plist in Resources */,
 				8677B2C41A990FB900C3733A /* ma_leftArrow@2x.png in Resources */,
@@ -528,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86BDBC4F1AF046BC00E815F5 /* BlurbCalloutViewController.m in Sources */,
 				86D9EE741AEEE351004BC761 /* FLKAutoLayoutPredicateList.m in Sources */,
 				8677B2BB1A990FB900C3733A /* LeftToRightSegue.m in Sources */,
 				8677B2BF1A990FB900C3733A /* NewEventView.m in Sources */,

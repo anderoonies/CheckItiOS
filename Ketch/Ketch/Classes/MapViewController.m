@@ -29,6 +29,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
 @property (nonatomic, strong) NewEventView *eventCreateSubview;
+@property (nonatomic, strong) NSString *blurb;
 
 @end
 
@@ -140,6 +141,7 @@
                     annotation.name = @"Me";
                     annotation.startTime = object[@"startTime"];
                     annotation.endTime = object[@"endTime"];
+                    annotation.blurb = object[@"blurb"];
                     PFGeoPoint *geoPoint = object[@"location"];
                     annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                 } else {
@@ -152,6 +154,7 @@
                     }
                     annotation.startTime = object[@"startTime"];
                     annotation.endTime = object[@"endTime"];
+                    annotation.blurb = object[@"blurb"];
                     PFGeoPoint *geoPoint = object[@"location"];
                     if ([[object valueForKey:@"nudgers"] containsObject:[PFUser currentUser]]) {
                         annotation.didNotify=YES;
@@ -342,12 +345,21 @@
     
     FriendAnnotation *annotation = senderMarker.annotation;
     CalloutViewController *calloutVC = [[CalloutViewController alloc] init];
-
-    calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
+    
+    calloutVC.blurbLabel.numberOfLines = 0;
+    
+    
+    if ([annotation.blurb length]) {
+        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
+        calloutVC.preferredContentSize = CGSizeMake(200, 80);
+    } else {
+        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewControllerNoBlurb"];
+        calloutVC.preferredContentSize = CGSizeMake(200, 50);
+    }
+    
     
     if (popoverController == nil)
     {
-        calloutVC.preferredContentSize = CGSizeMake(200, 50);
         calloutVC.annotation = annotation;
         calloutVC.mapVC = self;
         
@@ -355,10 +367,12 @@
             calloutVC.own = YES;
             calloutVC.nameLabelValue = _userMarker.annotation.name;
             calloutVC.timeLabelValue = [_userMarker.annotation getTimeLabel];
+            calloutVC.blurbLabelValue = _userMarker.annotation.blurb;
         } else {
             calloutVC.own = NO;
             calloutVC.nameLabelValue = annotation.name;
             calloutVC.timeLabelValue = [annotation getTimeLabel];
+            calloutVC.blurbLabelValue = annotation.blurb;
             
             if (annotation.didNotify) {
                 calloutVC.notifyButtonColor = [UIColor colorWithRed:(95/255.0) green:(201/255.0) blue:(56/255.0) alpha:1.0];
@@ -523,6 +537,7 @@
     event[@"startTime"] = curDate;
     event[@"endTime"] = endDate;
     event[@"canSee"] = _friendList;
+    event[@"blurb"] = _blurb;
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:centerCoord.latitude longitude:centerCoord.longitude];
     event[@"location"] = point;
     event[@"nudgers"] = [[NSMutableArray alloc] initWithObjects:nil];
@@ -533,6 +548,7 @@
     annotation.startTime = curDate;
     annotation.endTime = endDate;
     annotation.coordinate = CLLocationCoordinate2DMake(centerCoord.latitude, centerCoord.longitude);
+    annotation.blurb = _blurb;
     
     _userAnnotation.coordinate = centerCoord;
     _userMarker.position = centerCoord;
@@ -540,6 +556,7 @@
     _userMarker.annotation = annotation;
     
     [[self.view viewWithTag:3] removeFromSuperview];
+    [self.eventCreateSubview.blurbImageView setImage:[UIImage imageNamed:@"speech95.png"]];
     [self hideSubview];
     
     // remove user's previous event
@@ -560,6 +577,47 @@
             NSLog(@"FATAL ERROR %@", error);
         }
     }];
+}
+
+- (IBAction)blurbControlPressed:(id)sender {
+    BlurbCalloutViewController *calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BlurbCalloutViewController"];
+    
+    calloutVC.delegate = self;
+    
+    calloutVC.preferredContentSize = CGSizeMake(self.view.frame.size.width, 53);
+
+    if (popoverController == nil)
+    {
+        popoverController = [[WYPopoverController alloc] initWithContentViewController: calloutVC];
+        
+        popoverController.delegate = self;
+        
+        [popoverController presentPopoverFromRect:CGRectMake(self.eventCreateSubview.frame.origin.x,
+                                                             self.eventCreateSubview.frame.origin.y,
+                                                             10,
+                                                             10)
+                                                inView:self.view
+                                                permittedArrowDirections:WYPopoverArrowDirectionDown
+                                                animated:YES
+                                                options:WYPopoverAnimationOptionFadeWithScale];
+    } else {
+        [self close:nil];
+    }
+
+}
+
+#pragma mark -
+#pragma mark Blurb Delegate
+
+- (void)dismissBlurbField:(NSString *)blurb
+{
+    [self close:nil];
+    _blurb = blurb;
+    if ([_blurb length]) {
+        [self.eventCreateSubview.blurbImageView setImage:[UIImage imageNamed:@"filledspeech95.png"]];
+    } else {
+        [self.eventCreateSubview.blurbImageView setImage:[UIImage imageNamed:@"speech95.png"]];
+    }
 }
 
 #pragma mark -

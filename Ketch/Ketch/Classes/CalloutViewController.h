@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSString *nameLabelValue;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) NSString *timeLabelValue;
+@property (weak, nonatomic) IBOutlet UILabel *blurbLabel;
+@property (strong, nonatomic) NSString *blurbLabelValue;
 @property (strong, nonatomic) IBOutlet UIControl *notifyButton;
 @property (strong, nonatomic) IBOutlet UIImageView *notifyImage;
 @property (strong, nonatomic) FriendAnnotation *annotation;

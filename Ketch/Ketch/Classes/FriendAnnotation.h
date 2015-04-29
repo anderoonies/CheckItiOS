@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) NSString *timeLabel;
+@property (nonatomic, strong) NSString *blurb;
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 @property (nonatomic, assign) BOOL didNotify;
 

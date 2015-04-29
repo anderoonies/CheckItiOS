@@ -31,10 +31,10 @@
                         <constraint firstItem="13i-ZN-Twh" firstAttribute="height" secondItem="IdO-H6-1cS" secondAttribute="height" multiplier="0.7" id="gH9-wL-YPy"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL" customClass="UIControl">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-v5-iBL" customClass="UIControl">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abl-03-Ufd">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abl-03-Ufd">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="31"/>
                             <state key="normal" title="CREATE">
@@ -48,8 +48,8 @@
                     </subviews>
                     <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="centerX" secondItem="abl-03-Ufd" secondAttribute="centerX" id="Axo-Ku-oez"/>
-                        <constraint firstAttribute="centerY" secondItem="abl-03-Ufd" secondAttribute="centerY" id="Sl1-Li-UgP"/>
+                        <constraint firstAttribute="centerY" secondItem="abl-03-Ufd" secondAttribute="centerY" id="R8J-ZK-Suv"/>
+                        <constraint firstAttribute="centerX" secondItem="abl-03-Ufd" secondAttribute="centerX" id="uWP-W4-Q93"/>
                     </constraints>
                     <connections>
                         <action selector="createEventPressed:" destination="-1" eventType="touchUpInside" id="P9M-23-ll1"/>
@@ -78,24 +78,39 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-Vq-JuR">
                     <rect key="frame" x="239" y="93" width="60" height="24"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ch6-1J-xaT" userLabel="blurbControl" customClass="UIControl">
+                    <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="blurbControlPressed:" destination="-1" eventType="touchUpInside" id="So8-JO-yRp"/>
+                    </connections>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="speech95.png" translatesAutoresizingMaskIntoConstraints="NO" id="ED2-Ri-8eu">
+                    <rect key="frame" x="16" y="16" width="31" height="31"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="bK3-v5-iBL" secondAttribute="trailing" id="5JF-D4-j7p"/>
+                <constraint firstItem="Ch6-1J-xaT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7kn-ra-c4I"/>
                 <constraint firstAttribute="centerX" secondItem="IdO-H6-1cS" secondAttribute="centerX" id="DHz-kB-J7I"/>
                 <constraint firstAttribute="trailing" secondItem="IdO-H6-1cS" secondAttribute="trailing" id="GrS-Lt-etb"/>
                 <constraint firstAttribute="bottom" secondItem="bK3-v5-iBL" secondAttribute="bottom" constant="147" id="PAn-iM-ATp"/>
                 <constraint firstAttribute="centerY" secondItem="IdO-H6-1cS" secondAttribute="centerY" constant="-1" id="Qmh-No-tN2"/>
-                <constraint firstItem="bK3-v5-iBL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SvR-w7-g89"/>
                 <constraint firstItem="tKv-Vq-JuR" firstAttribute="leading" secondItem="13i-ZN-Twh" secondAttribute="trailing" constant="10" id="eGi-vr-C12"/>
                 <constraint firstItem="IdO-H6-1cS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="71" id="gIB-p4-K0t"/>
+                <constraint firstItem="bK3-v5-iBL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="t6s-T0-MeM"/>
                 <constraint firstItem="IdO-H6-1cS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u1y-3w-O9f"/>
+                <constraint firstItem="bK3-v5-iBL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xB6-gE-uoS"/>
+                <constraint firstItem="Ch6-1J-xaT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yIr-Gr-otT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="blurbControl" destination="Ch6-1J-xaT" id="A3L-WY-BJV"/>
+                <outlet property="blurbImageView" destination="ED2-Ri-8eu" id="LgU-aw-C5O"/>
                 <outlet property="buttonView" destination="bK3-v5-iBL" id="yfI-aM-Wao"/>
                 <outlet property="createButton" destination="abl-03-Ufd" id="M9E-YU-9qr"/>
                 <outlet property="friendListLabel" destination="9VE-Bo-RAd" id="8QX-ut-bLH"/>
@@ -106,6 +121,9 @@
             <point key="canvasLocation" x="393" y="-504"/>
         </view>
     </objects>
+    <resources>
+        <image name="speech95.png" width="67" height="57"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
