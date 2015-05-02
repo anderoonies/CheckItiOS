@@ -29,6 +29,8 @@
     
     _minutesArray = [[NSMutableArray alloc] initWithCapacity:12];
     
+    _calloutVC = [[BlurbCalloutViewController alloc] init];
+    
     for (int i=5; i<=120; i+=5) {
         int j=0;
         [_minutesArray addObject:[NSNumber numberWithInt:i]];
@@ -37,7 +39,7 @@
     
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
-    
+     
     [self.pickerView selectRow:5 inComponent:0 animated:YES];
     
     int cur_minutes = [(NSNumber *)[_minutesArray objectAtIndex:0] intValue];
@@ -58,6 +60,11 @@
     [super awakeFromNib];
     
     _arrayPos = 6;
+    
+    if ([_friendList count]==0) {
+        self.createButton.alpha = 0.4;
+        self.createButton.enabled = NO;
+    }
 
     // center views horizontally
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
@@ -111,17 +118,16 @@
 #pragma mark -
 #pragma mark Blurb
 
-- (IBAction)blurbPressed:(id)sender
-{
-    _calloutVC = [[BlurbCalloutViewController alloc] init];
-    
-    WYPopoverController *popoverController = [[WYPopoverController alloc] initWithContentViewController: _calloutVC];
-    
-    popoverController.delegate = self;
-    
-    [popoverController presentPopoverFromRect:self.blurbControl.frame inView:self permittedArrowDirections:WYPopoverArrowDirectionUp animated:YES options:WYPopoverAnimationOptionFadeWithScale];
-    
-}
+//- (IBAction)blurbPressed:(id)sender
+//{    
+//    WYPopoverController *popoverController = [[WYPopoverController alloc] initWithContentViewController: _calloutVC];
+//    
+//    popoverController.delegate = self;
+//    
+//    [popoverController presentPopoverFromRect:self.blurbControl.frame inView:self permittedArrowDirections:WYPopoverArrowDirectionUp animated:YES options:WYPopoverAnimationOptionFadeWithScale];
+//    
+//}
+
 
 
 @end

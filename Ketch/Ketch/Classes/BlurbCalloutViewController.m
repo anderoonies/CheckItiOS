@@ -18,7 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.blurb = [[NSString alloc] init];
+
+    if ([_blurb length]) {
+        _blurbField.text = _blurb;
+    }
     
     _blurbField.delegate = self;
     [self.blurbField becomeFirstResponder];
@@ -35,7 +38,10 @@
     self.blurb = self.blurbField.text;
     
     [self.delegate dismissBlurbField:self.blurb];
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.blurb = self.blurbField.text;
 }
 
 #pragma mark Text Field Delegate
@@ -43,16 +49,17 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return (newLength > 25) ? NO : YES;
+    return (newLength > 40) ? NO : YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField //resign first responder for textfield
 {
     [self.blurbField resignFirstResponder];
     
-    _blurb = self.blurbField.text;
     return YES;
 }
+
+
 /*
 #pragma mark - Navigation
 

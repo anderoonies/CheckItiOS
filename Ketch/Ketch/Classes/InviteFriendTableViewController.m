@@ -157,19 +157,19 @@
     PFRelation *relation = [[PFUser currentUser] objectForKey:self.parseClassName];
     PFQuery *query = [relation query];
     
-    if ([query countObjects]==0 && self.navigationController.topViewController == self) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You haven't made any friends yet!"
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"Close"
-                                              otherButtonTitles:@"Add friends", nil];
-        
-        alert.alertViewStyle = UIAlertViewStyleDefault;
-        alert.tag = 4;
-        [alert show];
-
-        return nil;
-    }
+//    if ([query countObjectsInBackground]==0 && self.navigationController.topViewController == self) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You haven't made any friends yet!"
+//                                                        message:nil
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"Close"
+//                                              otherButtonTitles:@"Add friends", nil];
+//        
+//        alert.alertViewStyle = UIAlertViewStyleDefault;
+//        alert.tag = 4;
+//        [alert show];
+//
+//        return nil;
+//    }
     
     return query;
 }
@@ -247,7 +247,7 @@
     if ([[segue destinationViewController] isKindOfClass:[MapViewController class]]) {
         MapViewController *destVC = [segue destinationViewController];
         destVC.friendList = _friendList;
-        
+        destVC.eventCreateSubview.friendList = _friendList;
         [destVC updateSubview];
     } else if ([[segue sourceViewController] isKindOfClass:[ContactsTableViewController class]]) {
         NSLog(@"coming in");

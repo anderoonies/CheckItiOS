@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSTimer *fetchTimer;
 @property (nonatomic, strong) NSMutableArray *friendList;
 @property (nonatomic, strong) CustomGMSMarker *userMarker;
+@property (nonatomic, strong) NewEventView *eventCreateSubview;
 
 - (void)updateSubview;
 - (void)close:(id)sender;

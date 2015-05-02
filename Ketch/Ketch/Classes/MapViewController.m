@@ -28,7 +28,6 @@
 @property (nonatomic, strong) UIPopoverController *bridgePopoverController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
-@property (nonatomic, strong) NewEventView *eventCreateSubview;
 @property (nonatomic, strong) NSString *blurb;
 
 @end
@@ -49,6 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self registerForKeyboardNotifications];
     
     _contactUtilities = [[ContactUtilities alloc] init];
     
@@ -455,6 +456,11 @@
 - (void)showSubview {
     [self.view addSubview:self.eventCreateSubview];
     
+    if ([_friendList count]==0) {
+        self.eventCreateSubview.createButton.alpha = 0.4f;
+        self.eventCreateSubview.createButton.enabled = NO;
+    }
+    
     self.eventCreateSubview.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.eventCreateSubview.frame.size.height);
     [UIView animateWithDuration:.5
                      animations:^{
@@ -584,7 +590,11 @@
     
     calloutVC.delegate = self;
     
-    calloutVC.preferredContentSize = CGSizeMake(self.view.frame.size.width, 53);
+    if ([self.blurb length]) {
+        calloutVC.blurb = self.blurb;
+    }
+    
+    calloutVC.preferredContentSize = CGSizeMake(self.view.frame.size.width, 55);
 
     if (popoverController == nil)
     {
@@ -592,7 +602,7 @@
         
         popoverController.delegate = self;
         
-        [popoverController presentPopoverFromRect:CGRectMake(self.eventCreateSubview.frame.origin.x,
+        [popoverController presentPopoverFromRect:CGRectMake(self.eventCreateSubview.frame.origin.x+25,
                                                              self.eventCreateSubview.frame.origin.y,
                                                              10,
                                                              10)
@@ -650,7 +660,40 @@
     }
 }
 
+#pragma mark -
+#pragma mark Keyboard
 
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
 
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    
+    [popoverController presentPopoverFromRect:CGRectMake(self.eventCreateSubview.frame.origin.x+25,
+                                                         (self.eventCreateSubview.frame.origin.y - (kbSize.height - self.eventCreateSubview.frame.origin.y)),
+                                                         10,
+                                                         10)
+                                       inView:self.view
+                     permittedArrowDirections:WYPopoverArrowDirectionDown
+                                     animated:NO];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    NSLog(@"keyboard hding");
+}
 
 @end

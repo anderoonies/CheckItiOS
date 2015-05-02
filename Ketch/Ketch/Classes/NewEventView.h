@@ -22,6 +22,7 @@
 //@property (strong, nonatomic) V8HorizontalPickerView *timePickerView;
 @property (weak, nonatomic) IBOutlet UIView *timeView;
 @property (weak, nonatomic) IBOutlet UIView *friendView;
+@property (strong, nonatomic) NSMutableArray *friendList;
 @property (weak, nonatomic) IBOutlet UILabel *friendListLabel;
 @property (strong, nonatomic) NSMutableArray *minutesArray;
 @property (weak, nonatomic) IBOutlet UIControl *messageControl;
