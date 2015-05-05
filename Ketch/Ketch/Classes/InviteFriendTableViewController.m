@@ -21,6 +21,8 @@
 @property (strong, nonatomic) ContactUtilities *contactUtilities;
 
 @property (strong, nonatomic) CoolBar *coolBar;
+@property (strong, nonatomic) NSMutableArray *friendIndexes;
+@property (strong, nonatomic) NSMutableArray *groupIndexes;
 
 @end
 
@@ -60,6 +62,19 @@
         self.friendList = [[NSMutableArray alloc] init];
     }
     
+    if (!self.groupList) {
+        self.groupList = [[NSMutableArray alloc] init];
+    }
+    
+    if (!self.friendIndexList) {
+        self.friendIndexList = [[NSMutableArray alloc] init];
+    }
+    
+    if (!self.groupIndexList) {
+        self.groupIndexList = [[NSMutableArray alloc] init];
+    }
+    
+    
     
     NSArray* arr = [[NSBundle mainBundle] loadNibNamed:@"CoolBar" owner:nil options:nil]; // did it load?
     id obj = [arr objectAtIndex: 0];
@@ -97,20 +112,21 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    for (int section = 0; section < [self.tableView numberOfSections]; section++) {
-        for (int row = 0; row < [self.tableView numberOfRowsInSection:section]; row++) {
-            if ([_friendList indexOfObject:[self.objects objectAtIndex:row]]!=NSNotFound) {
-                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
-                [self tableView:self.tableView didSelectRowAtIndexPath:path];
-                [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
-                UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:path];
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                cell.selected = YES;
-            }
-        }
-    }
-}
+//- (void)viewDidAppear:(BOOL)animated {
+////    rewrite this using the indexes we just got
+//    for (int section = 0; section < [self.tableView numberOfSections]; section++) {
+//        for (int row = 0; row < [self.tableView numberOfRowsInSection:section]; row++) {
+//            if ([_friendList indexOfObject:[self.objects objectAtIndex:row]]!=NSNotFound) {
+//                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
+//                [self tableView:self.tableView didSelectRowAtIndexPath:path];
+//                [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+//                UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:path];
+//                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//                cell.selected = YES;
+//            }
+//        }
+//    }
+//}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setToolbarHidden:YES];
@@ -162,20 +178,6 @@
     PFRelation *relation = [[PFUser currentUser] objectForKey:self.parseClassName];
     PFQuery *query = [relation query];
     
-//    if ([query countObjectsInBackground]==0 && self.navigationController.topViewController == self) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You haven't made any friends yet!"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"Close"
-//                                              otherButtonTitles:@"Add friends", nil];
-//        
-//        alert.alertViewStyle = UIAlertViewStyleDefault;
-//        alert.tag = 4;
-//        [alert show];
-//
-//        return nil;
-//    }
-    
     return query;
 }
 
@@ -203,20 +205,8 @@
     self.textKey = @"name";
     
     [self loadObjects];
-    
-    for (int section = 0; section < [self.tableView numberOfSections]; section++) {
-        for (int row = 0; row < [self.tableView numberOfRowsInSection:section]; row++) {
-            if ([_groupList indexOfObject:[self.objects objectAtIndex:row]]!=NSNotFound) {
-                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
-                [self tableView:self.tableView didSelectRowAtIndexPath:path];
-                [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
-                UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:path];
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                cell.selected = YES;
-            }
-        }
-    }
 }
+
 
 - (void)loadFriends {
     self.parseClassName = @"friend";
@@ -224,19 +214,6 @@
     self.textKey = @"username";
     
     [self loadObjects];
-    
-    for (int section = 0; section < [self.tableView numberOfSections]; section++) {
-        for (int row = 0; row < [self.tableView numberOfRowsInSection:section]; row++) {
-            if ([_friendList indexOfObject:[self.objects objectAtIndex:row]]!=NSNotFound) {
-                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
-                [self tableView:self.tableView didSelectRowAtIndexPath:path];
-                [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
-                UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:path];
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                cell.selected = YES;
-            }
-        }
-    }
 }
 
 
@@ -256,8 +233,32 @@
         } else {
             cell.textLabel.text = object[@"username"];
         }
-    } else {
+        
+        if ([_friendIndexList containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+            [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.selected = YES;
+        } else {
+            [self tableView:self.tableView didDeselectRowAtIndexPath:indexPath];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selected = NO;
+        }
+    } else if (self.segmentControl.selectedSegmentIndex==GROUP_SEGMENT_INDEX) {
         cell.textLabel.text = object[@"name"];
+        
+        if ([_groupIndexList containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+            [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.selected = YES;
+        } else {
+            [self tableView:self.tableView didDeselectRowAtIndexPath:indexPath];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selected = NO;
+        }
     }
     
     
@@ -271,12 +272,24 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     // if the toolbar for sending the invite is not visibile, set it to visible
     [self enterButton];
-    
+    NSNumber *index = [NSNumber numberWithInt:indexPath.row];
+
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
-    if ([self.friendList indexOfObject:object]==NSNotFound) {
-        [self.friendList addObject:object];
+    if (self.segmentControl.selectedSegmentIndex==FRIEND_SEGMENT_INDEX) {
+        if ([self.friendList indexOfObject:object]==NSNotFound) {
+            [self.friendList addObject:object];
+        }
+        if ([self.friendIndexList indexOfObject:index]==NSNotFound) {
+            [self.friendIndexList addObject:index];
+        }
+    } else if (self.segmentControl.selectedSegmentIndex==GROUP_SEGMENT_INDEX) {
+        if ([self.groupList indexOfObject:object]==NSNotFound) {
+            [self.groupList addObject:object];
+        }
+        if ([self.groupIndexList indexOfObject:index]==NSNotFound) {
+            [self.groupIndexList addObject:index];
+        }
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -284,17 +297,23 @@
     // remove the checkmark from the cell
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     
-    if (self.segmentControl.selectedSegmentIndex==FRIEND_SEGMENT_INDEX)
+    if (self.segmentControl.selectedSegmentIndex==FRIEND_SEGMENT_INDEX) {
         [_friendList removeObject:[self.objects objectAtIndex:indexPath.row]];
+        [_friendIndexList removeObjectIdenticalTo:[NSNumber numberWithInt:indexPath.row]];
+    }
+    else if (self.segmentControl.selectedSegmentIndex==GROUP_SEGMENT_INDEX) {
+        [_groupList removeObject:[self.objects objectAtIndex:indexPath.row]];
+        [_groupIndexList removeObjectIdenticalTo:[NSNumber numberWithInt:indexPath.row]];
+    }
     
     // if no more cells are checked, remove the toolbar
-    if ([[tableView indexPathsForSelectedRows] count] < 1) {
+    if (([_friendIndexList count] + [_groupIndexList count]) < 1) {
         [self exitButton];
-        [_friendList removeAllObjects];
     }
 }
 
 - (void)sendInvite {
+    [self.delegate passLists:_friendList groupList:_groupList];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -316,10 +335,10 @@
     self.navigationController.navigationBar.hidden=NO;
 }
 
-- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList {
-    _friendList = friendList;
-    _groupList = groupList;
-}
+//- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList {
+//    _friendList = friendList;
+//    _groupList = groupList;
+//}
 
 #pragma mark -
 #pragma mark Animation

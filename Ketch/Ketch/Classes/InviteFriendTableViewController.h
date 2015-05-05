@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <ParseUI/ParseUI.h>
 
+@protocol InviteFriendTableViewControllerDelegate <NSObject>
+@required
+- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList;
+
+@end
+
 @interface InviteFriendTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendButton;
@@ -17,6 +23,8 @@
 @property (strong, nonatomic) NSMutableArray *friendIndexList;
 @property (strong, nonatomic) NSMutableArray *groupIndexList;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (strong, nonatomic) id<InviteFriendTableViewControllerDelegate> delegate;
+
 
 -(void)passLists:(NSMutableArray*)friendList groupList:(NSMutableArray*)groupList;
 

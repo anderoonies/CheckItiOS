@@ -121,16 +121,22 @@
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
         return;
     }
-        
+    
+    PFRelation *groupRelation = [[PFUser currentUser] objectForKey:@"group"];
+    PFQuery *groupQuery = [groupRelation query];
+    
     PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
     [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
     
+    PFQuery *groupEventQuery = [PFQuery queryWithClassName:@"event"];
+    [groupQuery whereKey:@"group" matchesQuery:groupQuery];
+
     PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
     [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
     [userEvent whereKey:@"endTime" greaterThan:[NSDate date]];
 
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[eventQuery, userEvent]];
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[eventQuery, userEvent, groupEventQuery]];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -500,7 +506,7 @@
 - (void)updateSubview {
     NSMutableArray *friendStrings = [[NSMutableArray alloc] init];
     ContactUtilities *contactUtilities = [[ContactUtilities alloc] init];
-    if ([_friendList count]==0) {
+    if ([_friendList count]==0 && [_groupList count]==0) {
         self.eventCreateSubview.friendListLabel.text = @"INVITE FRIENDS";
     } else {
         self.eventCreateSubview.createButton.enabled = YES;
@@ -518,20 +524,35 @@
             }
         }
         
+        for (PFObject *object in _groupList) {
+            [friendStrings addObject:object[@"name"]];
+        }
+        
         self.eventCreateSubview.friendListLabel.text = [friendStrings componentsJoinedByString:@", "];
         self.eventCreateSubview.friendListLabel.textColor = [UIColor blackColor];
     }
 }
 
 - (IBAction)createEventPressed:(id)sender {
-    if ([_friendList count]==0) {
+    if ([_friendList count]==0 && [_groupList count]==0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error:" message:@"Please select friends" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
     
-    CLLocationCoordinate2D centerCoord = mapView_.camera.target;
+    NSMutableArray *groupMembers = [[NSMutableArray alloc] init];
+    NSMutableArray *totalCanSee = [[NSMutableArray alloc] init];
+    if (_groupList) {
+        for (PFObject *group in _groupList) {
+            for (PFObject *user in [group fetchIfNeeded][@"members"]) {
+                if (![_friendList containsObject:user]) {
+                    [_friendList addObject:user];
+                }
+            };
+        }
+    }
     
+    CLLocationCoordinate2D centerCoord = mapView_.camera.target;
     
     PFObject *event = [PFObject objectWithClassName:@"event"];
     NSDate *curDate = [NSDate date];
@@ -542,8 +563,22 @@
     event[@"user"] = [PFUser currentUser];
     event[@"startTime"] = curDate;
     event[@"endTime"] = endDate;
-    event[@"canSee"] = _friendList;
-    event[@"blurb"] = _blurb;
+    
+    if (_friendList)
+        event[@"canSee"] = _friendList;
+    else
+        [event setObject:[NSNull null] forKey:@"canSee"];
+    
+    if (_groupList)
+        event[@"group"] = _groupList;
+    else
+        [event setObject:[NSNull null] forKey:@"group"];
+
+    if (_blurb)
+        event[@"blurb"] = _blurb;
+    else
+        [event setObject:[NSNull null] forKey:@"blurb"];
+
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:centerCoord.latitude longitude:centerCoord.longitude];
     event[@"location"] = point;
     event[@"nudgers"] = [[NSMutableArray alloc] initWithObjects:nil];
@@ -631,6 +666,15 @@
 }
 
 #pragma mark -
+#pragma mark Invite Delegate
+
+- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList;
+{
+    _groupList = groupList;
+    _friendList = friendList;
+}
+
+#pragma mark -
 #pragma mark Buttons
 
 - (IBAction)settingsPressed:(id)sender {
@@ -655,8 +699,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue destinationViewController] isKindOfClass:[InviteFriendTableViewController class]]) {
         InviteFriendTableViewController* inviteVC = (InviteFriendTableViewController *)[segue destinationViewController];
-        inviteVC.friendList = [[NSMutableArray alloc] init];
-        [inviteVC passFriendList:_friendList];
+        inviteVC.delegate = self;
     }
 }
 
