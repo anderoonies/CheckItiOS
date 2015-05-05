@@ -13,7 +13,11 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendButton;
 @property (strong, nonatomic) NSMutableArray *friendList;
+@property (strong, nonatomic) NSMutableArray *groupList;
+@property (strong, nonatomic) NSMutableArray *friendIndexList;
+@property (strong, nonatomic) NSMutableArray *groupIndexList;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
--(void)passFriendList:(NSMutableArray*)friendList;
+-(void)passLists:(NSMutableArray*)friendList groupList:(NSMutableArray*)groupList;
 
 @end

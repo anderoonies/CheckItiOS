@@ -238,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="-2958.75" y="0.0"/>
         </scene>
-        <!--SELECT FRIENDS-->
+        <!--Invite Friend Table View Controller-->
         <scene sceneID="vlA-oM-ugh">
             <objects>
                 <tableViewController id="Pj9-Zk-Ees" customClass="InviteFriendTableViewController" sceneMemberID="viewController">
@@ -268,10 +268,20 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="SELECT FRIENDS" id="Fo5-bN-1XF">
+                    <navigationItem key="navigationItem" id="Fo5-bN-1XF">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="j2n-C5-qS8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Eqd-as-REr">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Friends"/>
+                                <segment title="Groups"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DmE-2V-xkr">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -282,6 +292,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="segmentControl" destination="Eqd-as-REr" id="4fE-67-ETG"/>
                         <segue destination="qe2-zr-Zwm" kind="unwind" identifier="returnToMap" unwindAction="returnToMap:" id="Rys-3g-tih"/>
                     </connections>
                 </tableViewController>
