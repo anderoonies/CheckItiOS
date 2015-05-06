@@ -328,7 +328,15 @@
     } else if ([[segue sourceViewController] isKindOfClass:[ContactsTableViewController class]]) {
         NSLog(@"coming in");
     }
-    
+}
+
+- (IBAction)addPressed:(id)sender
+{
+    if (self.segmentControl.selectedSegmentIndex == FRIEND_SEGMENT_INDEX) {
+        [self performSegueWithIdentifier:@"AddFriendSegue" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"CreateGroupSegue" sender:self];
+    }
 }
 
 - (IBAction)returnToInvite:(UIStoryboardSegue *)segue {

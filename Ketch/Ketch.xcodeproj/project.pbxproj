@@ -19,6 +19,7 @@
 		8605E6181A6EE9F2004C7E8F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */; };
 		8605E61A1A6EE9F6004C7E8F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E6191A6EE9F6004C7E8F /* Social.framework */; };
 		8605E61C1A6EE9FA004C7E8F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8605E61B1A6EE9FA004C7E8F /* Accounts.framework */; };
+		8670EA6B1AFA46B700BA60FA /* GroupAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8670EA6A1AFA46B700BA60FA /* GroupAddTableViewController.m */; };
 		8676CB851AAE75F9002CAB2A /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8676CB841AAE75F9002CAB2A /* close@3x.png */; };
 		8677B1BC1A9906AE00C3733A /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8677B1BA1A9906AE00C3733A /* GoogleMaps.bundle */; };
 		8677B1BD1A9906AE00C3733A /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677B1BB1A9906AE00C3733A /* GoogleMaps.framework */; };
@@ -56,6 +57,7 @@
 		869C76A51AA2627700153A4C /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 869C76A41AA2627700153A4C /* AddFriendTableViewController.m */; };
 		869C76A91AA2686E00153A4C /* greenindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 869C76A81AA2686E00153A4C /* greenindicator.png */; };
 		86A6A6561A93A25B00EDC774 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A6A6551A93A25B00EDC774 /* ParseUI.framework */; };
+		86B70B4E1AF959E4004824E9 /* NewGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B70B4D1AF959E4004824E9 /* NewGroupViewController.m */; };
 		86BDBC491AF0308600E815F5 /* message30.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BDBC481AF0308600E815F5 /* message30.png */; };
 		86BDBC4F1AF046BC00E815F5 /* BlurbCalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BDBC4E1AF046BC00E815F5 /* BlurbCalloutViewController.m */; };
 		86BDBC541AF0542500E815F5 /* speech95.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BDBC531AF0542500E815F5 /* speech95.png */; };
@@ -103,6 +105,8 @@
 		8605E6171A6EE9F2004C7E8F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8605E6191A6EE9F6004C7E8F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8605E61B1A6EE9FA004C7E8F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8670EA691AFA46B700BA60FA /* GroupAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAddTableViewController.h; sourceTree = "<group>"; };
+		8670EA6A1AFA46B700BA60FA /* GroupAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAddTableViewController.m; sourceTree = "<group>"; };
 		8676CB841AAE75F9002CAB2A /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@3x.png"; path = "../close@3x.png"; sourceTree = "<group>"; };
 		8677B1BA1A9906AE00C3733A /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		8677B1BB1A9906AE00C3733A /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 		869C76A41AA2627700153A4C /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 		869C76A81AA2686E00153A4C /* greenindicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenindicator.png; sourceTree = "<group>"; };
 		86A6A6551A93A25B00EDC774 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (3)/ParseUI.framework"; sourceTree = "<group>"; };
+		86B70B4C1AF959E4004824E9 /* NewGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGroupViewController.h; sourceTree = "<group>"; };
+		86B70B4D1AF959E4004824E9 /* NewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGroupViewController.m; sourceTree = "<group>"; };
 		86BDBC481AF0308600E815F5 /* message30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message30.png; sourceTree = "<group>"; };
 		86BDBC4D1AF046BC00E815F5 /* BlurbCalloutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurbCalloutViewController.h; sourceTree = "<group>"; };
 		86BDBC4E1AF046BC00E815F5 /* BlurbCalloutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurbCalloutViewController.m; sourceTree = "<group>"; };
@@ -293,6 +299,8 @@
 		86079D9E1AAE3BA10027BE2F /* Friend Adding */ = {
 			isa = PBXGroup;
 			children = (
+				8670EA691AFA46B700BA60FA /* GroupAddTableViewController.h */,
+				8670EA6A1AFA46B700BA60FA /* GroupAddTableViewController.m */,
 				86C003161A9E981E0069FA8F /* SearchFriendViewController.h */,
 				86C003171A9E981E0069FA8F /* SearchFriendViewController.m */,
 				8677B27F1A990FB900C3733A /* ContactsTableViewController.h */,
@@ -301,6 +309,8 @@
 				8677B28E1A990FB900C3733A /* InviteFriendTableViewController.m */,
 				869C76A31AA2627700153A4C /* AddFriendTableViewController.h */,
 				869C76A41AA2627700153A4C /* AddFriendTableViewController.m */,
+				86B70B4C1AF959E4004824E9 /* NewGroupViewController.h */,
+				86B70B4D1AF959E4004824E9 /* NewGroupViewController.m */,
 			);
 			name = "Friend Adding";
 			sourceTree = "<group>";
@@ -545,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8670EA6B1AFA46B700BA60FA /* GroupAddTableViewController.m in Sources */,
 				86BDBC4F1AF046BC00E815F5 /* BlurbCalloutViewController.m in Sources */,
 				86D9EE741AEEE351004BC761 /* FLKAutoLayoutPredicateList.m in Sources */,
 				8677B2BB1A990FB900C3733A /* LeftToRightSegue.m in Sources */,
@@ -571,6 +582,7 @@
 				8677B2BC1A990FB900C3733A /* LoginViewController.m in Sources */,
 				8677B2CA1A990FB900C3733A /* main.m in Sources */,
 				86FF010B1A9BE644009C4661 /* GradientView.m in Sources */,
+				86B70B4E1AF959E4004824E9 /* NewGroupViewController.m in Sources */,
 				8677B2B91A990FB900C3733A /* FriendAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

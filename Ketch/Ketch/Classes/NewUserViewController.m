@@ -106,6 +106,13 @@
         return;
     }
     
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+    
     // Call into an object somewhere that has code for setting up a user.
     // The app delegate cares about this, but so do a lot of other objects.
     // For now, do this inline.
@@ -115,6 +122,8 @@
     [phoneQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"%@", objects);
         if ([objects count]>0) {
+            [activityView stopAnimating];
+            [activityView removeFromSuperview];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"User already exists with that number"
                                                                 message:nil
                                                                delegate:self
@@ -131,6 +140,8 @@
             user[@"phone"] = phoneNumber;
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (error) {
+                    [activityView stopAnimating];
+                    [activityView removeFromSuperview];
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"]
                                                                         message:nil
                                                                        delegate:self
@@ -149,6 +160,8 @@
                 [currentInstallation setObject:user forKey: @"owner"];
                 [currentInstallation saveInBackground];
                 [user saveInBackground];
+                [activityView stopAnimating];
+                [activityView removeFromSuperview];
                 [self performSegueWithIdentifier:@"returnToMap" sender:self];        
                 //        [self dismissViewControllerAnimated:YES completion:nil];
             }];

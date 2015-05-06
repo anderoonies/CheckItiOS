@@ -87,6 +87,13 @@
         return;
     }
     
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+    
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         // Tear down the activity view in all cases.
         
@@ -97,6 +104,8 @@
             [currentInstallation setObject:user forKey: @"owner"];
             [currentInstallation saveInBackground];
             [user saveInBackground];
+            [activityView stopAnimating];
+            [activityView removeFromSuperview];
             [self performSegueWithIdentifier:@"returnToMap" sender:self];
         } else {
             // Didn't get a user.
@@ -125,7 +134,7 @@
             [self.usernameField becomeFirstResponder];
         }
     }];
-
+    
 }
 
 /*

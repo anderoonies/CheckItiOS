@@ -86,7 +86,7 @@
     } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         _friendNumbers = [contactUtilities getCleanNumbers];
     }
-
+    
     PFRelation *friendRelation = [[PFUser currentUser] objectForKey:@"friend"];
     PFQuery *friendQuery = [friendRelation query];
     friendQuery.limit = 1000;
@@ -95,6 +95,7 @@
     [query whereKey:@"phone" containedIn:_friendNumbers];
     if ([friendQuery countObjects]>0) {
         [query whereKey:@"username" doesNotMatchKey:@"username" inQuery:friendQuery];
+        [query whereKey:@"phone" notEqualTo:[PFUser currentUser][@"phone"]];
     }
     
     if ([query countObjects]==0) {

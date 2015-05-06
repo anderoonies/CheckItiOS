@@ -29,6 +29,7 @@
         ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
         
         for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
+        
             NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
             if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
                 phoneNumber = [@"+" stringByAppendingString:phoneNumber];
