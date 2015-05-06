@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ContactUtilities.h"
+#import "GSTouchesShowingWindow.h"
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -74,6 +75,20 @@
         }
     }];
 }
+
+#pragma mark GSTouches
+
+#ifdef DEBUG
+
+//- (GSTouchesShowingWindow *)window {
+//    static GSTouchesShowingWindow *window = nil;
+//    if (!window) {
+//        window = [[GSTouchesShowingWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    }
+//    return window;
+//}
+
+#endif
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {

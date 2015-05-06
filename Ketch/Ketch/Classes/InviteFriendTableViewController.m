@@ -101,14 +101,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    // make sure toolbar is hidden when we navigate to the view    
-    [self.navigationController.view addSubview:self.coolBar];
-    
     // unless we have enough friends
-    if ([[self.tableView indexPathsForSelectedRows] count]) {
-        if ([self.navigationController.toolbar isHidden] == YES) {
-            [self.navigationController setToolbarHidden:NO];
-        }
+    if (([_friendIndexList count] + [_groupIndexList count])>0) {
+        [self enterButton];
     }
 }
 
@@ -140,8 +135,6 @@
     
     [self exitButton];
     
-    [[self.navigationController.view viewWithTag:99] removeFromSuperview];
-
     [super viewWillDisappear:animated];
 }
 

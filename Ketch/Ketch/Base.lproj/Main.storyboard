@@ -383,8 +383,8 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Group Members" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDS-3Y-HwS">
-                                <rect key="frame" x="16" y="108" width="194" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Group Members:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDS-3Y-HwS">
+                                <rect key="frame" x="16" y="108" width="194" height="29"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -405,8 +405,8 @@
                                     <outlet property="delegate" destination="Q8R-ux-a3Y" id="LVp-1Y-BFL"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kze-vg-wzi">
-                                <rect key="frame" x="562" y="108" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kze-vg-wzi">
+                                <rect key="frame" x="562" y="112" width="22" height="22"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -428,6 +428,7 @@
                     <navigationItem key="navigationItem" title="ADD FRIENDS" id="G6O-zZ-i7i">
                         <barButtonItem key="backBarButtonItem" title=" " id="KqG-Vt-zWD"/>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="groupNameField" destination="IW0-R8-FfK" id="poK-U8-Egt"/>
                         <outlet property="tableView" destination="qLY-Aw-PeT" id="YHb-aL-Myt"/>
@@ -461,6 +462,7 @@
                     <navigationItem key="navigationItem" id="GSD-nN-DNl">
                         <barButtonItem key="backBarButtonItem" title=" " id="uFT-Je-tQQ"/>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="di1-X8-poM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -28,6 +28,14 @@
     _contactUtilities = [[ContactUtilities alloc] init];
     self.tableView.editing = YES;
     
+    // fun
+    
+    NSArray *groupNames = @[@"Econ Study Group", @"Gym Buddies", @"Coffee Fiends", @"Dungeons and Dragons Group", @"Lunch Squad", @"Best Friends", @"Frisbee Team", @"Housemates"];
+    
+    uint32_t rnd = arc4random_uniform([groupNames count]);
+    
+    _groupNameField.placeholder = [groupNames objectAtIndex:rnd];
+    
     // init that array
     
     _groupMembers = [[NSMutableArray alloc] init];
