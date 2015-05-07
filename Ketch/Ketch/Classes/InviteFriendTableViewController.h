@@ -11,8 +11,7 @@
 
 @protocol InviteFriendTableViewControllerDelegate <NSObject>
 @required
-- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList;
-
+- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList friendIndexList:(NSMutableArray *)friendIndexList groupIndexList:(NSMutableArray *)groupIndexList;
 @end
 
 @interface InviteFriendTableViewController : PFQueryTableViewController <UITableViewDelegate>

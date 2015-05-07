@@ -540,8 +540,6 @@
         return;
     }
     
-    NSMutableArray *groupMembers = [[NSMutableArray alloc] init];
-    NSMutableArray *totalCanSee = [[NSMutableArray alloc] init];
     if (_groupList) {
         for (PFObject *group in _groupList) {
             for (PFObject *user in [group fetchIfNeeded][@"members"]) {
@@ -618,6 +616,18 @@
             NSLog(@"FATAL ERROR %@", error);
         }
     }];
+    
+    NSDictionary *dimensions = @{
+                                 @"location": [NSString stringWithFormat:@"%f %f", point.longitude, point.latitude],
+                                 @"friendCount": [NSString stringWithFormat:@"%ld", [_friendList count]],
+                                 @"blurb": (_blurb) ? _blurb : @"null"
+                                 };
+    // Send the dimensions to Parse along with the 'search' event
+    [PFAnalytics trackEventInBackground:@"eventCreate" dimensions:dimensions block:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"analytics failed with error:%@", error);
+        }
+    }];
 }
 
 - (IBAction)blurbControlPressed:(id)sender {
@@ -668,10 +678,12 @@
 #pragma mark -
 #pragma mark Invite Delegate
 
-- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList;
+- (void)passLists:(NSMutableArray *)friendList groupList:(NSMutableArray *)groupList friendIndexList:(NSMutableArray *)friendIndexList groupIndexList:(NSMutableArray *)groupIndexList;
 {
     _groupList = groupList;
     _friendList = friendList;
+    _friendIndexList = friendIndexList;
+    _groupIndexList = groupIndexList;
 }
 
 #pragma mark -
@@ -700,6 +712,10 @@
     if ([[segue destinationViewController] isKindOfClass:[InviteFriendTableViewController class]]) {
         InviteFriendTableViewController* inviteVC = (InviteFriendTableViewController *)[segue destinationViewController];
         inviteVC.delegate = self;
+        inviteVC.friendList = _friendList;
+        inviteVC.groupList = _groupList;
+        inviteVC.groupIndexList = _groupIndexList;
+        inviteVC.friendIndexList = _friendIndexList;
     }
 }
 

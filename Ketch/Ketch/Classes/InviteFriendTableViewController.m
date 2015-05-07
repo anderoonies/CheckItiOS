@@ -306,7 +306,7 @@
 }
 
 - (void)sendInvite {
-    [self.delegate passLists:_friendList groupList:_groupList];
+    [self.delegate passLists:_friendList groupList:_groupList friendIndexList:_friendIndexList groupIndexList:_groupIndexList];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
