@@ -55,6 +55,7 @@
 		8677B2CD1A990FB900C3733A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8677B2AD1A990FB900C3733A /* Info.plist */; };
 		8677B2D01A990FD700C3733A /* KetchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2CF1A990FD700C3733A /* KetchTests.m */; };
 		8677B2D31A991F6100C3733A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8677B2D21A991F6100C3733A /* SettingsViewController.m */; };
+		869C55131AFE6F10008EB86A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869C55121AFE6F10008EB86A /* MessageUI.framework */; };
 		869C769F1AA260D200153A4C /* chevron1.png in Resources */ = {isa = PBXBuildFile; fileRef = 869C769E1AA260D200153A4C /* chevron1.png */; };
 		869C76A51AA2627700153A4C /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 869C76A41AA2627700153A4C /* AddFriendTableViewController.m */; };
 		869C76A91AA2686E00153A4C /* greenindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 869C76A81AA2686E00153A4C /* greenindicator.png */; };
@@ -162,6 +163,7 @@
 		8677B2CF1A990FD700C3733A /* KetchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KetchTests.m; sourceTree = "<group>"; };
 		8677B2D11A991F6100C3733A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8677B2D21A991F6100C3733A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		869C55121AFE6F10008EB86A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		869C769E1AA260D200153A4C /* chevron1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevron1.png; sourceTree = "<group>"; };
 		869C76A31AA2627700153A4C /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
 		869C76A41AA2627700153A4C /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869C55131AFE6F10008EB86A /* MessageUI.framework in Frameworks */,
 				8605E6141A6EE9E7004C7E8F /* SystemConfiguration.framework in Frameworks */,
 				8605E60E1A6EE9D8004C7E8F /* QuartzCore.framework in Frameworks */,
 				86D860271A951D6B00CA8E23 /* OpenGLES.framework in Frameworks */,
@@ -248,6 +251,7 @@
 		8605E6001A6EE979004C7E8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				869C55121AFE6F10008EB86A /* MessageUI.framework */,
 				86D860261A951D6B00CA8E23 /* OpenGLES.framework */,
 				86D860241A951D6100CA8E23 /* libicucore.dylib */,
 				86D860221A951D5B00CA8E23 /* libc++.dylib */,

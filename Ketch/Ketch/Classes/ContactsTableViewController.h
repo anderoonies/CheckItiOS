@@ -9,7 +9,7 @@
 #import <ParseUI/ParseUI.h>
 #import <Parse/Parse.h>
 
-@interface ContactsTableViewController : PFQueryTableViewController
+@interface ContactsTableViewController : UITableViewController <UITableViewDataSource, UITabBarDelegate>
 @property (nonatomic, strong) NSMutableArray *friendNumbers;
 @property (nonatomic, strong) NSMutableArray *friendList;
 

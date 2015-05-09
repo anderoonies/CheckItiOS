@@ -202,32 +202,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in as:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh6-B0-YkC">
-                                <rect key="frame" x="16" y="28" width="203" height="21"/>
+                                <rect key="frame" x="16" y="28" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1u-nP-IS1">
-                                <rect key="frame" x="16" y="57" width="288" height="21"/>
+                                <rect key="frame" x="133" y="28" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkZ-1l-qfH">
-                                <rect key="frame" x="126" y="107" width="69" height="30"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMx-Gq-9pY" customClass="UIControl">
+                                <rect key="frame" x="16" y="57" width="568" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkZ-1l-qfH">
+                                        <rect key="frame" x="8" y="6" width="162" height="30"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Log Out">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="9hn-l5-9I9"/>
+                                            <segue destination="xDY-Vw-REq" kind="show" id="bfp-Ew-ODY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="9hn-l5-9I9"/>
-                                    <segue destination="xDY-Vw-REq" kind="show" id="bfp-Ew-ODY"/>
+                                    <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="OiO-Ej-fNo"/>
                                 </connections>
-                            </button>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZm-Ar-NgP" customClass="UIControl">
+                                <rect key="frame" x="16" y="106" width="568" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-yo-Ytk">
+                                        <rect key="frame" x="8" y="1" width="190" height="40"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="About Ketch/Contact">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="8pY-wb-OnL" kind="show" identifier="AboutSegue" id="wvj-dR-aQo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="aboutPressed:" destination="Lc0-Kv-s3d" eventType="valueChanged" id="DlC-gY-vN7"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="LkZ-1l-qfH" secondAttribute="centerX" constant="-0.5" id="cB8-ma-Tjo"/>
-                            <constraint firstAttribute="centerY" secondItem="LkZ-1l-qfH" secondAttribute="centerY" constant="175" id="fsD-Vb-guZ"/>
+                            <constraint firstItem="eZm-Ar-NgP" firstAttribute="trailing" secondItem="b2a-HP-1dd" secondAttribute="trailingMargin" id="G3c-cg-5QU"/>
+                            <constraint firstAttribute="centerX" secondItem="MMx-Gq-9pY" secondAttribute="centerX" id="fmP-FQ-VtJ"/>
+                            <constraint firstItem="eZm-Ar-NgP" firstAttribute="leading" secondItem="b2a-HP-1dd" secondAttribute="leadingMargin" id="g8w-gn-71A"/>
+                            <constraint firstItem="MMx-Gq-9pY" firstAttribute="trailing" secondItem="b2a-HP-1dd" secondAttribute="trailingMargin" id="saw-LU-j0L"/>
+                            <constraint firstItem="eZm-Ar-NgP" firstAttribute="top" secondItem="MMx-Gq-9pY" secondAttribute="bottom" constant="8" id="t78-mE-s3T"/>
+                            <constraint firstAttribute="centerX" secondItem="eZm-Ar-NgP" secondAttribute="centerX" id="wQK-aO-cpv"/>
+                            <constraint firstItem="MMx-Gq-9pY" firstAttribute="leading" secondItem="b2a-HP-1dd" secondAttribute="leadingMargin" id="zKJ-Xd-pro"/>
+                            <constraint firstItem="MMx-Gq-9pY" firstAttribute="top" secondItem="3jm-JK-tFG" secondAttribute="bottom" constant="37" id="zvm-ii-jKb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -236,7 +273,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEl-Pn-dJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2958.75" y="0.0"/>
+            <point key="canvasLocation" x="-2959" y="0.0"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DYK-yz-kbF">
+            <objects>
+                <viewController id="8pY-wb-OnL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HpP-Vy-vda"/>
+                        <viewControllerLayoutGuide type="bottom" id="thT-02-CgB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ctY-68-Bqs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jf9-wJ-rmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2556" y="736"/>
         </scene>
         <!--Invite Friend Table View Controller-->
         <scene sceneID="vlA-oM-ugh">
@@ -545,10 +600,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendCell" id="RyW-21-du3">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendCell" textLabel="Xx6-NB-8xL" detailTextLabel="uQ7-vc-fR9" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="RyW-21-du3">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RyW-21-du3" id="z9B-x9-vQa">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xx6-NB-8xL">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uQ7-vc-fR9">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -836,6 +905,6 @@
         <image name="settings21" width="896" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0s6-b0-3AU"/>
+        <segue reference="bfp-Ew-ODY"/>
     </inferredMetricsTieBreakers>
 </document>

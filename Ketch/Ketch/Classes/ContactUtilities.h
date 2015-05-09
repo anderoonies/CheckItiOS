@@ -12,5 +12,7 @@
 
 - (NSString *)phoneToName:(NSString *)phone;
 - (NSMutableArray *)getCleanNumbers;
+- (NSMutableArray *)getContacts;
+- (NSString *)cleanNumber:(NSString *)phoneNumber;
 
 @end

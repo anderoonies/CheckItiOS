@@ -86,4 +86,50 @@
     return numbers;
 }
 
+- (NSMutableArray *)getContacts {
+    CFErrorRef *error = NULL;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
+    
+    NSMutableArray *contacts = [[NSMutableArray alloc] initWithCapacity:numberOfPeople];
+    
+    CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(
+                                                               kCFAllocatorDefault,
+                                                               CFArrayGetCount(allPeople),
+                                                               allPeople
+                                                               );
+    
+    CFArraySortValues(
+                      peopleMutable,
+                      CFRangeMake(0, CFArrayGetCount(peopleMutable)),
+                      (CFComparatorFunction) ABPersonComparePeopleByName,
+                      kABPersonSortByFirstName
+                      );
+    
+    for(int i = 0; i < numberOfPeople; i++) {
+        
+        ABRecordRef person = CFArrayGetValueAtIndex( peopleMutable, i );
+        
+        if ((ABRecordCopyValue(person, kABPersonFirstNameProperty) || ABRecordCopyValue(person, kABPersonLastNameProperty)) && ABMultiValueGetCount(ABRecordCopyValue(person, kABPersonPhoneProperty))>0)
+            [contacts addObject:(__bridge id)person];
+    }
+    
+    return contacts;
+}
+
+- (NSString *)cleanNumber:(NSString *)phoneNumber
+{
+    if ([[phoneNumber substringToIndex:1] isEqualToString:@"1"]) {
+        phoneNumber = [@"+" stringByAppendingString:phoneNumber];
+    } else if(![[phoneNumber substringToIndex:1] isEqual:@"+"]) {
+        phoneNumber = [@"+1" stringByAppendingString:phoneNumber];
+    }
+    
+    // get rid of all characters for consistency in lookups
+    phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()  -."]] componentsJoinedByString:@""];
+    
+    return phoneNumber;
+}
+
 @end

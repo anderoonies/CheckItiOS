@@ -53,6 +53,10 @@
     [PFUser logOut];
 }
 
+- (IBAction)aboutPressed:(id)sender {
+    [self performSegueWithIdentifier:@"AboutSegue" sender:self];
+}
+
 /*
 #pragma mark - Navigation
 
