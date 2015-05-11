@@ -216,7 +216,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMx-Gq-9pY" customClass="UIControl">
                                 <rect key="frame" x="16" y="57" width="568" height="41"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkZ-1l-qfH">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkZ-1l-qfH">
                                         <rect key="frame" x="8" y="6" width="162" height="30"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <state key="normal" title="Log Out">
@@ -230,6 +230,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="LkZ-1l-qfH" secondAttribute="centerY" constant="-0.5" id="bDt-H1-dhw"/>
+                                </constraints>
                                 <connections>
                                     <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="OiO-Ej-fNo"/>
                                 </connections>
@@ -237,7 +240,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZm-Ar-NgP" customClass="UIControl">
                                 <rect key="frame" x="16" y="106" width="568" height="41"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-yo-Ytk">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-yo-Ytk">
                                         <rect key="frame" x="8" y="1" width="190" height="40"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <state key="normal" title="About Ketch/Contact">
@@ -250,6 +253,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="hWl-yo-Ytk" secondAttribute="centerY" constant="-0.5" id="f0m-JI-XJx"/>
+                                </constraints>
                                 <connections>
                                     <action selector="aboutPressed:" destination="Lc0-Kv-s3d" eventType="valueChanged" id="DlC-gY-vN7"/>
                                 </connections>
@@ -286,7 +292,19 @@
                     <view key="view" contentMode="scaleToFill" id="ctY-68-Bqs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73f-yv-R9L">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Ketch was created as part of Northwestern's NUvention program within the Farley Center for Entrepreneurship and Innovation. Thanks to Rich Padula, Chris Riesbeck, Tom LaMantia and Michael Marasco. Send any feedback to ketch@u.northwestern.edu.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="73f-yv-R9L" firstAttribute="width" secondItem="ctY-68-Bqs" secondAttribute="width" id="1Nt-J3-7cN"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jf9-wJ-rmF" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -141,6 +141,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [mapView_ clear];
+            _userMarker.map = nil;
             for (PFObject *object in objects) {
                 FriendAnnotation *annotation;
                 if (object[@"user"]==[PFUser currentUser]) {
@@ -356,7 +357,7 @@
     calloutVC.blurbLabel.numberOfLines = 0;
     
     
-    if ([annotation.blurb length]) {
+    if (annotation.blurb) {
         calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
         calloutVC.preferredContentSize = CGSizeMake(200, 80);
     } else {
