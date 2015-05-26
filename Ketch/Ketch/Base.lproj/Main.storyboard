@@ -80,36 +80,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAb-hd-EMZ">
-                                <rect key="frame" x="266" y="187" width="68" height="30"/>
-                                <state key="normal" title="New User">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHQ-27-DWA" customClass="UIControl">
+                                <rect key="frame" x="16" y="28" width="568" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJe-Ni-ofL">
+                                        <rect key="frame" x="8" y="6" width="162" height="30"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="New User">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="bvM-hh-EKn"/>
+                                            <action selector="newUserPressed:" destination="xDY-Vw-REq" eventType="touchUpInside" id="CSF-rp-ClU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="EJe-Ni-ofL" secondAttribute="centerY" constant="-0.5" id="LY3-5Q-ms4"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="Hqe-ZI-r16" kind="presentation" identifier="" id="reG-KO-6Fy"/>
+                                    <action selector="newUserPressed:" destination="xDY-Vw-REq" eventType="touchUpInside" id="Crz-5w-0h3"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oB-af-A9E">
-                                <rect key="frame" x="255" y="248" width="91" height="30"/>
-                                <state key="normal" title="Existing User">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LyI-Rs-qMQ" customClass="UIControl">
+                                <rect key="frame" x="16" y="77" width="568" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jO5-i7-RnX">
+                                        <rect key="frame" x="8" y="6" width="162" height="30"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Existing User">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="existingUserPressed:" destination="xDY-Vw-REq" eventType="touchUpInside" id="ZzO-GG-N2I"/>
+                                            <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="dbe-uv-9lo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="jO5-i7-RnX" secondAttribute="centerY" constant="-0.5" id="gKB-R6-2Pc"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="d8U-fu-Ytr" kind="presentation" identifier="LoginSegue" id="Y6M-ka-vsV"/>
+                                    <action selector="existingUserPressed:" destination="xDY-Vw-REq" eventType="touchUpInside" id="pyf-ak-uXW"/>
                                 </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="GAb-hd-EMZ" secondAttribute="centerX" id="Ecd-X9-pQp"/>
-                            <constraint firstAttribute="centerX" secondItem="4oB-af-A9E" secondAttribute="centerX" constant="-0.5" id="awD-qS-Hez"/>
+                            <constraint firstItem="BHQ-27-DWA" firstAttribute="trailing" secondItem="FCA-38-rnp" secondAttribute="trailingMargin" id="57m-f9-kJ4"/>
+                            <constraint firstItem="BHQ-27-DWA" firstAttribute="leading" secondItem="FCA-38-rnp" secondAttribute="leadingMargin" id="WXJ-5b-NoC"/>
+                            <constraint firstItem="LyI-Rs-qMQ" firstAttribute="trailing" secondItem="FCA-38-rnp" secondAttribute="trailingMargin" id="iVj-07-KXx"/>
+                            <constraint firstItem="LyI-Rs-qMQ" firstAttribute="leading" secondItem="FCA-38-rnp" secondAttribute="leadingMargin" id="usU-hI-Jqg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ULt-AA-ZAB"/>
+                    <connections>
+                        <segue destination="Hqe-ZI-r16" kind="presentation" identifier="NewUserSegue" id="aGP-Yb-IGV"/>
+                        <segue destination="d8U-fu-Ytr" kind="presentation" identifier="LoginSegue" id="5qH-RJ-wtm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUG-5X-D7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3976.875" y="0.0"/>
+            <point key="canvasLocation" x="-3997" y="-18"/>
         </scene>
         <!--New User View Controller-->
         <scene sceneID="6gZ-o2-710">
@@ -225,16 +261,16 @@
                                         </state>
                                         <connections>
                                             <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="9hn-l5-9I9"/>
-                                            <segue destination="xDY-Vw-REq" kind="show" id="bfp-Ew-ODY"/>
+                                            <segue destination="xDY-Vw-REq" kind="show" identifier="SettingsToLoginSegue" id="bfp-Ew-ODY"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.2196078431372549" green="0.792156862745098" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="LkZ-1l-qfH" secondAttribute="centerY" constant="-0.5" id="bDt-H1-dhw"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="OiO-Ej-fNo"/>
+                                    <action selector="logoutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="f5i-mc-qOM"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZm-Ar-NgP" customClass="UIControl">
@@ -248,7 +284,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="8pY-wb-OnL" kind="show" identifier="AboutSegue" id="wvj-dR-aQo"/>
+                                            <segue destination="8pY-wb-OnL" kind="presentation" identifier="AboutSegue" id="wvj-dR-aQo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -257,7 +293,7 @@
                                     <constraint firstAttribute="centerY" secondItem="hWl-yo-Ytk" secondAttribute="centerY" constant="-0.5" id="f0m-JI-XJx"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="aboutPressed:" destination="Lc0-Kv-s3d" eventType="valueChanged" id="DlC-gY-vN7"/>
+                                    <action selector="aboutPressed:" destination="Lc0-Kv-s3d" eventType="touchUpInside" id="1O8-pf-Xce"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -281,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="-2959" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="DYK-yz-kbF">
             <objects>
-                <viewController id="8pY-wb-OnL" sceneMemberID="viewController">
+                <viewController id="8pY-wb-OnL" customClass="AboutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HpP-Vy-vda"/>
                         <viewControllerLayoutGuide type="bottom" id="thT-02-CgB"/>
@@ -293,17 +329,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73f-yv-R9L">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73f-yv-R9L">
+                                <rect key="frame" x="16" y="20" width="568" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Ketch was created as part of Northwestern's NUvention program within the Farley Center for Entrepreneurship and Innovation. Thanks to Rich Padula, Chris Riesbeck, Tom LaMantia and Michael Marasco. Send any feedback to ketch@u.northwestern.edu.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBq-h6-78M" customClass="UIControl">
+                                <rect key="frame" x="16" y="138" width="568" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNs-F0-H55">
+                                        <rect key="frame" x="8" y="1" width="51" height="40"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backPressed:" destination="8pY-wb-OnL" eventType="touchUpInside" id="me3-4d-e9K"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.79215686269999996" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="dNs-F0-H55" secondAttribute="centerY" constant="-0.5" id="sSd-xY-08m"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="backPressed:" destination="8pY-wb-OnL" eventType="touchUpInside" id="wTd-mz-ez3"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="73f-yv-R9L" firstAttribute="width" secondItem="ctY-68-Bqs" secondAttribute="width" id="1Nt-J3-7cN"/>
+                            <constraint firstItem="73f-yv-R9L" firstAttribute="top" secondItem="HpP-Vy-vda" secondAttribute="bottom" constant="20" id="7D6-WF-VkG"/>
+                            <constraint firstItem="bBq-h6-78M" firstAttribute="leading" secondItem="ctY-68-Bqs" secondAttribute="leadingMargin" id="AMl-gw-MoS"/>
+                            <constraint firstItem="bBq-h6-78M" firstAttribute="trailing" secondItem="ctY-68-Bqs" secondAttribute="trailingMargin" id="gPZ-FJ-pIO"/>
+                            <constraint firstItem="73f-yv-R9L" firstAttribute="trailing" secondItem="ctY-68-Bqs" secondAttribute="trailingMargin" id="t7a-eK-HEB"/>
+                            <constraint firstItem="73f-yv-R9L" firstAttribute="top" secondItem="bBq-h6-78M" secondAttribute="bottom" constant="-159" id="zgE-DQ-1Vf"/>
                         </constraints>
                     </view>
                 </viewController>

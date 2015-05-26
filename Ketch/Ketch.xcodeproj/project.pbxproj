@@ -82,6 +82,7 @@
 		86D9EE781AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9EE731AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m */; };
 		86DDA0C21A85925A00C537F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0BF1A85925A00C537F0 /* Bolts.framework */; };
 		86DDA0C31A85925A00C537F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DDA0C01A85925A00C537F0 /* Parse.framework */; };
+		86EACEBC1B14FC51001C6CF8 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86EACEBB1B14FC51001C6CF8 /* AboutViewController.m */; };
 		86FF010B1A9BE644009C4661 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FF010A1A9BE644009C4661 /* GradientView.m */; };
 /* End PBXBuildFile section */
 
@@ -201,6 +202,8 @@
 		86D9EE731AEEE351004BC761 /* UIView+FLKAutoLayoutPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayoutPredicate.m"; sourceTree = "<group>"; };
 		86DDA0BF1A85925A00C537F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Bolts.framework"; sourceTree = "<group>"; };
 		86DDA0C01A85925A00C537F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../../../../Downloads/parse-library-1.6.2 (2) 2/Parse.framework"; sourceTree = "<group>"; };
+		86EACEBA1B14FC51001C6CF8 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		86EACEBB1B14FC51001C6CF8 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		86FF01091A9BE644009C4661 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		86FF010A1A9BE644009C4661 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,6 +291,8 @@
 				8677B29A1A990FB900C3733A /* NewUserViewController.m */,
 				8677B29B1A990FB900C3733A /* SignInViewController.h */,
 				8677B29C1A990FB900C3733A /* SignInViewController.m */,
+				86EACEBA1B14FC51001C6CF8 /* AboutViewController.h */,
+				86EACEBB1B14FC51001C6CF8 /* AboutViewController.m */,
 			);
 			name = Settings/Login;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 				8677B2BA1A990FB900C3733A /* InviteFriendTableViewController.m in Sources */,
 				8677B2BC1A990FB900C3733A /* LoginViewController.m in Sources */,
 				8670EA6F1AFAC46E00BA60FA /* GSTouchesShowingWindow.m in Sources */,
+				86EACEBC1B14FC51001C6CF8 /* AboutViewController.m in Sources */,
 				8677B2CA1A990FB900C3733A /* main.m in Sources */,
 				86FF010B1A9BE644009C4661 /* GradientView.m in Sources */,
 				86B70B4E1AF959E4004824E9 /* NewGroupViewController.m in Sources */,

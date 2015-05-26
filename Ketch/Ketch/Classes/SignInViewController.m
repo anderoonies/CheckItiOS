@@ -32,6 +32,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)newUserPressed:(id)sender {
+    [self performSegueWithIdentifier:@"NewUserSegue" sender:self];
+}
+
+- (IBAction)existingUserPressed:(id)sender {
+    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+}
 
 #pragma mark -
 #pragma mark Navigation

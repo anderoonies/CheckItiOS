@@ -51,6 +51,7 @@
 
 - (IBAction)logoutPressed:(id)sender {
     [PFUser logOut];
+    [self performSegueWithIdentifier:@"SettingsToLoginSegue" sender:self];
 }
 
 - (IBAction)aboutPressed:(id)sender {
