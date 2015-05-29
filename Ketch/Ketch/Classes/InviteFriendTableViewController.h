@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <ParseUI/ParseUI.h>
+#import "CoolBar.h"
 
 @protocol InviteFriendTableViewControllerDelegate <NSObject>
 @required
@@ -23,6 +24,8 @@
 @property (strong, nonatomic) NSMutableArray *groupIndexList;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (strong, nonatomic) id<InviteFriendTableViewControllerDelegate> delegate;
+@property (strong, nonatomic) CoolBar *coolBar;
+
 
 
 -(void)passLists:(NSMutableArray*)friendList groupList:(NSMutableArray*)groupList;

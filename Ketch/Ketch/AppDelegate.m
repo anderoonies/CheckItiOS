@@ -9,8 +9,11 @@
 #import "AppDelegate.h"
 #import "ContactUtilities.h"
 #import "GSTouchesShowingWindow.h"
+#import "Mixpanel.h"
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
+
+#define MIXPANEL_TOKEN @"968b1b21c2d06385f6aecdd1f1cc246f"
 
 @interface AppDelegate ()
 
@@ -39,6 +42,7 @@
                                                     UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
                                                                              categories:nil];
+    
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
@@ -60,6 +64,8 @@
     }
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
     return YES;
 }

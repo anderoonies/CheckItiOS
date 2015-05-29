@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Mixpanel.h"
 
 @interface AddFriendTableViewController : UITableViewController
+
+@property (strong, nonatomic) Mixpanel *mixpanel;
 
 @end

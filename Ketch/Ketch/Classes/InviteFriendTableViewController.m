@@ -12,15 +12,12 @@
 #import "ContactsTableViewController.h"
 #import "AddFriendTableViewController.h"
 #import <AddressBook/AddressBook.h>
-#import "CoolBar.h"
 #import "UIView+FLKAutoLayout.h"
 #import <Parse/Parse.h>
 
 @interface InviteFriendTableViewController ()
 
 @property (strong, nonatomic) ContactUtilities *contactUtilities;
-
-@property (strong, nonatomic) CoolBar *coolBar;
 @property (strong, nonatomic) NSMutableArray *friendIndexes;
 @property (strong, nonatomic) NSMutableArray *groupIndexes;
 
@@ -83,11 +80,11 @@
     
     [toolBar.button setTitle:@"INVITE FRIENDS" forState:UIControlStateNormal];
     
-    [toolBar addTarget:self action:@selector(sendInvite) forControlEvents:UIControlEventTouchUpInside];
-    [toolBar.button addTarget:self action:@selector(sendInvite) forControlEvents:UIControlEventTouchUpInside];
-    
     self.coolBar = toolBar;
     
+    [self.coolBar addTarget:self action:@selector(sendInvite) forControlEvents:UIControlEventTouchUpInside];
+    [self.coolBar.button addTarget:self action:@selector(sendInvite) forControlEvents:UIControlEventTouchUpInside];
+
     [self.navigationController.view addSubview:self.coolBar];
     
     [self.segmentControl addTarget:self action:@selector(selectorChanged:) forControlEvents:UIControlEventValueChanged];
@@ -307,6 +304,7 @@
 
 - (void)sendInvite {
     [self.delegate passLists:_friendList groupList:_groupList friendIndexList:_friendIndexList groupIndexList:_groupIndexList];
+    [self.coolBar removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

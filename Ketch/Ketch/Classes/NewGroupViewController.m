@@ -11,6 +11,7 @@
 #import "GroupAddTableViewController.h"
 #import "InviteFriendTableViewController.h"
 #import "CoolBar.h"
+#import "Mixpanel.h"
 
 @interface NewGroupViewController ()
 
@@ -199,6 +200,29 @@
     group[@"name"] = self.groupNameField.text;
     group[@"members"] = _groupMembers;
     group[@"creator"] = [PFUser currentUser];
+    
+    NSMutableString *groupMemberIds = [[NSMutableString alloc] init];
+    NSMutableString *groupMemberNames = [[NSMutableString alloc] init];
+    
+    for (PFObject *member in _groupMembers) {
+        [groupMemberIds appendString:member.objectId];
+        [groupMemberNames appendString:member[@"username"]];
+    }
+    
+//    NSDictionary *dimensions = @{
+//                                 @"groupName": [NSString stringWithFormat:@"%@", self.groupNameField.text],
+//                                 @"groupMemberIds": groupMemberIds,
+//                                 @"groupMemberNames": groupMemberNames,
+//                                 @"creator": [PFUser currentUser][@"username"]
+//                                 };
+//    
+//    // Send the dimensions to Parse along with the 'search' event
+//    [PFAnalytics trackEventInBackground:@"groupCreate" dimensions:dimensions block:^(BOOL succeeded, NSError *error) {
+//        if (error) {
+//            NSLog(@"analytics failed with error:%@", error);
+//        }
+//    }];
+    
     [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {
             NSLog(@"group creation failed, %@", error);
@@ -212,6 +236,14 @@
         }
     }];
     
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    
+    [mixpanel track:@"Group Created" properties:@{
+                                      @"groupName": [NSString stringWithFormat:@"%@", self.groupNameField.text],
+                                      @"groupMemberNames": groupMemberNames,
+                                      @"groupMemberIds": groupMemberIds
+                                      }];
+//
     // adding group to user is done with cloud code after save
 
 }

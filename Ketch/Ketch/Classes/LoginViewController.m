@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "Mixpanel.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -106,6 +107,9 @@
             [user saveInBackground];
             [activityView stopAnimating];
             [activityView removeFromSuperview];
+            Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
+            [mixpanel identify:user.objectId];
             [self performSegueWithIdentifier:@"returnToMap" sender:self];
         } else {
             // Didn't get a user.

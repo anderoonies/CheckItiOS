@@ -12,6 +12,15 @@
 
 - (void)viewDidLoad {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _mixpanel = [Mixpanel sharedInstance];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        [_mixpanel track:@"Username Search Add Pressed" properties:nil];
+    } else {
+        [_mixpanel track:@"Contacts Add Pressed" properties:nil];
+    }
 }
 
 @end

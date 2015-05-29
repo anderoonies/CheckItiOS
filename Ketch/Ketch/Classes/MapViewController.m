@@ -20,6 +20,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Mixpanel.h"
 
 @interface MapViewController () <GMSMapViewDelegate, WYPopoverControllerDelegate>
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic, strong) UserAnnotation *userAnnotation;
 @property (nonatomic, strong) NSString *blurb;
+@property (nonatomic, strong) Mixpanel *mixpanel;
 
 @end
 
@@ -52,6 +54,8 @@
     [self registerForKeyboardNotifications];
     
     _contactUtilities = [[ContactUtilities alloc] init];
+    
+    _mixpanel = [Mixpanel sharedInstance];
     
     NSTimer* timer = [NSTimer timerWithTimeInterval:60.0f target:self selector:@selector(generateAnnotations) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -368,6 +372,12 @@
     
     if (popoverController == nil)
     {
+        [_mixpanel track:@"Marker Tapped" properties:@{
+                                                       @"Name": annotation.name,
+                                                       @"End Time": [NSString stringWithFormat:@"%@", annotation.endTime],
+                                                       @"Blurb": (annotation.blurb) ? annotation.blurb : @"null",
+                                                       }];
+        
         calloutVC.annotation = annotation;
         calloutVC.mapVC = self;
         
@@ -541,7 +551,7 @@
         return;
     }
     
-    if (_groupList) {
+    if ([_groupList count] > 0) {
         for (PFObject *group in _groupList) {
             for (PFObject *user in [group fetchIfNeeded][@"members"]) {
                 if (![_friendList containsObject:user]) {
@@ -563,12 +573,12 @@
     event[@"startTime"] = curDate;
     event[@"endTime"] = endDate;
     
-    if (_friendList)
+    if ([_friendList count] > 0)
         event[@"canSee"] = _friendList;
     else
         [event setObject:[NSNull null] forKey:@"canSee"];
     
-    if (_groupList)
+    if ([_groupList count] > 0)
         event[@"group"] = _groupList;
     else
         [event setObject:[NSNull null] forKey:@"group"];
@@ -618,17 +628,38 @@
         }
     }];
     
-    NSDictionary *dimensions = @{
-                                 @"location": [NSString stringWithFormat:@"%f %f", point.longitude, point.latitude],
-                                 @"friendCount": [NSString stringWithFormat:@"%ld", [_friendList count]],
-                                 @"blurb": (_blurb) ? _blurb : @"null"
-                                 };
-    // Send the dimensions to Parse along with the 'search' event
-    [PFAnalytics trackEventInBackground:@"eventCreate" dimensions:dimensions block:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            NSLog(@"analytics failed with error:%@", error);
+    NSMutableString *groupNames = [[NSMutableString alloc] init];
+    NSMutableString *groupIds = [[NSMutableString alloc] init];
+    
+    if ([_groupList count] > 0) {
+        for (PFObject *group in _groupList) {
+            [groupNames appendString:group[@"name"]];
+            [groupIds appendString:group.objectId];
         }
-    }];
+    }
+//
+//    NSDictionary *dimensions = @{
+//                                 @"location": [NSString stringWithFormat:@"%f %f", point.longitude, point.latitude],
+//                                 @"friendCount": [NSString stringWithFormat:@"%ld", [_friendList count]],
+//                                 @"blurb": (_blurb) ? _blurb : @"null",
+//                                 @"groupIds": ([_groupList count]>0) ? groupIds : @"null",
+//                                 @"groupNames": ([_groupList count]>0) ? groupNames : @"null"
+//                                 };
+//    // Send the dimensions to Parse along with the 'search' event
+//    [PFAnalytics trackEventInBackground:@"eventCreate" dimensions:dimensions block:^(BOOL succeeded, NSError *error) {
+//        if (error) {
+//            NSLog(@"analytics failed with error:%@", error);
+//        }
+//    }];
+    
+    [_mixpanel track:@"Event Created" properties:@{
+                                      @"Location": [NSString stringWithFormat:@"%f %f", point.longitude, point.latitude],
+                                       @"friendCount": [NSString stringWithFormat:@"%ld", [_friendList count]],
+                                       @"blurb": (_blurb) ? _blurb : @"null",
+                                       @"groupIds": ([_groupList count]>0) ? groupIds : @"null",
+                                       @"groupNames": ([_groupList count]>0) ? groupNames : @"null"
+      
+                                      }];
 }
 
 - (IBAction)blurbControlPressed:(id)sender {
@@ -691,6 +722,7 @@
 #pragma mark Buttons
 
 - (IBAction)settingsPressed:(id)sender {
+    
     if (![PFUser currentUser]) {
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     } else {

@@ -8,6 +8,7 @@
 
 #import "NewUserViewController.h"
 #import <Parse/Parse.h>
+#import "Mixpanel.h"
 
 @interface NewUserViewController ()
 
@@ -162,6 +163,9 @@
                 [user saveInBackground];
                 [activityView stopAnimating];
                 [activityView removeFromSuperview];
+                Mixpanel *mixpanel = [Mixpanel sharedInstance];
+                
+                [mixpanel identify:user.objectId];
                 [self performSegueWithIdentifier:@"returnToMap" sender:self];        
                 //        [self dismissViewControllerAnimated:YES completion:nil];
             }];

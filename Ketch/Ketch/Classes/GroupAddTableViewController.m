@@ -10,12 +10,15 @@
 #import "ContactUtilities.h"
 #import "CoolBar.h"
 #import "NewGroupViewController.h"
+#import "Mixpanel.h"
 
 @interface GroupAddTableViewController ()
 
 @property (strong, nonatomic) ContactUtilities *contactUtilities;
 
 @property (strong, nonatomic) CoolBar *coolBar;
+
+@property (strong, nonatomic) Mixpanel *mixpanel;
 
 
 @end
@@ -26,6 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    _mixpanel = [Mixpanel sharedInstance];
+    
     _contactUtilities = [[ContactUtilities alloc] init];
     
     _friendList = [[NSMutableArray alloc] init];
@@ -102,6 +107,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [_mixpanel track:@"Group Table View Row Selected" properties:@{
+                                                                   @"Row": [self.objects objectAtIndex:indexPath.row]
+                                                                   }];
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     // add the checkmark to the cell
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -136,6 +145,8 @@
 #pragma mark Coolbar
 
 - (void)sendInvite {
+//    [_mixpanel track:@"Group Bar Invite Pressed" properties:nil];
+    
     [self.delegate passList:_friendList];
     [self exitButton];
     [self.navigationController popViewControllerAnimated:YES];
