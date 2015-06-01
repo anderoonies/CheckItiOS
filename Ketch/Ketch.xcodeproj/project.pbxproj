@@ -24,8 +24,6 @@
 		863902BA1B18F2030038430C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 863902B91B18F2030038430C /* libPods.a */; };
 		863902BC1B18F2060038430C /* libPods-Mixpanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 863902BB1B18F2060038430C /* libPods-Mixpanel.a */; };
 		8670EA6B1AFA46B700BA60FA /* GroupAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8670EA6A1AFA46B700BA60FA /* GroupAddTableViewController.m */; };
-		8670EA6F1AFAC46E00BA60FA /* GSTouchesShowingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8670EA6D1AFAC46E00BA60FA /* GSTouchesShowingWindow.m */; };
-		8670EA701AFAC46E00BA60FA /* GSTouchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8670EA6E1AFAC46E00BA60FA /* GSTouchImage@2x.png */; };
 		8676CB851AAE75F9002CAB2A /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8676CB841AAE75F9002CAB2A /* close@3x.png */; };
 		8677B1BC1A9906AE00C3733A /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8677B1BA1A9906AE00C3733A /* GoogleMaps.bundle */; };
 		8677B1BD1A9906AE00C3733A /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677B1BB1A9906AE00C3733A /* GoogleMaps.framework */; };
@@ -122,9 +120,6 @@
 		863902BB1B18F2060038430C /* libPods-Mixpanel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Mixpanel.a"; path = "Pods/../build/Debug-iphoneos/libPods-Mixpanel.a"; sourceTree = SOURCE_ROOT; };
 		8670EA691AFA46B700BA60FA /* GroupAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAddTableViewController.h; sourceTree = "<group>"; };
 		8670EA6A1AFA46B700BA60FA /* GroupAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAddTableViewController.m; sourceTree = "<group>"; };
-		8670EA6C1AFAC46E00BA60FA /* GSTouchesShowingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSTouchesShowingWindow.h; path = "../../../../../../../../Downloads/GSTouchesShowingWindow-master/GSTouchesShowingWindow.h"; sourceTree = "<group>"; };
-		8670EA6D1AFAC46E00BA60FA /* GSTouchesShowingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSTouchesShowingWindow.m; path = "../../../../../../../../Downloads/GSTouchesShowingWindow-master/GSTouchesShowingWindow.m"; sourceTree = "<group>"; };
-		8670EA6E1AFAC46E00BA60FA /* GSTouchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GSTouchImage@2x.png"; path = "../../../../../../../../Downloads/GSTouchesShowingWindow-master/GSTouchImage@2x.png"; sourceTree = "<group>"; };
 		8676CB841AAE75F9002CAB2A /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@3x.png"; path = "../close@3x.png"; sourceTree = "<group>"; };
 		8677B1BA1A9906AE00C3733A /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		8677B1BB1A9906AE00C3733A /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -371,9 +366,6 @@
 		8677B2751A990FB900C3733A /* Ketch */ = {
 			isa = PBXGroup;
 			children = (
-				8670EA6C1AFAC46E00BA60FA /* GSTouchesShowingWindow.h */,
-				8670EA6D1AFAC46E00BA60FA /* GSTouchesShowingWindow.m */,
-				8670EA6E1AFAC46E00BA60FA /* GSTouchImage@2x.png */,
 				8677B2761A990FB900C3733A /* AppDelegate.h */,
 				8677B2771A990FB900C3733A /* AppDelegate.m */,
 				8677B2781A990FB900C3733A /* LaunchScreen.xib */,
@@ -586,7 +578,6 @@
 				8677B2CD1A990FB900C3733A /* Info.plist in Resources */,
 				8677B2C91A990FB900C3733A /* Info.plist in Resources */,
 				8677B2C41A990FB900C3733A /* ma_leftArrow@2x.png in Resources */,
-				8670EA701AFAC46E00BA60FA /* GSTouchImage@2x.png in Resources */,
 				869C769F1AA260D200153A4C /* chevron1.png in Resources */,
 				86D9EE651AEEA89F004BC761 /* CoolBar.xib in Resources */,
 				8677B2C61A990FB900C3733A /* ma_rightArrow@2x.png in Resources */,
@@ -665,7 +656,6 @@
 				8677B2CC1A990FB900C3733A /* WYStoryboardPopoverSegue.m in Sources */,
 				8677B2BA1A990FB900C3733A /* InviteFriendTableViewController.m in Sources */,
 				8677B2BC1A990FB900C3733A /* LoginViewController.m in Sources */,
-				8670EA6F1AFAC46E00BA60FA /* GSTouchesShowingWindow.m in Sources */,
 				86EACEBC1B14FC51001C6CF8 /* AboutViewController.m in Sources */,
 				8677B2CA1A990FB900C3733A /* main.m in Sources */,
 				86FF010B1A9BE644009C4661 /* GradientView.m in Sources */,

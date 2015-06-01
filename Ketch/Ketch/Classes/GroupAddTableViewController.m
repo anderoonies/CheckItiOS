@@ -108,7 +108,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [_mixpanel track:@"Group Table View Row Selected" properties:@{
-                                                                   @"Row": [self.objects objectAtIndex:indexPath.row]
+                                                                   @"Row": (PFUser *)[self.objects objectAtIndex:indexPath.row][@"username"]
                                                                    }];
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];

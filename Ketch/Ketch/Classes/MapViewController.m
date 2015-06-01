@@ -132,9 +132,15 @@
     PFQuery *eventQuery = [PFQuery queryWithClassName:@"event"];
     [eventQuery whereKey:@"canSee" equalTo:[PFUser currentUser]];
     [eventQuery whereKey:@"endTime" greaterThan:[NSDate date]];
-    
+
     PFQuery *groupEventQuery = [PFQuery queryWithClassName:@"event"];
-    [groupQuery whereKey:@"group" matchesQuery:groupQuery];
+    
+    if ([groupQuery countObjects]>0) {
+        [groupEventQuery whereKey:@"group" matchesQuery:groupQuery];
+        [groupEventQuery whereKeyExists:@"group"];
+    } else {
+        [groupEventQuery whereKey:@"name" equalTo:@"thisStringNeverHappens"];
+    }
 
     PFQuery *userEvent = [PFQuery queryWithClassName:@"event"];
     [userEvent whereKey:@"user" equalTo:[PFUser currentUser]];
@@ -361,12 +367,12 @@
     calloutVC.blurbLabel.numberOfLines = 0;
     
     
-    if (annotation.blurb) {
-        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
-        calloutVC.preferredContentSize = CGSizeMake(200, 80);
-    } else {
+    if (annotation.blurb == (id)[NSNull null] || annotation.blurb.length == 0 ) {
         calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewControllerNoBlurb"];
         calloutVC.preferredContentSize = CGSizeMake(200, 50);
+    } else {
+        calloutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CalloutViewController"];
+        calloutVC.preferredContentSize = CGSizeMake(200, 80);
     }
     
     

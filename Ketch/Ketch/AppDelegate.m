@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ContactUtilities.h"
-#import "GSTouchesShowingWindow.h"
 #import "Mixpanel.h"
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
