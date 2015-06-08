@@ -42,7 +42,7 @@
      
     [self.pickerView selectRow:5 inComponent:0 animated:YES];
     
-    int cur_minutes = [(NSNumber *)[_minutesArray objectAtIndex:0] intValue];
+    int cur_minutes = [(NSNumber *)[_minutesArray objectAtIndex:[self.pickerView selectedRowInComponent:0]] intValue];
     self.minutes = cur_minutes;
     
     
